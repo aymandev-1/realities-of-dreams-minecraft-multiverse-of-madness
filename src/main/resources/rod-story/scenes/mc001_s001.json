@@ -35,8 +35,8 @@
     ],
     "clues": {
       "rift_stone": {"name": "Cracked Lodestone", "pos": [0, 1, -50], "block": "minecraft:lodestone", "dialogue": "clue_rift_stone"},
-      "journal_page": {"name": "Pinned Journal Page", "pos": [4, 1, -46], "block": "minecraft:lectern", "dialogue": "clue_journal_page"},
-      "footprints": {"name": "Footprints in Soul Soil", "pos": [-4, 0, -54], "block": "minecraft:soul_soil", "dialogue": "clue_footprints"}
+      "journal_page": {"name": "Pinned Journal Page", "pos": [3, 1, -47], "block": "minecraft:lectern", "dialogue": "clue_journal_page"},
+      "footprints": {"name": "Footprints in Soul Soil", "pos": [-5, 0, -52], "block": "minecraft:soul_soil", "dialogue": "clue_footprints"}
     },
     "stages": [
       {

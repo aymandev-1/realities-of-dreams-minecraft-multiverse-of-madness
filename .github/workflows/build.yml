@@ -1,0 +1,47 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Story engine unit tests
+        run: ./gradlew :story-core:test --stacktrace
+
+      - name: Compile the NeoForge mod
+        run: ./gradlew build --stacktrace
+
+      - name: In-game tests on a dedicated server
+        run: ./gradlew runGameTestServer --stacktrace
+
+      - name: Upload mod jar
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: realitiesofdreams-mod-jar
+          path: build/libs/*.jar
+          if-no-files-found: ignore
+
+      - name: Upload test reports and server logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            story-core/build/reports/tests/
+            run/gametest/logs/
+          if-no-files-found: ignore

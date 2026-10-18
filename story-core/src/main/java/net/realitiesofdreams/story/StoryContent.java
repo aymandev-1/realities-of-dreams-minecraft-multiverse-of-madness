@@ -21,10 +21,10 @@ import java.util.Map.Entry;
 
 /**
  * All story data: the character registry plus scene bundles. A bundle file holds one scene and
- * the dialogues and cinematics it uses, listed in {@code rod_story/index.json}.
+ * the dialogues and cinematics it uses, listed in {@code rod-story/index.json}.
  */
 public final class StoryContent {
-    public static final String ROOT = "/rod_story/";
+    public static final String ROOT = "/rod-story/";
 
     private final CharacterRegistry characters;
     private final Map<String, SceneDef> scenes = new LinkedHashMap<>();
