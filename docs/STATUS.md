@@ -3,7 +3,7 @@
 Milestone: **MC-001 vertical slice** (main menu → New Story → Scene 001 → explore Firstbrook →
 Save → Continue). Updated 2026-10-18.
 
-**Playable: Scene 001 only, out of Saga 1's 20 scenes.** How to play it:
+**Playable: Scenes 001 and 002, out of Saga 1's 20 scenes.** How to play it:
 [PLAYTEST_WINDOWS.md](PLAYTEST_WINDOWS.md). World layout: [WORLD_MC001.md](WORLD_MC001.md).
 Assets and placeholders: [ASSETS.md](ASSETS.md).
 
@@ -69,7 +69,7 @@ Assets and placeholders: [ASSETS.md](ASSETS.md).
 
 | Feature | Status | Why / next step |
 |---|---|---|
-| Scenes 002–020 | Not started | Next milestone; Scene 002's opening line already flows from Rowan's arrival |
+| Scenes 003–020 | Not started | Next milestone: Scene 003, Elara's Northern Trail |
 | NPCs sleeping and waking on a day/night cycle | Blocked | MC-001 is fixed at sunrise; needs the per-scene time-of-day system planned for Scene 008 |
 | NPCs reacting to danger, rescuing civilians, combat | Not started | Needs Scene 011's raiders |
 | Voice acting | Scenes 001 and 002 voiced (45 lines); later scenes not yet | Plays on the Voice/Speech volume slider; a line without a recording shows its subtitle only |

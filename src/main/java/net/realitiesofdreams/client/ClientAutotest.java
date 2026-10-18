@@ -194,6 +194,37 @@ public final class ClientAutotest {
             check(cp != null && cp.completed().contains("mc001_s001"), "story checkpoint file does not record Scene 001 as complete: " + cp);
         });
 
+        // Scene 002 follows straight on: Rowan's warning, three clues, Bram, the compass cinematic.
+        SceneDef s2 = Story.content().scene("mc001_s002");
+        step("Scene 002 starts by itself", 0, () -> "mc001_s002".equals(activeScene()) && busy(), 20 * 30, () -> shot("s002_01_rowan_warning"));
+        step("Rowan's warning", 120, () -> shot("s002_02_almost_deliberate"));
+        step("warning finished", 0, () -> "inspect".equals(stage()), 20 * 120, ClientAutotest::logState);
+        for (String clueId : List.of("cracked_wall", "spinning_compass", "tower_report")) {
+            SceneDef.ClueDef clue = s2.clues().get(clueId);
+            int cx = (int) clue.pos()[0], cz = (int) clue.pos()[2];
+            step("walk to " + clueId, 0, () -> !busy(), 20 * 60, () -> onServer(sp -> moveTo(sp, s2, cx, cz + 2, 180)));
+            step("look at " + clueId, 15, () -> onServer(sp -> face(sp, 180, 40)));
+            step("photograph " + clueId, 15, () -> shot("s002_clue_" + clueId));
+            step("examine " + clueId, 0, () -> useBlock(s2, clue.pos()));
+            step(clueId + " found", 0, () -> clueFound(clueId), 100, () -> {});
+            step(clueId + " remark", 30, () -> shot("s002_clue_" + clueId + "_remark"));
+        }
+        step("Bram arrives", 0, () -> "bram".equals(stage()) || "compass".equals(stage()), 20 * 60, () -> {});
+        step("Bram's report", 0, ClientAutotest::busy, 20 * 30, () -> shot("s002_03_bram_report"));
+        step("compass cinematic", 0, () -> "compass".equals(stage()), 20 * 90, () -> {});
+        step("the needle spins", 25, () -> shot("s002_04_needle_spins"));
+        step("light beneath the ruin", 55, () -> shot("s002_05_light_beneath_ruin"));
+        step("Scene 002 complete", 0, () -> { ServerPlayer sp = serverPlayer(); return sp != null && ModAttachments.story(sp).isSceneComplete("mc001_s002"); },
+                20 * 90, () -> {
+                    shot("s002_06_mission_complete");
+                    logState();
+                    ServerPlayer sp = serverPlayer();
+                    boolean compass = false;
+                    for (net.minecraft.world.item.ItemStack st : sp.getInventory().items) compass |= st.is(net.minecraft.world.item.Items.COMPASS);
+                    check(compass, "the Strange Compass was not given");
+                    check(ModAttachments.story(sp).journal().contains("northern_disturbance"), "Scene 002 journal entry missing");
+                });
+
         // Primordial Steve in daylight, from the front and behind.
         step("appearance outdoors", 0, () -> onServer(sp -> moveTo(sp, scene, -3, 1, 0)));
         step("third person front outdoors", 10, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_FRONT));
@@ -375,6 +406,29 @@ public final class ClientAutotest {
     private static ServerPlayer serverPlayer() {
         Minecraft mc = Minecraft.getInstance();
         return mc.getSingleplayerServer() == null || mc.player == null ? null : mc.getSingleplayerServer().getPlayerList().getPlayer(mc.player.getUUID());
+    }
+
+    private static String activeScene() {
+        ServerPlayer sp = serverPlayer();
+        return sp == null ? null : ModAttachments.story(sp).activeScene();
+    }
+
+    private static boolean busy() {
+        ServerPlayer sp = serverPlayer();
+        return sp != null && (net.realitiesofdreams.server.StoryManager.get().inDialogue(sp) || net.realitiesofdreams.server.StoryManager.get().cinematic(sp) != null);
+    }
+
+    private static boolean clueFound(String id) {
+        ServerPlayer sp = serverPlayer();
+        return sp != null && ModAttachments.story(sp).cluesFound().contains(id);
+    }
+
+    /** Right-clicks a block the way the player does, through the client's interaction path. */
+    private static void useBlock(SceneDef scene, double[] rel) {
+        Minecraft mc = Minecraft.getInstance();
+        net.minecraft.core.BlockPos pos = ModDimensions.absoluteBlock(scene, rel);
+        mc.gameMode.useItemOn(mc.player, net.minecraft.world.InteractionHand.MAIN_HAND,
+                new net.minecraft.world.phys.BlockHitResult(net.minecraft.world.phys.Vec3.atCenterOf(pos), net.minecraft.core.Direction.UP, pos, false));
     }
 
     private static String stage() {

@@ -27,8 +27,9 @@ if (!coreOnly) {
         runs {
             client {
                 client()
-                gameDirectory = project.file('run/client')
-                // `gradlew runClient -Prod.autotest=true` runs the automated playtest (see ClientAutotest).
+                // `gradlew runClient -Prod.autotest=true` runs the automated playtest (see ClientAutotest)
+                // in its own game folder, so it never touches the story save you play in run/client.
+                gameDirectory = project.file(providers.gradleProperty('rod.autotest').isPresent() ? 'run/autotest' : 'run/client')
                 if (providers.gradleProperty('rod.autotest').isPresent()) {
                     systemProperty 'rod.autotest', 'true'
                     programArguments.addAll('--width', '1280', '--height', '720')

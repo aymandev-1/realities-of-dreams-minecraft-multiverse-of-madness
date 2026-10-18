@@ -68,6 +68,8 @@ scene = {
         {"id": "compass", "checkpoint": "compass_spot",
          "on_enter": [{"type": "give_item", "item": "minecraft:compass", "name": "Strange Compass",
                        "lore": ["Its needle will not settle.", "Found on the surveyor's table in Firstbrook."]},
+                      {"type": "hold_item", "item": "minecraft:compass"},
+                      {"type": "teleport_player", "location": "compass_spot", "yaw": -135},
                       {"type": "start_cinematic", "id": "mc001_s002_compass"}],
          "complete": {"type": "cinematic_end", "value": "mc001_s002_compass"},
          "on_complete": [{"type": "start_dialogue", "id": "heading_north"}]},
@@ -133,11 +135,11 @@ cinematics = {
     "mc001_s002_compass": {
         "duration": 170, "fade_in": 12, "fade_out": 12, "hide_player": False,
         "keyframes": [
-            {"t": 0, "pos": [4.6, 1.8, -0.6], "yaw": 30, "pitch": 18, "fov": 55},
-            {"t": 44, "pos": [4.2, 1.7, -0.2], "yaw": 28, "pitch": 22, "fov": 45},
-            {"t": 46, "pos": [2, 10.5, 6], "yaw": -176.2, "pitch": -8.5, "fov": 34},
-            {"t": 120, "pos": [2.6, 11.2, 3], "yaw": -176.4, "pitch": -9.2, "fov": 20},
-            {"t": 170, "pos": [2.8, 11.4, 2.5], "yaw": -176.4, "pitch": -9.3, "fov": 20}],
+            {"t": 0, "pos": [4.5, 2.0, -0.4], "yaw": 24, "pitch": 12, "fov": 50},
+            {"t": 44, "pos": [4.2, 1.95, -0.1], "yaw": 26, "pitch": 18, "fov": 42},
+            {"t": 46, "pos": [10.5, 30, -88], "yaw": 180, "pitch": 13, "fov": 50},
+            {"t": 120, "pos": [10.5, 29.4, -94], "yaw": 180, "pitch": 14, "fov": 40},
+            {"t": 170, "pos": [10.5, 29.2, -96], "yaw": 180, "pitch": 14, "fov": 38}],
         "subtitles": [{"t": 8, "duration": 34, "text": "The needle spins.", "style": "caption"}],
         "sounds": [
             {"t": 4, "sound": "minecraft:block.amethyst_block.resonate", "volume": 0.8, "pitch": 0.7},

@@ -14,7 +14,7 @@ import java.util.Set;
 /** Cross-checks every reference in the story content so broken data is caught by tests, not players. */
 public final class SceneValidator {
     private static final Set<String> ACTIONS = Set.of("set_flag", "clear_flag", "start_dialogue", "start_cinematic",
-            "npc_follow", "npc_stay", "npc_move", "npc_spawn", "npc_despawn", "title", "give_item", "sound",
+            "npc_follow", "npc_stay", "npc_move", "npc_spawn", "npc_despawn", "title", "give_item", "hold_item", "sound",
             "world_change", "message", "npc_sleep", "npc_wake", "npc_approach", "npc_look", "hint", "shake", "say",
             "teleport_player", "journal", "set_value", "add_value", "particles");
 

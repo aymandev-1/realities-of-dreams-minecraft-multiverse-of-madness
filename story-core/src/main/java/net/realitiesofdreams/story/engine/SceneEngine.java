@@ -247,6 +247,7 @@ public final class SceneEngine {
             case "title" -> out.add(new Effect.ShowTitle(a.arg("title", ""), a.arg("subtitle", "")));
             case "give_item" -> out.add(new Effect.GiveItem(a.arg("item"), Integer.parseInt(a.arg("count", "1")),
                     a.arg("name"), a.arg("lore") == null ? List.of() : List.of(a.arg("lore").split("\\|"))));
+            case "hold_item" -> out.add(new Effect.HoldItem(a.arg("item")));
             case "sound" -> out.add(new Effect.PlaySound(a.arg("sound"), Float.parseFloat(a.arg("volume", "1")),
                     Float.parseFloat(a.arg("pitch", "1"))));
             case "world_change" -> out.add(new Effect.WorldChange(a.arg("id")));
