@@ -53,10 +53,11 @@ public final class RodCommands {
                     return 1;
                 }))
                 .then(Commands.literal("scene")
-                        .then(Commands.literal("restart").executes(c -> {
-                            StoryManager.get().restartScene(c.getSource().getPlayerOrException(), StoryManager.FIRST_SCENE);
-                            return 1;
-                        }))
+                        .then(Commands.literal("restart")
+                                .executes(c -> restart(c, null))
+                                .then(Commands.argument("scene", StringArgumentType.word())
+                                        .suggests((c, b) -> SharedSuggestionProvider.suggest(Story.content().scenes().stream().map(SceneDef::id), b))
+                                        .executes(c -> restart(c, StringArgumentType.getString(c, "scene")))))
                         .then(Commands.literal("skip").requires(s -> s.hasPermission(2)).executes(RodCommands::skip)))
                 .then(Commands.literal("characters")
                         .executes(c -> characters(c, null))
@@ -68,6 +69,24 @@ public final class RodCommands {
                 .then(Commands.literal("universe")
                         .then(Commands.argument("id", StringArgumentType.string()).executes(RodCommands::universe)))
                 .then(DevCommands.node()));
+    }
+
+    /** Replays a scene: the named one, else the scene in progress, else the last one finished. */
+    private static int restart(CommandContext<CommandSourceStack> c, String sceneId) throws CommandSyntaxException {
+        ServerPlayer p = c.getSource().getPlayerOrException();
+        PlayerStoryState s = StoryManager.get().state(p);
+        if (sceneId == null) {
+            SceneDef active = Story.engine().activeScene(s);
+            sceneId = active != null ? active.id() : null;
+            if (sceneId == null) for (String id : s.completedScenes()) sceneId = id;
+            if (sceneId == null) sceneId = StoryManager.FIRST_SCENE;
+        }
+        if (Story.content().scene(sceneId) == null) {
+            c.getSource().sendFailure(Component.literal("Unknown scene " + sceneId));
+            return 0;
+        }
+        StoryManager.get().restartScene(p, sceneId);
+        return 1;
     }
 
     private static int status(CommandContext<CommandSourceStack> c) throws CommandSyntaxException {

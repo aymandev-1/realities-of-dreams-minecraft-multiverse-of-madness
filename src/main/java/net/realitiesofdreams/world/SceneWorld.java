@@ -93,12 +93,66 @@ public final class SceneWorld {
         return false;
     }
 
-    /** Permanent changes to the world caused by story events. None are defined for the current scenes. */
+    /** Permanent changes to the world caused by story events, each applied once per world. */
     public static void applyChange(ServerLevel level, SceneDef scene, String change) {
         SceneWorldData data = SceneWorldData.get(level);
         if (data.isDone("change:" + change)) return;
-        RealitiesOfDreams.LOGGER.warn("Unknown world change {}", change);
+        BlockPos a = ModDimensions.anchor(scene);
+        switch (change) {
+            case "mc001_s002_aftermath" -> aftermath(level, scene, a);
+            case "mc001_s002_ruin_light_on" -> ruinLight(level, a, true);
+            case "mc001_s002_ruin_light_off" -> ruinLight(level, a, false);
+            default -> RealitiesOfDreams.LOGGER.warn("Unknown world change {}", change);
+        }
         data.markDone("change:" + change);
+    }
+
+    private static final int FLAGS = net.minecraft.world.level.block.Block.UPDATE_CLIENTS;
+
+    /**
+     * Scene 002: what the pre-dawn tremor left behind. A garden wall by the square pushed up and
+     * cracked from below, the surveyor's table with the compass, and the night watch's report at
+     * the watchtower. Each clue's block is placed where the scene says it is.
+     */
+    private static void aftermath(ServerLevel level, SceneDef scene, BlockPos a) {
+        net.minecraft.world.level.block.state.BlockState bricks = net.minecraft.world.level.block.Blocks.STONE_BRICKS.defaultBlockState();
+        net.minecraft.world.level.block.state.BlockState cracked = net.minecraft.world.level.block.Blocks.CRACKED_STONE_BRICKS.defaultBlockState();
+        // The damaged wall, x 4..7 at z -7: heaved stones, a split course and rubble at its foot.
+        for (int x = 4; x <= 7; x++) {
+            level.setBlock(a.offset(x, -1, -7), net.minecraft.world.level.block.Blocks.COARSE_DIRT.defaultBlockState(), FLAGS);
+            level.setBlock(a.offset(x, 0, -7), x == 5 ? cracked : bricks, FLAGS);
+            if (x != 6) level.setBlock(a.offset(x, 1, -7), x == 4 ? cracked : net.minecraft.world.level.block.Blocks.MOSSY_STONE_BRICKS.defaultBlockState(), FLAGS);
+        }
+        level.setBlock(a.offset(7, 1, -7), net.minecraft.world.level.block.Blocks.STONE_BRICK_SLAB.defaultBlockState(), FLAGS);
+        for (int[] r : new int[][] {{4, -6}, {6, -6}, {5, -8}, {7, -6}}) {
+            if (level.getBlockState(a.offset(r[0], 0, r[1])).canBeReplaced())
+                level.setBlock(a.offset(r[0], 0, r[1]), (r[0] % 2 == 0 ? net.minecraft.world.level.block.Blocks.COBBLESTONE_SLAB
+                        : net.minecraft.world.level.block.Blocks.STONE_BUTTON).defaultBlockState(), FLAGS);
+            level.setBlock(a.offset(r[0], -1, r[1]), net.minecraft.world.level.block.Blocks.GRAVEL.defaultBlockState(), FLAGS);
+        }
+        // Every clue's block, where the scene places it.
+        for (SceneDef.ClueDef clue : scene.clues().values()) {
+            BlockPos at = ModDimensions.absoluteBlock(scene, clue.pos());
+            var block = net.minecraft.core.registries.BuiltInRegistries.BLOCK.get(ResourceLocation.parse(clue.block()));
+            var state = block.defaultBlockState();
+            if (state.hasProperty(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING)) {
+                state = state.setValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING, net.minecraft.core.Direction.SOUTH);
+            }
+            level.setBlock(at, state, FLAGS);
+        }
+    }
+
+    /** Scene 002's light beneath the ruin on the ridge: on for a moment during the compass cinematic, then gone. */
+    private static void ruinLight(ServerLevel level, BlockPos a, boolean on) {
+        int top = level.getHeight(net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, a.getX() + 10, a.getZ() - 111);
+        for (int dx = -1; dx <= 1; dx++)
+            for (int dz = -1; dz <= 1; dz++) {
+                BlockPos p = new BlockPos(a.getX() + 10 + dx, top - 1, a.getZ() - 111 + dz);
+                level.setBlock(p, on ? net.minecraft.world.level.block.Blocks.SEA_LANTERN.defaultBlockState()
+                        : (dx + dz) % 2 == 0 ? net.minecraft.world.level.block.Blocks.CRACKED_STONE_BRICKS.defaultBlockState()
+                        : net.minecraft.world.level.block.Blocks.MOSSY_COBBLESTONE.defaultBlockState(), FLAGS);
+            }
+        if (on) level.sendParticles(net.minecraft.core.particles.ParticleTypes.END_ROD, a.getX() + 10.5, top + 0.5, a.getZ() - 110.5, 40, 1.5, 1, 1.5, 0.05);
     }
 
     public static int hillHeight(int x, int z) {
