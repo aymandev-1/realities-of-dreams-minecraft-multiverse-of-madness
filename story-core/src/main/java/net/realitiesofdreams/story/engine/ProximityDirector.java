@@ -27,7 +27,9 @@ public final class ProximityDirector {
         return scene.triggers().stream()
                 .filter(t -> eligible(t, state))
                 .flatMap(t -> nearby.stream()
-                        .filter(n -> n.characterId().equals(t.character()) && n.canSee() && n.distance() <= t.radius())
+                        // A character who walks over to talk finds the player even round a corner; one who
+                        // only calls out has to see them.
+                        .filter(n -> n.characterId().equals(t.character()) && (n.canSee() || t.approach()) && n.distance() <= t.radius())
                         .map(n -> new Decision(t, n, t.approach() && n.distance() > t.talkRadius())))
                 .min(Comparator.<Decision>comparingInt(d -> d.trigger().ambient() ? 1 : 0)
                         .thenComparing(d -> -d.trigger().priority())

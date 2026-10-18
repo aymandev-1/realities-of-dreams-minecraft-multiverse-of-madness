@@ -1,3 +1,6 @@
 {
-  "scenes": ["mc001_s001.json"]
+  "scenes": [
+    "mc001_s001.json",
+    "mc001_s002.json"
+  ]
 }

@@ -221,7 +221,8 @@ public final class RodGameTests {
             finishDialogues(m, player);
 
             PlayerStoryState state = ModAttachments.story(player);
-            helper.assertTrue(state.isSceneComplete("mc001_s001") && state.activeScene() == null, "scene not completed");
+            helper.assertTrue(state.isSceneComplete("mc001_s001"), "scene not completed");
+            helper.assertTrue("mc001_s002".equals(state.activeScene()), "Scene 002 did not follow on: " + state.activeScene());
             StoryNpcEntity rowan = NpcDirector.find(level, "elder_rowan");
             helper.assertTrue(rowan != null && player.getUUID().equals(rowan.approachTarget()), "Elder Rowan is not coming over");
             helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("Steve! There you are.")), "Rowan did not call out");
@@ -240,6 +241,36 @@ public final class RodGameTests {
             reloaded.deserializeNBT(level.registryAccess(), saved);
             helper.assertTrue(reloaded.state().isSceneComplete("mc001_s001") && reloaded.state().hasFlag("mc001.s001.complete")
                     && reloaded.state().journal().contains("firstbrook_morning"), "progress lost on save/load");
+
+            // ---- Scene 002: Rowan's warning starts by itself when he reaches Steve.
+            tickUntil(m, player, () -> m.inDialogue(player), 400);
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("Steve, I've been looking everywhere for you.")),
+                    "Rowan's warning did not start");
+            finishDialogues(m, player);
+            expectStage(helper, m, player, "inspect");
+            SceneDef s2 = Story.content().scene("mc001_s002");
+            for (SceneDef.ClueDef clue : s2.clues().values()) {
+                BlockPos at = ModDimensions.absoluteBlock(s2, clue.pos());
+                helper.assertTrue(net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(level.getBlockState(at).getBlock()).toString().equals(clue.block()),
+                        clue.id() + " block not placed at " + at);
+                // Examine it the way a player does: right-click the block.
+                helper.assertTrue(m.onBlockUse(player, at), clue.id() + " did not respond to a right-click");
+                finishDialogues(m, player);
+            }
+            expectStage(helper, m, player, "bram");
+            tickUntil(m, player, () -> m.inDialogue(player), 400);
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("The northern path isn't safe. Loose rocks came down just before dawn.")),
+                    "Bram's report did not start");
+            finishDialogues(m, player);
+            helper.assertTrue("mc001_s002_compass".equals(m.cinematic(player)), "compass cinematic did not play");
+            m.onCinematicDone(player, "mc001_s002_compass");
+            finishDialogues(m, player);
+            PlayerStoryState s2state = ModAttachments.story(player);
+            helper.assertTrue(s2state.isSceneComplete("mc001_s002") && s2state.activeScene() == null, "Scene 002 not completed");
+            helper.assertTrue(s2state.hasFlag("mc001.s003.survey_approved") && s2state.journal().contains("northern_disturbance"), "Scene 002 outcome missing");
+            boolean compass = false;
+            for (ItemStack st : player.getInventory().items) compass |= st.is(Items.COMPASS) && st.getHoverName().getString().equals("Strange Compass");
+            helper.assertTrue(compass, "the Strange Compass was not given");
             helper.succeed();
         } finally {
             NpcDirector.releaseAll(player);

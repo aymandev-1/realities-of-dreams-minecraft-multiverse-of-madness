@@ -175,9 +175,23 @@ public final class StoryManager {
         SceneDef scene = engine().activeScene(state);
         if (scene != null) {
             perform(p, engine().resume(state));
-        } else if (!state.isSceneComplete(FIRST_SCENE)) {
-            startScene(p, FIRST_SCENE, true);
+        } else {
+            String next = nextScene(state);
+            if (next != null) startScene(p, next, true);
         }
+    }
+
+    /** The first scene of the story the player has not finished yet, if it has been released. */
+    @Nullable
+    public static String nextScene(PlayerStoryState state) {
+        String id = FIRST_SCENE;
+        for (int guard = 0; guard < 64 && id != null; guard++) {
+            SceneDef s = Story.content().scene(id);
+            if (s == null) return null;
+            if (!state.isSceneComplete(id)) return id;
+            id = s.nextScene();
+        }
+        return null;
     }
 
     public void onLogout(ServerPlayer p) {
@@ -196,11 +210,12 @@ public final class StoryManager {
             perform(p, engine().resume(state));
             return;
         }
-        if (state.isSceneComplete(FIRST_SCENE)) {
-            p.sendSystemMessage(Component.literal("Scene 001 is complete. Scene 002 arrives in a future update. Use /rod scene restart to replay.").withStyle(ChatFormatting.GOLD));
+        String next = nextScene(state);
+        if (next == null) {
+            p.sendSystemMessage(Component.literal("You have played every released scene. The next scene arrives in a future update. Use /rod scene restart to replay.").withStyle(ChatFormatting.GOLD));
             return;
         }
-        startScene(p, FIRST_SCENE, true);
+        startScene(p, next, true);
     }
 
     public void startScene(ServerPlayer p, String sceneId, boolean teleport) {
@@ -337,7 +352,7 @@ public final class StoryManager {
             }
             return;
         }
-        List<StoryNpcEntity> npcs = level.getEntitiesOfClass(StoryNpcEntity.class, p.getBoundingBox().inflate(16));
+        List<StoryNpcEntity> npcs = level.getEntitiesOfClass(StoryNpcEntity.class, p.getBoundingBox().inflate(48));
         List<ProximityDirector.NearbyCharacter> nearby = new ArrayList<>();
         for (StoryNpcEntity n : npcs) nearby.add(new ProximityDirector.NearbyCharacter(n.characterId(), n.distanceTo(p), n.hasLineOfSight(p)));
         Optional<ProximityDirector.Decision> decision = ProximityDirector.choose(scene, state, nearby);
