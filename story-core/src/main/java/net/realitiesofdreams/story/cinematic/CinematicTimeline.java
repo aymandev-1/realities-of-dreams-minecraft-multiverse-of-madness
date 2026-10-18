@@ -42,12 +42,28 @@ public final class CinematicTimeline {
                 (float) lerp(a.fov(), b.fov(), u));
     }
 
-    /** 0 = clear, 1 = black. */
+    /** 0 = clear, 1 = black. Opens on black for hold_black ticks, then fades in. */
     public float fadeAlpha(double t) {
-        if (def.fadeIn() > 0 && t < def.fadeIn()) return (float) (1 - t / def.fadeIn());
+        double alpha = 0;
+        if (t < def.holdBlack()) return 1f;
+        double in = t - def.holdBlack();
+        if (def.fadeIn() > 0 && in < def.fadeIn()) alpha = 1 - in / def.fadeIn();
         double outStart = def.duration() - def.fadeOut();
-        if (def.fadeOut() > 0 && t > outStart) return (float) Math.min(1, (t - outStart) / def.fadeOut());
-        return 0f;
+        if (def.fadeOut() > 0 && t > outStart) alpha = Math.max(alpha, Math.min(1, (t - outStart) / def.fadeOut()));
+        for (CinematicDef.Dip d : def.dips()) {
+            double half = d.duration() / 2, mid = d.start() + half;
+            if (t >= d.start() && t <= d.start() + d.duration()) alpha = Math.max(alpha, 1 - Math.abs(t - mid) / half * 0.999);
+        }
+        return (float) alpha;
+    }
+
+    /** Cues with from &lt; t &lt;= to (cues at t = 0 fire on the first step). */
+    public List<CinematicDef.Cue> cuesBetween(double from, double to) {
+        List<CinematicDef.Cue> out = new ArrayList<>();
+        for (CinematicDef.Cue c : def.cues()) {
+            if ((c.t() > from || (from < 0 && c.t() == 0)) && c.t() <= to) out.add(c);
+        }
+        return out;
     }
 
     public List<CinematicDef.Subtitle> subtitlesAt(double t) {

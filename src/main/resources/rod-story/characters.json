@@ -6,7 +6,7 @@
       "name": "Primordial Steve",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Firstbrook (Eldervale)",
       "role": "His ultimate role is preserved for Saga 24.",
       "notes": "",
       "generated": false,
@@ -14,7 +14,35 @@
       "texture": "realitiesofdreams:textures/entity/character/primordial_steve.png",
       "model": "wide",
       "source": "art/skins/source/MC-001/Primordial Steve (MC-001)/cbe20ed58814c5e1.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "speaker_name": "Steve",
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
     },
     {
       "id": "primordial_steve_empowered",
@@ -29,14 +57,15 @@
       "texture": "realitiesofdreams:textures/entity/character/primordial_steve_empowered.png",
       "model": "slim",
       "source": "art/skins/source/MC-001/Primordial Steve - Empowered MC-001/defd58707bfee808.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "elder_rowan",
       "name": "Elder Rowan",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Firstbrook (Eldervale)",
       "role": "",
       "notes": "",
       "generated": false,
@@ -44,14 +73,25 @@
       "texture": "realitiesofdreams:textures/entity/character/elder_rowan.png",
       "model": "slim",
       "source": "art/skins/source/MC-001/Elder Rowan(MC-001)/be741cde6ea03fb4.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          2,
+          5,
+          20
+        ]
+      }
     },
     {
       "id": "elara",
       "name": "Elara",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Firstbrook (Eldervale)",
       "role": "",
       "notes": "",
       "generated": false,
@@ -59,14 +99,41 @@
       "texture": "realitiesofdreams:textures/entity/character/elara.png",
       "model": "wide",
       "source": "art/skins/source/MC-001/Elara (MC-001)/0015cf5b9969b142.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
     },
     {
       "id": "bram",
       "name": "Bram",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Firstbrook (Eldervale)",
       "role": "",
       "notes": "",
       "generated": false,
@@ -74,14 +141,35 @@
       "texture": "realitiesofdreams:textures/entity/character/bram.png",
       "model": "wide",
       "source": "art/skins/source/MC-001/Bram (MC-001)/754f91e0a4931dff.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
     },
     {
       "id": "captain_maren",
       "name": "Captain Maren",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Thalassia",
       "role": "",
       "notes": "",
       "generated": false,
@@ -89,14 +177,26 @@
       "texture": "realitiesofdreams:textures/entity/character/captain_maren.png",
       "model": "wide",
       "source": "art/skins/source/MC-001/Captain Maren (MC-001)/d12e8e32f857fcaa.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
     },
     {
       "id": "liora",
       "name": "Liora",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Sylvaris",
       "role": "",
       "notes": "",
       "generated": false,
@@ -104,14 +204,29 @@
       "texture": "realitiesofdreams:textures/entity/character/liora.png",
       "model": "slim",
       "source": "art/skins/source/MC-001/Liora (MC-001)/a88e92c1ed49d91f.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          10,
+          11,
+          12,
+          15,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
     },
     {
       "id": "lord_kaelen",
       "name": "Lord Kaelen",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Veyrath",
       "role": "",
       "notes": "",
       "generated": false,
@@ -119,14 +234,26 @@
       "texture": "realitiesofdreams:textures/entity/character/lord_kaelen.png",
       "model": "wide",
       "source": "art/skins/source/MC-001/Lord Kaelen (MC-001)/93aa1dcf1dc874c6.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          15,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
     },
     {
       "id": "orin",
       "name": "Orin",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Firstbrook (Eldervale)",
       "role": "",
       "notes": "",
       "generated": false,
@@ -134,14 +261,33 @@
       "texture": "realitiesofdreams:textures/entity/character/orin.png",
       "model": "slim",
       "source": "art/skins/source/MC-001/Orin (MC-001)/0c2348c046c49671.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          4,
+          5,
+          6,
+          7,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
     },
     {
       "id": "queen_aveline",
       "name": "Queen Aveline",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Eldervale",
       "role": "",
       "notes": "",
       "generated": false,
@@ -149,14 +295,27 @@
       "texture": "realitiesofdreams:textures/entity/character/queen_aveline.png",
       "model": "slim",
       "source": "art/skins/source/MC-001/Queen Aveline (MC-001)/queen.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          12,
+          13,
+          14,
+          15,
+          17,
+          20
+        ]
+      }
     },
     {
       "id": "sahir",
       "name": "Sahir",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Solkar",
       "role": "",
       "notes": "",
       "generated": false,
@@ -164,14 +323,28 @@
       "texture": "realitiesofdreams:textures/entity/character/sahir.png",
       "model": "slim",
       "source": "art/skins/source/MC-001/Sahir (MC-001)/34b05a641066240d.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
     },
     {
       "id": "thane_garrick",
       "name": "Thane Garrick",
       "universe": "MC-001",
       "group": "MC-001",
-      "faction": "MC-001",
+      "faction": "Stonecrown",
       "role": "",
       "notes": "",
       "generated": false,
@@ -179,7 +352,21 @@
       "texture": "realitiesofdreams:textures/entity/character/thane_garrick.png",
       "model": "wide",
       "source": "art/skins/source/MC-001/Thane Garrick (MC-001)/135896cfc2935928.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          13,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ]
+      }
     },
     {
       "id": "steve_prime",
@@ -194,7 +381,8 @@
       "texture": "realitiesofdreams:textures/entity/character/steve_prime.png",
       "model": "wide",
       "source": "art/skins/source/MC-100/Steve Prime (MC-100)/46dec770857edc6d.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "alex_mc100",
@@ -209,7 +397,8 @@
       "texture": "realitiesofdreams:textures/entity/character/alex_mc100.png",
       "model": "wide",
       "source": "art/skins/source/MC-100/Alex (MC-100)/2ec53a7c141b6b29.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "arthur",
@@ -224,7 +413,8 @@
       "texture": "realitiesofdreams:textures/entity/character/arthur.png",
       "model": "wide",
       "source": "art/skins/source/MC-100/Arthur (MC-100)/bc16af750e271683.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "betty",
@@ -239,7 +429,8 @@
       "texture": "realitiesofdreams:textures/entity/character/betty.png",
       "model": "slim",
       "source": "art/skins/source/MC-100/Betty (MC-100)/a1c611001ee708ed.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "griff",
@@ -254,7 +445,8 @@
       "texture": "realitiesofdreams:textures/entity/character/griff.png",
       "model": "wide",
       "source": "art/skins/source/MC-100/Griff (MC-100)/a464d54ff01c34e0.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "monclair",
@@ -269,7 +461,8 @@
       "texture": "realitiesofdreams:textures/entity/character/monclair.png",
       "model": "slim",
       "source": "art/skins/source/MC-100/Monclair (MC-100)/84738f7a56eacebf.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "prehistoric_steve",
@@ -284,7 +477,8 @@
       "texture": "realitiesofdreams:textures/entity/character/prehistoric_steve.png",
       "model": "slim",
       "source": "art/skins/source/Major Steves & Crossovers/Prehistoric Steve (MC-002)/43a430df7b7c0df4.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "witch_alex",
@@ -299,7 +493,8 @@
       "texture": "realitiesofdreams:textures/entity/character/witch_alex.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Witch Alex (MC-002)/Witch-Alex-on-planetminecraft-com.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "kingdomless_steve",
@@ -314,7 +509,8 @@
       "texture": "realitiesofdreams:textures/entity/character/kingdomless_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Kingdomless Steve MC-003/bfa6a134d451466f.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "wanderer_steve",
@@ -329,7 +525,8 @@
       "texture": "realitiesofdreams:textures/entity/character/wanderer_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Wanderer Steve MC-004/401b1047808d4281.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "wanderer_steve_alt",
@@ -344,7 +541,8 @@
       "texture": "realitiesofdreams:textures/entity/character/wanderer_steve_alt.png",
       "model": "slim",
       "source": "art/skins/source/Major Steves & Crossovers/Wanderer Steve MC-004/a412bf05142eb060.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "plague_doctor_steve",
@@ -359,7 +557,8 @@
       "texture": "realitiesofdreams:textures/entity/character/plague_doctor_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Plague Doctor Steve MC-005/7d6fc62ba4dd1fd3.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "redstone_overlord_steve",
@@ -374,7 +573,8 @@
       "texture": "realitiesofdreams:textures/entity/character/redstone_overlord_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Redstone Overlord Steve MC-006/311318bd7dbfc3cd.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "end_king_steve",
@@ -389,7 +589,8 @@
       "texture": "realitiesofdreams:textures/entity/character/end_king_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/End King Steve MC-007/9543d3db262b9c60.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "nether_emperor_steve",
@@ -404,7 +605,8 @@
       "texture": "realitiesofdreams:textures/entity/character/nether_emperor_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Nether Emperor Steve MC-008/288706fb6fff2485.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "time_lost_steve",
@@ -419,7 +621,8 @@
       "texture": "realitiesofdreams:textures/entity/character/time_lost_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Time-Lost Steve MC-009/mrclock.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "glitchwalker_steve",
@@ -434,7 +637,8 @@
       "texture": "realitiesofdreams:textures/entity/character/glitchwalker_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Glitchwalker steve MC-010/4ae6b6ca0efb59b7.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "corrupted_guardian_steve",
@@ -449,7 +653,8 @@
       "texture": "realitiesofdreams:textures/entity/character/corrupted_guardian_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Corrupte Guardian Steve MC-013/04811539c92e572e.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "ancient_builder_steve",
@@ -464,7 +669,8 @@
       "texture": "realitiesofdreams:textures/entity/character/ancient_builder_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Acient Builder Steve MC-014/dbe354b5b5f46c5e.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "cosmic_steve",
@@ -479,7 +685,8 @@
       "texture": "realitiesofdreams:textures/entity/character/cosmic_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Cosmic Steve (MC-015)/781708912c3ced6a.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "survivor_steve",
@@ -494,7 +701,8 @@
       "texture": "realitiesofdreams:textures/entity/character/survivor_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Survivor Steve Mc-016/2fc001e4492aebe4.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "herald_steve",
@@ -509,7 +717,8 @@
       "texture": "realitiesofdreams:textures/entity/character/herald_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Herald Steve MC-017/c101bd5ecdd8091d.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "ironbound_steve",
@@ -524,7 +733,8 @@
       "texture": "realitiesofdreams:textures/entity/character/ironbound_steve.png",
       "model": "slim",
       "source": "art/skins/source/Major Steves & Crossovers/IronBound Steve MC-018/5fd193f91ecc3e2e.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "exiled_prince_steve",
@@ -539,7 +749,8 @@
       "texture": "realitiesofdreams:textures/entity/character/exiled_prince_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Exiled Prince Steve MC-019/b4fe85907d9c9a4d.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "warden_steve",
@@ -554,7 +765,8 @@
       "texture": "realitiesofdreams:textures/entity/character/warden_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Wardem Steve MC-058/18b7fbd018a5d83a.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "warden_steve_alt",
@@ -569,7 +781,8 @@
       "texture": "realitiesofdreams:textures/entity/character/warden_steve_alt.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Wardem Steve MC-058/91329339d410a06f.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "voidwalker_steve",
@@ -584,7 +797,8 @@
       "texture": "realitiesofdreams:textures/entity/character/voidwalker_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Voidwalker Steve MC-073/8d93fed9f4c46709.png",
-      "legacy_source": true
+      "legacy_source": true,
+      "sagas": []
     },
     {
       "id": "chrono_steve",
@@ -599,7 +813,8 @@
       "texture": "realitiesofdreams:textures/entity/character/chrono_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Chrono Steve (MC-101)/e763c1d597ac357a.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "jesse",
@@ -614,7 +829,8 @@
       "texture": "realitiesofdreams:textures/entity/character/jesse.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Jesse Story Mode MC-200/1a8a173e20fb491d.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "reuben",
@@ -628,7 +844,8 @@
       "entity": "minecraft:pig",
       "texture": null,
       "model": null,
-      "source": null
+      "source": null,
+      "sagas": []
     },
     {
       "id": "movie_steve",
@@ -643,7 +860,8 @@
       "texture": "realitiesofdreams:textures/entity/character/movie_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Movie Steve (MC-300)/aba97be291f29ae0.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "professor_steve",
@@ -658,7 +876,8 @@
       "texture": "realitiesofdreams:textures/entity/character/professor_steve.png",
       "model": "wide",
       "source": "art/skins/source/Major Steves & Crossovers/Professor Steve (MC-1323)/da2e61ba815d2854.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "aeon_steve",
@@ -673,7 +892,8 @@
       "texture": "realitiesofdreams:textures/entity/character/aeon_steve.png",
       "model": "slim",
       "source": "art/skins/source/Major Steves & Crossovers/Aeon Steve (Temp)/ff888782a4d0bec9.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "mystery_dweller",
@@ -688,7 +908,8 @@
       "texture": "realitiesofdreams:textures/entity/character/mystery_dweller.png",
       "model": "wide",
       "source": "art/skins/source/MysteryDweller/acaf0b6e753b3609.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "herobrine",
@@ -703,7 +924,8 @@
       "texture": "realitiesofdreams:textures/entity/character/herobrine.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/Herobrine/5ec3677ccc95b332.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "entity_303",
@@ -718,7 +940,8 @@
       "texture": "realitiesofdreams:textures/entity/character/entity_303.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/Entity 303/09f5855f298cf918.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "null",
@@ -733,7 +956,8 @@
       "texture": "realitiesofdreams:textures/entity/character/null.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/Null/038b147ff9a8a1e6.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "glitch_steve",
@@ -748,7 +972,8 @@
       "texture": "realitiesofdreams:textures/entity/character/glitch_steve.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/GLitch Steve/61af210cee8cf65a.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "virus_steve",
@@ -763,7 +988,8 @@
       "texture": "realitiesofdreams:textures/entity/character/virus_steve.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/Virus Steve/e9e97cb4c3eec4dc.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "assassin_steve",
@@ -778,7 +1004,8 @@
       "texture": "realitiesofdreams:textures/entity/character/assassin_steve.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/Assassin Steve MC-TBD/bed66d5c6b1a25fc.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "corrupted_steve",
@@ -793,7 +1020,8 @@
       "texture": "realitiesofdreams:textures/entity/character/corrupted_steve.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/Corrupted Steve MC-TBD/7a642cdc6e9a2891.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "dark_samurai_steve",
@@ -808,7 +1036,8 @@
       "texture": "realitiesofdreams:textures/entity/character/dark_samurai_steve.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/Dark Samurai Steve MC-TBD/fa98c2af0e6fac96.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "oblivion_steve",
@@ -823,7 +1052,8 @@
       "texture": "realitiesofdreams:textures/entity/character/oblivion_steve.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/Oblivion Steve MC-TBD/8d93fed9f4c46709.png",
-      "legacy_source": true
+      "legacy_source": true,
+      "sagas": []
     },
     {
       "id": "shadow_steve",
@@ -838,7 +1068,8 @@
       "texture": "realitiesofdreams:textures/entity/character/shadow_steve.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/Shadow Steve MC-TBD/1d429c21f37676a2.png",
-      "legacy_source": true
+      "legacy_source": true,
+      "sagas": []
     },
     {
       "id": "sovereign_steve",
@@ -853,7 +1084,8 @@
       "texture": "realitiesofdreams:textures/entity/character/sovereign_steve.png",
       "model": "wide",
       "source": "art/skins/source/Main Villains/Sovereign Steve MC-TBD/5bcb6eb8f8bb8bf9.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "architect_representative",
@@ -868,7 +1100,8 @@
       "texture": "realitiesofdreams:textures/entity/character/architect_representative.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/Architect Representative/96a888c483e6c40c.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "notch",
@@ -883,7 +1116,8 @@
       "texture": "realitiesofdreams:textures/entity/character/notch.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/Notch/5d5eb6d84b57ea29.png",
-      "legacy_source": true
+      "legacy_source": true,
+      "sagas": []
     },
     {
       "id": "jeb",
@@ -898,7 +1132,8 @@
       "texture": "realitiesofdreams:textures/entity/character/jeb.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/Jeb/747aed816e687730.png",
-      "legacy_source": true
+      "legacy_source": true,
+      "sagas": []
     },
     {
       "id": "draxson",
@@ -913,7 +1148,8 @@
       "texture": "realitiesofdreams:textures/entity/character/draxson.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/Draxson/976b1b9485fcf95c.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "evaulx",
@@ -928,7 +1164,8 @@
       "texture": "realitiesofdreams:textures/entity/character/evaulx.png",
       "model": "slim",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/Evaulx/4de36baabf970dbd.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "temporal_custodian",
@@ -943,7 +1180,8 @@
       "texture": "realitiesofdreams:textures/entity/character/temporal_custodian.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/Temporal Custodian/27ed993dd530d9e6.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "federation_engineer",
@@ -958,7 +1196,8 @@
       "texture": "realitiesofdreams:textures/entity/character/federation_engineer.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/Federation Engineer/265703c130110b02.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_commander",
@@ -973,7 +1212,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_commander.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Commander/3033f7160d226376.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_agent",
@@ -988,7 +1228,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_agent.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Agents/cffd94eb8cc74d2a.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_field_agent",
@@ -1003,7 +1244,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_field_agent.png",
       "model": "slim",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Field Agent/543f56fb2b80fc9a.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_guard",
@@ -1018,7 +1260,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_guard.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Guards/732831a749398817.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_delta_force",
@@ -1033,7 +1276,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_delta_force.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Special Delta Force/d58810bae6811d75.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_delta_force_b",
@@ -1048,7 +1292,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_delta_force_b.png",
       "model": "slim",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Special Delta Force/e134fecee03ba534.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_scientist",
@@ -1063,7 +1308,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_scientist.png",
       "model": "slim",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Scientist/dff172374365adf7.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_customer_service",
@@ -1078,7 +1324,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_customer_service.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Customer Service/cb8f9c69fe707a90.png",
-      "legacy_source": true
+      "legacy_source": true,
+      "sagas": []
     },
     {
       "id": "tmma_crew_grey",
@@ -1093,7 +1340,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_crew_grey.png",
       "model": "slim",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Crew/3d4225ce3b7d940b.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_crew_officer",
@@ -1108,7 +1356,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_crew_officer.png",
       "model": "wide",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Crew/aed99d488ea2fd26.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_crew_purple",
@@ -1123,7 +1372,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_crew_purple.png",
       "model": "slim",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Crew/e91571f16e92cd96.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_crew_white",
@@ -1138,7 +1388,8 @@
       "texture": "realitiesofdreams:textures/entity/character/tmma_crew_white.png",
       "model": "slim",
       "source": "art/skins/source/Ancient figures, TMMA and Federation/TMMA Crew/f773604c0b092059.png",
-      "legacy_source": false
+      "legacy_source": false,
+      "sagas": []
     },
     {
       "id": "tmma_crew_grey_v1",
@@ -1154,6 +1405,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_grey"
     },
     {
@@ -1170,6 +1422,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_grey"
     },
     {
@@ -1186,6 +1439,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_grey"
     },
     {
@@ -1202,6 +1456,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_grey"
     },
     {
@@ -1218,6 +1473,7 @@
       "model": "wide",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_officer"
     },
     {
@@ -1234,6 +1490,7 @@
       "model": "wide",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_officer"
     },
     {
@@ -1250,6 +1507,7 @@
       "model": "wide",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_officer"
     },
     {
@@ -1266,6 +1524,7 @@
       "model": "wide",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_officer"
     },
     {
@@ -1282,6 +1541,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_purple"
     },
     {
@@ -1298,6 +1558,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_purple"
     },
     {
@@ -1314,6 +1575,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_purple"
     },
     {
@@ -1330,6 +1592,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_purple"
     },
     {
@@ -1346,6 +1609,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_white"
     },
     {
@@ -1362,6 +1626,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_white"
     },
     {
@@ -1378,6 +1643,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_white"
     },
     {
@@ -1394,6 +1660,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_crew_white"
     },
     {
@@ -1410,6 +1677,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_scientist"
     },
     {
@@ -1426,6 +1694,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_scientist"
     },
     {
@@ -1442,6 +1711,7 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_scientist"
     },
     {
@@ -1458,7 +1728,1440 @@
       "model": "slim",
       "source": null,
       "legacy_source": false,
+      "sagas": [],
       "template": "tmma_scientist"
+    },
+    {
+      "id": "firstbrook_villager_1",
+      "name": "Firstbrook Villager #1",
+      "speaker_name": "Villager",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Residents of Firstbrook; Scene 005's volunteers are drawn from them.",
+      "npc_type": "firstbrook_villager",
+      "notes": "Generated NPC appearance: bald white hair, hazel eyes, freckles. Outfit shared by every Firstbrook Villager.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_villager_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          5,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_villager_2",
+      "name": "Firstbrook Villager #2",
+      "speaker_name": "Villager",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Residents of Firstbrook; Scene 005's volunteers are drawn from them.",
+      "npc_type": "firstbrook_villager",
+      "notes": "Generated NPC appearance: bald black hair, green eyes, moustache, earring. Outfit shared by every Firstbrook Villager.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_villager_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          5,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_villager_3",
+      "name": "Firstbrook Villager #3",
+      "speaker_name": "Villager",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Residents of Firstbrook; Scene 005's volunteers are drawn from them.",
+      "npc_type": "firstbrook_villager",
+      "notes": "Generated NPC appearance: long brown hair, hazel eyes, freckles, headband. Outfit shared by every Firstbrook Villager.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_villager_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          5,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_villager_4",
+      "name": "Firstbrook Villager #4",
+      "speaker_name": "Villager",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Residents of Firstbrook; Scene 005's volunteers are drawn from them.",
+      "npc_type": "firstbrook_villager",
+      "notes": "Generated NPC appearance: swept blonde hair, brown eyes, glasses, freckles. Outfit shared by every Firstbrook Villager.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_villager_4.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          5,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_villager_5",
+      "name": "Firstbrook Villager #5",
+      "speaker_name": "Villager",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Residents of Firstbrook; Scene 005's volunteers are drawn from them.",
+      "npc_type": "firstbrook_villager",
+      "notes": "Generated NPC appearance: short black hair, hazel eyes, freckles, headband. Outfit shared by every Firstbrook Villager.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_villager_5.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          5,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_villager_6",
+      "name": "Firstbrook Villager #6",
+      "speaker_name": "Villager",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Residents of Firstbrook; Scene 005's volunteers are drawn from them.",
+      "npc_type": "firstbrook_villager",
+      "notes": "Generated NPC appearance: bun dark brown hair, grey eyes, moustache. Outfit shared by every Firstbrook Villager.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_villager_6.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          5,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_farmer_1",
+      "name": "Firstbrook Farmer #1",
+      "speaker_name": "Farmer",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Farmers working Firstbrook's fields.",
+      "npc_type": "firstbrook_farmer",
+      "notes": "Generated NPC appearance: buzz blonde hair, green eyes, freckles, straw hat. Outfit shared by every Firstbrook Farmer.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_farmer_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_farmer_2",
+      "name": "Firstbrook Farmer #2",
+      "speaker_name": "Farmer",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Farmers working Firstbrook's fields.",
+      "npc_type": "firstbrook_farmer",
+      "notes": "Generated NPC appearance: swept white hair, green eyes, moustache, scar, straw hat. Outfit shared by every Firstbrook Farmer.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_farmer_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_farmer_3",
+      "name": "Firstbrook Farmer #3",
+      "speaker_name": "Farmer",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Farmers working Firstbrook's fields.",
+      "npc_type": "firstbrook_farmer",
+      "notes": "Generated NPC appearance: long blonde hair, brown eyes, freckles, straw hat. Outfit shared by every Firstbrook Farmer.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_farmer_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_guard_1",
+      "name": "Firstbrook Guard #1",
+      "speaker_name": "Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Village guards who patrol the paths and the north gate.",
+      "npc_type": "firstbrook_guard",
+      "notes": "Generated NPC appearance: bald blonde hair, green eyes, beard, scar, moustache, kettle helm. Outfit shared by every Firstbrook Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_guard_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          5,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_guard_2",
+      "name": "Firstbrook Guard #2",
+      "speaker_name": "Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Village guards who patrol the paths and the north gate.",
+      "npc_type": "firstbrook_guard",
+      "notes": "Generated NPC appearance: swept auburn hair, grey eyes, scar, kettle helm. Outfit shared by every Firstbrook Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_guard_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          5,
+          20
+        ]
+      }
+    },
+    {
+      "id": "firstbrook_guard_3",
+      "name": "Firstbrook Guard #3",
+      "speaker_name": "Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Firstbrook (Eldervale)",
+      "role": "Village guards who patrol the paths and the north gate.",
+      "npc_type": "firstbrook_guard",
+      "notes": "Generated NPC appearance: buzz black hair, brown eyes, scar, kettle helm. Outfit shared by every Firstbrook Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/firstbrook_guard_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          1,
+          5,
+          20
+        ]
+      }
+    },
+    {
+      "id": "expedition_worker_1",
+      "name": "Expedition Worker #1",
+      "speaker_name": "Worker",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "Road and excavation workers; Eldervale's supply crews at the monument.",
+      "npc_type": "expedition_worker",
+      "notes": "Generated NPC appearance: bun white hair, green eyes, beard, freckles, moustache. Outfit shared by every Expedition Worker.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/expedition_worker_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          5,
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "expedition_worker_2",
+      "name": "Expedition Worker #2",
+      "speaker_name": "Worker",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "Road and excavation workers; Eldervale's supply crews at the monument.",
+      "npc_type": "expedition_worker",
+      "notes": "Generated NPC appearance: short dark brown hair, brown eyes, scar, soot smudges, leather cap. Outfit shared by every Expedition Worker.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/expedition_worker_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          5,
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "expedition_worker_3",
+      "name": "Expedition Worker #3",
+      "speaker_name": "Worker",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "Road and excavation workers; Eldervale's supply crews at the monument.",
+      "npc_type": "expedition_worker",
+      "notes": "Generated NPC appearance: buzz blonde hair, hazel eyes, glasses, scar. Outfit shared by every Expedition Worker.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/expedition_worker_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          5,
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "expedition_worker_4",
+      "name": "Expedition Worker #4",
+      "speaker_name": "Worker",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "Road and excavation workers; Eldervale's supply crews at the monument.",
+      "npc_type": "expedition_worker",
+      "notes": "Generated NPC appearance: bun dark brown hair, brown eyes, scar, soot smudges, headband. Outfit shared by every Expedition Worker.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/expedition_worker_4.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          5,
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "expedition_researcher_1",
+      "name": "Expedition Researcher #1",
+      "speaker_name": "Researcher",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "Researchers inspecting the sealed chamber.",
+      "npc_type": "expedition_researcher",
+      "notes": "Generated NPC appearance: bun ginger hair, grey eyes, earring. Outfit shared by every Expedition Researcher.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/expedition_researcher_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "expedition_researcher_2",
+      "name": "Expedition Researcher #2",
+      "speaker_name": "Researcher",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "Researchers inspecting the sealed chamber.",
+      "npc_type": "expedition_researcher",
+      "notes": "Generated NPC appearance: bald ginger hair, green eyes, earring. Outfit shared by every Expedition Researcher.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/expedition_researcher_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "expedition_researcher_3",
+      "name": "Expedition Researcher #3",
+      "speaker_name": "Researcher",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "Researchers inspecting the sealed chamber.",
+      "npc_type": "expedition_researcher",
+      "notes": "Generated NPC appearance: short ginger hair, blue eyes, beard, earring. Outfit shared by every Expedition Researcher.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/expedition_researcher_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "sylvaris_ranger_1",
+      "name": "Sylvaris Ranger #1",
+      "speaker_name": "Ranger",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Sylvaris",
+      "role": "Forest rangers who serve with Liora.",
+      "npc_type": "sylvaris_ranger",
+      "notes": "Generated NPC appearance: swept ginger hair, grey eyes, earring, green hood. Outfit shared by every Sylvaris Ranger.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/sylvaris_ranger_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          10,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "sylvaris_ranger_2",
+      "name": "Sylvaris Ranger #2",
+      "speaker_name": "Ranger",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Sylvaris",
+      "role": "Forest rangers who serve with Liora.",
+      "npc_type": "sylvaris_ranger",
+      "notes": "Generated NPC appearance: bald auburn hair, hazel eyes, earring, teal face paint, green hood. Outfit shared by every Sylvaris Ranger.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/sylvaris_ranger_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          10,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "sylvaris_ranger_3",
+      "name": "Sylvaris Ranger #3",
+      "speaker_name": "Ranger",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Sylvaris",
+      "role": "Forest rangers who serve with Liora.",
+      "npc_type": "sylvaris_ranger",
+      "notes": "Generated NPC appearance: buzz grey hair, blue eyes, earring, green hood. Outfit shared by every Sylvaris Ranger.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/sylvaris_ranger_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          10,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "sylvaris_ranger_4",
+      "name": "Sylvaris Ranger #4",
+      "speaker_name": "Ranger",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Sylvaris",
+      "role": "Forest rangers who serve with Liora.",
+      "npc_type": "sylvaris_ranger",
+      "notes": "Generated NPC appearance: buzz brown hair, green eyes, beard, teal face paint, green hood. Outfit shared by every Sylvaris Ranger.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/sylvaris_ranger_4.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          10,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "eldervale_official_1",
+      "name": "Eldervale Official #1",
+      "speaker_name": "Adviser",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "Queen Aveline's advisers at the Valebridge council.",
+      "npc_type": "eldervale_official",
+      "notes": "Generated NPC appearance: swept auburn hair, hazel eyes, earring, glasses. Outfit shared by every Eldervale Official.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/eldervale_official_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          12,
+          13,
+          14,
+          15,
+          17
+        ]
+      }
+    },
+    {
+      "id": "eldervale_official_2",
+      "name": "Eldervale Official #2",
+      "speaker_name": "Adviser",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "Queen Aveline's advisers at the Valebridge council.",
+      "npc_type": "eldervale_official",
+      "notes": "Generated NPC appearance: bun white hair, green eyes, earring. Outfit shared by every Eldervale Official.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/eldervale_official_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          12,
+          13,
+          14,
+          15,
+          17
+        ]
+      }
+    },
+    {
+      "id": "eldervale_official_3",
+      "name": "Eldervale Official #3",
+      "speaker_name": "Adviser",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "Queen Aveline's advisers at the Valebridge council.",
+      "npc_type": "eldervale_official",
+      "notes": "Generated NPC appearance: swept auburn hair, blue eyes, earring. Outfit shared by every Eldervale Official.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/eldervale_official_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          12,
+          13,
+          14,
+          15,
+          17
+        ]
+      }
+    },
+    {
+      "id": "eldervale_royal_guard_1",
+      "name": "Eldervale Royal Guard #1",
+      "speaker_name": "Royal Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "The Queen's guard in Valebridge.",
+      "npc_type": "eldervale_royal_guard",
+      "notes": "Generated NPC appearance: buzz white hair, grey eyes, moustache, scar, royal helm. Outfit shared by every Eldervale Royal Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/eldervale_royal_guard_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          12,
+          13,
+          14,
+          15,
+          17,
+          20
+        ]
+      }
+    },
+    {
+      "id": "eldervale_royal_guard_2",
+      "name": "Eldervale Royal Guard #2",
+      "speaker_name": "Royal Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "The Queen's guard in Valebridge.",
+      "npc_type": "eldervale_royal_guard",
+      "notes": "Generated NPC appearance: long white hair, blue eyes, moustache, royal helm. Outfit shared by every Eldervale Royal Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/eldervale_royal_guard_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          12,
+          13,
+          14,
+          15,
+          17,
+          20
+        ]
+      }
+    },
+    {
+      "id": "eldervale_royal_guard_3",
+      "name": "Eldervale Royal Guard #3",
+      "speaker_name": "Royal Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eldervale",
+      "role": "The Queen's guard in Valebridge.",
+      "npc_type": "eldervale_royal_guard",
+      "notes": "Generated NPC appearance: buzz blonde hair, blue eyes, beard, moustache, scar, royal helm. Outfit shared by every Eldervale Royal Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/eldervale_royal_guard_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          12,
+          13,
+          14,
+          15,
+          17,
+          20
+        ]
+      }
+    },
+    {
+      "id": "stonecrown_guard_1",
+      "name": "Stonecrown Guard #1",
+      "speaker_name": "Stonecrown Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Stonecrown",
+      "role": "Thane Garrick's escorts carrying the Irondeep stone.",
+      "npc_type": "stonecrown_guard",
+      "notes": "Generated NPC appearance: short ginger hair, brown eyes, beard, scar, iron helm. Outfit shared by every Stonecrown Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/stonecrown_guard_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          13
+        ]
+      }
+    },
+    {
+      "id": "stonecrown_guard_2",
+      "name": "Stonecrown Guard #2",
+      "speaker_name": "Stonecrown Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Stonecrown",
+      "role": "Thane Garrick's escorts carrying the Irondeep stone.",
+      "npc_type": "stonecrown_guard",
+      "notes": "Generated NPC appearance: bun auburn hair, hazel eyes, beard, scar, iron helm. Outfit shared by every Stonecrown Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/stonecrown_guard_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          13
+        ]
+      }
+    },
+    {
+      "id": "stonecrown_engineer_1",
+      "name": "Stonecrown Engineer #1",
+      "speaker_name": "Engineer",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Stonecrown",
+      "role": "Engineers who build the excavation supports.",
+      "npc_type": "stonecrown_engineer",
+      "notes": "Generated NPC appearance: buzz dark brown hair, grey eyes, moustache, goggles and cap. Outfit shared by every Stonecrown Engineer.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/stonecrown_engineer_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "stonecrown_engineer_2",
+      "name": "Stonecrown Engineer #2",
+      "speaker_name": "Engineer",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Stonecrown",
+      "role": "Engineers who build the excavation supports.",
+      "npc_type": "stonecrown_engineer",
+      "notes": "Generated NPC appearance: bun white hair, green eyes, scar, goggles. Outfit shared by every Stonecrown Engineer.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/stonecrown_engineer_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "stonecrown_engineer_3",
+      "name": "Stonecrown Engineer #3",
+      "speaker_name": "Engineer",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Stonecrown",
+      "role": "Engineers who build the excavation supports.",
+      "npc_type": "stonecrown_engineer",
+      "notes": "Generated NPC appearance: bald dark brown hair, grey eyes, soot smudges, moustache, goggles and cap. Outfit shared by every Stonecrown Engineer.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/stonecrown_engineer_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "stonecrown_engineer_4",
+      "name": "Stonecrown Engineer #4",
+      "speaker_name": "Engineer",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Stonecrown",
+      "role": "Engineers who build the excavation supports.",
+      "npc_type": "stonecrown_engineer",
+      "notes": "Generated NPC appearance: swept grey hair, brown eyes, beard, soot smudges, scar, goggles. Outfit shared by every Stonecrown Engineer.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/stonecrown_engineer_4.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          18,
+          19,
+          20
+        ]
+      }
+    },
+    {
+      "id": "solkar_scholar_1",
+      "name": "Solkar Scholar #1",
+      "speaker_name": "Scholar",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Solkar",
+      "role": "Scholars of Sunspire who travel with Sahir.",
+      "npc_type": "solkar_scholar",
+      "notes": "Generated NPC appearance: bald black hair, blue eyes, moustache. Outfit shared by every Solkar Scholar.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/solkar_scholar_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          14,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "solkar_scholar_2",
+      "name": "Solkar Scholar #2",
+      "speaker_name": "Scholar",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Solkar",
+      "role": "Scholars of Sunspire who travel with Sahir.",
+      "npc_type": "solkar_scholar",
+      "notes": "Generated NPC appearance: bun white hair, hazel eyes, moustache, glasses, headwrap. Outfit shared by every Solkar Scholar.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/solkar_scholar_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          14,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "solkar_scholar_3",
+      "name": "Solkar Scholar #3",
+      "speaker_name": "Scholar",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Solkar",
+      "role": "Scholars of Sunspire who travel with Sahir.",
+      "npc_type": "solkar_scholar",
+      "notes": "Generated NPC appearance: buzz grey hair, grey eyes, beard, earring, headwrap. Outfit shared by every Solkar Scholar.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/solkar_scholar_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          14,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "veyrath_guard_1",
+      "name": "Veyrath Honour Guard #1",
+      "speaker_name": "Veyrath Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Veyrath",
+      "role": "Lord Kaelen's armed honour guard from Emberhold.",
+      "npc_type": "veyrath_guard",
+      "notes": "Generated NPC appearance: short black hair, green eyes, beard, earring, crested helm. Outfit shared by every Veyrath Honour Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/veyrath_guard_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          15,
+          17,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "veyrath_guard_2",
+      "name": "Veyrath Honour Guard #2",
+      "speaker_name": "Veyrath Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Veyrath",
+      "role": "Lord Kaelen's armed honour guard from Emberhold.",
+      "npc_type": "veyrath_guard",
+      "notes": "Generated NPC appearance: short ginger hair, hazel eyes, scar, crested helm. Outfit shared by every Veyrath Honour Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/veyrath_guard_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          15,
+          17,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "veyrath_guard_3",
+      "name": "Veyrath Honour Guard #3",
+      "speaker_name": "Veyrath Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Veyrath",
+      "role": "Lord Kaelen's armed honour guard from Emberhold.",
+      "npc_type": "veyrath_guard",
+      "notes": "Generated NPC appearance: bun dark brown hair, brown eyes, beard, earring, crested helm. Outfit shared by every Veyrath Honour Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/veyrath_guard_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          15,
+          17,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "veyrath_guard_4",
+      "name": "Veyrath Honour Guard #4",
+      "speaker_name": "Veyrath Guard",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Veyrath",
+      "role": "Lord Kaelen's armed honour guard from Emberhold.",
+      "npc_type": "veyrath_guard",
+      "notes": "Generated NPC appearance: short auburn hair, green eyes, scar, crested helm. Outfit shared by every Veyrath Honour Guard.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/veyrath_guard_4.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          15,
+          17,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "thalassian_sailor_1",
+      "name": "Thalassian Sailor #1",
+      "speaker_name": "Sailor",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Thalassia",
+      "role": "Captain Maren's harbour crew and rope specialists.",
+      "npc_type": "thalassian_sailor",
+      "notes": "Generated NPC appearance: bald white hair, grey eyes, earring, scar. Outfit shared by every Thalassian Sailor.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/thalassian_sailor_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          16,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "thalassian_sailor_2",
+      "name": "Thalassian Sailor #2",
+      "speaker_name": "Sailor",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Thalassia",
+      "role": "Captain Maren's harbour crew and rope specialists.",
+      "npc_type": "thalassian_sailor",
+      "notes": "Generated NPC appearance: buzz black hair, grey eyes, earring, knit cap. Outfit shared by every Thalassian Sailor.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/thalassian_sailor_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          16,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "thalassian_sailor_3",
+      "name": "Thalassian Sailor #3",
+      "speaker_name": "Sailor",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Thalassia",
+      "role": "Captain Maren's harbour crew and rope specialists.",
+      "npc_type": "thalassian_sailor",
+      "notes": "Generated NPC appearance: swept ginger hair, grey eyes, scar, knit cap. Outfit shared by every Thalassian Sailor.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/thalassian_sailor_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          16,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "thalassian_sailor_4",
+      "name": "Thalassian Sailor #4",
+      "speaker_name": "Sailor",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Thalassia",
+      "role": "Captain Maren's harbour crew and rope specialists.",
+      "npc_type": "thalassian_sailor",
+      "notes": "Generated NPC appearance: bald brown hair, green eyes, beard, scar, knit cap. Outfit shared by every Thalassian Sailor.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/thalassian_sailor_4.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          16,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "merchant_1",
+      "name": "Travelling Merchant #1",
+      "speaker_name": "Merchant",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Independent traders",
+      "role": "The eastern road caravan and Valebridge's market.",
+      "npc_type": "merchant",
+      "notes": "Generated NPC appearance: bun ginger hair, blue eyes, glasses, moustache. Outfit shared by every Travelling Merchant.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/merchant_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "id": "merchant_2",
+      "name": "Travelling Merchant #2",
+      "speaker_name": "Merchant",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Independent traders",
+      "role": "The eastern road caravan and Valebridge's market.",
+      "npc_type": "merchant",
+      "notes": "Generated NPC appearance: bun auburn hair, grey eyes, beard, moustache, felt hat. Outfit shared by every Travelling Merchant.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/merchant_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "id": "merchant_3",
+      "name": "Travelling Merchant #3",
+      "speaker_name": "Merchant",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Independent traders",
+      "role": "The eastern road caravan and Valebridge's market.",
+      "npc_type": "merchant",
+      "notes": "Generated NPC appearance: buzz dark brown hair, hazel eyes, glasses. Outfit shared by every Travelling Merchant.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/merchant_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "id": "merchant_4",
+      "name": "Travelling Merchant #4",
+      "speaker_name": "Merchant",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Independent traders",
+      "role": "The eastern road caravan and Valebridge's market.",
+      "npc_type": "merchant",
+      "notes": "Generated NPC appearance: buzz ginger hair, grey eyes, glasses. Outfit shared by every Travelling Merchant.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/merchant_4.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "id": "raider_1",
+      "name": "Raider #1",
+      "speaker_name": "Raider",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eastern road raiders",
+      "role": "Human raiders who attack the caravan.",
+      "npc_type": "raider",
+      "notes": "Generated NPC appearance: buzz grey hair, blue eyes, soot smudges, hood. Outfit shared by every Raider.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/raider_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          11
+        ]
+      }
+    },
+    {
+      "id": "raider_2",
+      "name": "Raider #2",
+      "speaker_name": "Raider",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eastern road raiders",
+      "role": "Human raiders who attack the caravan.",
+      "npc_type": "raider",
+      "notes": "Generated NPC appearance: bun ginger hair, green eyes, scar, face cloth. Outfit shared by every Raider.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/raider_2.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          11
+        ]
+      }
+    },
+    {
+      "id": "raider_3",
+      "name": "Raider #3",
+      "speaker_name": "Raider",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eastern road raiders",
+      "role": "Human raiders who attack the caravan.",
+      "npc_type": "raider",
+      "notes": "Generated NPC appearance: long white hair, hazel eyes, scar, hood and face cloth. Outfit shared by every Raider.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/raider_3.png",
+      "model": "slim",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          11
+        ]
+      }
+    },
+    {
+      "id": "raider_4",
+      "name": "Raider #4",
+      "speaker_name": "Raider",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eastern road raiders",
+      "role": "Human raiders who attack the caravan.",
+      "npc_type": "raider",
+      "notes": "Generated NPC appearance: bun ginger hair, hazel eyes, eyepatch, scar, face cloth. Outfit shared by every Raider.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/raider_4.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          11
+        ]
+      }
+    },
+    {
+      "id": "raider_leader_1",
+      "name": "Raider Leader #1",
+      "speaker_name": "Raider Leader",
+      "universe": "MC-001",
+      "group": "MC-001 Saga 1 NPCs",
+      "faction": "Eastern road raiders",
+      "role": "Leader of the eastern road raiders.",
+      "npc_type": "raider_leader",
+      "notes": "Generated NPC appearance: swept white hair, green eyes, scar. Outfit shared by every Raider Leader.",
+      "generated": true,
+      "entity": "realitiesofdreams:story_npc",
+      "texture": "realitiesofdreams:textures/entity/character/raider_leader_1.png",
+      "model": "wide",
+      "source": null,
+      "sagas": [
+        1
+      ],
+      "scenes": {
+        "1": [
+          11
+        ]
+      }
     }
   ]
 }

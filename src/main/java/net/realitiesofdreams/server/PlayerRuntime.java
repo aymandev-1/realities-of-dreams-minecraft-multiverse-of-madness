@@ -21,6 +21,13 @@ final class PlayerRuntime {
     // Cinematic
     @Nullable String cinematicId;
     int cinematicTicksLeft;
+    /** Ticks since the cinematic started, for its timed cues. */
+    int cinematicTick;
+
+    /** The stage the NPCs were last arranged for. */
+    @Nullable String lastStage;
+    /** A scene to start once the current one has finished applying its effects. */
+    @Nullable String pendingScene;
 
     /** Dialogues and cinematics wait their turn here, in story order. */
     final Deque<Effect> presentation = new ArrayDeque<>();

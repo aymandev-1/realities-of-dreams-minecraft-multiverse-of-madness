@@ -21,6 +21,8 @@ public final class RodNetwork {
         r.playToClient(DialogueEndPayload.TYPE, DialogueEndPayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.end(p)));
         r.playToClient(ObjectivePayload.TYPE, ObjectivePayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.objective(p)));
         r.playToClient(CinematicPayload.TYPE, CinematicPayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.cinematic(p)));
+        r.playToClient(HintPayload.TYPE, HintPayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.hint(p)));
+        r.playToClient(ShakePayload.TYPE, ShakePayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.shake(p)));
 
         r.playToServer(DialogueChoicePayload.TYPE, DialogueChoicePayload.STREAM_CODEC,
                 (p, ctx) -> ctx.enqueueWork(() -> StoryManager.get().onChoice((ServerPlayer) ctx.player(), p.session(), p.choice())));

@@ -44,6 +44,24 @@ public final class StoryHud {
             }
         }
 
+        // A short tip near the top of the screen.
+        if (ClientStory.hint != null) {
+            long t = System.currentTimeMillis();
+            if (t > ClientStory.hintEndMs) {
+                ClientStory.hint = null;
+            } else {
+                float a = Mth.clamp((ClientStory.hintEndMs - t) / 500f, 0f, 1f) * Mth.clamp((t - ClientStory.hintStartMs) / 300f, 0f, 1f);
+                int al = Math.max(8, (int) (a * 255));
+                List<FormattedCharSequence> hl = font.split(FormattedText.of(ClientStory.hint), Math.min(300, width - 40));
+                int hw = 0;
+                for (FormattedCharSequence s : hl) hw = Math.max(hw, font.width(s));
+                int hx = (width - hw) / 2, hy = height / 4;
+                g.fill(hx - 8, hy - 5, hx + hw + 8, hy + hl.size() * 10 + 3, (al * 0xA0 / 255) << 24 | 0x101018);
+                g.fill(hx - 8, hy - 5, hx + hw + 8, hy - 4, (al << 24) | 0xE8B84A);
+                for (int i = 0; i < hl.size(); i++) g.drawString(font, hl.get(i), hx, hy + i * 10, (al << 24) | 0xFFFFFF, true);
+            }
+        }
+
         // Remarks made in passing, stacked on the left.
         long now = System.currentTimeMillis();
         ClientStory.ambient.removeIf(a -> now > a.endMs());

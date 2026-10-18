@@ -12,6 +12,29 @@ The game loads the same data from `src/main/resources/rod-story/characters.json`
 - **Movie Steve** belongs to **MC-300**.
 - **Reuben** is **Jesse's pig** (MC-200). He uses the vanilla pig model, not a player skin.
 
+
+## Saga 1 cast (MC-001)
+
+Saga 1 scenes may only use characters cast in Saga 1. The story validator rejects any other character, so later-saga characters and Primordial Steve's Empowered form cannot appear in the opening story.
+
+Your 11 named skins are imported from `art/skins/source/` (byte-identical copies of the collection, never modified). Each was checked: the game texture keeps every original pixel, and only fully hidden base-layer gaps are made opaque, as Minecraft does for player skins.
+
+| Character | Faction | Saga 1 scenes | File | Model | Base-layer gaps | Overlay used | Pixels changed |
+|---|---|---|---|---|---|---|---|
+| Primordial Steve | Firstbrook (Eldervale) | 001–020 | PNG RGBA 64x64 | wide | none | 0% | 0 |
+| Elder Rowan | Firstbrook (Eldervale) | 001, 002, 005, 020 | PNG RGBA 64x64 | slim | none | 38% | 0 |
+| Elara | Firstbrook (Eldervale) | 001–020 | PNG P 64x64 | wide | none | 29% | 0 |
+| Bram | Firstbrook (Eldervale) | 001, 002, 003, 005, 006, 008, 009, 010, 011, 012, 017, 018, 019, 020 | PNG P 64x64 | wide | none | 56% | 0 |
+| Captain Maren | Thalassia | 016, 017, 018, 019, 020 | PNG P 64x64 | wide | 32 (body underside, rendered black as in vanilla) | 48% | 0 |
+| Liora | Sylvaris | 010, 011, 012, 015, 017, 018, 019, 020 | PNG RGBA 64x64 | slim | none | 37% | 0 |
+| Lord Kaelen | Veyrath | 015, 017, 018, 019, 020 | PNG P 64x64 | wide | none | 24% | 0 |
+| Orin | Firstbrook (Eldervale) | 001, 004, 005, 006, 007, 013, 014, 016, 017, 018, 019, 020 | PNG P 64x64 | slim | none | 15% | 0 |
+| Queen Aveline | Eldervale | 012, 013, 014, 015, 017, 020 | PNG P 64x64 | slim | none | 31% | 0 |
+| Sahir | Solkar | 014, 015, 016, 017, 018, 019, 020 | PNG P 64x64 | slim | none | 24% | 0 |
+| Thane Garrick | Stonecrown | 013, 015, 016, 017, 018, 019, 020 | PNG P 64x64 | wide | none | 39% | 0 |
+
+Primordial Steve keeps his normal classic Steve skin throughout Saga 1. `primordial_steve_empowered` is registered but not cast in any saga yet.
+
 ## Open questions for the story owner
 
 - **Witch Alex** (`witch_alex`): Shares MC-002 with Prehistoric Steve; confirm this is intended. Skin file came from Planet Minecraft, so check its licence before release.
@@ -26,18 +49,18 @@ The game loads the same data from `src/main/resources/rod-story/characters.json`
 
 | ID | Name | Universe | Faction | Model | Notes |
 |---|---|---|---|---|---|
-| `primordial_steve` | Primordial Steve | MC-001 | MC-001 | wide | His ultimate role is preserved for Saga 24. |
+| `primordial_steve` | Primordial Steve | MC-001 | Firstbrook (Eldervale) | wide | His ultimate role is preserved for Saga 24. |
 | `primordial_steve_empowered` | Primordial Steve (Empowered) | MC-001 | MC-001 | slim | Empowered form of Primordial Steve. Alternate form; shares identity with primordial_steve. |
-| `elder_rowan` | Elder Rowan | MC-001 | MC-001 | slim |  |
-| `elara` | Elara | MC-001 | MC-001 | wide |  |
-| `bram` | Bram | MC-001 | MC-001 | wide |  |
-| `captain_maren` | Captain Maren | MC-001 | MC-001 | wide |  |
-| `liora` | Liora | MC-001 | MC-001 | slim |  |
-| `lord_kaelen` | Lord Kaelen | MC-001 | MC-001 | wide |  |
-| `orin` | Orin | MC-001 | MC-001 | slim |  |
-| `queen_aveline` | Queen Aveline | MC-001 | MC-001 | slim |  |
-| `sahir` | Sahir | MC-001 | MC-001 | slim |  |
-| `thane_garrick` | Thane Garrick | MC-001 | MC-001 | wide |  |
+| `elder_rowan` | Elder Rowan | MC-001 | Firstbrook (Eldervale) | slim |  |
+| `elara` | Elara | MC-001 | Firstbrook (Eldervale) | wide |  |
+| `bram` | Bram | MC-001 | Firstbrook (Eldervale) | wide |  |
+| `captain_maren` | Captain Maren | MC-001 | Thalassia | wide |  |
+| `liora` | Liora | MC-001 | Sylvaris | slim |  |
+| `lord_kaelen` | Lord Kaelen | MC-001 | Veyrath | wide |  |
+| `orin` | Orin | MC-001 | Firstbrook (Eldervale) | slim |  |
+| `queen_aveline` | Queen Aveline | MC-001 | Eldervale | slim |  |
+| `sahir` | Sahir | MC-001 | Solkar | slim |  |
+| `thane_garrick` | Thane Garrick | MC-001 | Stonecrown | wide |  |
 
 ## MC-100 (6)
 
@@ -154,3 +177,86 @@ The game loads the same data from `src/main/resources/rod-story/characters.json`
 | `tmma_scientist_v4` | TMMA Scientist #4 | — | TMMA | slim | Generated from the TMMA Scientist uniform: swept white hair, blue eyes, beard. Uniform pixels are identical to the template. |
 
 ![Generated TMMA skins](images/tmma_generated_sheet.png)
+
+## MC-001 Saga 1 NPCs (55)
+
+| ID | Name | Universe | Faction | Model | Notes |
+|---|---|---|---|---|---|
+| `firstbrook_villager_1` | Firstbrook Villager #1 | MC-001 | Firstbrook (Eldervale) | wide | Residents of Firstbrook; Scene 005's volunteers are drawn from them. Generated NPC appearance: bald white hair, hazel eyes, freckles. Outfit shared by every Firstbrook Villager. |
+| `firstbrook_villager_2` | Firstbrook Villager #2 | MC-001 | Firstbrook (Eldervale) | wide | Residents of Firstbrook; Scene 005's volunteers are drawn from them. Generated NPC appearance: bald black hair, green eyes, moustache, earring. Outfit shared by every Firstbrook Villager. |
+| `firstbrook_villager_3` | Firstbrook Villager #3 | MC-001 | Firstbrook (Eldervale) | slim | Residents of Firstbrook; Scene 005's volunteers are drawn from them. Generated NPC appearance: long brown hair, hazel eyes, freckles, headband. Outfit shared by every Firstbrook Villager. |
+| `firstbrook_villager_4` | Firstbrook Villager #4 | MC-001 | Firstbrook (Eldervale) | wide | Residents of Firstbrook; Scene 005's volunteers are drawn from them. Generated NPC appearance: swept blonde hair, brown eyes, glasses, freckles. Outfit shared by every Firstbrook Villager. |
+| `firstbrook_villager_5` | Firstbrook Villager #5 | MC-001 | Firstbrook (Eldervale) | wide | Residents of Firstbrook; Scene 005's volunteers are drawn from them. Generated NPC appearance: short black hair, hazel eyes, freckles, headband. Outfit shared by every Firstbrook Villager. |
+| `firstbrook_villager_6` | Firstbrook Villager #6 | MC-001 | Firstbrook (Eldervale) | slim | Residents of Firstbrook; Scene 005's volunteers are drawn from them. Generated NPC appearance: bun dark brown hair, grey eyes, moustache. Outfit shared by every Firstbrook Villager. |
+| `firstbrook_farmer_1` | Firstbrook Farmer #1 | MC-001 | Firstbrook (Eldervale) | wide | Farmers working Firstbrook's fields. Generated NPC appearance: buzz blonde hair, green eyes, freckles, straw hat. Outfit shared by every Firstbrook Farmer. |
+| `firstbrook_farmer_2` | Firstbrook Farmer #2 | MC-001 | Firstbrook (Eldervale) | wide | Farmers working Firstbrook's fields. Generated NPC appearance: swept white hair, green eyes, moustache, scar, straw hat. Outfit shared by every Firstbrook Farmer. |
+| `firstbrook_farmer_3` | Firstbrook Farmer #3 | MC-001 | Firstbrook (Eldervale) | slim | Farmers working Firstbrook's fields. Generated NPC appearance: long blonde hair, brown eyes, freckles, straw hat. Outfit shared by every Firstbrook Farmer. |
+| `firstbrook_guard_1` | Firstbrook Guard #1 | MC-001 | Firstbrook (Eldervale) | wide | Village guards who patrol the paths and the north gate. Generated NPC appearance: bald blonde hair, green eyes, beard, scar, moustache, kettle helm. Outfit shared by every Firstbrook Guard. |
+| `firstbrook_guard_2` | Firstbrook Guard #2 | MC-001 | Firstbrook (Eldervale) | wide | Village guards who patrol the paths and the north gate. Generated NPC appearance: swept auburn hair, grey eyes, scar, kettle helm. Outfit shared by every Firstbrook Guard. |
+| `firstbrook_guard_3` | Firstbrook Guard #3 | MC-001 | Firstbrook (Eldervale) | slim | Village guards who patrol the paths and the north gate. Generated NPC appearance: buzz black hair, brown eyes, scar, kettle helm. Outfit shared by every Firstbrook Guard. |
+| `expedition_worker_1` | Expedition Worker #1 | MC-001 | Eldervale | wide | Road and excavation workers; Eldervale's supply crews at the monument. Generated NPC appearance: bun white hair, green eyes, beard, freckles, moustache. Outfit shared by every Expedition Worker. |
+| `expedition_worker_2` | Expedition Worker #2 | MC-001 | Eldervale | wide | Road and excavation workers; Eldervale's supply crews at the monument. Generated NPC appearance: short dark brown hair, brown eyes, scar, soot smudges, leather cap. Outfit shared by every Expedition Worker. |
+| `expedition_worker_3` | Expedition Worker #3 | MC-001 | Eldervale | slim | Road and excavation workers; Eldervale's supply crews at the monument. Generated NPC appearance: buzz blonde hair, hazel eyes, glasses, scar. Outfit shared by every Expedition Worker. |
+| `expedition_worker_4` | Expedition Worker #4 | MC-001 | Eldervale | wide | Road and excavation workers; Eldervale's supply crews at the monument. Generated NPC appearance: bun dark brown hair, brown eyes, scar, soot smudges, headband. Outfit shared by every Expedition Worker. |
+| `expedition_researcher_1` | Expedition Researcher #1 | MC-001 | Eldervale | wide | Researchers inspecting the sealed chamber. Generated NPC appearance: bun ginger hair, grey eyes, earring. Outfit shared by every Expedition Researcher. |
+| `expedition_researcher_2` | Expedition Researcher #2 | MC-001 | Eldervale | wide | Researchers inspecting the sealed chamber. Generated NPC appearance: bald ginger hair, green eyes, earring. Outfit shared by every Expedition Researcher. |
+| `expedition_researcher_3` | Expedition Researcher #3 | MC-001 | Eldervale | slim | Researchers inspecting the sealed chamber. Generated NPC appearance: short ginger hair, blue eyes, beard, earring. Outfit shared by every Expedition Researcher. |
+| `sylvaris_ranger_1` | Sylvaris Ranger #1 | MC-001 | Sylvaris | wide | Forest rangers who serve with Liora. Generated NPC appearance: swept ginger hair, grey eyes, earring, green hood. Outfit shared by every Sylvaris Ranger. |
+| `sylvaris_ranger_2` | Sylvaris Ranger #2 | MC-001 | Sylvaris | wide | Forest rangers who serve with Liora. Generated NPC appearance: bald auburn hair, hazel eyes, earring, teal face paint, green hood. Outfit shared by every Sylvaris Ranger. |
+| `sylvaris_ranger_3` | Sylvaris Ranger #3 | MC-001 | Sylvaris | slim | Forest rangers who serve with Liora. Generated NPC appearance: buzz grey hair, blue eyes, earring, green hood. Outfit shared by every Sylvaris Ranger. |
+| `sylvaris_ranger_4` | Sylvaris Ranger #4 | MC-001 | Sylvaris | wide | Forest rangers who serve with Liora. Generated NPC appearance: buzz brown hair, green eyes, beard, teal face paint, green hood. Outfit shared by every Sylvaris Ranger. |
+| `eldervale_official_1` | Eldervale Official #1 | MC-001 | Eldervale | wide | Queen Aveline's advisers at the Valebridge council. Generated NPC appearance: swept auburn hair, hazel eyes, earring, glasses. Outfit shared by every Eldervale Official. |
+| `eldervale_official_2` | Eldervale Official #2 | MC-001 | Eldervale | wide | Queen Aveline's advisers at the Valebridge council. Generated NPC appearance: bun white hair, green eyes, earring. Outfit shared by every Eldervale Official. |
+| `eldervale_official_3` | Eldervale Official #3 | MC-001 | Eldervale | slim | Queen Aveline's advisers at the Valebridge council. Generated NPC appearance: swept auburn hair, blue eyes, earring. Outfit shared by every Eldervale Official. |
+| `eldervale_royal_guard_1` | Eldervale Royal Guard #1 | MC-001 | Eldervale | wide | The Queen's guard in Valebridge. Generated NPC appearance: buzz white hair, grey eyes, moustache, scar, royal helm. Outfit shared by every Eldervale Royal Guard. |
+| `eldervale_royal_guard_2` | Eldervale Royal Guard #2 | MC-001 | Eldervale | wide | The Queen's guard in Valebridge. Generated NPC appearance: long white hair, blue eyes, moustache, royal helm. Outfit shared by every Eldervale Royal Guard. |
+| `eldervale_royal_guard_3` | Eldervale Royal Guard #3 | MC-001 | Eldervale | slim | The Queen's guard in Valebridge. Generated NPC appearance: buzz blonde hair, blue eyes, beard, moustache, scar, royal helm. Outfit shared by every Eldervale Royal Guard. |
+| `stonecrown_guard_1` | Stonecrown Guard #1 | MC-001 | Stonecrown | wide | Thane Garrick's escorts carrying the Irondeep stone. Generated NPC appearance: short ginger hair, brown eyes, beard, scar, iron helm. Outfit shared by every Stonecrown Guard. |
+| `stonecrown_guard_2` | Stonecrown Guard #2 | MC-001 | Stonecrown | wide | Thane Garrick's escorts carrying the Irondeep stone. Generated NPC appearance: bun auburn hair, hazel eyes, beard, scar, iron helm. Outfit shared by every Stonecrown Guard. |
+| `stonecrown_engineer_1` | Stonecrown Engineer #1 | MC-001 | Stonecrown | wide | Engineers who build the excavation supports. Generated NPC appearance: buzz dark brown hair, grey eyes, moustache, goggles and cap. Outfit shared by every Stonecrown Engineer. |
+| `stonecrown_engineer_2` | Stonecrown Engineer #2 | MC-001 | Stonecrown | wide | Engineers who build the excavation supports. Generated NPC appearance: bun white hair, green eyes, scar, goggles. Outfit shared by every Stonecrown Engineer. |
+| `stonecrown_engineer_3` | Stonecrown Engineer #3 | MC-001 | Stonecrown | slim | Engineers who build the excavation supports. Generated NPC appearance: bald dark brown hair, grey eyes, soot smudges, moustache, goggles and cap. Outfit shared by every Stonecrown Engineer. |
+| `stonecrown_engineer_4` | Stonecrown Engineer #4 | MC-001 | Stonecrown | wide | Engineers who build the excavation supports. Generated NPC appearance: swept grey hair, brown eyes, beard, soot smudges, scar, goggles. Outfit shared by every Stonecrown Engineer. |
+| `solkar_scholar_1` | Solkar Scholar #1 | MC-001 | Solkar | wide | Scholars of Sunspire who travel with Sahir. Generated NPC appearance: bald black hair, blue eyes, moustache. Outfit shared by every Solkar Scholar. |
+| `solkar_scholar_2` | Solkar Scholar #2 | MC-001 | Solkar | wide | Scholars of Sunspire who travel with Sahir. Generated NPC appearance: bun white hair, hazel eyes, moustache, glasses, headwrap. Outfit shared by every Solkar Scholar. |
+| `solkar_scholar_3` | Solkar Scholar #3 | MC-001 | Solkar | slim | Scholars of Sunspire who travel with Sahir. Generated NPC appearance: buzz grey hair, grey eyes, beard, earring, headwrap. Outfit shared by every Solkar Scholar. |
+| `veyrath_guard_1` | Veyrath Honour Guard #1 | MC-001 | Veyrath | wide | Lord Kaelen's armed honour guard from Emberhold. Generated NPC appearance: short black hair, green eyes, beard, earring, crested helm. Outfit shared by every Veyrath Honour Guard. |
+| `veyrath_guard_2` | Veyrath Honour Guard #2 | MC-001 | Veyrath | wide | Lord Kaelen's armed honour guard from Emberhold. Generated NPC appearance: short ginger hair, hazel eyes, scar, crested helm. Outfit shared by every Veyrath Honour Guard. |
+| `veyrath_guard_3` | Veyrath Honour Guard #3 | MC-001 | Veyrath | slim | Lord Kaelen's armed honour guard from Emberhold. Generated NPC appearance: bun dark brown hair, brown eyes, beard, earring, crested helm. Outfit shared by every Veyrath Honour Guard. |
+| `veyrath_guard_4` | Veyrath Honour Guard #4 | MC-001 | Veyrath | wide | Lord Kaelen's armed honour guard from Emberhold. Generated NPC appearance: short auburn hair, green eyes, scar, crested helm. Outfit shared by every Veyrath Honour Guard. |
+| `thalassian_sailor_1` | Thalassian Sailor #1 | MC-001 | Thalassia | wide | Captain Maren's harbour crew and rope specialists. Generated NPC appearance: bald white hair, grey eyes, earring, scar. Outfit shared by every Thalassian Sailor. |
+| `thalassian_sailor_2` | Thalassian Sailor #2 | MC-001 | Thalassia | wide | Captain Maren's harbour crew and rope specialists. Generated NPC appearance: buzz black hair, grey eyes, earring, knit cap. Outfit shared by every Thalassian Sailor. |
+| `thalassian_sailor_3` | Thalassian Sailor #3 | MC-001 | Thalassia | slim | Captain Maren's harbour crew and rope specialists. Generated NPC appearance: swept ginger hair, grey eyes, scar, knit cap. Outfit shared by every Thalassian Sailor. |
+| `thalassian_sailor_4` | Thalassian Sailor #4 | MC-001 | Thalassia | wide | Captain Maren's harbour crew and rope specialists. Generated NPC appearance: bald brown hair, green eyes, beard, scar, knit cap. Outfit shared by every Thalassian Sailor. |
+| `merchant_1` | Travelling Merchant #1 | MC-001 | Independent traders | wide | The eastern road caravan and Valebridge's market. Generated NPC appearance: bun ginger hair, blue eyes, glasses, moustache. Outfit shared by every Travelling Merchant. |
+| `merchant_2` | Travelling Merchant #2 | MC-001 | Independent traders | wide | The eastern road caravan and Valebridge's market. Generated NPC appearance: bun auburn hair, grey eyes, beard, moustache, felt hat. Outfit shared by every Travelling Merchant. |
+| `merchant_3` | Travelling Merchant #3 | MC-001 | Independent traders | slim | The eastern road caravan and Valebridge's market. Generated NPC appearance: buzz dark brown hair, hazel eyes, glasses. Outfit shared by every Travelling Merchant. |
+| `merchant_4` | Travelling Merchant #4 | MC-001 | Independent traders | wide | The eastern road caravan and Valebridge's market. Generated NPC appearance: buzz ginger hair, grey eyes, glasses. Outfit shared by every Travelling Merchant. |
+| `raider_1` | Raider #1 | MC-001 | Eastern road raiders | wide | Human raiders who attack the caravan. Generated NPC appearance: buzz grey hair, blue eyes, soot smudges, hood. Outfit shared by every Raider. |
+| `raider_2` | Raider #2 | MC-001 | Eastern road raiders | wide | Human raiders who attack the caravan. Generated NPC appearance: bun ginger hair, green eyes, scar, face cloth. Outfit shared by every Raider. |
+| `raider_3` | Raider #3 | MC-001 | Eastern road raiders | slim | Human raiders who attack the caravan. Generated NPC appearance: long white hair, hazel eyes, scar, hood and face cloth. Outfit shared by every Raider. |
+| `raider_4` | Raider #4 | MC-001 | Eastern road raiders | wide | Human raiders who attack the caravan. Generated NPC appearance: bun ginger hair, hazel eyes, eyepatch, scar, face cloth. Outfit shared by every Raider. |
+| `raider_leader_1` | Raider Leader #1 | MC-001 | Eastern road raiders | wide | Leader of the eastern road raiders. Generated NPC appearance: swept white hair, green eyes, scar. Outfit shared by every Raider Leader. |
+
+Every member of a type wears the same outfit, pixel for pixel (checked when the textures are built). Faces, skin tones, hair, builds and identifying features differ, and no two generated NPCs share a face. Faction colours follow each civilisation's named leader in your collection.
+
+| Type | Speaker | Faction | Universe | Count | Saga 1 scenes | Headwear options |
+|---|---|---|---|---|---|---|
+| Firstbrook Villager (`firstbrook_villager_N`) | Villager | Firstbrook (Eldervale) | MC-001 | 6 | 001, 005, 020 | bare head, headband |
+| Firstbrook Farmer (`firstbrook_farmer_N`) | Farmer | Firstbrook (Eldervale) | MC-001 | 3 | 001, 020 | bare head, straw hat |
+| Firstbrook Guard (`firstbrook_guard_N`) | Guard | Firstbrook (Eldervale) | MC-001 | 3 | 001, 005, 020 | kettle helm |
+| Expedition Worker (`expedition_worker_N`) | Worker | Eldervale | MC-001 | 4 | 005, 018, 019, 020 | bare head, headband, leather cap |
+| Expedition Researcher (`expedition_researcher_N`) | Researcher | Eldervale | MC-001 | 3 | 018, 019, 020 | bare head |
+| Sylvaris Ranger (`sylvaris_ranger_N`) | Ranger | Sylvaris | MC-001 | 4 | 010, 018, 019 | hood green |
+| Eldervale Official (`eldervale_official_N`) | Adviser | Eldervale | MC-001 | 3 | 012, 013, 014, 015, 017 | bare head, coif |
+| Eldervale Royal Guard (`eldervale_royal_guard_N`) | Royal Guard | Eldervale | MC-001 | 3 | 012, 013, 014, 015, 017, 020 | royal helm |
+| Stonecrown Guard (`stonecrown_guard_N`) | Stonecrown Guard | Stonecrown | MC-001 | 2 | 013 | iron helm |
+| Stonecrown Engineer (`stonecrown_engineer_N`) | Engineer | Stonecrown | MC-001 | 4 | 018, 019, 020 | goggles, goggles cap |
+| Solkar Scholar (`solkar_scholar_N`) | Scholar | Solkar | MC-001 | 3 | 014, 018, 019 | bare head, headwrap |
+| Veyrath Honour Guard (`veyrath_guard_N`) | Veyrath Guard | Veyrath | MC-001 | 4 | 015, 017, 018, 019 | veyrath helm |
+| Thalassian Sailor (`thalassian_sailor_N`) | Sailor | Thalassia | MC-001 | 4 | 016, 018, 019 | bandana, bare head, knit cap |
+| Travelling Merchant (`merchant_N`) | Merchant | Independent traders | MC-001 | 4 | 011, 012 | bare head, felt hat |
+| Raider (`raider_N`) | Raider | Eastern road raiders | MC-001 | 4 | 011 | face cloth, raider hood, raider hood cloth |
+| Raider Leader (`raider_leader_N`) | Raider Leader | Eastern road raiders | MC-001 | 1 | 011 | bare head |
+
+![Generated Saga 1 NPCs](images/saga1_npc_sheet.png)

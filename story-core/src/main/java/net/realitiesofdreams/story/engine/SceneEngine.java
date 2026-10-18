@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * The scene state machine. It never touches Minecraft: it updates {@link PlayerStoryState}
@@ -116,7 +117,8 @@ public final class SceneEngine {
         if (next == null) {
             state.completeScene(scene.id());
             state.setScene(null, null);
-            state.flags().removeIf(f -> f.startsWith(FOLLOW_FLAG));
+            // Companions stay with the player when the story carries straight on into the next scene.
+            if (scene.nextScene() == null || content.scene(scene.nextScene()) == null) state.flags().removeIf(f -> f.startsWith(FOLLOW_FLAG));
             out.add(new Effect.ClearObjective());
             out.add(new Effect.SceneCompleted(scene.id(), scene.nextScene()));
         } else {
@@ -146,6 +148,24 @@ public final class SceneEngine {
             progress = found + "/" + clues.size();
         }
         return new Effect.ShowObjective(scene.label(), scene.title(), stage.objective(), scene.location(stage.target()), progress);
+    }
+
+    /** Runs area triggers for every location the player is standing in. Call it a few times a second. */
+    public List<Effect> checkAreas(PlayerStoryState state, Predicate<SceneDef.Location> inside) {
+        List<Effect> out = new ArrayList<>();
+        SceneDef scene = activeScene(state);
+        if (scene == null) return out;
+        for (SceneDef.AreaTrigger t : scene.areaTriggers()) {
+            if (!scene.id().equals(state.activeScene())) break; // an earlier trigger finished the scene
+            String key = "area:" + t.id();
+            if (state.triggerFired(key)) continue;
+            if (!t.stages().isEmpty() && !t.stages().contains(state.stage())) continue;
+            if (!t.requires().stream().allMatch(state::hasFlag) || t.forbids().stream().anyMatch(state::hasFlag)) continue;
+            if (!inside.test(scene.location(t.location()))) continue;
+            state.markTriggerFired(key);
+            out.addAll(applyActions(state, t.actions()));
+        }
+        return out;
     }
 
     private void runActions(PlayerStoryState state, SceneDef scene, List<ActionDef> actions, List<Effect> out, Deque<StoryEvent> queue) {
@@ -181,6 +201,21 @@ public final class SceneEngine {
             case "npc_move" -> out.add(new Effect.NpcCommand("move", a.arg("character"), a.arg("location")));
             case "npc_spawn" -> out.add(new Effect.NpcCommand("spawn", a.arg("character"), a.arg("location")));
             case "npc_despawn" -> out.add(new Effect.NpcCommand("despawn", a.arg("character"), null));
+            case "npc_sleep" -> out.add(new Effect.NpcCommand("sleep", a.arg("character"), a.arg("location")));
+            case "npc_wake" -> out.add(new Effect.NpcCommand("wake", a.arg("character"), null));
+            case "npc_approach" -> out.add(new Effect.NpcCommand("approach", a.arg("character"), null));
+            case "npc_look" -> out.add(new Effect.NpcCommand("look", a.arg("character"), a.arg("location")));
+            case "hint" -> out.add(new Effect.Hint(a.arg("text"), Integer.parseInt(a.arg("ticks", "120"))));
+            case "shake" -> out.add(new Effect.Shake(Float.parseFloat(a.arg("intensity", "0.1")), Integer.parseInt(a.arg("ticks", "20"))));
+            case "say" -> out.add(new Effect.Say(a.arg("character"), a.arg("text")));
+            case "teleport_player" -> out.add(new Effect.TeleportPlayer(a.arg("location"), Float.parseFloat(a.arg("yaw", "0"))));
+            case "journal" -> {
+                if (state.addJournal(a.arg("id"))) out.add(new Effect.Journal(a.arg("id")));
+            }
+            case "set_value" -> state.setValue(a.arg("key"), Integer.parseInt(a.arg("value", "0")));
+            case "add_value" -> state.setValue(a.arg("key"), state.value(a.arg("key")) + Integer.parseInt(a.arg("amount", "1")));
+            case "particles" -> out.add(new Effect.Particles(a.arg("particle"), a.arg("location"),
+                    Integer.parseInt(a.arg("count", "12")), Double.parseDouble(a.arg("spread", "1"))));
             case "title" -> out.add(new Effect.ShowTitle(a.arg("title", ""), a.arg("subtitle", "")));
             case "give_item" -> out.add(new Effect.GiveItem(a.arg("item"), Integer.parseInt(a.arg("count", "1")),
                     a.arg("name"), a.arg("lore") == null ? List.of() : List.of(a.arg("lore").split("\\|"))));

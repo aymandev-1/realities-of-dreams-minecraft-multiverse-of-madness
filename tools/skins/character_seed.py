@@ -105,3 +105,47 @@ TMMA_TEMPLATES = {
     "tmma_scientist": {"cap_rows": 0, "keep_hat": False},
 }
 VARIANTS_PER_TEMPLATE = 4
+
+# Names shown on subtitles where the registry name is not how people address the character.
+SPEAKER_NAMES = {
+    "primordial_steve": "Steve",  # Saga 1 subtitles read STEVE; his title is not used in everyday speech.
+}
+
+# Unnamed Saga 1 NPC types (tools/skins/npc_types.py paints them). Every member of a type shares one
+# outfit; faces, hair and identifying features differ. Scenes are Saga 1 scene numbers from the screenplay.
+# type id, display name, speaker name, faction, count, scenes, role
+NPC_TYPES = [
+    ("firstbrook_villager", "Firstbrook Villager", "Villager", "Firstbrook (Eldervale)", 6, [1, 5, 20],
+     "Residents of Firstbrook; Scene 005's volunteers are drawn from them."),
+    ("firstbrook_farmer", "Firstbrook Farmer", "Farmer", "Firstbrook (Eldervale)", 3, [1, 20], "Farmers working Firstbrook's fields."),
+    ("firstbrook_guard", "Firstbrook Guard", "Guard", "Firstbrook (Eldervale)", 3, [1, 5, 20], "Village guards who patrol the paths and the north gate."),
+    ("expedition_worker", "Expedition Worker", "Worker", "Eldervale", 4, [5, 18, 19, 20],
+     "Road and excavation workers; Eldervale's supply crews at the monument."),
+    ("expedition_researcher", "Expedition Researcher", "Researcher", "Eldervale", 3, [18, 19, 20], "Researchers inspecting the sealed chamber."),
+    ("sylvaris_ranger", "Sylvaris Ranger", "Ranger", "Sylvaris", 4, [10, 18, 19], "Forest rangers who serve with Liora."),
+    ("eldervale_official", "Eldervale Official", "Adviser", "Eldervale", 3, [12, 13, 14, 15, 17], "Queen Aveline's advisers at the Valebridge council."),
+    ("eldervale_royal_guard", "Eldervale Royal Guard", "Royal Guard", "Eldervale", 3, [12, 13, 14, 15, 17, 20], "The Queen's guard in Valebridge."),
+    ("stonecrown_guard", "Stonecrown Guard", "Stonecrown Guard", "Stonecrown", 2, [13], "Thane Garrick's escorts carrying the Irondeep stone."),
+    ("stonecrown_engineer", "Stonecrown Engineer", "Engineer", "Stonecrown", 4, [18, 19, 20], "Engineers who build the excavation supports."),
+    ("solkar_scholar", "Solkar Scholar", "Scholar", "Solkar", 3, [14, 18, 19], "Scholars of Sunspire who travel with Sahir."),
+    ("veyrath_guard", "Veyrath Honour Guard", "Veyrath Guard", "Veyrath", 4, [15, 17, 18, 19], "Lord Kaelen's armed honour guard from Emberhold."),
+    ("thalassian_sailor", "Thalassian Sailor", "Sailor", "Thalassia", 4, [16, 18, 19], "Captain Maren's harbour crew and rope specialists."),
+    ("merchant", "Travelling Merchant", "Merchant", "Independent traders", 4, [11, 12], "The eastern road caravan and Valebridge's market."),
+    ("raider", "Raider", "Raider", "Eastern road raiders", 4, [11], "Human raiders who attack the caravan."),
+    ("raider_leader", "Raider Leader", "Raider Leader", "Eastern road raiders", 1, [11], "Leader of the eastern road raiders."),
+]
+
+# Factions and Saga 1 scene appearances of the named MC-001 cast (from each scene's cast list).
+SAGA1_CAST = {
+    "primordial_steve": ("Firstbrook (Eldervale)", list(range(1, 21))),
+    "elara": ("Firstbrook (Eldervale)", list(range(1, 21))),
+    "elder_rowan": ("Firstbrook (Eldervale)", [1, 2, 5, 20]),
+    "orin": ("Firstbrook (Eldervale)", [1, 4, 5, 6, 7, 13, 14, 16, 17, 18, 19, 20]),
+    "bram": ("Firstbrook (Eldervale)", [1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 17, 18, 19, 20]),
+    "liora": ("Sylvaris", [10, 11, 12, 15, 17, 18, 19, 20]),
+    "queen_aveline": ("Eldervale", [12, 13, 14, 15, 17, 20]),
+    "thane_garrick": ("Stonecrown", [13, 15, 16, 17, 18, 19, 20]),
+    "sahir": ("Solkar", [14, 15, 16, 17, 18, 19, 20]),
+    "lord_kaelen": ("Veyrath", [15, 17, 18, 19, 20]),
+    "captain_maren": ("Thalassia", [16, 17, 18, 19, 20]),
+}

@@ -1,6 +1,7 @@
 package net.realitiesofdreams.story.cinematic;
 
 import com.google.gson.JsonObject;
+import net.realitiesofdreams.story.action.ActionDef;
 import net.realitiesofdreams.story.json.Json;
 import net.realitiesofdreams.story.json.StoryFormatException;
 
@@ -9,7 +10,21 @@ import java.util.List;
 /** A scripted camera sequence. Positions are relative to the scene anchor; times are in ticks. */
 public record CinematicDef(String id, int duration, List<Keyframe> keyframes, List<Subtitle> subtitles,
                            List<Shake> shakes, List<SoundCue> sounds, int fadeIn, int fadeOut, boolean letterbox,
-                           boolean skippable) {
+                           boolean skippable, int holdBlack, List<Dip> dips, List<Cue> cues, boolean hidePlayer) {
+
+    /** A brief dip to black, used to cut the camera to a new place. */
+    public record Dip(double start, double duration) {
+        static Dip fromJson(JsonObject o) {
+            return new Dip(Json.number(o, "t", 0), Json.number(o, "duration", 20));
+        }
+    }
+
+    /** Story actions the server runs at a moment of the cinematic (an actor wakes, a character walks in). */
+    public record Cue(double t, List<ActionDef> actions) {
+        static Cue fromJson(JsonObject o) {
+            return new Cue(Json.number(o, "t", 0), ActionDef.listFrom(o, "actions"));
+        }
+    }
 
     public record Keyframe(double t, double x, double y, double z, float yaw, float pitch, float roll, float fov) {
         static Keyframe fromJson(JsonObject o) {
@@ -54,6 +69,7 @@ public record CinematicDef(String id, int duration, List<Keyframe> keyframes, Li
         return new CinematicDef(id, duration, kf, Json.list(o, "subtitles", Subtitle::fromJson),
                 Json.list(o, "shakes", Shake::fromJson), Json.list(o, "sounds", SoundCue::fromJson),
                 Json.integer(o, "fade_in", 20), Json.integer(o, "fade_out", 20), Json.bool(o, "letterbox", true),
-                Json.bool(o, "skippable", true));
+                Json.bool(o, "skippable", true), Json.integer(o, "hold_black", 0), Json.list(o, "dips", Dip::fromJson),
+                Json.list(o, "cues", Cue::fromJson), Json.bool(o, "hide_player", false));
     }
 }

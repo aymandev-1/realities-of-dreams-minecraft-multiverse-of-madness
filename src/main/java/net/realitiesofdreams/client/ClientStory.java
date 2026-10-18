@@ -1,6 +1,10 @@
 package net.realitiesofdreams.client;
 
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.Options;
 import net.realitiesofdreams.network.DialogueLinePayload;
+import net.realitiesofdreams.network.HintPayload;
 import net.realitiesofdreams.network.ObjectivePayload;
 
 import javax.annotation.Nullable;
@@ -14,6 +18,10 @@ public final class ClientStory {
     static boolean lineRevealed;
     @Nullable static ObjectivePayload objective;
     static final List<Ambient> ambient = new ArrayList<>();
+    @Nullable static String hint;
+    static long hintStartMs, hintEndMs;
+    static float shakeIntensity;
+    static int shakeTicks, shakeTotal;
 
     record Ambient(DialogueLinePayload line, long startMs, long endMs) {}
 
@@ -40,9 +48,39 @@ public final class ClientStory {
         return Math.min(line.text().length(), n);
     }
 
+    static void setHint(HintPayload p) {
+        hint = withKeyNames(p.text());
+        hintStartMs = System.currentTimeMillis();
+        hintEndMs = hintStartMs + p.ticks() * 50L;
+    }
+
+    /** Replaces {forward}, {jump}, {inventory}... with the keys the player actually uses. */
+    static String withKeyNames(String text) {
+        Options o = Minecraft.getInstance().options;
+        Object[][] keys = {{"forward", o.keyUp}, {"left", o.keyLeft}, {"back", o.keyDown}, {"right", o.keyRight},
+                {"jump", o.keyJump}, {"sneak", o.keyShift}, {"sprint", o.keySprint}, {"inventory", o.keyInventory},
+                {"use", o.keyUse}, {"attack", o.keyAttack}, {"continue", RodKeys.CONTINUE}};
+        for (Object[] k : keys) {
+            text = text.replace("{" + k[0] + "}", "[" + ((KeyMapping) k[1]).getTranslatedKeyMessage().getString() + "]");
+        }
+        return text;
+    }
+
+    static void startShake(float intensity, int ticks) {
+        shakeIntensity = intensity;
+        shakeTicks = ticks;
+        shakeTotal = Math.max(1, ticks);
+    }
+
+    static void tickShake() {
+        if (shakeTicks > 0) shakeTicks--;
+    }
+
     static void reset() {
         line = null;
         objective = null;
+        hint = null;
+        shakeTicks = 0;
         ambient.clear();
     }
 }

@@ -39,9 +39,10 @@ public final class CharacterRegistry {
         return c;
     }
 
+    /** The name shown on subtitles: "Steve" for Primordial Steve, "Farmer" for a farmer. */
     public String displayName(String id) {
         CharacterDef c = byId.get(id);
-        return c == null ? id : c.name();
+        return c == null ? id : c.speakerName();
     }
 
     public Collection<CharacterDef> all() {

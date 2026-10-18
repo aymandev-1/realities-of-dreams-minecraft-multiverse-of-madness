@@ -5,7 +5,9 @@ import net.realitiesofdreams.Story;
 import net.realitiesofdreams.network.CinematicPayload;
 import net.realitiesofdreams.network.DialogueEndPayload;
 import net.realitiesofdreams.network.DialogueLinePayload;
+import net.realitiesofdreams.network.HintPayload;
 import net.realitiesofdreams.network.ObjectivePayload;
+import net.realitiesofdreams.network.ShakePayload;
 import net.realitiesofdreams.story.cinematic.CinematicDef;
 
 /** Client side of the story packets. Only referenced from lambdas so servers never load it. */
@@ -34,6 +36,14 @@ public final class ClientPayloadHandler {
 
     public static void objective(ObjectivePayload p) {
         ClientStory.objective = p.text().isEmpty() ? null : p;
+    }
+
+    public static void hint(HintPayload p) {
+        ClientStory.setHint(p);
+    }
+
+    public static void shake(ShakePayload p) {
+        ClientStory.startShake(p.intensity(), p.ticks());
     }
 
     public static void cinematic(CinematicPayload p) {

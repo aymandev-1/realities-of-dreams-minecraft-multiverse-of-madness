@@ -22,6 +22,7 @@ public final class ClientEvents {
 
     @SubscribeEvent
     public static void onTick(ClientTickEvent.Post event) {
+        ClientStory.tickShake();
         if (CinematicPlayer.active()) {
             CinematicPlayer.tick();
             return;
@@ -40,7 +41,17 @@ public final class ClientEvents {
     @SubscribeEvent
     public static void onCameraAngles(ViewportEvent.ComputeCameraAngles event) {
         CinematicTimeline tl = CinematicPlayer.timeline();
-        if (tl == null) return;
+        if (tl == null) {
+            if (ClientStory.shakeTicks > 0) {
+                // A tremor during play: a small, fading wobble of the view.
+                double t = ClientStory.shakeTicks - event.getPartialTick();
+                double amp = ClientStory.shakeIntensity * (t / ClientStory.shakeTotal);
+                event.setYaw((float) (event.getYaw() + amp * Math.sin(t * 2.1) * 2.0));
+                event.setPitch((float) (event.getPitch() + amp * Math.sin(t * 2.9 + 1) * 1.5));
+                event.setRoll((float) (event.getRoll() + amp * Math.sin(t * 1.7) * 3.0));
+            }
+            return;
+        }
         double t = CinematicPlayer.time((float) event.getPartialTick());
         CameraPose pose = tl.sample(t);
         event.setYaw(pose.yaw());

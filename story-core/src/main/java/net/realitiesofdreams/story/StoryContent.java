@@ -30,6 +30,14 @@ public final class StoryContent {
     private final Map<String, SceneDef> scenes = new LinkedHashMap<>();
     private final Map<String, DialogueDef> dialogues = new LinkedHashMap<>();
     private final Map<String, CinematicDef> cinematics = new LinkedHashMap<>();
+    private final Map<String, JournalEntry> journal = new LinkedHashMap<>();
+
+    /** A page of Steve's journal. */
+    public record JournalEntry(String id, String title, String text) {
+        static JournalEntry fromJson(String id, JsonObject o) {
+            return new JournalEntry(id, Json.req(o, "title", "journal " + id), Json.req(o, "text", "journal " + id));
+        }
+    }
 
     public interface Source {
         Reader open(String path) throws IOException;
@@ -78,6 +86,9 @@ public final class StoryContent {
         for (Entry<String, CinematicDef> e : Json.map(o, "cinematics", CinematicDef::fromJson).entrySet()) {
             if (cinematics.put(e.getKey(), e.getValue()) != null) throw new StoryFormatException(file + ": duplicate cinematic " + e.getKey());
         }
+        for (Entry<String, JournalEntry> e : Json.map(o, "journal", JournalEntry::fromJson).entrySet()) {
+            if (journal.put(e.getKey(), e.getValue()) != null) throw new StoryFormatException(file + ": duplicate journal entry " + e.getKey());
+        }
     }
 
     public CharacterRegistry characters() { return characters; }
@@ -87,4 +98,6 @@ public final class StoryContent {
     public Collection<SceneDef> scenes() { return scenes.values(); }
     public Map<String, DialogueDef> dialogues() { return dialogues; }
     public Map<String, CinematicDef> cinematics() { return cinematics; }
+    public JournalEntry journal(String id) { return journal.get(id); }
+    public Map<String, JournalEntry> journal() { return journal; }
 }

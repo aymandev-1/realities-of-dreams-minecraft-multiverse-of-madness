@@ -4,6 +4,15 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Style;
+import net.minecraft.server.network.Filterable;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.component.WrittenBookContent;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket;
@@ -25,8 +34,11 @@ import net.realitiesofdreams.entity.StoryNpcEntity;
 import net.realitiesofdreams.network.CinematicPayload;
 import net.realitiesofdreams.network.DialogueEndPayload;
 import net.realitiesofdreams.network.DialogueLinePayload;
+import net.realitiesofdreams.network.HintPayload;
+import net.realitiesofdreams.network.ShakePayload;
 import net.realitiesofdreams.network.ObjectivePayload;
 import net.realitiesofdreams.registry.ModAttachments;
+import net.realitiesofdreams.story.StoryContent;
 import net.realitiesofdreams.story.action.ActionDef;
 import net.realitiesofdreams.story.cinematic.CinematicDef;
 import net.realitiesofdreams.story.dialogue.DialogueDef;
@@ -154,7 +166,8 @@ public final class StoryManager {
             p.teleportTo(level, a[0], a[1], a[2], scene.arrivalYaw(), 0);
         }
         List<Effect> effects = engine().startScene(state, sceneId);
-        if (level != null) NpcDirector.reconcile(level, scene, state);
+        if (level != null) NpcDirector.arrange(level, scene, state);
+        runtime(p).lastStage = state.stage();
         perform(p, effects);
     }
 
@@ -174,6 +187,7 @@ public final class StoryManager {
         }
         rt.dialogue = null;
         rt.dialogueId = null;
+        if (rt.cinematicId != null) p.removeEffect(MobEffects.INVISIBILITY);
         rt.cinematicId = null;
         rt.presentation.clear();
         rt.approachTrigger = null;
@@ -205,6 +219,7 @@ public final class StoryManager {
             if (!state(p).introOffered()) play(p);
         }
         tickDialogue(p, rt);
+        if (rt.cinematicId != null) tickCinematicCues(p, rt);
         if (rt.cinematicId != null && --rt.cinematicTicksLeft <= 0) {
             RealitiesOfDreams.LOGGER.warn("Cinematic {} timed out for {}", rt.cinematicId, p.getGameProfile().getName());
             finishCinematic(p, rt.cinematicId);
@@ -223,6 +238,9 @@ public final class StoryManager {
 
         if (rt.tick % 5 == 0 && !rt.busy()) tickProximity(p, rt, scene, state);
         if (rt.tick % 10 == 0 && !rt.busy()) tickReach(p, scene, state);
+        if (rt.tick % 10 == 5 && rt.cinematicId == null) {
+            perform(p, engine().checkAreas(state, loc -> loc != null && distance(p, scene, loc) <= loc.radius()));
+        }
         if (rt.tick % 20 == 0) {
             if (!rt.busy()) tickChatter(p, rt, scene, state, moving);
             highlightClues(p, scene, state);
@@ -498,6 +516,8 @@ public final class StoryManager {
         }
         rt.cinematicId = id;
         rt.cinematicTicksLeft = def.duration() + 100;
+        rt.cinematicTick = -1;
+        if (def.hidePlayer()) p.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, def.duration() + 120, 0, false, false));
         int[] a = scene.anchor();
         messenger.send(p, new CinematicPayload(id, a[0], a[1], a[2]));
     }
@@ -506,8 +526,28 @@ public final class StoryManager {
         if (id.equals(runtime(p).cinematicId)) finishCinematic(p, id);
     }
 
+    /** Runs the cinematic's timed story actions (an actor waking, a character walking past). */
+    private void tickCinematicCues(ServerPlayer p, PlayerRuntime rt) {
+        CinematicDef def = Story.content().cinematic(rt.cinematicId);
+        if (def == null) return;
+        int prev = rt.cinematicTick++;
+        runCues(p, def, prev, rt.cinematicTick);
+    }
+
+    private void runCues(ServerPlayer p, CinematicDef def, double from, double to) {
+        for (CinematicDef.Cue cue : new net.realitiesofdreams.story.cinematic.CinematicTimeline(def).cuesBetween(from, to)) {
+            perform(p, engine().applyActions(state(p), cue.actions()));
+        }
+    }
+
     private void finishCinematic(ServerPlayer p, String id) {
         PlayerRuntime rt = runtime(p);
+        CinematicDef def = Story.content().cinematic(id);
+        if (def != null) {
+            // Skipped or cut short: the world still ends up where the cinematic would have left it.
+            runCues(p, def, rt.cinematicTick, Double.MAX_VALUE);
+            if (def.hidePlayer()) p.removeEffect(MobEffects.INVISIBILITY);
+        }
         rt.cinematicId = null;
         perform(p, engine().handle(state(p), new StoryEvent.CinematicFinished(id)));
         drainPresentation(p, rt);
@@ -543,7 +583,27 @@ public final class StoryManager {
                     if (rt.busy()) rt.presentation.add(c);
                     else startCinematic(p, rt, c.cinematicId());
                 }
-                case Effect.NpcCommand n -> NpcDirector.command(p, engine().activeScene(state), n);
+                case Effect.NpcCommand n -> NpcDirector.command(p, engine().activeScene(state), state, n);
+                case Effect.Hint h -> messenger.send(p, new HintPayload(h.text(), h.ticks()));
+                case Effect.Shake sh -> messenger.send(p, new ShakePayload(sh.intensity(), sh.ticks()));
+                case Effect.Say say -> ambient(p, say.character(), say.text());
+                case Effect.TeleportPlayer tp -> {
+                    SceneDef scene = engine().activeScene(state);
+                    ServerLevel level = scene == null ? null : ModDimensions.level(p.server, scene);
+                    if (level != null && p.level() == level) {
+                        double[] a = ModDimensions.absolute(scene, scene.location(tp.location()));
+                        p.teleportTo(level, a[0], a[1], a[2], tp.yaw(), 0);
+                    }
+                }
+                case Effect.Journal j -> updateJournal(p, state, j.entryId());
+                case Effect.Particles pa -> {
+                    SceneDef scene = engine().activeScene(state);
+                    if (scene != null && p.level() == ModDimensions.level(p.server, scene)
+                            && BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(pa.particle())) instanceof SimpleParticleType type) {
+                        double[] a = ModDimensions.absolute(scene, scene.location(pa.location()));
+                        p.serverLevel().sendParticles(type, a[0], a[1], a[2], pa.count(), pa.spread(), pa.spread() * 0.5, pa.spread(), 0.02);
+                    }
+                }
                 case Effect.ShowTitle t -> {
                     p.connection.send(new ClientboundSetTitlesAnimationPacket(10, 70, 25));
                     p.connection.send(new ClientboundSetSubtitleTextPacket(Component.literal(t.subtitle()).withStyle(ChatFormatting.GRAY)));
@@ -559,14 +619,61 @@ public final class StoryManager {
                 }
                 case Effect.Message m -> p.sendSystemMessage(Component.literal(m.text()));
                 case Effect.SceneCompleted s -> {
-                    NpcDirector.releaseAll(p);
-                    p.sendSystemMessage(Component.literal(s.nextScene() != null && s.nextScene().startsWith("unreleased:")
-                            ? "Your progress is saved. The next scene arrives in a future update."
-                            : "Scene complete. Progress saved.").withStyle(ChatFormatting.GOLD));
+                    if (s.nextScene() != null && Story.content().scene(s.nextScene()) != null) {
+                        // The story carries straight on: the next scene starts where the player stands.
+                        rt.pendingScene = s.nextScene();
+                    } else {
+                        NpcDirector.releaseFollowers(p);
+                        p.sendSystemMessage(Component.literal(s.nextScene() != null && s.nextScene().startsWith("unreleased:")
+                                ? "Your progress is saved. The next scene arrives in a future update."
+                                : "Scene complete. Progress saved.").withStyle(ChatFormatting.GOLD));
+                    }
                 }
                 case Effect.Checkpoint c -> { /* checkpoints are derived from the saved stage */ }
             }
         }
+        SceneDef scene = engine().activeScene(state);
+        if (scene != null && !java.util.Objects.equals(rt.lastStage, state.stage())) {
+            rt.lastStage = state.stage();
+            ServerLevel level = ModDimensions.level(p.server, scene);
+            if (level != null && p.level() == level) NpcDirector.reconcile(level, scene, state);
+        }
+        if (rt.pendingScene != null && state.activeScene() == null) {
+            String next = rt.pendingScene;
+            rt.pendingScene = null;
+            startScene(p, next, false);
+        }
+    }
+
+    /** Adds the entry to Steve's journal: a written book that updates itself as the story goes on. */
+    private static void updateJournal(ServerPlayer p, PlayerStoryState state, String entryId) {
+        StoryContent content = Story.content();
+        List<Filterable<Component>> pages = new ArrayList<>();
+        for (String id : state.journal()) {
+            StoryContent.JournalEntry e = content.journal(id);
+            if (e == null) continue;
+            pages.add(Filterable.passThrough(Component.empty()
+                    .append(Component.literal(e.title()).withStyle(Style.EMPTY.withBold(true)))
+                    .append("\n\n").append(Component.literal(e.text()))));
+        }
+        WrittenBookContent book = new WrittenBookContent(Filterable.passThrough("Steve's Journal"), "Steve", 0, pages, true);
+        ItemStack journal = null;
+        for (ItemStack s : p.getInventory().items) {
+            CustomData data = s.get(DataComponents.CUSTOM_DATA);
+            if (s.is(Items.WRITTEN_BOOK) && data != null && data.copyTag().getBoolean("rod_journal")) journal = s;
+        }
+        if (journal == null) {
+            journal = new ItemStack(Items.WRITTEN_BOOK);
+            CompoundTag tag = new CompoundTag();
+            tag.putBoolean("rod_journal", true);
+            journal.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
+            journal.set(DataComponents.WRITTEN_BOOK_CONTENT, book);
+            if (!p.getInventory().add(journal)) p.drop(journal, false);
+        } else {
+            journal.set(DataComponents.WRITTEN_BOOK_CONTENT, book);
+        }
+        StoryContent.JournalEntry e = content.journal(entryId);
+        p.sendSystemMessage(Component.literal("Journal updated: " + (e == null ? entryId : e.title())).withStyle(ChatFormatting.YELLOW));
     }
 
     private static void giveItem(ServerPlayer p, Effect.GiveItem g) {

@@ -2,6 +2,9 @@ package net.realitiesofdreams.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtUtils;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -28,7 +31,9 @@ import net.realitiesofdreams.Story;
 import net.realitiesofdreams.server.StoryManager;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -45,6 +50,10 @@ public class StoryNpcEntity extends PathfinderMob {
     @Nullable private UUID approachTarget;
     @Nullable private UUID talkTarget;
     @Nullable private String sceneId;
+    private String activity = "idle";
+    private final List<BlockPos> route = new ArrayList<>();
+    @Nullable private Vec3 lookPos;
+    private int lookTicks;
 
     public StoryNpcEntity(EntityType<? extends StoryNpcEntity> type, Level level) {
         super(type, level);
@@ -69,9 +78,12 @@ public class StoryNpcEntity extends PathfinderMob {
     protected void registerGoals() {
         goalSelector.addGoal(0, new FloatGoal(this));
         goalSelector.addGoal(1, new TalkGoal());
+        goalSelector.addGoal(1, new LookAtPointGoal());
         goalSelector.addGoal(2, new ApproachGoal());
         goalSelector.addGoal(3, new FollowGoal());
+        goalSelector.addGoal(4, new PatrolGoal());
         goalSelector.addGoal(4, new HomeGoal());
+        goalSelector.addGoal(5, new WorkGoal());
         goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
         goalSelector.addGoal(7, new RandomLookAroundGoal(this));
     }
@@ -125,6 +137,39 @@ public class StoryNpcEntity extends PathfinderMob {
         this.approachTarget = player;
     }
 
+    @Nullable
+    public UUID approachTarget() {
+        return approachTarget;
+    }
+
+    /** "idle", "work" (busy with the held item at home) or "patrol" (walks the route). */
+    public void setActivity(String activity, List<BlockPos> route) {
+        this.activity = activity == null ? "idle" : activity;
+        this.route.clear();
+        this.route.addAll(route);
+    }
+
+    public String activity() {
+        return activity;
+    }
+
+    /** Lies down in the bed at pos (an actor asleep at the start of a scene). */
+    public void sleepIn(BlockPos pos) {
+        getNavigation().stop();
+        startSleeping(pos);
+    }
+
+    /** Turns to look at a point for a while, e.g. towards the hills a character is worried about. */
+    public void lookTowards(Vec3 pos, int ticks) {
+        this.lookPos = pos;
+        this.lookTicks = ticks;
+    }
+
+    @Override
+    protected boolean isImmobile() {
+        return super.isImmobile() || isSleeping();
+    }
+
     public void setTalkTarget(@Nullable UUID player) {
         this.talkTarget = player;
         entityData.set(TALKING, player != null);
@@ -170,6 +215,10 @@ public class StoryNpcEntity extends PathfinderMob {
         if (home != null) tag.putIntArray("Home", new int[] {home.getX(), home.getY(), home.getZ()});
         if (followTarget != null) tag.putUUID("Follow", followTarget);
         if (sceneId != null) tag.putString("Scene", sceneId);
+        tag.putString("Activity", activity);
+        ListTag r = new ListTag();
+        for (BlockPos pos : route) r.add(NbtUtils.writeBlockPos(pos));
+        tag.put("Route", r);
     }
 
     @Override
@@ -180,6 +229,90 @@ public class StoryNpcEntity extends PathfinderMob {
         if (h.length == 3) home = new BlockPos(h[0], h[1], h[2]);
         followTarget = tag.hasUUID("Follow") ? tag.getUUID("Follow") : null;
         sceneId = tag.contains("Scene") ? tag.getString("Scene") : null;
+        activity = tag.contains("Activity") ? tag.getString("Activity") : "idle";
+        route.clear();
+        for (Tag t : tag.getList("Route", Tag.TAG_INT_ARRAY)) {
+            if (t instanceof net.minecraft.nbt.IntArrayTag a && a.getAsIntArray().length == 3) {
+                int[] v = a.getAsIntArray();
+                route.add(new BlockPos(v[0], v[1], v[2]));
+            }
+        }
+    }
+
+    /** Turns towards a point the story asked the character to look at. */
+    private class LookAtPointGoal extends Goal {
+        LookAtPointGoal() {
+            setFlags(EnumSet.of(Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            return lookPos != null && lookTicks > 0 && talkTarget == null;
+        }
+
+        @Override
+        public void tick() {
+            if (lookPos != null) getLookControl().setLookAt(lookPos.x, lookPos.y, lookPos.z, 20.0F, 20.0F);
+            if (--lookTicks <= 0) lookPos = null;
+        }
+    }
+
+    /** Walks between the points of a route, pausing at each (guards on their rounds). */
+    private class PatrolGoal extends Goal {
+        private int index;
+        private int pause;
+
+        PatrolGoal() {
+            setFlags(EnumSet.of(Flag.MOVE));
+        }
+
+        @Override
+        public boolean canUse() {
+            return "patrol".equals(activity) && route.size() >= 2 && followTarget == null && approachTarget == null;
+        }
+
+        @Override
+        public void tick() {
+            BlockPos target = route.get(index % route.size());
+            Vec3 t = Vec3.atBottomCenterOf(target);
+            if (position().distanceTo(t) < 1.6) {
+                getNavigation().stop();
+                if (pause <= 0) pause = 40 + getRandom().nextInt(60);
+                if (--pause <= 0) index = (index + 1) % route.size();
+            } else if (getNavigation().isDone()) {
+                getNavigation().moveTo(t.x, t.y, t.z, 0.55);
+            }
+        }
+
+        @Override
+        public void stop() {
+            getNavigation().stop();
+        }
+    }
+
+    /** Busy at their spot: swings the tool in hand at the work in front of them. */
+    private class WorkGoal extends Goal {
+        private int next;
+
+        WorkGoal() {
+            setFlags(EnumSet.of(Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            return "work".equals(activity) && followTarget == null && talkTarget == null && home != null
+                    && position().distanceTo(Vec3.atBottomCenterOf(home)) < 2.5;
+        }
+
+        @Override
+        public void tick() {
+            Vec3 ahead = position().add(Vec3.directionFromRotation(0, getYRot()).scale(1.2));
+            getLookControl().setLookAt(ahead.x, getY() + 0.2, ahead.z, 10.0F, 40.0F);
+            if (--next <= 0) {
+                swing(InteractionHand.MAIN_HAND);
+                next = 18 + getRandom().nextInt(40);
+            }
+        }
     }
 
     /** Stands still and faces the player while speaking. */
@@ -289,13 +422,13 @@ public class StoryNpcEntity extends PathfinderMob {
 
         @Override
         public boolean canUse() {
-            if (home == null || followTarget != null) return false;
+            if (home == null || followTarget != null || ("patrol".equals(activity) && route.size() >= 2)) return false;
             Vec3 h = Vec3.atBottomCenterOf(home);
             if (position().distanceTo(h) > 2.5) {
                 target = h;
                 return true;
             }
-            if (getRandom().nextInt(500) == 0) {
+            if ("idle".equals(activity) && getRandom().nextInt(500) == 0) {
                 target = h.add(getRandom().nextInt(5) - 2, 0, getRandom().nextInt(5) - 2);
                 return true;
             }

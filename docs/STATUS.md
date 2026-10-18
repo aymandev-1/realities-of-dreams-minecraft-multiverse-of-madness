@@ -9,10 +9,13 @@ written and compiles, but nobody has played it yet on a real client. **Not start
 
 | Feature | How it is verified |
 |---|---|
-| Character registry: all 76 collected skins plus Reuben, 96 entries with 20 generated TMMA skins | `ContentTest` (story-core) and `storyContentIsValid` game test |
+| Character registry: all 76 collected skins plus Reuben, 151 entries with 20 generated TMMA skins and 55 generated Saga 1 NPCs | `ContentTest` (story-core) and `storyContentIsValid` game test |
 | Identity corrections: Jesse is MC-200, Movie Steve is MC-300, Reuben is Jesse's pig (vanilla pig model) | `ContentTest.ownerIdentityCorrectionsAreApplied` |
 | Every player-model character has a 64x64 texture (legacy 64x32 skins converted the way Minecraft does) | `ContentTest.everySkinTextureExists` |
 | Generated TMMA skins keep the uniform: every pixel below the head is identical to the template | Assertion in `tools/skins/tmma_faces.py`, run by `build_registry.py` |
+| The 11 named Saga 1 skins match your originals pixel for pixel (only hidden base-layer gaps made opaque) | `validate_named` in `build_registry.py`; results table in `docs/CHARACTER_REGISTRY.md` |
+| Generated Saga 1 NPCs: each type shares one outfit exactly, and no two share a face | `check_shared_outfit` and the uniqueness check in `tools/skins/npc_types.py` |
+| Saga 1 scenes can only use characters cast in Saga 1 (blocks later-saga characters and the Empowered form) | `ContentTest.saga1CastIsTheElevenNamedSkinsPlusGeneratedNpcs`, `ContentTest.aSaga1SceneCannotUseALaterSagaCharacter` |
 | Universe IDs MC-001 to MC-10000, with a deterministic profile for every universe | `UniverseTest` |
 | Dialogue graphs with branching replies and actions | `DialogueTest` |
 | Proximity dialogue: characters start talking when you come near, walk over first if far away, story conversations take priority over greetings, greetings play once | `Scene001PlaythroughTest`, `ProximityDirector` |

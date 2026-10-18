@@ -13,7 +13,7 @@ public record SceneDef(String id, String title, String universe, int saga, int s
                        String dimension, int[] anchor, Location arrival, float arrivalYaw,
                        Map<String, Location> locations, List<NpcPlacement> npcs, List<StageDef> stages,
                        List<TriggerDef> triggers, List<ChatterDef> chatter, Map<String, ClueDef> clues,
-                       String nextScene) {
+                       String nextScene, String site, List<AreaTrigger> areaTriggers) {
 
     /** A point relative to the scene anchor. */
     public record Location(double x, double y, double z, double radius) {
@@ -28,11 +28,26 @@ public record SceneDef(String id, String title, String universe, int saga, int s
         }
     }
 
-    /** Where a character stands, and from which stage they are present. */
-    public record NpcPlacement(String character, String location, String fromStage, String untilStage, float yaw) {
+    /**
+     * Where a character stands, and from which stage they are present. activity: "idle" (potters
+     * near home), "work" (busy with the item in hand) or "patrol" (walks the route of locations).
+     */
+    public record NpcPlacement(String character, String location, String fromStage, String untilStage, float yaw,
+                               String activity, String held, List<String> route) {
         static NpcPlacement fromJson(JsonObject o) {
             return new NpcPlacement(Json.req(o, "character", "npc"), Json.req(o, "location", "npc"),
-                    Json.str(o, "from_stage", null), Json.str(o, "until_stage", null), (float) Json.number(o, "yaw", 0));
+                    Json.str(o, "from_stage", null), Json.str(o, "until_stage", null), (float) Json.number(o, "yaw", 0),
+                    Json.str(o, "activity", "idle"), Json.str(o, "held", null), Json.strings(o, "route"));
+        }
+    }
+
+    /** Actions that run once when the player walks into a location during the listed stages. */
+    public record AreaTrigger(String id, String location, List<String> stages, List<String> requires, List<String> forbids,
+                              List<ActionDef> actions) {
+        static AreaTrigger fromJson(JsonObject o) {
+            String id = Json.req(o, "id", "area trigger");
+            return new AreaTrigger(id, Json.req(o, "location", "area trigger " + id), Json.strings(o, "stages"),
+                    Json.strings(o, "requires"), Json.strings(o, "forbids"), ActionDef.listFrom(o, "actions"));
         }
     }
 
@@ -100,7 +115,20 @@ public record SceneDef(String id, String title, String universe, int saga, int s
                 Json.map(o, "locations", Location::fromJson), Json.list(o, "npcs", NpcPlacement::fromJson),
                 Json.list(o, "stages", StageDef::fromJson), Json.list(o, "triggers", TriggerDef::fromJson),
                 Json.list(o, "chatter", ChatterDef::fromJson), Json.map(o, "clues", ClueDef::fromJson),
-                Json.str(o, "next_scene", null));
+                Json.str(o, "next_scene", null), Json.str(o, "site", id), Json.list(o, "area_triggers", AreaTrigger::fromJson));
+    }
+
+    /** Placements of a character in this scene (a character may stand in different places per stage). */
+    public List<NpcPlacement> placementsFor(String character) {
+        return npcs.stream().filter(n -> n.character().equals(character)).toList();
+    }
+
+    /** Whether the placement is present during the given stage. */
+    public boolean presentDuring(NpcPlacement n, String stageId) {
+        int stage = stageIndex(stageId);
+        int from = n.fromStage() == null ? 0 : stageIndex(n.fromStage());
+        int until = n.untilStage() == null ? Integer.MAX_VALUE : stageIndex(n.untilStage());
+        return stage >= from && stage < until;
     }
 
     public StageDef stage(String stageId) {
