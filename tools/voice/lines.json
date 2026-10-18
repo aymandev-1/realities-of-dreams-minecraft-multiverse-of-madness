@@ -21,6 +21,13 @@
     "seconds": 4.4
   },
   {
+    "key": "v_fdb2870d550f",
+    "speaker": "bram",
+    "text": "The trail's closed past the old posts, but the Elder says you two may pass. Mind the loose rock.",
+    "direction": "gruff but friendly, matter-of-fact",
+    "seconds": 6.0
+  },
+  {
     "key": "v_5e9702a58eaf",
     "speaker": "elara",
     "text": "And he's usually right.",
@@ -49,11 +56,32 @@
     "seconds": 0.96
   },
   {
+    "key": "v_d8d229140ffc",
+    "speaker": "elara",
+    "text": "I know this valley. I've crossed it since I was a child.",
+    "direction": "wistful, troubled",
+    "seconds": 3.12
+  },
+  {
+    "key": "v_21d60574703c",
+    "speaker": "elara",
+    "text": "I think something happened here that neither of us understands.",
+    "direction": "serious, unsettled",
+    "seconds": 2.88
+  },
+  {
     "key": "v_14ce6933c04c",
     "speaker": "elara",
     "text": "I wish every morning was this quiet.",
     "direction": "content, sighs happily",
     "seconds": 2.24
+  },
+  {
+    "key": "v_e275ee3520b1",
+    "speaker": "elara",
+    "text": "I'll mark this place on the map. Before we go any further, we need proper surveying gear from Orin.",
+    "direction": "practical, determined",
+    "seconds": 4.8
   },
   {
     "key": "v_28bd48815627",
@@ -63,11 +91,46 @@
     "seconds": 3.12
   },
   {
+    "key": "v_c25f56cb328d",
+    "speaker": "elara",
+    "text": "Look at this.",
+    "direction": "quietly, kneeling to look",
+    "seconds": 0.96
+  },
+  {
+    "key": "v_4ea220e9b28d",
+    "speaker": "elara",
+    "text": "Maybe that's exactly how it feels.",
+    "direction": "softly, hurt",
+    "seconds": 1.84
+  },
+  {
+    "key": "v_49240f6484c1",
+    "speaker": "elara",
+    "text": "Maybe. But the tracks stop here.",
+    "direction": "uneasy",
+    "seconds": 2.48
+  },
+  {
+    "key": "v_6a8f8a6738d3",
+    "speaker": "elara",
+    "text": "Nobody leaves a lantern behind out here. Look at those rocks. Someone climbed them.",
+    "direction": "worried, then pointing",
+    "seconds": 4.5
+  },
+  {
     "key": "v_f27d2ebfab4c",
     "speaker": "elara",
     "text": "Nothing in Firstbrook is heavy enough to do that.",
     "direction": "unsettled",
     "seconds": 2.32
+  },
+  {
+    "key": "v_bdb293578231",
+    "speaker": "elara",
+    "text": "Or to the equipment you're carrying. We don't know yet.",
+    "direction": "cautious, thoughtful",
+    "seconds": 2.64
   },
   {
     "key": "v_6ad28a56b7d7",
@@ -105,11 +168,39 @@
     "seconds": 2.24
   },
   {
+    "key": "v_bbfdfc948655",
+    "speaker": "elara",
+    "text": "Then this is the last place anyone saw them... if anyone did.",
+    "direction": "low, uneasy",
+    "seconds": 3.76
+  },
+  {
+    "key": "v_07a5ca18ba60",
+    "speaker": "elara",
+    "text": "Then where are the marks on the rock?",
+    "direction": "sharp, doubtful",
+    "seconds": 1.68
+  },
+  {
+    "key": "v_332e93524e9f",
+    "speaker": "elara",
+    "text": "These have stood for a hundred years. And there's another stone further up. Look at it.",
+    "direction": "troubled, then urgent",
+    "seconds": 4.3
+  },
+  {
     "key": "v_84e2f48b3452",
     "speaker": "elara",
     "text": "They saw it too. So it wasn't just the ground.",
     "direction": "quiet realisation",
     "seconds": 2.56
+  },
+  {
+    "key": "v_ebb322ac8b43",
+    "speaker": "elara",
+    "text": "Yes.",
+    "direction": "stunned, quiet",
+    "seconds": 0.72
   },
   {
     "key": "v_47e01bb41d97",
@@ -196,6 +287,27 @@
     "seconds": 1.36
   },
   {
+    "key": "v_8c8553511a43",
+    "speaker": "primordial_steve",
+    "text": "A bedroll, a cold fire and a pack. The scout was here.",
+    "direction": "taking it in, grim",
+    "seconds": 4.0
+  },
+  {
+    "key": "v_0719396865c5",
+    "speaker": "primordial_steve",
+    "text": "A scout's lantern. Still half full of oil.",
+    "direction": "examining, puzzled",
+    "seconds": 3.04
+  },
+  {
+    "key": "v_a6fc22ed324d",
+    "speaker": "primordial_steve",
+    "text": "A traveller?",
+    "direction": "curious",
+    "seconds": 1.28
+  },
+  {
     "key": "v_e269bd5e5627",
     "speaker": "primordial_steve",
     "text": "An earthquake?",
@@ -222,6 +334,13 @@
     "text": "Did you feel that?",
     "direction": "uneasy, quiet",
     "seconds": 1.2
+  },
+  {
+    "key": "v_6638a2a836e3",
+    "speaker": "primordial_steve",
+    "text": "Did you see that?",
+    "direction": "startled, breathless",
+    "seconds": 1.12
   },
   {
     "key": "v_f04e14b125e6",
@@ -266,6 +385,13 @@
     "seconds": 2.64
   },
   {
+    "key": "v_7f7c725285af",
+    "speaker": "primordial_steve",
+    "text": "One of the old survey markers. Snapped clean through.",
+    "direction": "surprised, examining",
+    "seconds": 3.36
+  },
+  {
     "key": "v_1ec9402cbbe6",
     "speaker": "primordial_steve",
     "text": "Orin says that every morning.",
@@ -308,10 +434,38 @@
     "seconds": 5.0
   },
   {
+    "key": "v_285a34956716",
+    "speaker": "primordial_steve",
+    "text": "They could've climbed the ridge.",
+    "direction": "reasoning it out",
+    "seconds": 1.52
+  },
+  {
+    "key": "v_664b53768813",
+    "speaker": "primordial_steve",
+    "text": "They reacted to me.",
+    "direction": "awed, uneasy",
+    "seconds": 1.6
+  },
+  {
     "key": "v_bf2bb777aca2",
     "speaker": "primordial_steve",
     "text": "What's wrong?",
     "direction": "concerned",
     "seconds": 0.96
+  },
+  {
+    "key": "v_18d45ba95dec",
+    "speaker": "primordial_steve",
+    "text": "You make it sound like the valley betrayed you.",
+    "direction": "gently",
+    "seconds": 2.32
+  },
+  {
+    "key": "v_b5a6f50c7f95",
+    "speaker": "primordial_steve",
+    "text": "You think somebody vanished?",
+    "direction": "disbelieving, half-whisper",
+    "seconds": 2.0
   }
 ]

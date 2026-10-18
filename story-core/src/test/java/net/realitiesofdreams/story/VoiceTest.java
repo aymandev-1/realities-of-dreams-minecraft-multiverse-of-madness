@@ -16,7 +16,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/** The voice recordings in assets/rod_voice: every entry has its file, Scenes 001 and 002 are fully voiced. */
+/** The voice recordings in assets/rod_voice: every entry has its file, Scenes 001 to 003 are fully voiced. */
 class VoiceTest {
     private static JsonObject read(String path) throws Exception {
         try (var in = VoiceTest.class.getResourceAsStream(path)) {
@@ -46,7 +46,7 @@ class VoiceTest {
     void scenesAreFullyVoiced() throws Exception {
         JsonObject sounds = read("/assets/rod_voice/sounds.json");
         JsonObject durations = read("/assets/rod_voice/durations.json");
-        for (String scene : new String[] {"mc001_s001", "mc001_s002"}) {
+        for (String scene : new String[] {"mc001_s001", "mc001_s002", "mc001_s003"}) {
             List<String[]> spoken = new ArrayList<>();
             collect(read("/rod-story/scenes/" + scene + ".json"), spoken);
             assertTrue(spoken.size() >= 20, scene + ": found " + spoken.size() + " spoken lines");

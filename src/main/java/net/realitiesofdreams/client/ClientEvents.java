@@ -4,11 +4,13 @@ import net.minecraft.client.player.Input;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.MovementInputUpdateEvent;
 import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import net.neoforged.neoforge.client.event.RenderHandEvent;
+import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.client.event.ViewportEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.realitiesofdreams.RealitiesOfDreams;
@@ -92,6 +94,14 @@ public final class ClientEvents {
     @SubscribeEvent
     public static void onHand(RenderHandEvent event) {
         if (CinematicPlayer.active()) event.setCanceled(true);
+    }
+
+    /** The cinematic camera sees Steve from outside, so his own name tag must not float above him. */
+    @SubscribeEvent
+    public static void onNameTag(RenderNameTagEvent event) {
+        if (CinematicPlayer.active() && event.getEntity() == net.minecraft.client.Minecraft.getInstance().player) {
+            event.setCanRender(TriState.FALSE);
+        }
     }
 
     /** During cinematics only our overlay is drawn: no hotbar, crosshair or chat. */
