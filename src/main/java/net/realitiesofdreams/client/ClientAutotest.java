@@ -195,7 +195,7 @@ public final class ClientAutotest {
         });
 
         // Primordial Steve in daylight, from the front and behind.
-        step("appearance outdoors", 0, () -> onServer(sp -> moveTo(sp, scene, -2, 6, 0)));
+        step("appearance outdoors", 0, () -> onServer(sp -> moveTo(sp, scene, -3, 1, 0)));
         step("third person front outdoors", 10, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_FRONT));
         step("primordial steve in the square (front)", 30, () -> shot("player_04_square_front"));
         step("third person back outdoors", 0, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_BACK));

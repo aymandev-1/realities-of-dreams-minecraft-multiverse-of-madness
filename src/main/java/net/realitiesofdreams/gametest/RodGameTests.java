@@ -143,6 +143,31 @@ public final class RodGameTests {
         }
     }
 
+    /** The few blocks the story depends on are protected; the rest of Firstbrook is ordinary Minecraft. */
+    @GameTest(template = "empty", batch = "firstbrook_build", timeoutTicks = 600)
+    public static void storyBlocksAreProtected(GameTestHelper helper) {
+        ServerLevel level = stageFirstbrook(helper);
+        try {
+            SceneDef s = scene001();
+            helper.assertTrue(SceneWorld.isProtected(level, s, rel(16, 0, 14)), "Steve's front door is not protected");
+            helper.assertTrue(SceneWorld.isProtected(level, s, rel(19, 0, 15)), "Steve's bed is not protected");
+            helper.assertTrue(SceneWorld.isProtected(level, s, rel(0, -1, 0)), "the well is not protected");
+            helper.assertTrue(SceneWorld.isProtected(level, s, rel(32, -1, 11)), "the eastern bridge is not protected");
+            helper.assertTrue(!SceneWorld.isProtected(level, s, rel(13, 0, 15)), "Steve's crafting table should be usable and breakable");
+            helper.assertTrue(!SceneWorld.isProtected(level, s, rel(-30, -1, 30)), "ordinary ground must stay minable");
+            helper.assertTrue(!SceneWorld.isProtected(level, s, rel(12, 1, 30)), "open air must stay buildable");
+            // Every house has a door and a roof; the watchtower has a ladder to its lookout.
+            helper.assertTrue(level.getBlockState(rel(-8, 0, -3)).getBlock() instanceof net.minecraft.world.level.block.DoorBlock, "Elder Rowan's door missing");
+            helper.assertTrue(level.getBlockState(rel(5, 0, -18)).getBlock() instanceof net.minecraft.world.level.block.DoorBlock, "guard station door missing");
+            helper.assertTrue(level.getBlockState(rel(-10, 5, -20)).is(Blocks.LADDER), "watchtower ladder missing");
+            helper.assertTrue(level.getBlockState(rel(-10, 10, -18)).is(Blocks.SPRUCE_PLANKS), "watchtower lookout missing");
+            helper.assertTrue(level.getBlockState(rel(16, 6, 17)).isAir() && !level.getBlockState(rel(16, 8, 17)).isAir(), "Steve's house has no pitched roof");
+            helper.succeed();
+        } finally {
+            unstage(level);
+        }
+    }
+
     /** Plays Scene 001 start to finish through the real StoryManager with the characters in the world. */
     @GameTest(template = "empty", batch = "firstbrook_play", timeoutTicks = 1200)
     public static void scene001PlaysThroughInFirstbrook(GameTestHelper helper) {

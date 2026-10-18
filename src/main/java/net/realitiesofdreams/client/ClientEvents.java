@@ -31,7 +31,9 @@ public final class ClientEvents {
                 && !(mc.screen instanceof net.minecraft.client.gui.screens.LevelLoadingScreen)) {
             // Give the world a moment to appear around the player before the story goes on.
             readyWait++;
-            if ((readyWait > 10 && mc.levelRenderer.hasRenderedAllSections()) || readyWait > 160) {
+            int view = mc.options.getEffectiveRenderDistance();
+            boolean chunksIn = mc.level.getChunkSource().getLoadedChunksCount() >= 0.7 * (2 * view + 1) * (2 * view + 1);
+            if ((readyWait > 10 && chunksIn && mc.levelRenderer.hasRenderedAllSections()) || readyWait > 400) {
                 readySent = true;
                 PacketDistributor.sendToServer(new net.realitiesofdreams.network.ClientReadyPayload());
             }

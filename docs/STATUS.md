@@ -1,64 +1,91 @@
 # Development Status
 
-Milestone: first in-game playtest of MC-001 Scene 001. Updated 2026-10-18.
+Milestone: **MC-001 vertical slice** (main menu → New Story → Scene 001 → explore Firstbrook →
+Save → Continue). Updated 2026-10-18.
 
-**Playable: Scene 001 only, out of Saga 1's 20 scenes.** Scenes 002–020 are not implemented; Scene 001
-ends by pointing at an unreleased Scene 002. How to play it: [PLAYTEST_WINDOWS.md](PLAYTEST_WINDOWS.md).
+**Playable: Scene 001 only, out of Saga 1's 20 scenes.** How to play it:
+[PLAYTEST_WINDOWS.md](PLAYTEST_WINDOWS.md). World layout: [WORLD_MC001.md](WORLD_MC001.md).
+Assets and placeholders: [ASSETS.md](ASSETS.md).
 
-Legend: **Verified** = covered by an automated test that passes in CI. **Implemented** = code is
-written and compiles, but nobody has played it yet on a real client. **Not started** = nothing yet.
+## How each feature is verified
 
-## Verified
-
-| Feature | How it is verified |
+| Level | Meaning |
 |---|---|
-| Character registry: all 76 collected skins plus Reuben, 151 entries with 20 generated TMMA skins and 55 generated Saga 1 NPCs | `ContentTest` (story-core) and `storyContentIsValid` game test |
-| Identity corrections: Jesse is MC-200, Movie Steve is MC-300, Reuben is Jesse's pig (vanilla pig model) | `ContentTest.ownerIdentityCorrectionsAreApplied` |
-| Every player-model character has a 64x64 texture (legacy 64x32 skins converted the way Minecraft does) | `ContentTest.everySkinTextureExists` |
-| Generated TMMA skins keep the uniform: every pixel below the head is identical to the template | Assertion in `tools/skins/tmma_faces.py`, run by `build_registry.py` |
-| The 11 named Saga 1 skins match your originals pixel for pixel (only hidden base-layer gaps made opaque) | `validate_named` in `build_registry.py`; results table in `docs/CHARACTER_REGISTRY.md` |
-| Generated Saga 1 NPCs: each type shares one outfit exactly, and no two share a face | `check_shared_outfit` and the uniqueness check in `tools/skins/npc_types.py` |
-| Saga 1 scenes can only use characters cast in Saga 1 (blocks later-saga characters and the Empowered form) | `ContentTest.saga1CastIsTheElevenNamedSkinsPlusGeneratedNpcs`, `ContentTest.aSaga1SceneCannotUseALaterSagaCharacter` |
-| Universe IDs MC-001 to MC-10000, with a deterministic profile for every universe | `UniverseTest` |
-| Dialogue graphs with branching replies and actions | `DialogueTest` |
-| Proximity dialogue: characters start talking when you come near, walk over first if far away, story conversations take priority over greetings, greetings play once | `Scene001PlaythroughTest`, `ProximityDirector` |
-| Companion chatter while travelling, never repeated | `Scene001PlaythroughTest` |
-| Cinematic timelines: smooth camera paths through every keyframe, short-way rotation, fades, subtitles, shake, sound cues | `CinematicTest` |
-| Scene 001 plays from arrival to completion in the story engine, including save, reload and resume mid-scene, and logging out during a cinematic | `Scene001PlaythroughTest` |
-| Story NPC entity: carries its character, is named, cannot be hurt, saves its character | `npcCarriesCharacterAndCannotBeHurt` game test |
-| MC-001 universe: its dimension type loads on a real server and is fixed at sunrise. The test server cannot open custom dimensions, so tests stage Firstbrook in the test world | `mc001UniverseIsDefined` game test, `DimensionDataTest` |
-| Firstbrook builds: Steve's house (bed, chest of food and gear, workstations, armour stand, item frames), Elara's family home, Rowan's house, forge, market, farms, river and bridge, wall, watchtower, northern hills with the ruin; every NPC is placed on solid ground | `firstbrookBuilds` game test |
-| Scene 001 plays through on the real server: opening cinematic, Elara following, the walking conversation, the farmer, the square, the ridge cinematic, "Did you feel that?", Elder Rowan walking over, rewards, journal and save | `scene001PlaysThroughInFirstbrook` game test, `Scene001PlaythroughTest` |
-| NPCs move: guards patrol, Elara keeps pace with the player while talking | `firstbrookCharactersMove` game test |
-| Logging out mid-conversation cannot soft-lock the scene: the conversation replays on return | `Scene001PlaythroughTest.loggingOutMidConversationCannotStickTheScene` |
-| Development controls (`/rod dev …`) need operator permission, so survival players never see them | Permission level 2 in `DevCommands` |
+| Designed | Planned and written down, no code |
+| Implemented | Code written |
+| Compiled | Builds into the mod jar |
+| Tested | Covered by an automated unit test (`story-core`) or in-game game test (dedicated server) |
+| Verified in-game | Exercised in the real Minecraft client by the automated playtest (`ClientAutotest`, run under a virtual display) with screenshots. Not yet a human on Windows. |
+| Blocked | Can't be done yet, and why |
 
-## Implemented, needs a play test on Windows
+## Vertical slice (the requested playtest deliverable)
 
-The client side runs only in a real game. CI starts the real client on a virtual screen
-(`client-playtest` job) and photographs every Saga 1 character and each beat of Scene 001; the
-screenshots are on the `claude/playtest-screenshots` branch. It still needs a human on Windows for:
+| # | Feature | Status | Evidence |
+|---|---|---|---|
+| 1 | Custom main menu: title, subtitle, New Story, Continue Story, Chapter / Saga Selection, Multiplayer, Settings, Credits, Exit Game; panorama of Firstbrook; gateway-ring motif; music; fades; keyboard navigation; language and accessibility buttons; vanilla menu one click away | Verified in-game | `menu_01_title.png`, `menu_04_chapter_select.png`, `menu_05_credits.png` |
+| 2 | New Story creates an isolated story save (`saves/realities_of_dreams_mc001`) and opens it; an existing story save is kept as a dated backup; ordinary saves untouched | Verified in-game | autotest presses New Story and the confirm button; log "Previous story save kept as …_backup_…" |
+| 2 | Continue Story opens the story save at its checkpoint; disabled (with a tooltip) when there is none | Verified in-game | `menu_03_continue_available.png`, `continue_01_back_in_firstbrook.png`; progress, journal and appearance checked after reload |
+| 3 | Automatic MC-001 entry: no world creation screen, no commands, no teleporting; Firstbrook built and the valley generated behind the loading screen | Verified in-game | autotest asserts the player arrives in `realitiesofdreams:mc_001` and the opening starts by itself |
+| 4 | Primordial Steve appearance (classic wide model, collected skin, first-person arm and third person, armour layers unaffected); server-assigned and synced to all players; account skin untouched | Verified in-game | `player_01_first_person_arm.png`, `player_02…05`; autotest checks the skin texture and model |
+| 5 | Navigable, recognisable Firstbrook with paths connecting every door | Verified in-game | `tour_*.png` (23 views); game test `firstbrookBuilds` |
+| 6 | Steve's furnished house (bed, breakfast chest, gear, workstations, armour stand, trophies) | Tested + verified in-game | game test `firstbrookBuilds`; `tour_19_steve_house_inside.png` |
+| 7 | Elara and Rowan with their imported skins | Verified in-game | `skins_*.png` line-ups, Scene 001 shots |
+| 8 | Village routines: work, patrols, villagers walking between home, work and market and opening doors | Tested + verified in-game (movement); door use not separately measured | game test `firstbrookCharactersMove`; autotest checks a routine villager moved |
+| 9 | Automatic Scene 001 conversations and subtitles (no clicking) | Tested + verified in-game | `scene001PlaysThroughInFirstbrook`, `Scene001PlaythroughTest`, `s001_*.png` |
+| 10 | Scene 001 quest and completion (rewards, journal, unlocks) | Tested + verified in-game | same |
+| 11 | Save and reload (mid-scene and after completion) | Tested + verified in-game | `Scene001PlaythroughTest` (mid-scene), autotest Save and Quit → Continue |
+| 12 | Essential textures, UI assets, music and sounds packaged in the mod jar | Verified in-game | [ASSETS.md](ASSETS.md) lists every file and which are placeholders |
 
-- How the cinematic camera, fades, subtitles and camera shake feel at full frame rate.
-- Typewriter subtitles, the V key to continue, the objective tracker and arrow.
-- Sound balance. Placeholders: vanilla sounds (not positioned in the world), birds and lantern sway
-  suggested with particles, no voice acting (subtitles only), no custom animations.
+## World
 
-## Not started
+| Feature | Status | Notes |
+|---|---|---|
+| MC-001 terrain: authored shape over vanilla generation (caves, ores, biomes), blended into natural land | Tested + verified in-game | `TerrainTest`, `DimensionDataTest`; `tour_01`, `tour_02`, `tour_14`–`18` |
+| Fixed authored biomes around Firstbrook | Verified in-game | plains / meadow / taiga / forest / sunflower plains |
+| River, waterfall, northern hills and trail, ridge ruin, Southmere lake, mountains | Verified in-game | `tour_14`–`18` |
+| Firstbrook placement registry and modular builders (houses with pitched roofs, interiors per household) | Tested + verified in-game | `MenuContentTest.firstbrookLayoutIsConsistent` (no overlaps, nobody stands in a wall) |
+| Elder Rowan's house and council fire, Elara's home, Orin's workshop and house, Bram's guard station, watchtower, gate, storehouse, market, bakery, two-storey house, farmhouse, fields, barn, animal pens, training ground, woodcutter's camp, construction site, dock | Verified in-game | `tour_*.png` |
+| Structure-template override per piece | Implemented, compiled | No templates authored yet, so not exercised |
+| Protected story blocks (doors, bed, well, lantern, bridge, gate, ruin) against survival breaking/placing and explosions | Implemented, compiled | Not covered by an automated test yet |
+| Chunk-aware NPCs, no permanent loading | Implemented | NPCs only exist in loaded chunks; nothing is force-loaded outside game tests |
+| Awakening Valley camps, damaged bridge, abandoned campsite | Designed | [WORLD_MC001.md](WORLD_MC001.md) |
+| Ancient Northern Monument | Designed | Scenes 006–007 |
+| Sylvaris Forest Outpost | Designed | Scene 010 |
+| Valebridge (city, castle, throne room, council, archive, harbour) | Designed | Scenes 012–017 |
+| Stonecrown, Solkar, Veyrath, Thalassia presences | Designed | Scenes 013–017 |
+| Ancient Gateway Chamber | Designed | Scenes 018–019 |
 
-- Saga 1 Scenes 002–020, and every later saga.
-- Combat encounters, villains and boss fights (companion combat lines exist, but nothing to fight yet).
-- Universes other than MC-001 as playable places.
-- Multiplayer-specific story handling: progress is per player and works with several players, but
-  shared NPCs follow whoever triggered them; co-op scene sync is not designed yet.
-- Voice acting, music and custom sound events.
-- Story Expansion 1 systems (relationships, Herobrine campaign, TMMA investigations, side
-  campaigns). The engine supports flags, triggers and optional dialogue they will build on.
+## Story, characters and engine (carried over, still passing)
+
+| Feature | Status |
+|---|---|
+| Character registry: 151 entries, 11 named Saga 1 skins pixel-identical to the originals, 55 generated Saga 1 NPCs | Tested |
+| Saga 1 casting rules (no later-saga characters, no Empowered form) | Tested |
+| Dialogue graphs, proximity triggers, walking conversations, companion chatter, cinematics, checkpoints | Tested + verified in-game |
+| Logging out mid-conversation or mid-cinematic cannot soft-lock a scene | Tested |
+| Development controls need operator permission | Implemented |
+
+## Not started or blocked
+
+| Feature | Status | Why / next step |
+|---|---|---|
+| Scenes 002–020 | Not started | Next milestone; Scene 002's opening line already flows from Rowan's arrival |
+| NPCs sleeping and waking on a day/night cycle | Blocked | MC-001 is fixed at sunrise; needs the per-scene time-of-day system planned for Scene 008 |
+| NPCs reacting to danger, rescuing civilians, combat | Not started | Needs Scene 011's raiders |
+| Voice acting | Not started | Every line has a speaker id and subtitle |
+| Composed music score, hand-drawn title art | Not started | Original synthesised/generated placeholders ship now |
+| Journal and investigation screens | Not started | Steve's journal is a vanilla written book |
+| Six-civilisation banners, insignia, ancient inscriptions, gateway effects, custom particles | Not started | Scenes 006+ |
+| Controller support | Blocked | Minecraft Java has no built-in controller support |
+| Co-op story sync | Partly | Progress is per player and server-authoritative; in a story world only the host (or a dedicated story server's first player) is Primordial Steve; shared NPCs follow whoever triggered them |
+| Human playtest on Windows | Waiting | Everything above marked "verified in-game" was played by the automated client, not a person |
 
 ## Open questions for the story owner
 
-- **Scene 001 script.** "A Morning in Firstbrook" uses the Saga 1 screenplay's lines. Changes to the
-  script are data edits in `rod-story/scenes/mc001_s001.json`, with no code changes.
+- **Scene 001 script.** Uses the Saga 1 screenplay's lines verbatim; changes are data edits in
+  `rod-story/scenes/mc001_s001.json`.
+- **Firstbrook's extra residents.** The Millers, the bakery, the weaver and the Hollow family's new
+  house are set dressing invented for the slice; rename or remove freely in `rod-story/sites/firstbrook.json`.
 - **Duplicate skin:** Oblivion Steve and Voidwalker Steve (MC-073) use the identical skin file.
 - **MC-002:** both Prehistoric Steve and Witch Alex are labelled MC-002. Is that intended?
 - **Witch Alex's skin** came from Planet Minecraft; check its licence before a public release.
