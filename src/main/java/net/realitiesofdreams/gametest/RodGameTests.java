@@ -254,7 +254,11 @@ public final class RodGameTests {
                 helper.assertTrue(net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(level.getBlockState(at).getBlock()).toString().equals(clue.block()),
                         clue.id() + " block not placed at " + at);
                 // Examine it the way a player does: right-click the block.
-                helper.assertTrue(m.onBlockUse(player, at), clue.id() + " did not respond to a right-click");
+                m.onBlockUse(player, at);
+                helper.assertTrue(ModAttachments.story(player).cluesFound().contains(clue.id()), clue.id() + " did not respond to a right-click");
+                if (clue.id().equals("tower_report")) {
+                    helper.assertTrue(level.getBlockState(at).getValue(net.minecraft.world.level.block.LecternBlock.HAS_BOOK), "the night watch's report is not on the lectern");
+                }
                 finishDialogues(m, player);
             }
             expectStage(helper, m, player, "bram");

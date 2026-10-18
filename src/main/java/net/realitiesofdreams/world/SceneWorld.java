@@ -96,7 +96,10 @@ public final class SceneWorld {
     /** Permanent changes to the world caused by story events, each applied once per world. */
     public static void applyChange(ServerLevel level, SceneDef scene, String change) {
         SceneWorldData data = SceneWorldData.get(level);
-        if (data.isDone("change:" + change)) return;
+        if (data.isDone("change:" + change)) {
+            refreshDetails(level);
+            return;
+        }
         BlockPos a = ModDimensions.anchor(scene);
         switch (change) {
             case "mc001_s002_aftermath" -> aftermath(level, scene, a);
@@ -140,6 +143,38 @@ public final class SceneWorld {
             }
             level.setBlock(at, state, FLAGS);
         }
+        reportBook(level, scene);
+    }
+
+    /**
+     * Details added to the world after a save was first made: run whenever a story world is entered.
+     * Safe to repeat. Puts the night watch's report on its lectern (added after Scene 002 shipped).
+     */
+    public static void refreshDetails(ServerLevel level) {
+        SceneDef s2 = net.realitiesofdreams.Story.content().scene("mc001_s002");
+        if (s2 != null && SceneWorldData.get(level).isDone("change:mc001_s002_aftermath")) reportBook(level, s2);
+    }
+
+    /** The night watch's written report, readable on the lectern by the watchtower. */
+    private static void reportBook(ServerLevel level, SceneDef scene) {
+        SceneDef.ClueDef clue = scene.clues().get("tower_report");
+        if (clue == null) return;
+        BlockPos at = ModDimensions.absoluteBlock(scene, clue.pos());
+        var state = level.getBlockState(at);
+        if (!(state.getBlock() instanceof net.minecraft.world.level.block.LecternBlock)
+                || state.getValue(net.minecraft.world.level.block.LecternBlock.HAS_BOOK)) return;
+        java.util.List<net.minecraft.server.network.Filterable<net.minecraft.network.chat.Component>> pages = new java.util.ArrayList<>();
+        for (String page : new String[] {
+                "NIGHT WATCH REPORT\nNorth Watchtower\n\nFirst tremor two hours before dawn. Short, but the tower swayed.",
+                "Second tremor soon after, stronger. Lantern on the square knocked loose.\n\nThen a light beneath the stones of the northern ridge, under the old ruin.",
+                "Pale, like moonlight on water, but there was no moon on the ridge. Gone within moments.\n\nNo sound with it.",
+                "Rockfall heard on the northern path near dawn. Captain Bram informed.\n\nSigned,\nthe night watch"}) {
+            pages.add(net.minecraft.server.network.Filterable.passThrough(net.minecraft.network.chat.Component.literal(page)));
+        }
+        net.minecraft.world.item.ItemStack book = new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.WRITTEN_BOOK);
+        book.set(net.minecraft.core.component.DataComponents.WRITTEN_BOOK_CONTENT, new net.minecraft.world.item.component.WrittenBookContent(
+                net.minecraft.server.network.Filterable.passThrough("Night Watch Report"), "Firstbrook Watch", 0, pages, true));
+        net.minecraft.world.level.block.LecternBlock.tryPlaceBook(null, level, at, state, book);
     }
 
     /** Scene 002's light beneath the ruin on the ridge: on for a moment during the compass cinematic, then gone. */

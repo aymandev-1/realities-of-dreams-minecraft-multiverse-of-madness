@@ -149,6 +149,7 @@ public final class StoryManager {
         ServerLevel level = scene == null ? null : ModDimensions.level(p.server, scene);
         if (level == null) return;
         SceneWorld.ensureBuilt(level, scene);
+        SceneWorld.refreshDetails(level);
         if (active != null) {
             NpcDirector.reconcile(level, active, state);
             if (p.level() != level) teleportToCheckpoint(p, active, state);
@@ -450,7 +451,8 @@ public final class StoryManager {
             BlockPos pos = ModDimensions.absoluteBlock(scene, scene.clues().get(id).pos());
             if (pos.distSqr(clicked) <= 2.25) {
                 if (!state.cluesFound().contains(id) && !runtime(p).busy()) onClue(p, id);
-                return true;
+                // A clue that is something to read (the report on its lectern) opens as well.
+                return !(p.level().getBlockState(clicked).getBlock() instanceof net.minecraft.world.level.block.LecternBlock);
             }
         }
         return false;
