@@ -20,6 +20,10 @@
     "bram": {
       "voice": "Hank Harvey",
       "voice_id": "KvaCHcJoMXfOzwtsULOZ"
+    },
+    "orin": {
+      "voice": "Grampa Werthers - Old & Cranky",
+      "voice_id": "MKlLqCItoCkvdhrxgtLv"
     }
   },
   "prompting": "The prompt is the subtitle text exactly, preceded by the direction in square brackets, e.g. \"[uneasy, quiet] Did you feel that?\". Directions are recorded per line in lines.json."

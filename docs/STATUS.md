@@ -72,7 +72,7 @@ Assets and placeholders: [ASSETS.md](ASSETS.md).
 | Scenes 003–020 | Not started | Next milestone: Scene 003, Elara's Northern Trail |
 | NPCs sleeping and waking on a day/night cycle | Blocked | MC-001 is fixed at sunrise; needs the per-scene time-of-day system planned for Scene 008 |
 | NPCs reacting to danger, rescuing civilians, combat | Not started | Needs Scene 011's raiders |
-| Voice acting | Scenes 001 to 003 voiced (67 lines); later scenes not yet | Plays on the Voice/Speech volume slider; a line without a recording shows its subtitle only |
+| Voice acting | Scenes 001 to 004 voiced (82 lines); later scenes not yet | Plays on the Voice/Speech volume slider; a line without a recording shows its subtitle only |
 | Composed music score, hand-drawn title art | Not started | Original synthesised/generated placeholders ship now |
 | Journal and investigation screens | Not started | Steve's journal is a vanilla written book |
 | Six-civilisation banners, insignia, ancient inscriptions, gateway effects, custom particles | Not started | Scenes 006+ |

@@ -48,6 +48,13 @@
       }
     ]
   },
+  "v_94ff93bb7da8": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_94ff93bb7da8"
+      }
+    ]
+  },
   "v_43c01f9a55c6": {
     "sounds": [
       {
@@ -195,6 +202,13 @@
       }
     ]
   },
+  "v_1508f4c6e53f": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_1508f4c6e53f"
+      }
+    ]
+  },
   "v_ebb322ac8b43": {
     "sounds": [
       {
@@ -283,6 +297,69 @@
     "sounds": [
       {
         "name": "rod_voice:firstbrook_farmer_1/v_ee035f42c275"
+      }
+    ]
+  },
+  "v_b05a69b66304": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_b05a69b66304"
+      }
+    ]
+  },
+  "v_a51a067cf02c": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_a51a067cf02c"
+      }
+    ]
+  },
+  "v_7c3325dd447b": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_7c3325dd447b"
+      }
+    ]
+  },
+  "v_640bdb28c20c": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_640bdb28c20c"
+      }
+    ]
+  },
+  "v_0e43dbfe52f0": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_0e43dbfe52f0"
+      }
+    ]
+  },
+  "v_2c717c42e9b5": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_2c717c42e9b5"
+      }
+    ]
+  },
+  "v_599bf7d86150": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_599bf7d86150"
+      }
+    ]
+  },
+  "v_d0cf37442379": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_d0cf37442379"
+      }
+    ]
+  },
+  "v_71289f51446d": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_71289f51446d"
       }
     ]
   },
@@ -384,6 +461,13 @@
       }
     ]
   },
+  "v_f4b918f5f28f": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_f4b918f5f28f"
+      }
+    ]
+  },
   "v_7f7c725285af": {
     "sounds": [
       {
@@ -402,6 +486,20 @@
     "sounds": [
       {
         "name": "rod_voice:primordial_steve/v_64f4a175ff7b"
+      }
+    ]
+  },
+  "v_eef8611849ff": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_eef8611849ff"
+      }
+    ]
+  },
+  "v_a70b89393553": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_a70b89393553"
       }
     ]
   },
@@ -444,6 +542,13 @@
     "sounds": [
       {
         "name": "rod_voice:primordial_steve/v_664b53768813"
+      }
+    ]
+  },
+  "v_1435838f604c": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_1435838f604c"
       }
     ]
   },

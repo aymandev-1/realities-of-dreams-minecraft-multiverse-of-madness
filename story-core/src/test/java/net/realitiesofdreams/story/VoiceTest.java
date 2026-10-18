@@ -46,10 +46,10 @@ class VoiceTest {
     void scenesAreFullyVoiced() throws Exception {
         JsonObject sounds = read("/assets/rod_voice/sounds.json");
         JsonObject durations = read("/assets/rod_voice/durations.json");
-        for (String scene : new String[] {"mc001_s001", "mc001_s002", "mc001_s003"}) {
+        for (String scene : new String[] {"mc001_s001", "mc001_s002", "mc001_s003", "mc001_s004"}) {
             List<String[]> spoken = new ArrayList<>();
             collect(read("/rod-story/scenes/" + scene + ".json"), spoken);
-            assertTrue(spoken.size() >= 20, scene + ": found " + spoken.size() + " spoken lines");
+            assertTrue(spoken.size() >= 10, scene + ": found " + spoken.size() + " spoken lines");
             for (String[] line : spoken) {
                 String key = VoiceKey.of(line[0], line[1]);
                 assertTrue(sounds.has(key), scene + ": no recording for " + line[0] + ": " + line[1]);

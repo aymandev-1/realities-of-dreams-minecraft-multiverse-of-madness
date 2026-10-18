@@ -49,6 +49,13 @@
     "seconds": 0.8
   },
   {
+    "key": "v_94ff93bb7da8",
+    "speaker": "elara",
+    "text": "He's serious, Steve.",
+    "direction": "quietly, nudging him",
+    "seconds": 1.28
+  },
+  {
     "key": "v_43c01f9a55c6",
     "speaker": "elara",
     "text": "I hope so.",
@@ -196,6 +203,13 @@
     "seconds": 2.56
   },
   {
+    "key": "v_1508f4c6e53f",
+    "speaker": "elara",
+    "text": "We found markings near the northern path.",
+    "direction": "earnest, getting to the point",
+    "seconds": 2.24
+  },
+  {
     "key": "v_ebb322ac8b43",
     "speaker": "elara",
     "text": "Yes.",
@@ -285,6 +299,69 @@
     "text": "Morning, Steve!",
     "direction": "calling out warmly from a field",
     "seconds": 1.36
+  },
+  {
+    "key": "v_b05a69b66304",
+    "speaker": "orin",
+    "text": "Before you ask, no, I haven't worked out what happened.",
+    "direction": "gruff, not looking up from his work",
+    "seconds": 4.1
+  },
+  {
+    "key": "v_a51a067cf02c",
+    "speaker": "orin",
+    "text": "Glad we've established that.",
+    "direction": "dry, sardonic",
+    "seconds": 1.92
+  },
+  {
+    "key": "v_7c3325dd447b",
+    "speaker": "orin",
+    "text": "Markings?",
+    "direction": "pausing, suddenly interested",
+    "seconds": 1.2
+  },
+  {
+    "key": "v_640bdb28c20c",
+    "speaker": "orin",
+    "text": "That's not a natural crack.",
+    "direction": "low, troubled, examining it closely",
+    "seconds": 2.16
+  },
+  {
+    "key": "v_0e43dbfe52f0",
+    "speaker": "orin",
+    "text": "This time, don't.",
+    "direction": "firm, flat warning",
+    "seconds": 1.52
+  },
+  {
+    "key": "v_2c717c42e9b5",
+    "speaker": "orin",
+    "text": "Very serious. I want measurements before somebody destroys the evidence.",
+    "direction": "grave, deliberate",
+    "seconds": 5.1
+  },
+  {
+    "key": "v_599bf7d86150",
+    "speaker": "orin",
+    "text": "Where did you find that?",
+    "direction": "sharp, serious now",
+    "seconds": 1.6
+  },
+  {
+    "key": "v_d0cf37442379",
+    "speaker": "orin",
+    "text": "You can break most stone with a good pickaxe.",
+    "direction": "gruff, lecturing",
+    "seconds": 2.96
+  },
+  {
+    "key": "v_71289f51446d",
+    "speaker": "orin",
+    "text": "Your faces asked for you.",
+    "direction": "dry, deadpan",
+    "seconds": 2.24
   },
   {
     "key": "v_8c8553511a43",
@@ -385,6 +462,13 @@
     "seconds": 2.64
   },
   {
+    "key": "v_f4b918f5f28f",
+    "speaker": "primordial_steve",
+    "text": "On a rock near the ridge.",
+    "direction": "plain, matter-of-fact",
+    "seconds": 1.68
+  },
+  {
     "key": "v_7f7c725285af",
     "speaker": "primordial_steve",
     "text": "One of the old survey markers. Snapped clean through.",
@@ -404,6 +488,20 @@
     "text": "Probably nothing.",
     "direction": "unconvinced, brushing it off",
     "seconds": 1.2
+  },
+  {
+    "key": "v_eef8611849ff",
+    "speaker": "primordial_steve",
+    "text": "That's not normal.",
+    "direction": "uneasy, staring",
+    "seconds": 1.52
+  },
+  {
+    "key": "v_a70b89393553",
+    "speaker": "primordial_steve",
+    "text": "That's usually the idea.",
+    "direction": "wry",
+    "seconds": 1.68
   },
   {
     "key": "v_350289e73479",
@@ -445,6 +543,13 @@
     "speaker": "primordial_steve",
     "text": "They reacted to me.",
     "direction": "awed, uneasy",
+    "seconds": 1.6
+  },
+  {
+    "key": "v_1435838f604c",
+    "speaker": "primordial_steve",
+    "text": "We haven't asked yet.",
+    "direction": "mildly amused",
     "seconds": 1.6
   },
   {
