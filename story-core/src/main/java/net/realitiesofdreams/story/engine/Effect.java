@@ -24,6 +24,9 @@ public sealed interface Effect {
     record Particles(String particle, String location, int count, double spread) implements Effect {}
     record ShowTitle(String title, String subtitle) implements Effect {}
     record GiveItem(String item, int count, String name, List<String> lore) implements Effect {}
+
+    /** Puts an item the player carries into their hand, e.g. raising the compass for a cinematic. */
+    record HoldItem(String item) implements Effect {}
     record PlaySound(String sound, float volume, float pitch) implements Effect {}
     record WorldChange(String change) implements Effect {}
     record Message(String text) implements Effect {}

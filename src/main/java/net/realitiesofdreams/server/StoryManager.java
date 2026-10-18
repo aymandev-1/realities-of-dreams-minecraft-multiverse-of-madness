@@ -703,6 +703,7 @@ public final class StoryManager {
                     p.connection.send(new ClientboundSetTitleTextPacket(Component.literal(t.title()).withStyle(ChatFormatting.GOLD)));
                 }
                 case Effect.GiveItem g -> giveItem(p, g);
+                case Effect.HoldItem h -> holdItem(p, h.item());
                 case Effect.PlaySound s -> p.playNotifySound(SoundEvent.createVariableRangeEvent(ResourceLocation.parse(s.sound())),
                         SoundSource.MASTER, s.volume(), s.pitch());
                 case Effect.WorldChange w -> {
@@ -769,6 +770,21 @@ public final class StoryManager {
         }
         StoryContent.JournalEntry e = content.journal(entryId);
         p.sendSystemMessage(Component.literal("Journal updated: " + (e == null ? entryId : e.title())).withStyle(ChatFormatting.YELLOW));
+    }
+
+    /** Moves the first matching item into the player's selected hotbar slot. */
+    private static void holdItem(ServerPlayer p, String itemId) {
+        Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemId));
+        var inv = p.getInventory();
+        if (inv.getSelected().is(item)) return;
+        for (int i = 0; i < inv.items.size(); i++) {
+            if (!inv.items.get(i).is(item)) continue;
+            ItemStack held = inv.items.get(inv.selected);
+            inv.items.set(inv.selected, inv.items.get(i));
+            inv.items.set(i, held);
+            inv.setChanged();
+            return;
+        }
     }
 
     private static void giveItem(ServerPlayer p, Effect.GiveItem g) {

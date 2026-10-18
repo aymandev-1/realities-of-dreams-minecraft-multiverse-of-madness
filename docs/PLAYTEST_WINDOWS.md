@@ -1,15 +1,16 @@
 # Playtesting on Windows
 
 What you can play: the **Realities of Dreams main menu**, **New Story** into MC-001, the redesigned
-**Firstbrook**, and **Scene 001, "A Morning in Firstbrook"**, start to finish, with **Continue
-Story** afterwards. Scenes 002–020 are not implemented yet: after Scene 001 you are free to explore
-MC-001, and Chapter Selection shows the later scenes as locked.
+**Firstbrook**, **Scene 001, "A Morning in Firstbrook"** and **Scene 002, "The Warning from the
+North"**, which follows straight on, with **Continue Story** afterwards. Scenes 003–020 are not
+implemented yet: after Scene 002 you are free to explore MC-001, and Chapter Selection shows the
+later scenes as locked.
 
 You need Minecraft Java **1.21.1** with **NeoForge 21.1.x** (CI builds against 21.1.172).
 
 ## Option A: install the built mod jar (no development tools needed)
 
-1. Open the latest green run of **Build and test** for the `claude/gracious-bell-lrzhza` branch:
+1. Open the latest green run of **Build and test** for the `claude/saga1-scene-002` branch:
    <https://github.com/aymandev-1/realities-of-dreams-minecraft-multiverse-of-madness/actions>
 2. Under **Artifacts**, download `realitiesofdreams-mod-jar` and unzip it. It contains one file,
    `realitiesofdreams-0.1.0.jar`. That is the whole mod: textures, sounds, music and the world are
@@ -28,7 +29,7 @@ You need Minecraft Java **1.21.1** with **NeoForge 21.1.x** (CI builds against 2
    ```bat
    git clone https://github.com/aymandev-1/realities-of-dreams-minecraft-multiverse-of-madness.git
    cd realities-of-dreams-minecraft-multiverse-of-madness
-   git checkout claude/gracious-bell-lrzhza
+   git checkout claude/saga1-scene-002
    gradlew.bat build
    gradlew.bat runClient
    ```
@@ -39,7 +40,7 @@ You need Minecraft Java **1.21.1** with **NeoForge 21.1.x** (CI builds against 2
    - `gradlew.bat :story-core:test` runs the story engine and world-data unit tests.
    - `gradlew.bat runGameTestServer` runs the in-game tests on a headless server.
    - `gradlew.bat runClient -Prod.autotest=true` plays the whole thing automatically (menu, New Story,
-     Scene 001, save and Continue) and saves screenshots to `run\client\screenshots`.
+     Scenes 001 and 002, save and Continue) and saves screenshots to `run\autotest\screenshots` (it uses its own game folder, so your story save in `run\client` is never touched).
 
 ## What to test
 
@@ -72,9 +73,24 @@ Click **New Story**. You don't create a world, pick a game mode, type a command 
 If a story save already exists, New Story asks first and keeps the old save as a dated backup in
 your worlds list.
 
-### 3. Explore Firstbrook
+### 3. Scene 002: The Warning from the North
 
-After Scene 001, walk around: Steve's house, Elder Rowan's house and the council fire, Elara's home,
+It starts as soon as Scene 001 ends; nothing to click. If you finished Scene 001 in an older build,
+**Continue Story** starts Scene 002 for you.
+
+1. Elder Rowan reaches you and tells you about the tremor and the lights beneath the northern ruins.
+2. Objective "Inspect the signs of the disturbance" (0/3). Glowing spots mark three clues; press
+   **right-click** on each: the cracked wall north-east of the square, the surveyor's table with the
+   compass beside the well, and the night watch's report on the lectern by the watchtower.
+3. Bram arrives from his patrol with news of the rockfall on the northern path.
+4. Cinematic: the compass needle spins, then the camera finds a light flickering beneath the ruin on
+   the ridge.
+5. Elara, Steve and Rowan agree on the survey. "Mission Complete — The Northern Disturbance", the
+   Strange Compass, and a new journal entry.
+
+### 4. Explore Firstbrook
+
+After Scene 002, walk around: Steve's house, Elder Rowan's house and the council fire, Elara's home,
 Orin's workshop and house, Bram's guard station, the watchtower (climb it), the gate, the
 storehouse, the market, the bakery, the Millers' two-storey house, the farmhouse, fields, the barn
 and animal pens, the training ground, the woodcutter's camp, the house under construction, the
@@ -83,7 +99,7 @@ Villagers walk between home, work and the market, opening doors. Mining, buildin
 as normal; only a handful of story blocks (Steve's door and bed, the well, the bridge deck, the gate,
 the ruin) can't be broken in survival.
 
-### 4. Save and Continue
+### 5. Save and Continue
 
 Press Esc → **Save and Quit to Title**. The menu now shows **Continue Story** with your scene and
 objective. Click it: you are back where you were, still Primordial Steve. Try quitting in the middle
@@ -106,8 +122,9 @@ Cheats: ON** (Esc → Open to LAN), or use a creative copy of the save.
 | Command | What it does |
 |---|---|
 | `/rod status` | Show the current scene and stage |
+| `/rod scene restart [scene]` | Replay a scene, e.g. `/rod scene restart mc001_s002` (default: the current or last scene) |
 | `/rod dev restart` | Restart Scene 001 from the opening cinematic |
-| `/rod dev stage <id>` | Jump to a stage: `opening`, `leave_house`, `explore`, `to_square`, `foreshadow`, `feel_that`, `rowan` |
+| `/rod dev stage <id>` | Jump to a stage of the current scene. Scene 001: `opening`, `leave_house`, `explore`, `to_square`, `foreshadow`, `feel_that`, `rowan`. Scene 002: `warning`, `inspect`, `bram`, `compass`, `heading` |
 | `/rod dev progress` | Show the stage, flags, finished dialogues and fired triggers |
 | `/rod dev tp firstbrook` / `/rod dev tp house` | Teleport to the square or into Steve's house |
 | `/rod dev lineup` / `/rod dev lineup all` | Line up the Saga 1 characters to check skins |

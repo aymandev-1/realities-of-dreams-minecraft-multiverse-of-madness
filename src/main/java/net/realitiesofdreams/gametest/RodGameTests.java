@@ -296,11 +296,14 @@ public final class RodGameTests {
         StoryNpcEntity guard = NpcDirector.find(level, "firstbrook_guard_1");
         StoryNpcEntity elara = NpcDirector.find(level, "elara");
         helper.assertTrue(guard != null && elara != null, "characters missing");
+        // Earlier tests in this level may have left the guard anywhere on his round: start him at its first point.
+        BlockPos laneWest = rel(6, 0, 11);
+        guard.teleportTo(laneWest.getX() + 0.5, laneWest.getY(), laneWest.getZ() + 0.5);
         net.minecraft.world.phys.Vec3 guardStart = guard.position();
         teleport(player, level, 24, 12);
         helper.runAfterDelay(300, () -> {
             try {
-                helper.assertTrue(guard.position().distanceTo(guardStart) > 2, "the patrolling guard did not move");
+                helper.assertTrue(guard.position().distanceTo(guardStart) > 2, "the patrolling guard did not move: at " + guard.position() + " start " + guardStart + " activity " + guard.activity() + " follow " + guard.followTarget() + " approach " + guard.approachTarget() + " alive " + guard.isAlive() + " sleeping " + guard.isSleeping() + " stage " + m.state(player).stage());
                 helper.assertTrue(elara.distanceTo(player) < 6, "Elara did not keep up with Steve (" + elara.distanceTo(player) + " blocks)");
                 helper.assertTrue(!elara.isSleeping() && elara.isAlive(), "Elara is not active");
                 helper.succeed();
