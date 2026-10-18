@@ -1,0 +1,53 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.141' apply false
+}
+
+// `-Prod.coreOnly=true` skips the Minecraft toolchain so the story engine can be
+// built and tested on machines that cannot reach the NeoForge/Mojang servers.
+def coreOnly = providers.gradleProperty('rod.coreOnly').map { it.toBoolean() }.getOrElse(false)
+
+version = mod_version
+group = 'net.realitiesofdreams'
+base { archivesName = mod_id }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+// The engine in story-core has no Minecraft dependency; the mod ships it directly.
+sourceSets.main.java.srcDir 'story-core/src/main/java'
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+if (!coreOnly) {
+    apply plugin: 'net.neoforged.moddev'
+
+    neoForge {
+        version = project.neo_version
+
+        runs {
+            client {
+                client()
+                gameDirectory = project.file('run/client')
+            }
+            server {
+                server()
+                gameDirectory = project.file('run/server')
+                programArgument '--nogui'
+            }
+            gameTestServer {
+                type = 'gameTestServer'
+                gameDirectory = project.file('run/gametest')
+                systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            }
+            configureEach {
+                logLevel = org.slf4j.event.Level.INFO
+            }
+        }
+
+        mods {
+            "${mod_id}" {
+                sourceSet sourceSets.main
+            }
+        }
+    }
+}

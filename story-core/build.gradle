@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Minecraft ships Gson 2.10.1 at runtime.
+    compileOnly 'com.google.code.gson:gson:2.10.1'
+    testImplementation 'com.google.code.gson:gson:2.10.1'
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+// Tests read the real game content shipped in the mod's resources.
+sourceSets.test.resources.srcDir '../src/main/resources'
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+test {
+    useJUnitPlatform()
+    testLogging { events 'failed'; exceptionFormat 'full' }
+}

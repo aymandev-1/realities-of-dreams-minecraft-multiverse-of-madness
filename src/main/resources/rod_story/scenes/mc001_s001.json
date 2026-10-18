@@ -1,0 +1,273 @@
+{
+  "scene": {
+    "id": "mc001_s001",
+    "title": "Tremors at Dawn",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 1,
+    "canon_status": "provisional: written from the MC-001 cast because no Scene 001 script was supplied; replace the dialogue with canon when available",
+    "dimension": "realitiesofdreams:mc_001",
+    "anchor": [0, 64, 0],
+    "arrival": {"pos": [0, 0, 26], "yaw": 180},
+    "next_scene": "unreleased:mc001_s002",
+    "locations": {
+      "arrival": {"pos": [0, 0, 26], "radius": 3},
+      "square": {"pos": [0, 0, 0], "radius": 6},
+      "rowan_square": {"pos": [-3, 0, 3], "radius": 2},
+      "forge": {"pos": [11, 0, 7], "radius": 3},
+      "market": {"pos": [-6, 0, 11], "radius": 3},
+      "well_bench": {"pos": [6, 0, -3], "radius": 2},
+      "market_east": {"pos": [-3, 0, 13], "radius": 2},
+      "north_gate": {"pos": [0, 0, -21], "radius": 5},
+      "elara_post": {"pos": [3, 0, -19], "radius": 2},
+      "trail_mid": {"pos": [0, 0, -34], "radius": 4},
+      "shrine": {"pos": [0, 1, -50], "radius": 8},
+      "maren_arrival": {"pos": [3, 0, -1], "radius": 2}
+    },
+    "npcs": [
+      {"character": "elder_rowan", "location": "rowan_square", "yaw": 180},
+      {"character": "bram", "location": "forge", "yaw": 90},
+      {"character": "orin", "location": "market", "yaw": 180},
+      {"character": "liora", "location": "well_bench", "yaw": 160},
+      {"character": "sahir", "location": "market_east", "yaw": -150},
+      {"character": "elara", "location": "elara_post", "yaw": 180},
+      {"character": "captain_maren", "location": "maren_arrival", "from_stage": "report", "yaw": 160}
+    ],
+    "clues": {
+      "rift_stone": {"name": "Cracked Lodestone", "pos": [0, 1, -50], "block": "minecraft:lodestone", "dialogue": "clue_rift_stone"},
+      "journal_page": {"name": "Pinned Journal Page", "pos": [4, 1, -46], "block": "minecraft:lectern", "dialogue": "clue_journal_page"},
+      "footprints": {"name": "Footprints in Soul Soil", "pos": [-4, 0, -54], "block": "minecraft:soul_soil", "dialogue": "clue_footprints"}
+    },
+    "stages": [
+      {
+        "id": "arrival",
+        "checkpoint": "arrival",
+        "on_enter": [{"type": "start_cinematic", "id": "mc001_s001_opening"}],
+        "complete": {"type": "cinematic_end", "value": "mc001_s001_opening"}
+      },
+      {
+        "id": "find_rowan",
+        "objective": "Find Elder Rowan in the village square",
+        "target": "square",
+        "complete": {"type": "dialogue_end", "value": "rowan_greeting"}
+      },
+      {
+        "id": "meet_elara",
+        "objective": "Meet Elara at the north gate",
+        "target": "north_gate",
+        "complete": {"type": "dialogue_end", "value": "elara_meet"}
+      },
+      {
+        "id": "to_shrine",
+        "objective": "Follow the old trail to the Hollow Shrine",
+        "target": "shrine",
+        "chatter": true,
+        "complete": {"type": "reach", "value": "shrine"},
+        "on_complete": [{"type": "world_change", "id": "mc001_rift_scar"}]
+      },
+      {
+        "id": "tremor",
+        "checkpoint": "shrine",
+        "on_enter": [{"type": "start_cinematic", "id": "mc001_s001_tremor"}],
+        "complete": {"type": "cinematic_end", "value": "mc001_s001_tremor"}
+      },
+      {
+        "id": "examine",
+        "objective": "Examine the strange signs at the shrine",
+        "target": "shrine",
+        "checkpoint": "shrine",
+        "chatter": true,
+        "complete": {"type": "clues", "value": "rift_stone,journal_page,footprints"},
+        "on_complete": [{"type": "start_dialogue", "id": "elara_conclusion"}]
+      },
+      {
+        "id": "report",
+        "objective": "Return to Elder Rowan in the village",
+        "target": "square",
+        "chatter": true,
+        "on_enter": [{"type": "npc_spawn", "character": "captain_maren", "location": "maren_arrival"}],
+        "complete": {"type": "dialogue_end", "value": "rowan_report"}
+      },
+      {
+        "id": "closing",
+        "on_enter": [{"type": "start_cinematic", "id": "mc001_s001_closing"}],
+        "complete": {"type": "cinematic_end", "value": "mc001_s001_closing"},
+        "on_complete": [
+          {"type": "set_flag", "flag": "mc001.s001.complete"},
+          {"type": "title", "title": "Scene 001 Complete", "subtitle": "MC-001 · Tremors at Dawn"},
+          {"type": "sound", "sound": "minecraft:ui.toast.challenge_complete", "volume": "0.8"}
+        ]
+      }
+    ],
+    "triggers": [
+      {"id": "rowan_greeting", "character": "elder_rowan", "dialogue": "rowan_greeting", "radius": 12, "stages": ["find_rowan"], "priority": 10},
+      {"id": "elara_meet", "character": "elara", "dialogue": "elara_meet", "radius": 10, "stages": ["meet_elara"], "priority": 10},
+      {"id": "rowan_report", "character": "elder_rowan", "dialogue": "rowan_report", "radius": 12, "stages": ["report"], "priority": 10},
+      {"id": "bram_hello", "character": "bram", "dialogue": "bram_hello", "radius": 7, "approach": false, "ambient": true},
+      {"id": "orin_hello", "character": "orin", "dialogue": "orin_hello", "radius": 6, "approach": false, "ambient": true},
+      {"id": "liora_hello", "character": "liora", "dialogue": "liora_hello", "radius": 5, "approach": false, "ambient": true, "forbids": ["mc001.s001.saw_shrine"]},
+      {"id": "sahir_hello", "character": "sahir", "dialogue": "sahir_hello", "radius": 5, "approach": false, "ambient": true}
+    ],
+    "chatter": [
+      {"id": "elara_trail_1", "character": "elara", "stages": ["to_shrine"], "text": "The trail used to be lined with lanterns. My grandmother said the shrine is older than the village."},
+      {"id": "elara_trail_2", "character": "elara", "stages": ["to_shrine"], "text": "Listen. No birds. They always sing up here."},
+      {"id": "elara_trail_3", "character": "elara", "stages": ["to_shrine"], "text": "If this turns out to be a bad idea, I'm telling the Elder it was yours."},
+      {"id": "elara_near_shrine", "character": "elara", "stages": ["to_shrine"], "context": "near:trail_mid", "text": "See the top of the hill? Some of those stones are glowing."},
+      {"id": "elara_idle_examine", "character": "elara", "stages": ["examine"], "context": "idle", "text": "Take your time. I'll keep an eye on the trail."},
+      {"id": "elara_examine_moving", "character": "elara", "stages": ["examine"], "text": "Check everything. The stone, the lectern, the ground. Something was here."},
+      {"id": "elara_report_1", "character": "elara", "stages": ["report"], "text": "I keep looking back at the hill. I don't think it's done with us."},
+      {"id": "elara_report_2", "character": "elara", "stages": ["report"], "text": "M.D... whoever you are, I hope you found your way home."},
+      {"id": "elara_combat", "character": "elara", "context": "combat", "text": "Behind you! I've got your back."}
+    ]
+  },
+  "dialogues": {
+    "rowan_greeting": {
+      "critical": true,
+      "lines": {
+        "a": {"speaker": "elder_rowan", "text": "There you are. I saw you coming up the south road.", "next": "b"},
+        "b": {"speaker": "elder_rowan", "text": "You felt it too, didn't you? The ground, just before dawn.", "choices": [
+          {"text": "Felt what?", "next": "c1"},
+          {"text": "The tremor? I thought I'd dreamed it.", "next": "c2"}
+        ]},
+        "c1": {"speaker": "elder_rowan", "text": "A shiver through the earth, deep and old. Most slept through it. The animals didn't.", "next": "d"},
+        "c2": {"speaker": "elder_rowan", "text": "If it was a dream, half the village shared it. Bram swears his anvil sang.", "next": "d"},
+        "d": {"speaker": "elder_rowan", "text": "Tremors don't wander this valley without a reason.", "next": "e"},
+        "e": {"speaker": "elder_rowan", "text": "Elara keeps watch at the north gate. Go to her. She knows the old trail.", "actions": [{"type": "set_flag", "flag": "mc001.s001.met_rowan"}]}
+      }
+    },
+    "elara_meet": {
+      "critical": true,
+      "lines": {
+        "a": {"speaker": "elara", "text": "The Elder sent you? Good. I've been staring at that hill since the shaking stopped.", "next": "b"},
+        "b": {"speaker": "elara", "text": "There's an old shrine up the trail. Nobody goes there anymore. But last night I'd swear I saw a light.", "choices": [
+          {"text": "Let's go and look.", "next": "c1", "actions": [{"type": "npc_follow", "character": "elara"}]},
+          {"text": "What kind of light?", "next": "c2", "actions": [{"type": "npc_follow", "character": "elara"}]}
+        ]},
+        "c1": {"speaker": "elara", "text": "That's what I hoped you'd say. Stay close, the trail's overgrown."},
+        "c2": {"speaker": "elara", "text": "Purple. Like the edge of a dream, if dreams could burn. Come on, I'd rather see it with someone."}
+      }
+    },
+    "clue_rift_stone": {
+      "lines": {
+        "a": {"speaker": "elara", "text": "This lodestone wasn't cracked yesterday. Feel that? It's warm. And it's humming.", "next": "b"},
+        "b": {"speaker": "elara", "text": "Whatever shook the valley came from right here."}
+      }
+    },
+    "clue_journal_page": {
+      "lines": {
+        "a": {"speaker": "elara", "text": "A page, tucked under the lectern. The ink has almost faded.", "next": "b"},
+        "b": {"speaker": "elara", "text": "\"The worlds are stacked like pages, and I have walked between them. If you find this, I was here. M.D.\"", "next": "c",
+              "actions": [{"type": "give_item", "item": "minecraft:paper", "name": "Torn Journal Page", "lore": "\"The worlds are stacked like pages,|and I have walked between them.\"|Signed: M.D."}]},
+        "c": {"speaker": "elara", "text": "M.D.? Nobody in the village signs their name like that. Keep it safe."}
+      }
+    },
+    "clue_footprints": {
+      "lines": {
+        "a": {"speaker": "elara", "text": "Footprints, pressed into the soul soil. They walk right to the edge of the mound...", "next": "b"},
+        "b": {"speaker": "elara", "text": "...and stop. Mid-stride. As if whoever made them stepped out of the world."}
+      }
+    },
+    "elara_conclusion": {
+      "critical": true,
+      "lines": {
+        "a": {"speaker": "elara", "text": "A cracked stone, a page from someone who walked between worlds, and footprints that end in the air.", "actions": [{"type": "set_flag", "flag": "mc001.s001.saw_shrine"}], "next": "b"},
+        "b": {"speaker": "elara", "text": "The Elder needs to hear this. Now."}
+      }
+    },
+    "rowan_report": {
+      "critical": true,
+      "lines": {
+        "a": {"speaker": "elder_rowan", "text": "Back so soon? Your faces tell me the shrine wasn't empty.", "next": "b"},
+        "b": {"speaker": "elara", "text": "The lodestone is cracked, Elder. And we found this.", "next": "c"},
+        "c": {"speaker": "elder_rowan", "text": "\"I have walked between them...\" So the old tales were true. Someone has crossed before.", "next": "d"},
+        "d": {"speaker": "captain_maren", "text": "Elder. My patrol felt the tremor out on the ridge and saw the same light. Whatever this is, it's spreading.", "next": "e"},
+        "e": {"speaker": "elder_rowan", "text": "Then we prepare. Captain, double the watch. Elara, keep our new friend close.", "next": "f"},
+        "f": {"speaker": "elder_rowan", "text": "Whatever woke beneath that shrine is not of this world. And I fear it has noticed us."}
+      }
+    },
+    "bram_hello": {
+      "lines": {
+        "a": {"speaker": "bram", "text": "Morning! Mind the sparks. If you're after the Elder, he's by the well, same as every morning.", "next": "b"},
+        "b": {"speaker": "bram", "text": "Strange night. My anvil rang on its own around the fourth hour. Never heard it do that before."}
+      }
+    },
+    "orin_hello": {
+      "lines": {
+        "a": {"speaker": "orin", "text": "Fresh bread, fresh rumours. Today everyone's selling the same one: the ground shook.", "next": "b"},
+        "b": {"speaker": "orin", "text": "Me? Slept like a stone. Ha!"}
+      }
+    },
+    "liora_hello": {
+      "lines": {
+        "a": {"speaker": "liora", "text": "Did you hear? Elara saw lights on the hill last night. She hasn't stopped talking about it."}
+      }
+    },
+    "sahir_hello": {
+      "lines": {
+        "a": {"speaker": "sahir", "text": "Travellers usually come for the market. You picked a strange morning to visit."}
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s001_opening": {
+      "duration": 260,
+      "fade_in": 30,
+      "fade_out": 20,
+      "keyframes": [
+        {"t": 0, "pos": [30, 22, 40], "yaw": 143.1, "pitch": 21.8},
+        {"t": 90, "pos": [10, 12, 18], "yaw": 150.9, "pitch": 25.9},
+        {"t": 170, "pos": [-8, 8, -12], "yaw": 191.9, "pitch": 7.3},
+        {"t": 260, "pos": [0, 3.2, 32], "yaw": 180, "pitch": 15}
+      ],
+      "subtitles": [
+        {"t": 15, "duration": 75, "text": "REALITIES OF DREAMS", "style": "title"},
+        {"t": 95, "duration": 70, "text": "MC-001", "style": "caption"},
+        {"t": 170, "duration": 80, "text": "Saga 1 · Scene 001: Tremors at Dawn", "style": "caption"}
+      ],
+      "sounds": [
+        {"t": 0, "sound": "minecraft:block.beacon.activate", "volume": 0.6, "pitch": 0.8},
+        {"t": 200, "sound": "minecraft:block.bell.use", "volume": 0.7}
+      ]
+    },
+    "mc001_s001_tremor": {
+      "duration": 140,
+      "fade_in": 10,
+      "fade_out": 15,
+      "keyframes": [
+        {"t": 0, "pos": [7, 3.5, -44], "yaw": 130.6, "pitch": 9.3},
+        {"t": 70, "pos": [4, 2.6, -46], "yaw": 135, "pitch": 6},
+        {"t": 140, "pos": [0, 6, -40], "yaw": 180, "pitch": 26.6}
+      ],
+      "shakes": [
+        {"t": 10, "duration": 60, "intensity": 0.35},
+        {"t": 80, "duration": 30, "intensity": 0.15}
+      ],
+      "subtitles": [
+        {"t": 25, "duration": 45, "speaker": "elara", "text": "Get back! The ground is..."},
+        {"t": 80, "duration": 55, "speaker": "elara", "text": "It's coming from the stone."}
+      ],
+      "sounds": [
+        {"t": 5, "sound": "minecraft:block.respawn_anchor.deplete", "volume": 1.0, "pitch": 0.5},
+        {"t": 12, "sound": "minecraft:entity.generic.explode", "volume": 0.4, "pitch": 0.6},
+        {"t": 60, "sound": "minecraft:block.portal.trigger", "volume": 0.35, "pitch": 1.4}
+      ]
+    },
+    "mc001_s001_closing": {
+      "duration": 200,
+      "fade_in": 10,
+      "fade_out": 40,
+      "keyframes": [
+        {"t": 0, "pos": [0, 3, 9], "yaw": 180, "pitch": 12},
+        {"t": 110, "pos": [0, 12, 20], "yaw": 180, "pitch": 24},
+        {"t": 200, "pos": [0, 26, 34], "yaw": 180, "pitch": 30}
+      ],
+      "subtitles": [
+        {"t": 15, "duration": 85, "speaker": "elder_rowan", "text": "Rest while you can. Tomorrow, we find out who M.D. was."},
+        {"t": 115, "duration": 75, "text": "The tremors were only the beginning.", "style": "caption"}
+      ],
+      "sounds": [
+        {"t": 110, "sound": "minecraft:block.amethyst_block.resonate", "volume": 0.8, "pitch": 0.7}
+      ]
+    }
+  }
+}

@@ -1,0 +1,194 @@
+package net.realitiesofdreams.story.engine;
+
+import net.realitiesofdreams.story.StoryContent;
+import net.realitiesofdreams.story.action.ActionDef;
+import net.realitiesofdreams.story.scene.SceneDef;
+import net.realitiesofdreams.story.scene.SceneDef.CompletionType;
+import net.realitiesofdreams.story.scene.SceneDef.StageDef;
+import net.realitiesofdreams.story.state.PlayerStoryState;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.List;
+
+/**
+ * The scene state machine. It never touches Minecraft: it updates {@link PlayerStoryState}
+ * and returns {@link Effect}s for the game layer to perform.
+ */
+public final class SceneEngine {
+    public static final String FOLLOW_FLAG = "npc.follow.";
+
+    private final StoryContent content;
+
+    public SceneEngine(StoryContent content) {
+        this.content = content;
+    }
+
+    public StoryContent content() {
+        return content;
+    }
+
+    public SceneDef activeScene(PlayerStoryState state) {
+        return state.activeScene() == null ? null : content.scene(state.activeScene());
+    }
+
+    public StageDef activeStage(PlayerStoryState state) {
+        SceneDef scene = activeScene(state);
+        return scene == null || state.stage() == null ? null : scene.stage(state.stage());
+    }
+
+    public List<Effect> startScene(PlayerStoryState state, String sceneId) {
+        SceneDef scene = content.scene(sceneId);
+        if (scene == null) throw new IllegalArgumentException("unknown scene " + sceneId);
+        state.setScene(sceneId, null);
+        List<Effect> out = new ArrayList<>();
+        enterStage(state, scene, scene.stages().get(0), out);
+        return out;
+    }
+
+    /** Effects that rebuild the player's view of the story after logging back in. */
+    public List<Effect> resume(PlayerStoryState state) {
+        List<Effect> out = new ArrayList<>();
+        SceneDef scene = activeScene(state);
+        StageDef stage = activeStage(state);
+        if (scene == null || stage == null) return out;
+        for (String flag : state.flags()) {
+            if (flag.startsWith(FOLLOW_FLAG)) out.add(new Effect.NpcCommand("follow", flag.substring(FOLLOW_FLAG.length()), null));
+        }
+        if (stage.completion() == CompletionType.CINEMATIC_END) {
+            // A cinematic interrupted by logging out counts as watched.
+            out.addAll(handle(state, new StoryEvent.CinematicFinished(stage.completionValue())));
+        } else {
+            out.add(objective(state, scene, stage));
+        }
+        return out;
+    }
+
+    public List<Effect> handle(PlayerStoryState state, StoryEvent event) {
+        List<Effect> out = new ArrayList<>();
+        Deque<StoryEvent> queue = new ArrayDeque<>();
+        queue.add(event);
+        int guard = 0;
+        while (!queue.isEmpty() && guard++ < 64) {
+            process(state, queue.poll(), out, queue);
+        }
+        return out;
+    }
+
+    private void process(PlayerStoryState state, StoryEvent event, List<Effect> out, Deque<StoryEvent> queue) {
+        SceneDef scene = activeScene(state);
+        StageDef stage = activeStage(state);
+        if (scene == null || stage == null) return;
+
+        if (event instanceof StoryEvent.ClueExamined clue) {
+            SceneDef.ClueDef def = scene.clues().get(clue.clueId());
+            if (def == null || stage.completion() != CompletionType.CLUES || !stageClues(stage).contains(clue.clueId())) return;
+            if (!state.addClue(clue.clueId())) return;
+            if (def.dialogue() != null) out.add(new Effect.StartDialogue(def.dialogue()));
+            out.add(objective(state, scene, stage));
+            if (state.cluesFound().containsAll(stageClues(stage))) completeStage(state, scene, stage, out, queue);
+            return;
+        }
+        if (matches(stage, event)) completeStage(state, scene, stage, out, queue);
+    }
+
+    private static boolean matches(StageDef stage, StoryEvent event) {
+        String v = stage.completionValue();
+        return switch (stage.completion()) {
+            case CINEMATIC_END -> event instanceof StoryEvent.CinematicFinished e && e.cinematicId().equals(v);
+            case DIALOGUE_END -> event instanceof StoryEvent.DialogueFinished e && e.dialogueId().equals(v);
+            case REACH -> event instanceof StoryEvent.Reached e && e.location().equals(v);
+            case FLAG -> event instanceof StoryEvent.FlagSet e && e.flag().equals(v);
+            case CLUES -> false;
+        };
+    }
+
+    public static List<String> stageClues(StageDef stage) {
+        return stage.completionValue() == null ? List.of() : Arrays.asList(stage.completionValue().split(","));
+    }
+
+    private void completeStage(PlayerStoryState state, SceneDef scene, StageDef stage, List<Effect> out, Deque<StoryEvent> queue) {
+        runActions(state, scene, stage.onComplete(), out, queue);
+        if (!scene.id().equals(state.activeScene()) || !stage.id().equals(state.stage())) return; // an action moved the story
+        StageDef next = scene.nextStage(stage);
+        if (next == null) {
+            state.completeScene(scene.id());
+            state.setScene(null, null);
+            state.flags().removeIf(f -> f.startsWith(FOLLOW_FLAG));
+            out.add(new Effect.ClearObjective());
+            out.add(new Effect.SceneCompleted(scene.id(), scene.nextScene()));
+        } else {
+            enterStage(state, scene, next, out);
+            // Fire any queued completion for the new stage (e.g. a flag set on entry).
+            for (String f : state.flags()) if (next.completion() == CompletionType.FLAG && f.equals(next.completionValue())) {
+                queue.add(new StoryEvent.FlagSet(f));
+                break;
+            }
+        }
+    }
+
+    private void enterStage(PlayerStoryState state, SceneDef scene, StageDef stage, List<Effect> out) {
+        state.setStage(stage.id());
+        if (stage.checkpoint() != null) out.add(new Effect.Checkpoint(stage.checkpoint()));
+        if (!stage.objective().isEmpty()) out.add(objective(state, scene, stage));
+        else out.add(new Effect.ClearObjective());
+        Deque<StoryEvent> ignored = new ArrayDeque<>();
+        runActions(state, scene, stage.onEnter(), out, ignored);
+    }
+
+    public Effect objective(PlayerStoryState state, SceneDef scene, StageDef stage) {
+        String progress = null;
+        if (stage.completion() == CompletionType.CLUES) {
+            List<String> clues = stageClues(stage);
+            long found = clues.stream().filter(state.cluesFound()::contains).count();
+            progress = found + "/" + clues.size();
+        }
+        return new Effect.ShowObjective(scene.label(), scene.title(), stage.objective(), scene.location(stage.target()), progress);
+    }
+
+    private void runActions(PlayerStoryState state, SceneDef scene, List<ActionDef> actions, List<Effect> out, Deque<StoryEvent> queue) {
+        for (ActionDef a : actions) apply(state, scene, a, out, queue);
+    }
+
+    /** Applies dialogue actions (fired by lines and choices) for the player's active scene. */
+    public List<Effect> applyActions(PlayerStoryState state, List<ActionDef> actions) {
+        List<Effect> out = new ArrayList<>();
+        Deque<StoryEvent> queue = new ArrayDeque<>();
+        SceneDef scene = activeScene(state);
+        for (ActionDef a : actions) apply(state, scene, a, out, queue);
+        while (!queue.isEmpty()) out.addAll(handle(state, queue.poll()));
+        return out;
+    }
+
+    private void apply(PlayerStoryState state, SceneDef scene, ActionDef a, List<Effect> out, Deque<StoryEvent> queue) {
+        switch (a.type()) {
+            case "set_flag" -> {
+                if (state.setFlag(a.arg("flag"))) queue.add(new StoryEvent.FlagSet(a.arg("flag")));
+            }
+            case "clear_flag" -> state.clearFlag(a.arg("flag"));
+            case "start_dialogue" -> out.add(new Effect.StartDialogue(a.arg("id")));
+            case "start_cinematic" -> out.add(new Effect.StartCinematic(a.arg("id")));
+            case "npc_follow" -> {
+                state.setFlag(FOLLOW_FLAG + a.arg("character"));
+                out.add(new Effect.NpcCommand("follow", a.arg("character"), null));
+            }
+            case "npc_stay" -> {
+                state.clearFlag(FOLLOW_FLAG + a.arg("character"));
+                out.add(new Effect.NpcCommand("stay", a.arg("character"), a.arg("location")));
+            }
+            case "npc_move" -> out.add(new Effect.NpcCommand("move", a.arg("character"), a.arg("location")));
+            case "npc_spawn" -> out.add(new Effect.NpcCommand("spawn", a.arg("character"), a.arg("location")));
+            case "npc_despawn" -> out.add(new Effect.NpcCommand("despawn", a.arg("character"), null));
+            case "title" -> out.add(new Effect.ShowTitle(a.arg("title", ""), a.arg("subtitle", "")));
+            case "give_item" -> out.add(new Effect.GiveItem(a.arg("item"), Integer.parseInt(a.arg("count", "1")),
+                    a.arg("name"), a.arg("lore") == null ? List.of() : List.of(a.arg("lore").split("\\|"))));
+            case "sound" -> out.add(new Effect.PlaySound(a.arg("sound"), Float.parseFloat(a.arg("volume", "1")),
+                    Float.parseFloat(a.arg("pitch", "1"))));
+            case "world_change" -> out.add(new Effect.WorldChange(a.arg("id")));
+            case "message" -> out.add(new Effect.Message(a.arg("text")));
+            default -> throw new IllegalStateException("unknown action type " + a.type() + " in scene " + (scene == null ? "?" : scene.id()));
+        }
+    }
+}
