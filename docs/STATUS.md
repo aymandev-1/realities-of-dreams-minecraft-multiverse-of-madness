@@ -1,6 +1,9 @@
 # Development Status
 
-Milestone 1: foundation and MC-001 Scene 001. Updated 2026-10-18.
+Milestone: first in-game playtest of MC-001 Scene 001. Updated 2026-10-18.
+
+**Playable: Scene 001 only, out of Saga 1's 20 scenes.** Scenes 002–020 are not implemented; Scene 001
+ends by pointing at an unreleased Scene 002. How to play it: [PLAYTEST_WINDOWS.md](PLAYTEST_WINDOWS.md).
 
 Legend: **Verified** = covered by an automated test that passes in CI. **Implemented** = code is
 written and compiles, but nobody has played it yet on a real client. **Not started** = nothing yet.
@@ -23,25 +26,27 @@ written and compiles, but nobody has played it yet on a real client. **Not start
 | Cinematic timelines: smooth camera paths through every keyframe, short-way rotation, fades, subtitles, shake, sound cues | `CinematicTest` |
 | Scene 001 plays from arrival to completion in the story engine, including save, reload and resume mid-scene, and logging out during a cinematic | `Scene001PlaythroughTest` |
 | Story NPC entity: carries its character, is named, cannot be hurt, saves its character | `npcCarriesCharacterAndCannotBeHurt` game test |
-| MC-001 universe: its dimension type loads on a real server, and the flat meadow terrain puts the ground exactly where the scene expects it. The test server cannot open custom dimensions, so walking into MC-001 itself is covered by the playtest below | `mc001UniverseIsDefined` game test, `DimensionDataTest` |
-| The MC-001 village and Hollow Shrine build correctly (built in the test world, since the test server has no MC-001), clue blocks are in place, the tremor leaves a permanent scar, NPCs are placed per stage without duplicates | `scene001VillageBuilds` game test |
-| Scene 001 runs end to end through the real server-side story manager, gives the journal page, and progress survives a save/load of the player data | `scene001PlaysThroughAndSaves` game test |
+| MC-001 universe: its dimension type loads on a real server and is fixed at sunrise. The test server cannot open custom dimensions, so tests stage Firstbrook in the test world | `mc001UniverseIsDefined` game test, `DimensionDataTest` |
+| Firstbrook builds: Steve's house (bed, chest of food and gear, workstations, armour stand, item frames), Elara's family home, Rowan's house, forge, market, farms, river and bridge, wall, watchtower, northern hills with the ruin; every NPC is placed on solid ground | `firstbrookBuilds` game test |
+| Scene 001 plays through on the real server: opening cinematic, Elara following, the walking conversation, the farmer, the square, the ridge cinematic, "Did you feel that?", Elder Rowan walking over, rewards, journal and save | `scene001PlaysThroughInFirstbrook` game test, `Scene001PlaythroughTest` |
+| NPCs move: guards patrol, Elara keeps pace with the player while talking | `firstbrookCharactersMove` game test |
+| Logging out mid-conversation cannot soft-lock the scene: the conversation replays on return | `Scene001PlaythroughTest.loggingOutMidConversationCannotStickTheScene` |
+| Development controls (`/rod dev …`) need operator permission, so survival players never see them | Permission level 2 in `DevCommands` |
 
 ## Implemented, needs a play test on Windows
 
-These compile and are exercised indirectly, but run only on a game client, which CI cannot open.
+The client side runs only in a real game. CI starts the real client on a virtual screen
+(`client-playtest` job) and photographs every Saga 1 character and each beat of Scene 001; the
+screenshots are on the `claude/playtest-screenshots` branch. It still needs a human on Windows for:
 
-- NPC skins rendering on the classic and slim player models.
-- Dialogue subtitles with typewriter text, the V key to continue, and the reply picker (mouse or 1-4).
-- Objective tracker with distance and a direction arrow.
-- Cinematic camera, letterbox, title cards, captions, fades, camera shake and sound cues, with
-  player movement and the HUD hidden during cinematics.
-- NPCs walking up to the player, companions following and catching up, clue highlights.
-- Auto-start on first join, teleport into MC-001, respawn at the last checkpoint.
+- How the cinematic camera, fades, subtitles and camera shake feel at full frame rate.
+- Typewriter subtitles, the V key to continue, the objective tracker and arrow.
+- Sound balance. Placeholders: vanilla sounds (not positioned in the world), birds and lantern sway
+  suggested with particles, no voice acting (subtitles only), no custom animations.
 
 ## Not started
 
-- Scenes after MC-001 Scene 001 (519 remaining main scenes), and sagas 2 to 26.
+- Saga 1 Scenes 002–020, and every later saga.
 - Combat encounters, villains and boss fights (companion combat lines exist, but nothing to fight yet).
 - Universes other than MC-001 as playable places.
 - Multiplayer-specific story handling: progress is per player and works with several players, but
@@ -52,10 +57,8 @@ These compile and are exercised indirectly, but run only on a game client, which
 
 ## Open questions for the story owner
 
-- **Scene 001 script.** No story bible, saga outline or scene list was supplied, only Story
-  Expansion 1. Scene 001 ("Tremors at Dawn") is a provisional script using the MC-001 cast, and is
-  marked provisional in its data file. Send the canon script and it replaces the dialogue without
-  code changes.
+- **Scene 001 script.** "A Morning in Firstbrook" uses the Saga 1 screenplay's lines. Changes to the
+  script are data edits in `rod-story/scenes/mc001_s001.json`, with no code changes.
 - **Duplicate skin:** Oblivion Steve and Voidwalker Steve (MC-073) use the identical skin file.
 - **MC-002:** both Prehistoric Steve and Witch Alex are labelled MC-002. Is that intended?
 - **Witch Alex's skin** came from Planet Minecraft; check its licence before a public release.
