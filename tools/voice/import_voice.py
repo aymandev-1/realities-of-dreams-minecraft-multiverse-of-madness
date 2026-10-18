@@ -4,7 +4,7 @@
 Usage: import_voice.py takes.json
 
 takes.json is a list of {"speaker", "text", "direction", "audio"} where "audio" is a local
-.mp3/.wav path or an https URL (for example an ElevenLabs download link). Each take is converted
+.mp3/.wav path or an https URL (for example an ElevenLabs download link). Each take is loudness-normalised and converted
 to mono Ogg Vorbis under assets/rod_voice/sounds/<speaker>/<key>.ogg, recorded in lines.json, and
 assets/rod_voice/sounds.json is rebuilt from lines.json.
 
@@ -23,10 +23,21 @@ import urllib.request
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 ASSETS = ROOT / "src/main/resources/assets/rod_voice"
 LINES = pathlib.Path(__file__).resolve().parent / "lines.json"
+LOUDNESS = -16  # LUFS
 
 
 def key(speaker, text):
     return "v_" + hashlib.sha1(f"{speaker}|{text}".encode("utf-8")).hexdigest()[:12]
+
+
+def loudnorm(path):
+    """Two-pass EBU R128 normalisation, so every voice plays at the same loudness whatever the take."""
+    target = f"I={LOUDNESS}:TP=-1.5:LRA=11"
+    err = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(path), "-af", f"loudnorm={target}:print_format=json",
+                          "-f", "null", "-"], check=True, capture_output=True, text=True).stderr
+    m = json.loads(err[err.rindex("{"):err.rindex("}") + 1])
+    return (f"loudnorm={target}:linear=true:measured_I={m['input_i']}:measured_TP={m['input_tp']}"
+            f":measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}")
 
 
 def duration(path):
@@ -49,8 +60,8 @@ def main():
                 local = pathlib.Path(tmp) / "take.mp3"
                 urllib.request.urlretrieve(src, local)
                 src = local
-            subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-c:a", "libvorbis", "-q:a", "4",
-                            "-ac", "1", str(out)], check=True)
+            subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-af", loudnorm(src), "-ar", "44100",
+                            "-c:a", "libvorbis", "-q:a", "4", "-ac", "1", str(out)], check=True)
         secs = duration(out)
         by_key[k] = {"key": k, "speaker": t["speaker"], "text": t["text"], "direction": t.get("direction", ""),
                      "seconds": secs}

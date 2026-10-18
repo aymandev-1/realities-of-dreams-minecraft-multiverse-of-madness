@@ -137,28 +137,28 @@
     "speaker": "elder_rowan",
     "text": "Exactly. The ground shook, and the watchtower reported strange lights beneath the stone.",
     "direction": "serious",
-    "seconds": 6.24
+    "seconds": 6.3
   },
   {
     "key": "v_0fde975ecd9f",
     "speaker": "elder_rowan",
     "text": "First, prepare properly. There'll be no heroics today.",
     "direction": "stern, fatherly",
-    "seconds": 4.48
+    "seconds": 4.5
   },
   {
     "key": "v_09e5907c585c",
     "speaker": "elder_rowan",
     "text": "Good. I'd rather lose a morning of trading than a single life.",
     "direction": "approving, warm",
-    "seconds": 4.24
+    "seconds": 4.3
   },
   {
     "key": "v_c15abc053940",
     "speaker": "elder_rowan",
     "text": "I lived through earthquakes when I was younger. This felt different.",
     "direction": "thoughtful, heavy",
-    "seconds": 4.72
+    "seconds": 4.8
   },
   {
     "key": "v_da17d6d0ce3b",
@@ -305,7 +305,7 @@
     "speaker": "primordial_steve",
     "text": "These cracks are fresh. The stones were pushed up from below, not knocked down.",
     "direction": "examining closely, focused",
-    "seconds": 4.96
+    "seconds": 5.0
   },
   {
     "key": "v_bf2bb777aca2",
