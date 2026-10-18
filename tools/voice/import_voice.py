@@ -29,11 +29,6 @@ def key(speaker, text):
     return "v_" + hashlib.sha1(f"{speaker}|{text}".encode("utf-8")).hexdigest()[:12]
 
 
-def ticks_for(text):
-    """Mirror of LineTiming.ticksFor: how long a dialogue line stays up by default."""
-    return max(50, min(260, 30 + round(len(text) * 1.25)))
-
-
 def duration(path):
     out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
                          check=True, capture_output=True, text=True).stdout
@@ -57,9 +52,6 @@ def main():
             subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-c:a", "libvorbis", "-q:a", "4",
                             "-ac", "1", str(out)], check=True)
         secs = duration(out)
-        if secs * 20 > ticks_for(t["text"]):
-            print(f"warning: {k} runs {secs}s, longer than its default subtitle time; give the line a duration",
-                  file=sys.stderr)
         by_key[k] = {"key": k, "speaker": t["speaker"], "text": t["text"], "direction": t.get("direction", ""),
                      "seconds": secs}
         print(f"{k}  {secs:5.2f}s  {t['speaker']}: {t['text']}")
@@ -67,6 +59,8 @@ def main():
     LINES.write_text(json.dumps(lines, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     sounds = {l["key"]: {"sounds": [{"name": f"rod_voice:{l['speaker']}/{l['key']}"}]} for l in lines}
     (ASSETS / "sounds.json").write_text(json.dumps(sounds, indent=2) + "\n", encoding="utf-8")
+    durations = {l["key"]: l["seconds"] for l in lines}
+    (ASSETS / "durations.json").write_text(json.dumps(durations, indent=2) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

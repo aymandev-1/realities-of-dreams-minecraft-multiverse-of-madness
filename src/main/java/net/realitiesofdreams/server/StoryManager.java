@@ -582,7 +582,7 @@ public final class StoryManager {
     /** A line said in passing; never blocks the player or the story. */
     public void ambient(ServerPlayer p, String character, String text) {
         messenger.send(p, new DialogueLinePayload(-1, character, Story.content().characters().displayName(character), text,
-                net.realitiesofdreams.story.dialogue.LineTiming.ticksFor(text), List.of(), true));
+                net.realitiesofdreams.story.dialogue.LineTiming.ticksFor(character, text), List.of(), true));
     }
 
     @Nullable

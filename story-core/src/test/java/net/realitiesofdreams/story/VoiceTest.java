@@ -3,6 +3,8 @@ package net.realitiesofdreams.story;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import net.realitiesofdreams.story.dialogue.LineTiming;
+import net.realitiesofdreams.story.dialogue.VoiceDurations;
 import net.realitiesofdreams.story.dialogue.VoiceKey;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +16,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/** The voice recordings in assets/rod_voice: every entry has its file, and Scene 001 is fully voiced. */
+/** The voice recordings in assets/rod_voice: every entry has its file, Scenes 001 and 002 are fully voiced. */
 class VoiceTest {
     private static JsonObject read(String path) throws Exception {
         try (var in = VoiceTest.class.getResourceAsStream(path)) {
@@ -41,14 +43,28 @@ class VoiceTest {
     }
 
     @Test
-    void scene001IsFullyVoiced() throws Exception {
+    void scenesAreFullyVoiced() throws Exception {
         JsonObject sounds = read("/assets/rod_voice/sounds.json");
-        List<String[]> spoken = new ArrayList<>();
-        collect(read("/rod-story/scenes/mc001_s001.json"), spoken);
-        assertTrue(spoken.size() >= 20, "found " + spoken.size() + " spoken lines");
-        for (String[] line : spoken) {
-            assertTrue(sounds.has(VoiceKey.of(line[0], line[1])), "no recording for " + line[0] + ": " + line[1]);
+        JsonObject durations = read("/assets/rod_voice/durations.json");
+        for (String scene : new String[] {"mc001_s001", "mc001_s002"}) {
+            List<String[]> spoken = new ArrayList<>();
+            collect(read("/rod-story/scenes/" + scene + ".json"), spoken);
+            assertTrue(spoken.size() >= 20, scene + ": found " + spoken.size() + " spoken lines");
+            for (String[] line : spoken) {
+                String key = VoiceKey.of(line[0], line[1]);
+                assertTrue(sounds.has(key), scene + ": no recording for " + line[0] + ": " + line[1]);
+                assertTrue(durations.has(key), scene + ": no duration for " + key);
+            }
         }
+    }
+
+    @Test
+    void voicedLinesStayUpUntilSpoken() {
+        String text = "The night watch's report. 'Two tremors before dawn. Light seen beneath the stones of the northern ridge. Gone within moments.'";
+        int voice = VoiceDurations.ticks("primordial_steve", text);
+        assertTrue(voice > LineTiming.ticksFor(text), "this recording is slower than reading speed");
+        assertEquals(voice + LineTiming.PAUSE_TICKS, LineTiming.ticksFor("primordial_steve", text));
+        assertEquals(LineTiming.ticksFor("Unrecorded line."), LineTiming.ticksFor("elara", "Unrecorded line."));
     }
 
     /** Spoken lines: dialogue lines and cinematic subtitles with a speaker, and stage "say" actions. */

@@ -33,7 +33,7 @@ public record DialogueDef(String id, String start, boolean critical, Map<String,
         }
 
         public int displayTicks() {
-            return durationTicks > 0 ? durationTicks : LineTiming.ticksFor(text);
+            return durationTicks > 0 ? durationTicks : LineTiming.ticksFor(speaker, text);
         }
     }
 
