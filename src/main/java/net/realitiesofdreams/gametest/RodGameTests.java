@@ -73,7 +73,6 @@ public final class RodGameTests {
         var server = helper.getLevel().getServer();
         var access = server.registryAccess();
         helper.assertTrue(access.registryOrThrow(Registries.DIMENSION_TYPE).containsKey(RealitiesOfDreams.id("mc_001")), "MC-001 dimension type not loaded");
-        helper.assertTrue(access.registryOrThrow(Registries.LEVEL_STEM).containsKey(RealitiesOfDreams.id("mc_001")), "MC-001 dimension not loaded");
         ServerLevel mc001 = server.getLevel(ModDimensions.MC_001);
         if (mc001 != null) {
             helper.assertTrue(mc001.getBlockState(new BlockPos(200, 63, 200)).is(Blocks.GRASS_BLOCK), "MC-001 ground is not grass at y=63");

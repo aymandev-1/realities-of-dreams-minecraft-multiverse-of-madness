@@ -20,8 +20,8 @@ written and compiles, but nobody has played it yet on a real client. **Not start
 | Cinematic timelines: smooth camera paths through every keyframe, short-way rotation, fades, subtitles, shake, sound cues | `CinematicTest` |
 | Scene 001 plays from arrival to completion in the story engine, including save, reload and resume mid-scene, and logging out during a cinematic | `Scene001PlaythroughTest` |
 | Story NPC entity: carries its character, is named, cannot be hurt, saves its character | `npcCarriesCharacterAndCannotBeHurt` game test |
-| MC-001 universe (dimension) loads on a real server, flat meadow world, permanent daytime | `mc001UniverseExists` game test |
-| The MC-001 village and Hollow Shrine build correctly, clue blocks are in place, the tremor leaves a permanent scar, NPCs are placed per stage without duplicates | `scene001VillageBuilds` game test |
+| MC-001 universe: its dimension type loads on a real server, and the flat meadow terrain puts the ground exactly where the scene expects it. The test server cannot open custom dimensions, so walking into MC-001 itself is covered by the playtest below | `mc001UniverseIsDefined` game test, `DimensionDataTest` |
+| The MC-001 village and Hollow Shrine build correctly (built in the test world, since the test server has no MC-001), clue blocks are in place, the tremor leaves a permanent scar, NPCs are placed per stage without duplicates | `scene001VillageBuilds` game test |
 | Scene 001 runs end to end through the real server-side story manager, gives the journal page, and progress survives a save/load of the player data | `scene001PlaysThroughAndSaves` game test |
 
 ## Implemented, needs a play test on Windows
