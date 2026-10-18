@@ -180,6 +180,28 @@ public final class StoryManager {
         startScene(p, sceneId, true);
     }
 
+    /** Development: forget all story progress for this player, as if they had never played. */
+    public void resetStory(ServerPlayer p) {
+        PlayerRuntime rt = runtime(p);
+        stopPresentation(p, rt);
+        NpcDirector.releaseAll(p);
+        p.getData(ModAttachments.STORY).replace(new PlayerStoryState());
+        state(p).setIntroOffered(true);
+        rt.lastStage = null;
+        rt.pendingScene = null;
+        messenger.send(p, ObjectivePayload.clear());
+    }
+
+    /** Development: jump straight to a stage of the active scene (its on-enter actions run). */
+    public boolean jumpToStage(ServerPlayer p, String stageId) {
+        PlayerStoryState state = state(p);
+        SceneDef scene = engine().activeScene(state);
+        if (scene == null || scene.stage(stageId) == null) return false;
+        stopPresentation(p, runtime(p));
+        perform(p, engine().enterStageForTesting(state, stageId));
+        return true;
+    }
+
     private void stopPresentation(ServerPlayer p, PlayerRuntime rt) {
         if (rt.dialogue != null) {
             clearSpeaker(p, rt);
@@ -228,7 +250,7 @@ public final class StoryManager {
 
         PlayerStoryState state = state(p);
         SceneDef scene = engine().activeScene(state);
-        if (scene == null || !p.level().dimension().equals(ModDimensions.forScene(scene))) return;
+        if (scene == null || p.level() != ModDimensions.level(p.server, scene)) return;
 
         Vec3 pos = p.position();
         boolean moving = rt.lastPos != null && pos.distanceToSqr(rt.lastPos) > 0.004;
@@ -358,7 +380,7 @@ public final class StoryManager {
         SceneDef scene = engine().activeScene(state);
         SceneDef.StageDef stage = engine().activeStage(state);
         if (scene == null || stage == null || stage.completion() != SceneDef.CompletionType.CLUES) return false;
-        if (!p.level().dimension().equals(ModDimensions.forScene(scene))) return false;
+        if (p.level() != ModDimensions.level(p.server, scene)) return false;
         for (String id : SceneEngine.stageClues(stage)) {
             BlockPos pos = ModDimensions.absoluteBlock(scene, scene.clues().get(id).pos());
             if (pos.distSqr(clicked) <= 2.25) {

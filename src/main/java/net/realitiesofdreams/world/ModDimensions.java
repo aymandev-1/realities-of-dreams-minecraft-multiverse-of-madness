@@ -20,8 +20,19 @@ public final class ModDimensions {
         return ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse(scene.dimension()));
     }
 
+    @javax.annotation.Nullable private static ServerLevel testLevel;
+
     public static ServerLevel level(MinecraftServer server, SceneDef scene) {
+        if (testLevel != null) return testLevel;
         return server.getLevel(forScene(scene));
+    }
+
+    /**
+     * Game tests only: the test server has no custom dimensions, so scenes are staged in the
+     * test level instead. Pass null to restore normal behaviour.
+     */
+    public static void useLevelForTesting(@javax.annotation.Nullable ServerLevel level) {
+        testLevel = level;
     }
 
     public static BlockPos anchor(SceneDef scene) {

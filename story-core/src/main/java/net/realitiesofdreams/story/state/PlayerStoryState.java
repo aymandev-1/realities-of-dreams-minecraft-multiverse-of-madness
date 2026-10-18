@@ -54,6 +54,7 @@ public final class PlayerStoryState {
 
     public boolean triggerFired(String id) { return firedTriggers.contains(id); }
     public void markTriggerFired(String id) { firedTriggers.add(id); }
+    public void unmarkTriggerFired(String id) { firedTriggers.remove(id); }
 
     public Set<String> spokenChatter() { return spokenChatter; }
 

@@ -48,6 +48,7 @@ public class StoryNpcEntity extends PathfinderMob {
     @Nullable private BlockPos home;
     @Nullable private UUID followTarget;
     @Nullable private UUID approachTarget;
+    private boolean approachThenStay;
     @Nullable private UUID talkTarget;
     @Nullable private String sceneId;
     private String activity = "idle";
@@ -135,6 +136,13 @@ public class StoryNpcEntity extends PathfinderMob {
 
     public void setApproachTarget(@Nullable UUID player) {
         this.approachTarget = player;
+        this.approachThenStay = false;
+    }
+
+    /** Walks up to the player once, then stays there (a character coming over at the end of a scene). */
+    public void approachAndStay(UUID player) {
+        this.approachTarget = player;
+        this.approachThenStay = true;
     }
 
     @Nullable
@@ -173,7 +181,7 @@ public class StoryNpcEntity extends PathfinderMob {
     public void setTalkTarget(@Nullable UUID player) {
         this.talkTarget = player;
         entityData.set(TALKING, player != null);
-        if (player != null) getNavigation().stop();
+        if (player != null && followTarget == null) getNavigation().stop(); // a companion keeps walking while talking
     }
 
     @Nullable
@@ -315,7 +323,7 @@ public class StoryNpcEntity extends PathfinderMob {
         }
     }
 
-    /** Stands still and faces the player while speaking. */
+    /** Stands still and faces the player while speaking (a companion walking alongside keeps walking). */
     private class TalkGoal extends Goal {
         TalkGoal() {
             setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
@@ -323,7 +331,7 @@ public class StoryNpcEntity extends PathfinderMob {
 
         @Override
         public boolean canUse() {
-            return player(talkTarget) != null;
+            return player(talkTarget) != null && followTarget == null;
         }
 
         @Override
@@ -349,6 +357,12 @@ public class StoryNpcEntity extends PathfinderMob {
         @Override
         public boolean canUse() {
             Player p = player(approachTarget);
+            if (p != null && approachThenStay && distanceTo(p) <= 3.0F) {
+                approachTarget = null;
+                approachThenStay = false;
+                home = blockPosition();
+                return false;
+            }
             return p != null && distanceTo(p) > 2.5F;
         }
 
@@ -357,6 +371,13 @@ public class StoryNpcEntity extends PathfinderMob {
             Player p = player(approachTarget);
             if (p == null) return;
             getLookControl().setLookAt(p, 30.0F, 30.0F);
+            if (approachThenStay && distanceTo(p) <= 3.0F) {
+                approachTarget = null;
+                approachThenStay = false;
+                home = blockPosition();
+                getNavigation().stop();
+                return;
+            }
             if (--repath <= 0) {
                 repath = 8;
                 getNavigation().moveTo(p, 0.75);

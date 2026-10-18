@@ -32,6 +32,7 @@ import java.util.Optional;
  * /rod characters [MC-xxx]  list registry characters
  * /rod spawn &lt;character&gt;    (op) spawn a character where you stand
  * /rod universe &lt;MC-xxx&gt;    show a universe profile
+ * /rod dev ...              (op) playtest controls, see {@link DevCommands}
  */
 public final class RodCommands {
     private RodCommands() {}
@@ -65,7 +66,8 @@ public final class RodCommands {
                                 .suggests((c, b) -> SharedSuggestionProvider.suggest(Story.content().characters().all().stream().map(CharacterDef::id), b))
                                 .executes(RodCommands::spawn)))
                 .then(Commands.literal("universe")
-                        .then(Commands.argument("id", StringArgumentType.string()).executes(RodCommands::universe))));
+                        .then(Commands.argument("id", StringArgumentType.string()).executes(RodCommands::universe)))
+                .then(DevCommands.node()));
     }
 
     private static int status(CommandContext<CommandSourceStack> c) throws CommandSyntaxException {
@@ -121,7 +123,7 @@ public final class RodCommands {
             c.getSource().sendFailure(Component.literal("Unknown character " + id));
             return 0;
         }
-        NpcDirector.spawnAny(p.serverLevel(), ch.get(), p.getX(), p.getY(), p.getZ(), p.getYRot() + 180);
+        NpcDirector.spawnAny(p.serverLevel(), ch.get(), p.getX(), p.getY(), p.getZ(), p.getYRot() + 180).addTag(DevCommands.DEV_TAG);
         c.getSource().sendSuccess(() -> Component.literal("Spawned " + ch.get().name()), true);
         return 1;
     }

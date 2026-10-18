@@ -194,7 +194,7 @@ public final class NpcDirector {
                 if (npc != null && npc.isSleeping()) npc.stopSleeping();
             }
             case "approach" -> {
-                if (npc != null) npc.setApproachTarget(p.getUUID());
+                if (npc != null) npc.approachAndStay(p.getUUID());
             }
             case "look" -> {
                 if (npc != null && at != null) npc.lookTowards(new Vec3(at[0], at[1] + 1.5, at[2]), 80);

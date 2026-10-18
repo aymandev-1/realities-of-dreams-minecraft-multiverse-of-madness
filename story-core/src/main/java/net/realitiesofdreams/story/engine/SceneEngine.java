@@ -49,6 +49,15 @@ public final class SceneEngine {
         return out;
     }
 
+    /** Development and tests: enters a stage of the active scene directly, running its on-enter actions. */
+    public List<Effect> enterStageForTesting(PlayerStoryState state, String stageId) {
+        SceneDef scene = activeScene(state);
+        if (scene == null || scene.stage(stageId) == null) throw new IllegalArgumentException("unknown stage " + stageId);
+        List<Effect> out = new ArrayList<>();
+        enterStage(state, scene, scene.stage(stageId), out);
+        return out;
+    }
+
     /** Effects that rebuild the player's view of the story after logging back in. */
     public List<Effect> resume(PlayerStoryState state) {
         List<Effect> out = new ArrayList<>();
@@ -63,8 +72,26 @@ public final class SceneEngine {
             out.addAll(handle(state, new StoryEvent.CinematicFinished(stage.completionValue())));
         } else {
             out.add(objective(state, scene, stage));
+            // Conversations are not saved mid-line: replay any the stage started that never finished,
+            // so logging out halfway through one cannot leave the stage stuck.
+            java.util.Set<String> replay = new java.util.LinkedHashSet<>();
+            for (ActionDef a : stage.onEnter()) if (a.type().equals("start_dialogue")) replay.add(a.arg("id"));
+            if (stage.completion() == CompletionType.DIALOGUE_END
+                    && scene.triggers().stream().noneMatch(t -> t.dialogue().equals(stage.completionValue()))) {
+                replay.add(stage.completionValue());
+            }
+            for (String id : replay) if (id != null && !state.hasFlag(dialogueDoneFlag(scene, id))) out.add(new Effect.StartDialogue(id));
+            // A character who was cut off mid-conversation will start it again when the player comes near.
+            for (SceneDef.TriggerDef t : scene.triggers()) {
+                if (state.triggerFired(t.id()) && !state.hasFlag(dialogueDoneFlag(scene, t.dialogue()))) state.unmarkTriggerFired(t.id());
+            }
         }
         return out;
+    }
+
+    /** Flag recording that a scene's conversation has played to the end (reset with the scene). */
+    public static String dialogueDoneFlag(SceneDef scene, String dialogueId) {
+        return scene.id().replace("_s", ".s") + ".dialogue_done." + dialogueId;
     }
 
     public List<Effect> handle(PlayerStoryState state, StoryEvent event) {
@@ -82,6 +109,7 @@ public final class SceneEngine {
         SceneDef scene = activeScene(state);
         StageDef stage = activeStage(state);
         if (scene == null || stage == null) return;
+        if (event instanceof StoryEvent.DialogueFinished d) state.setFlag(dialogueDoneFlag(scene, d.dialogueId()));
 
         if (event instanceof StoryEvent.ClueExamined clue) {
             SceneDef.ClueDef def = scene.clues().get(clue.clueId());
