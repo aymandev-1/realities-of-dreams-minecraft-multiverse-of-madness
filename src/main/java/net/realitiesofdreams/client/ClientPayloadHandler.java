@@ -16,6 +16,7 @@ public final class ClientPayloadHandler {
     private ClientPayloadHandler() {}
 
     public static void line(DialogueLinePayload p) {
+        VoicePlayer.speak(p.speakerId(), p.text());
         if (p.ambient()) {
             ClientStory.addAmbient(p);
             return;

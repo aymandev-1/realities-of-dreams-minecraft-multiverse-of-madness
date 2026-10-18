@@ -452,6 +452,8 @@ public final class ClientAutotest {
         log(String.format("player: %.1f,%.1f,%.1f in %s yaw %.0f pitch %.0f, camera %s", sp.getX(), sp.getY(), sp.getZ(), sp.level().dimension().location(),
                 sp.getYRot(), sp.getXRot(),
                 mc.getCameraEntity() == mc.player ? "player (" + mc.options.getCameraType() + ")" : String.valueOf(mc.getCameraEntity())));
+        long voices = mc.getSoundManager().getAvailableSounds().stream().filter(id -> id.getNamespace().equals(VoicePlayer.NAMESPACE)).count();
+        log("voice: " + voices + " recordings loaded, speaking now: " + VoicePlayer.speaking());
         List<String> npcs = new ArrayList<>();
         for (StoryNpcEntity n : sp.serverLevel().getEntitiesOfClass(StoryNpcEntity.class, sp.getBoundingBox().inflate(80))) {
             npcs.add(String.format("%s@%.1f,%.1f,%.1f%s%s", n.characterId(), n.getX(), n.getY(), n.getZ(),

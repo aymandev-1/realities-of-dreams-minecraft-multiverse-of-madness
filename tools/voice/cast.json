@@ -1,0 +1,10 @@
+{
+  "provider": "ElevenLabs (account of the project owner), model eleven_v4, one take per line",
+  "voices": {
+    "primordial_steve": {"voice": "Andrew - Clear & Intelligent", "voice_id": "5Tt3smTZZdAF8jVbfVlP"},
+    "elara": {"voice": "Olivia - Story-telling, Conversational", "voice_id": "MJw0jtAmgm4D71m0HUJU"},
+    "elder_rowan": {"voice": "Eldrin - Wise Epic Fantasy", "voice_id": "LvmvHEBEmMJBJw9UuhwO"},
+    "firstbrook_farmer_1": {"voice": "Justin - Safe & Warm", "voice_id": "fV5vDeUO8ghvK7ntjiVC"}
+  },
+  "prompting": "The prompt is the subtitle text exactly, preceded by the direction in square brackets, e.g. \"[uneasy, quiet] Did you feel that?\". Directions are recorded per line in lines.json."
+}

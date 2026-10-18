@@ -1,0 +1,142 @@
+[
+  {
+    "key": "v_5e9702a58eaf",
+    "speaker": "elara",
+    "text": "And he's usually right.",
+    "direction": "playful",
+    "seconds": 1.44
+  },
+  {
+    "key": "v_41da756d4212",
+    "speaker": "elara",
+    "text": "Feel what?",
+    "direction": "puzzled",
+    "seconds": 0.8
+  },
+  {
+    "key": "v_43c01f9a55c6",
+    "speaker": "elara",
+    "text": "I hope so.",
+    "direction": "softly, worried",
+    "seconds": 0.96
+  },
+  {
+    "key": "v_14ce6933c04c",
+    "speaker": "elara",
+    "text": "I wish every morning was this quiet.",
+    "direction": "content, sighs happily",
+    "seconds": 2.24
+  },
+  {
+    "key": "v_6ad28a56b7d7",
+    "speaker": "elara",
+    "text": "Orin said you'd sleep until noon if nobody checked.",
+    "direction": "teasing",
+    "seconds": 2.56
+  },
+  {
+    "key": "v_f41d0b0e5c49",
+    "speaker": "elara",
+    "text": "Steve! You awake in there?",
+    "direction": "calling through a window, cheerful",
+    "seconds": 1.84
+  },
+  {
+    "key": "v_4a938f8ef96d",
+    "speaker": "elara",
+    "text": "That's something, I suppose.",
+    "direction": "laughs softly",
+    "seconds": 1.44
+  },
+  {
+    "key": "v_47e01bb41d97",
+    "speaker": "elara",
+    "text": "You mean Bram watched while you did everything?",
+    "direction": "skeptical, teasing",
+    "seconds": 2.48
+  },
+  {
+    "key": "v_44218d1a2d3b",
+    "speaker": "elara",
+    "text": "You repaired the eastern bridge yesterday?",
+    "direction": "curious",
+    "seconds": 1.92
+  },
+  {
+    "key": "v_ad1ea1003679",
+    "speaker": "elder_rowan",
+    "text": "Steve! There you are.",
+    "direction": "warm, relieved, calling out",
+    "seconds": 2.32
+  },
+  {
+    "key": "v_ee035f42c275",
+    "speaker": "firstbrook_farmer_1",
+    "text": "Morning, Steve!",
+    "direction": "calling out warmly from a field",
+    "seconds": 1.36
+  },
+  {
+    "key": "v_54f13f7d4cea",
+    "speaker": "primordial_steve",
+    "text": "Another morning.",
+    "direction": "sleepily, warm",
+    "seconds": 1.28
+  },
+  {
+    "key": "v_d334f39b3848",
+    "speaker": "primordial_steve",
+    "text": "Did you feel that?",
+    "direction": "uneasy, quiet",
+    "seconds": 1.2
+  },
+  {
+    "key": "v_f04e14b125e6",
+    "speaker": "primordial_steve",
+    "text": "Don't say that. Something always happens when somebody says that.",
+    "direction": "half-joking, wary",
+    "seconds": 3.68
+  },
+  {
+    "key": "v_89817c55e8f0",
+    "speaker": "primordial_steve",
+    "text": "He carried the wood.",
+    "direction": "deadpan",
+    "seconds": 1.2
+  },
+  {
+    "key": "v_d3e80de41e0f",
+    "speaker": "primordial_steve",
+    "text": "I am now.",
+    "direction": "groggy, amused",
+    "seconds": 1.2
+  },
+  {
+    "key": "v_2896f69b51b1",
+    "speaker": "primordial_steve",
+    "text": "Morning!",
+    "direction": "friendly, calling back",
+    "seconds": 0.72
+  },
+  {
+    "key": "v_393d7e945418",
+    "speaker": "primordial_steve",
+    "text": "Most of it. Bram helped with the supports.",
+    "direction": "casual",
+    "seconds": 2.64
+  },
+  {
+    "key": "v_1ec9402cbbe6",
+    "speaker": "primordial_steve",
+    "text": "Orin says that every morning.",
+    "direction": "dry, good-humoured",
+    "seconds": 2.08
+  },
+  {
+    "key": "v_64f4a175ff7b",
+    "speaker": "primordial_steve",
+    "text": "Probably nothing.",
+    "direction": "unconvinced, brushing it off",
+    "seconds": 1.2
+  }
+]

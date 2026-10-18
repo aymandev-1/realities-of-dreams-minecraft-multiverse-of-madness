@@ -85,6 +85,9 @@ public final class CinematicPlayer {
 
     private static void playSounds(double from, double to) {
         Minecraft mc = Minecraft.getInstance();
+        for (CinematicDef.Subtitle s : timeline.def().subtitles()) {
+            if (s.start() > from && s.start() <= to) VoicePlayer.speak(s.speaker(), s.text());
+        }
         for (CinematicDef.SoundCue s : timeline.soundsBetween(from, to)) {
             SoundEvent ev = SoundEvent.createVariableRangeEvent(ResourceLocation.parse(s.sound()));
             mc.getSoundManager().play(SimpleSoundInstance.forUI(ev, s.pitch(), s.volume()));
@@ -94,6 +97,7 @@ public final class CinematicPlayer {
     static void stop(boolean notifyServer) {
         Minecraft mc = Minecraft.getInstance();
         String id = timeline == null ? null : timeline.def().id();
+        if (id != null) VoicePlayer.stop();
         timeline = null;
         camera = null;
         if (mc.player != null) mc.setCameraEntity(mc.player);
@@ -101,6 +105,7 @@ public final class CinematicPlayer {
     }
 
     static void reset() {
+        VoicePlayer.stop();
         timeline = null;
         camera = null;
     }
