@@ -55,7 +55,7 @@ import java.util.function.Consumer;
  * without clicking any character; then it checks Primordial Steve's appearance, photographs the
  * Saga 1 cast and a tour of Firstbrook, saves and quits to the menu, and loads the story again
  * with Continue Story. With -Drod.panorama=true it also photographs the menu panorama.
- * Screenshots go to run/client/screenshots and the log to run/client/autotest.log.
+ * Screenshots go to run/autotest/screenshots and the log to run/autotest/autotest.log.
  */
 @EventBusSubscriber(modid = RealitiesOfDreams.MODID, value = Dist.CLIENT)
 public final class ClientAutotest {

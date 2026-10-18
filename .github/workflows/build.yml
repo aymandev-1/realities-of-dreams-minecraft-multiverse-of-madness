@@ -71,8 +71,8 @@ jobs:
 
       - name: Client settings for an unattended run
         run: |
-          mkdir -p run/client
-          cat > run/client/options.txt <<'OPTIONS'
+          mkdir -p run/autotest
+          cat > run/autotest/options.txt <<'OPTIONS'
           onboardAccessibility:false
           pauseOnLostFocus:false
           tutorialStep:none
@@ -85,15 +85,15 @@ jobs:
           guiScale:2
           soundCategory_master:0.0
           OPTIONS
-          sed -i 's/^ *//' run/client/options.txt
+          sed -i 's/^ *//' run/autotest/options.txt
 
       - name: Automated playtest in the Minecraft client
         env:
           LIBGL_ALWAYS_SOFTWARE: '1'
         run: |
           timeout 35m xvfb-run -a -s "-screen 0 1600x900x24" ./gradlew runClient -Prod.autotest=true --stacktrace || true
-          cat run/client/autotest.log || true
-          grep -q "RESULT: PASS" run/client/autotest.log
+          cat run/autotest/autotest.log || true
+          grep -q "RESULT: PASS" run/autotest/autotest.log
 
       - name: Upload screenshots and logs
         if: always()
@@ -101,18 +101,18 @@ jobs:
         with:
           name: client-playtest
           path: |
-            run/client/screenshots/
-            run/client/autotest.log
-            run/client/logs/
+            run/autotest/screenshots/
+            run/autotest/autotest.log
+            run/autotest/logs/
           if-no-files-found: ignore
 
       - name: Publish screenshots to the claude/playtest-screenshots branch
         if: always() && github.event_name == 'push'
         run: |
           mkdir -p /tmp/shots
-          cp run/client/screenshots/*.png /tmp/shots/ 2>/dev/null || true
-          cp run/client/autotest.log /tmp/shots/ 2>/dev/null || true
-          grep -E "ERROR|Exception|\[autotest\]" run/client/logs/latest.log | head -300 > /tmp/shots/client-log-excerpt.txt 2>/dev/null || true
+          cp run/autotest/screenshots/*.png /tmp/shots/ 2>/dev/null || true
+          cp run/autotest/autotest.log /tmp/shots/ 2>/dev/null || true
+          grep -E "ERROR|Exception|\[autotest\]" run/autotest/logs/latest.log | head -300 > /tmp/shots/client-log-excerpt.txt 2>/dev/null || true
           cd /tmp/shots
           git init -q
           git checkout -q -b claude/playtest-screenshots
