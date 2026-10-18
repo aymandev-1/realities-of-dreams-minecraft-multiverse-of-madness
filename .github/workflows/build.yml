@@ -108,6 +108,9 @@ jobs:
 
       - name: Publish screenshots to the claude/playtest-screenshots branch
         if: always() && github.event_name == 'push'
+        # Convenience copy only. Pushes of the same commit to two branches race for this ref, and the
+        # loser must not fail a playtest that passed; the screenshots are in the artifact either way.
+        continue-on-error: true
         run: |
           mkdir -p /tmp/shots
           cp run/autotest/screenshots/*.png /tmp/shots/ 2>/dev/null || true
