@@ -28,6 +28,8 @@ if (!coreOnly) {
             client {
                 client()
                 gameDirectory = project.file('run/client')
+                // `gradlew runClient -Prod.autotest=true` runs the automated playtest (see ClientAutotest).
+                if (providers.gradleProperty('rod.autotest').isPresent()) systemProperty 'rod.autotest', 'true'
             }
             server {
                 server()
