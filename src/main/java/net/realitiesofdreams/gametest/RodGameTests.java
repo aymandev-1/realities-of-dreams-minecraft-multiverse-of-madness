@@ -1,6 +1,7 @@
 package net.realitiesofdreams.gametest;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.gametest.framework.GameTest;
 import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.nbt.CompoundTag;
@@ -62,19 +63,35 @@ public final class RodGameTests {
         helper.succeed();
     }
 
+    /**
+     * The game-test server only creates the vanilla dimensions, so this checks that the MC-001
+     * dimension definition loads from the mod's data, and checks the terrain when the level exists
+     * (it always does in a normal world).
+     */
     @GameTest(template = "empty")
-    public static void mc001UniverseExists(GameTestHelper helper) {
-        ServerLevel mc001 = helper.getLevel().getServer().getLevel(ModDimensions.MC_001);
-        helper.assertTrue(mc001 != null, "MC-001 dimension missing");
-        helper.assertTrue(mc001.getBlockState(new BlockPos(200, 63, 200)).is(Blocks.GRASS_BLOCK), "MC-001 ground is not grass at y=63");
-        helper.assertTrue(mc001.getBlockState(new BlockPos(200, 64, 200)).isAir(), "MC-001 is not open above ground");
+    public static void mc001UniverseIsDefined(GameTestHelper helper) {
+        var server = helper.getLevel().getServer();
+        var access = server.registryAccess();
+        helper.assertTrue(access.registryOrThrow(Registries.DIMENSION_TYPE).containsKey(RealitiesOfDreams.id("mc_001")), "MC-001 dimension type not loaded");
+        helper.assertTrue(access.registryOrThrow(Registries.LEVEL_STEM).containsKey(RealitiesOfDreams.id("mc_001")), "MC-001 dimension not loaded");
+        ServerLevel mc001 = server.getLevel(ModDimensions.MC_001);
+        if (mc001 != null) {
+            helper.assertTrue(mc001.getBlockState(new BlockPos(200, 63, 200)).is(Blocks.GRASS_BLOCK), "MC-001 ground is not grass at y=63");
+            helper.assertTrue(mc001.getBlockState(new BlockPos(200, 64, 200)).isAir(), "MC-001 is not open above ground");
+        }
         helper.succeed();
+    }
+
+    /** The scene's level, or the test level on the game-test server, which has no custom dimensions. */
+    private static ServerLevel sceneLevel(GameTestHelper helper, SceneDef scene) {
+        ServerLevel level = ModDimensions.level(helper.getLevel().getServer(), scene);
+        return level != null ? level : helper.getLevel();
     }
 
     @GameTest(template = "empty", timeoutTicks = 400)
     public static void scene001VillageBuilds(GameTestHelper helper) {
         SceneDef scene = Story.content().scene("mc001_s001");
-        ServerLevel level = ModDimensions.level(helper.getLevel().getServer(), scene);
+        ServerLevel level = sceneLevel(helper, scene);
         SceneWorld.ensureBuilt(level, scene);
         for (SceneDef.ClueDef clue : scene.clues().values()) {
             BlockPos pos = ModDimensions.absoluteBlock(scene, clue.pos());
