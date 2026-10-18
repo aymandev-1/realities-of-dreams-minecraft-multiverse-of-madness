@@ -8,6 +8,8 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.realitiesofdreams.registry.ModAttachments;
 import net.realitiesofdreams.registry.ModEntities;
+import net.realitiesofdreams.registry.ModSounds;
+import net.realitiesofdreams.registry.ModWorldgen;
 import org.slf4j.Logger;
 
 @Mod(RealitiesOfDreams.MODID)
@@ -18,8 +20,13 @@ public class RealitiesOfDreams {
     public RealitiesOfDreams(IEventBus modBus, ModContainer container) {
         ModEntities.ENTITIES.register(modBus);
         ModAttachments.ATTACHMENTS.register(modBus);
+        ModWorldgen.register(modBus);
+        ModSounds.SOUNDS.register(modBus);
         modBus.addListener(ModEntities::registerAttributes);
         container.registerConfig(ModConfig.Type.SERVER, RodConfig.SPEC);
+        if (net.neoforged.fml.loading.FMLEnvironment.dist.isClient()) {
+            container.registerConfig(ModConfig.Type.CLIENT, net.realitiesofdreams.client.RodClientConfig.SPEC);
+        }
         LOGGER.info("Realities of Dreams loaded {} characters and {} scenes",
                 Story.content().characters().size(), Story.content().scenes().size());
     }

@@ -29,7 +29,12 @@ if (!coreOnly) {
                 client()
                 gameDirectory = project.file('run/client')
                 // `gradlew runClient -Prod.autotest=true` runs the automated playtest (see ClientAutotest).
-                if (providers.gradleProperty('rod.autotest').isPresent()) systemProperty 'rod.autotest', 'true'
+                if (providers.gradleProperty('rod.autotest').isPresent()) {
+                    systemProperty 'rod.autotest', 'true'
+                    programArguments.addAll('--width', '1280', '--height', '720')
+                }
+                // `-Prod.panorama=true` also photographs the main menu panorama during the playtest.
+                if (providers.gradleProperty('rod.panorama').isPresent()) systemProperty 'rod.panorama', 'true'
             }
             server {
                 server()

@@ -3,26 +3,28 @@ package net.realitiesofdreams.client;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
-import net.minecraft.client.gui.screens.TitleScreen;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.events.GuiEventListener;
+import net.minecraft.client.gui.screens.ConfirmScreen;
+import net.minecraft.client.gui.screens.GenericMessageScreen;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.LevelSettings;
-import net.minecraft.world.level.WorldDataConfiguration;
-import net.minecraft.world.level.levelgen.WorldOptions;
-import net.minecraft.world.level.levelgen.presets.WorldPresets;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.realitiesofdreams.RealitiesOfDreams;
 import net.realitiesofdreams.Story;
+import net.realitiesofdreams.campaign.Campaign;
+import net.realitiesofdreams.client.menu.ChapterSelectScreen;
+import net.realitiesofdreams.client.menu.RodCreditsScreen;
+import net.realitiesofdreams.client.menu.RodTitleScreen;
+import net.realitiesofdreams.client.menu.StorySaves;
 import net.realitiesofdreams.entity.StoryNpcEntity;
 import net.realitiesofdreams.registry.ModAttachments;
 import net.realitiesofdreams.server.NpcDirector;
@@ -48,48 +50,37 @@ import java.util.function.Consumer;
  * Automated client playtest, for development only. It runs only when the JVM is started with
  * -Drod.autotest=true (`gradlew runClient -Prod.autotest=true`), and does nothing otherwise.
  *
- * It creates a creative test world, photographs every Saga 1 character from the front and back,
- * then plays Scene 001 from the opening cinematic to "Mission Complete", taking screenshots at each
- * story beat and logging the story state, and finally quits. Screenshots go to run/client/screenshots
- * and the log to run/client/autotest.log.
+ * It plays the game the way a new player would: the Realities of Dreams main menu, New Story,
+ * the automatic arrival in MC-001 and Scene 001 from the opening cinematic to "Mission Complete"
+ * without clicking any character; then it checks Primordial Steve's appearance, photographs the
+ * Saga 1 cast and a tour of Firstbrook, saves and quits to the menu, and loads the story again
+ * with Continue Story. With -Drod.panorama=true it also photographs the menu panorama.
+ * Screenshots go to run/client/screenshots and the log to run/client/autotest.log.
  */
 @EventBusSubscriber(modid = RealitiesOfDreams.MODID, value = Dist.CLIENT)
 public final class ClientAutotest {
     private static final boolean ENABLED = Boolean.getBoolean("rod.autotest");
-    private static final int GLOBAL_TIMEOUT = 20 * 60 * 15;
+    private static final boolean PANORAMA = Boolean.getBoolean("rod.panorama");
+    private static final int GLOBAL_TIMEOUT = 20 * 60 * 25;
     private static final String TAG = "rod_autotest";
 
     private record Step(String label, int delay, BooleanSupplier until, int timeout, Runnable action) {}
 
     private static final Deque<Step> steps = new ArrayDeque<>();
-    private static boolean worldRequested, started;
+    private static boolean started;
     private static int wait, waited, ticks;
     private static final List<String> failures = new ArrayList<>();
+    private static net.minecraft.world.phys.Vec3 routineStart;
 
     private ClientAutotest() {}
 
     @SubscribeEvent
-    public static void onScreen(ScreenEvent.Init.Post event) {
-        if (!ENABLED || worldRequested || !(event.getScreen() instanceof TitleScreen)) return;
-        worldRequested = true;
-        log("Creating test world");
-        Minecraft mc = Minecraft.getInstance();
-        LevelSettings settings = new LevelSettings("rod-autotest-" + System.currentTimeMillis(), GameType.CREATIVE, false,
-                Difficulty.PEACEFUL, true, new GameRules(), WorldDataConfiguration.DEFAULT);
-        mc.createWorldOpenFlows().createFreshLevel(settings.levelName(), settings, new WorldOptions(1L, false, false),
-                access -> access.registryOrThrow(Registries.WORLD_PRESET).getHolderOrThrow(WorldPresets.FLAT).value().createWorldDimensions(),
-                event.getScreen());
-    }
-
-    @SubscribeEvent
     public static void onTick(ClientTickEvent.Post event) {
         if (!ENABLED) return;
-        Minecraft mc = Minecraft.getInstance();
         if (!started) {
-            if (mc.player == null || mc.getSingleplayerServer() == null) return;
             started = true;
             script();
-            log("World joined; running " + steps.size() + " steps");
+            log("Autotest started; " + steps.size() + " steps");
         }
         if (++ticks > GLOBAL_TIMEOUT) {
             fail("global timeout");
@@ -114,6 +105,7 @@ public final class ClientAutotest {
             s.action().run();
         } catch (RuntimeException e) {
             fail(s.label() + ": " + e);
+            RealitiesOfDreams.LOGGER.error("[autotest] step failed", e);
         }
     }
 
@@ -122,9 +114,27 @@ public final class ClientAutotest {
     private static void script() {
         Minecraft mc = Minecraft.getInstance();
         SceneDef scene = Story.content().scene("mc001_s001");
-        // Scene 001, played as a player would: no clicking on characters.
-        // A new player is taken into Scene 001 automatically a few seconds after joining.
-        step("story starts on its own", 0, CinematicPlayer::active, 600, () -> log("opening cinematic started"));
+
+        // The main menu replaces the vanilla title screen.
+        step("main menu", 0, () -> mc.screen instanceof RodTitleScreen, 20 * 60 * 5, () -> log("Realities of Dreams main menu is showing"));
+        step("menu faded in", 70, () -> shot("menu_01_title"));
+        step("press New Story", 10, () -> press(Component.translatable("realitiesofdreams.menu.new_story")));
+        // A save from an earlier run is kept as a backup when a new story begins.
+        step("confirm if asked", 30, () -> {
+            if (mc.screen instanceof ConfirmScreen) {
+                shot("menu_02_new_story_confirm");
+                press(Component.translatable("realitiesofdreams.menu.new_story.confirm.yes"));
+            }
+        });
+        step("story save created and joined", 0, () -> serverPlayer() != null && mc.player != null, 20 * 60 * 6, () -> {
+            ServerPlayer sp = serverPlayer();
+            check(Campaign.isStoryWorld(), "the New Story save is not recognised as a story world");
+            check(sp.level().dimension().equals(ModDimensions.MC_001), "player did not arrive in MC-001 but in " + sp.level().dimension().location());
+            check(StorySaves.exists(), "story save folder missing");
+        });
+
+        // Scene 001, played as a player would: no commands, no clicking on characters.
+        step("opening cinematic starts by itself", 0, CinematicPlayer::active, 900, () -> log("opening cinematic started"));
         step("opening: valley", 150, () -> shot("s001_01_opening_valley"));
         step("opening: village", 160, () -> shot("s001_02_opening_village"));
         step("opening: Steve asleep", 130, () -> shot("s001_03_opening_asleep"));
@@ -134,8 +144,26 @@ public final class ClientAutotest {
         step("player in control", 0, () -> "leave_house".equals(stage()), 900, () -> {
             logState();
             shot("s001_07_in_control");
+            routineStart = npcPos("firstbrook_villager_3");
+            log("villager_3 starts at " + routineStart);
         });
-        step("look round the house", 30, () -> onServer(sp -> face(sp, 135, 15)));
+        step("Primordial Steve appearance", 20, () -> {
+            check(ClientAppearance.overridden(mc.player.getUUID()), "player is not drawn as Primordial Steve");
+            String tex = mc.player.getSkin().texture().toString();
+            check(tex.equals("realitiesofdreams:textures/entity/character/primordial_steve.png"), "player skin is " + tex);
+            check(mc.player.getSkin().model() == net.minecraft.client.resources.PlayerSkin.Model.WIDE, "Primordial Steve must use the classic (wide) model");
+            log("player skin: " + tex + " model " + mc.player.getSkin().model());
+        });
+        step("first-person arm", 0, () -> onServer(sp -> face(sp, 120, 35)));
+        step("first-person shot", 20, () -> shot("player_01_first_person_arm"));
+        step("third person (front)", 0, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_FRONT));
+        step("primordial steve front", 25, () -> shot("player_02_primordial_steve_front"));
+        step("third person (back)", 0, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_BACK));
+        step("primordial steve back", 25, () -> shot("player_03_primordial_steve_back"));
+        step("look round the house", 0, () -> {
+            mc.options.setCameraType(CameraType.FIRST_PERSON);
+            onServer(sp -> face(sp, 135, 15));
+        });
         step("house interior", 20, () -> shot("s001_08_house_interior"));
         step("leave the house", 0, () -> onServer(sp -> moveTo(sp, scene, 16, 12, 90)));
         step("Elara joins", 0, () -> "explore".equals(stage()), 100, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_BACK));
@@ -160,13 +188,44 @@ public final class ClientAutotest {
             shot("s001_15_mission_complete");
         });
         step("Rowan comes over", 80, () -> shot("s001_16_rowan_approaches"));
-        step("Rowan arrived", 120, () -> shot("s001_17_rowan_arrived"));
-        // Character skins, photographed once the scene is over: the 11 named Saga 1 characters,
-        // then one of each generated NPC type.
-        step("skins: first person", 0, () -> {
+        step("Rowan arrived", 120, () -> {
+            shot("s001_17_rowan_arrived");
+            StorySaves.Checkpoint cp = StorySaves.checkpoint();
+            check(cp != null && cp.completed().contains("mc001_s001"), "story checkpoint file does not record Scene 001 as complete: " + cp);
+        });
+
+        // Primordial Steve in daylight, from the front and behind.
+        step("appearance outdoors", 0, () -> onServer(sp -> moveTo(sp, scene, -2, 6, 0)));
+        step("third person front outdoors", 10, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_FRONT));
+        step("primordial steve in the square (front)", 30, () -> shot("player_04_square_front"));
+        step("third person back outdoors", 0, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_BACK));
+        step("primordial steve in the square (back)", 30, () -> {
+            shot("player_05_square_back");
+            mc.options.setCameraType(CameraType.FIRST_PERSON);
+            net.minecraft.world.phys.Vec3 now = npcPos("firstbrook_villager_3");
+            log("villager_3 is now at " + now);
+            check(routineStart != null && now != null && now.distanceTo(routineStart) > 3, "a villager on a daily routine did not move");
+        });
+
+        // A tour of Firstbrook and the valley around it, photographed from a spectator camera.
+        step("tour: spectator", 0, () -> {
             mc.options.setCameraType(CameraType.FIRST_PERSON);
             mc.options.hideGui = true;
+            onServer(sp -> sp.setGameMode(GameType.SPECTATOR));
         });
+        for (Shot t : TOUR) {
+            step("tour: go to " + t.name, 0, () -> onServer(sp -> place(sp, scene, t)));
+            step("tour: " + t.name, 90, () -> shot("tour_" + t.name));
+        }
+        if (PANORAMA) {
+            step("panorama: position", 0, () -> onServer(sp -> place(sp, scene, PANORAMA_SPOT)));
+            step("panorama: capture", 120, () -> {
+                Component c = mc.grabPanoramixScreenshot(mc.gameDirectory, 1024, 1024);
+                log("panorama: " + c.getString());
+            });
+        }
+
+        // Character skins: the 11 named Saga 1 characters, then one of each generated NPC type.
         List<String> named = new ArrayList<>();
         List<String> types = new ArrayList<>();
         Set<String> seenTypes = new LinkedHashSet<>();
@@ -186,13 +245,80 @@ public final class ClientAutotest {
             step("turn around", 0, () -> onServer(sp -> turn(sp, 0)));
             step("back " + group, 20, () -> shot(name + "_back"));
         }
-        step("clear the line-up", 0, () -> onServer(sp -> clear(sp)));
-        step("save", 0, () -> command("rod dev save"));
+        step("clear the line-up", 0, () -> onServer(sp -> {
+            clear(sp);
+            sp.setGameMode(GameType.SURVIVAL);
+            moveTo(sp, scene, 2, 3, 180);
+        }));
         step("final state", 40, () -> {
+            mc.options.hideGui = false;
             logState();
-            command("rod dev npcs");
         });
-        step("finish", 40, ClientAutotest::finish);
+
+        // Save and Quit, exactly as the pause menu does it, then Continue Story from the main menu.
+        step("save and quit", 20, ClientAutotest::saveAndQuit);
+        step("back at the main menu", 0, () -> mc.screen instanceof RodTitleScreen && mc.level == null, 20 * 60 * 2, () -> {});
+        step("continue is offered", 60, () -> {
+            StorySaves.Checkpoint cp = StorySaves.checkpoint();
+            check(cp != null, "no checkpoint for Continue Story");
+            log("checkpoint: " + cp);
+            shot("menu_03_continue_available");
+        });
+        step("press Continue Story", 0, () -> press(Component.translatable("realitiesofdreams.menu.continue")));
+        step("story save reloaded", 0, () -> serverPlayer() != null && mc.player != null && mc.screen == null, 20 * 60 * 4, () -> {
+            ServerPlayer sp = serverPlayer();
+            PlayerStoryState s = ModAttachments.story(sp);
+            check(s.isSceneComplete("mc001_s001"), "Scene 001 progress was not kept");
+            check(s.journal().contains("firstbrook_morning"), "journal entry not kept");
+            check(sp.level().dimension().equals(ModDimensions.MC_001), "Continue did not return the player to MC-001");
+            logState();
+        });
+        step("continued in Firstbrook", 60, () -> {
+            check(ClientAppearance.overridden(mc.player.getUUID()), "Primordial Steve appearance not restored after reload");
+            shot("continue_01_back_in_firstbrook");
+        });
+        step("quit again", 20, ClientAutotest::saveAndQuit);
+        step("main menu again", 0, () -> mc.screen instanceof RodTitleScreen && mc.level == null, 20 * 60 * 2, () -> {});
+        step("chapter select", 40, () -> mc.setScreen(new ChapterSelectScreen(mc.screen)));
+        step("chapter select shown", 40, () -> shot("menu_04_chapter_select"));
+        step("credits", 0, () -> mc.setScreen(new RodCreditsScreen(new RodTitleScreen())));
+        step("credits rolling", 120, () -> shot("menu_05_credits"));
+        step("finish", 20, ClientAutotest::finish);
+    }
+
+    /** A camera position relative to Firstbrook's anchor. */
+    private record Shot(String name, double x, double y, double z, float yaw, float pitch) {}
+
+    private static final Shot PANORAMA_SPOT = new Shot("panorama", 6.5, 9, 4.5, 200, 0);
+
+    private static final List<Shot> TOUR = List.of(
+            new Shot("01_firstbrook_from_south", 4, 40, 84, 180, 24),
+            new Shot("02_firstbrook_from_east", 78, 34, 6, 90, 22),
+            new Shot("03_village_square", 8, 6, 8, 135, 18),
+            new Shot("04_steve_house", 9, 4, 6, 315, 10),
+            new Shot("05_lane_and_bridge", 22, 4, 7, 300, 8),
+            new Shot("06_elder_rowans_house", -3, 5, 6, 129, 12),
+            new Shot("07_orins_workshop", 16, 4, 3, 156, 10),
+            new Shot("08_bram_guard_station", 0, 4, -11, 210, 10),
+            new Shot("09_north_wall_from_the_trail", -4, 7, -36, 10, 10),
+            new Shot("10_market", -2, 5, 12, 122, 14),
+            new Shot("11_barn_and_pens", -6, 10, 44, 124, 20),
+            new Shot("12_training_ground", -36, 12, 2, 180, 35),
+            new Shot("13_riverbank_and_dock", 27, 4, 34, 229, 10),
+            new Shot("14_northern_hills_ridge", 8, 20, -60, 180, 8),
+            new Shot("15_ruin_on_the_ridge", 0, 34, -100, 200, 16),
+            new Shot("16_waterfall", 32, 6, -40, 180, 4),
+            new Shot("17_southmere_lake", 32, 14, 80, 0, 18),
+            new Shot("18_awakening_valley_north", 10, 60, -150, 180, 12),
+            new Shot("19_steve_house_inside", 14.5, 1, 20.3, 200, 15),
+            new Shot("20_orin_workshop_inside", 10.5, 1, -6, 200, 12),
+            new Shot("21_council_fire", -16, 4, 6, 120, 15),
+            new Shot("22_millers_and_bakery", -6, 5, 9, 200, 12),
+            new Shot("23_firstbrook_aerial", 0, 70, 30, 180, 55));
+
+    private static void place(ServerPlayer sp, SceneDef scene, Shot t) {
+        net.minecraft.core.BlockPos a = ModDimensions.anchor(scene);
+        sp.teleportTo(sp.serverLevel(), a.getX() + t.x, a.getY() + t.y, a.getZ() + t.z, t.yaw, t.pitch);
     }
 
     private static void step(String label, int delay, Runnable action) {
@@ -205,14 +331,40 @@ public final class ClientAutotest {
 
     // ------------------------------------------------------------------ helpers
 
-    private static void command(String cmd) {
-        log("command: /" + cmd);
-        Minecraft.getInstance().player.connection.sendCommand(cmd);
+    /** Presses the button on the current screen whose label matches, as a click would. */
+    private static void press(Component label) {
+        Screen screen = Minecraft.getInstance().screen;
+        String want = label.getString();
+        if (screen != null) {
+            for (GuiEventListener l : screen.children()) {
+                if (l instanceof AbstractWidget w && w.getMessage().getString().equals(want)) {
+                    check(w.active, "button \"" + want + "\" is disabled");
+                    w.onClick(w.getX() + 2, w.getY() + 2);
+                    log("pressed \"" + want + "\" on " + screen.getClass().getSimpleName());
+                    return;
+                }
+            }
+        }
+        fail("no button \"" + want + "\" on " + (screen == null ? "no screen" : screen.getClass().getSimpleName()));
+    }
+
+    private static void saveAndQuit() {
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.level == null) return;
+        log("save and quit");
+        mc.level.disconnect();
+        mc.disconnect(new GenericMessageScreen(Component.translatable("menu.savingLevel")));
+        mc.setScreen(new net.minecraft.client.gui.screens.TitleScreen()); // as the pause menu does; our menu takes its place
+    }
+
+    private static void check(boolean ok, String why) {
+        if (!ok) fail(why);
     }
 
     private static void onServer(Consumer<ServerPlayer> task) {
         Minecraft mc = Minecraft.getInstance();
         MinecraftServer server = mc.getSingleplayerServer();
+        if (server == null || mc.player == null) return;
         java.util.UUID id = mc.player.getUUID();
         server.execute(() -> {
             ServerPlayer sp = server.getPlayerList().getPlayer(id);
@@ -233,6 +385,13 @@ public final class ClientAutotest {
     private static boolean hasFlag(String flag) {
         ServerPlayer sp = serverPlayer();
         return sp != null && ModAttachments.story(sp).hasFlag(flag);
+    }
+
+    private static net.minecraft.world.phys.Vec3 npcPos(String character) {
+        ServerPlayer sp = serverPlayer();
+        if (sp == null) return null;
+        StoryNpcEntity n = NpcDirector.find(sp.serverLevel(), character);
+        return n == null ? null : n.position();
     }
 
     private static boolean isComplete() {
@@ -290,7 +449,8 @@ public final class ClientAutotest {
         PlayerStoryState s = ModAttachments.story(sp);
         log("state: " + s.toJson());
         Minecraft mc = Minecraft.getInstance();
-        log(String.format("player: %.1f,%.1f,%.1f yaw %.0f pitch %.0f, camera %s", sp.getX(), sp.getY(), sp.getZ(), sp.getYRot(), sp.getXRot(),
+        log(String.format("player: %.1f,%.1f,%.1f in %s yaw %.0f pitch %.0f, camera %s", sp.getX(), sp.getY(), sp.getZ(), sp.level().dimension().location(),
+                sp.getYRot(), sp.getXRot(),
                 mc.getCameraEntity() == mc.player ? "player (" + mc.options.getCameraType() + ")" : String.valueOf(mc.getCameraEntity())));
         List<String> npcs = new ArrayList<>();
         for (StoryNpcEntity n : sp.serverLevel().getEntitiesOfClass(StoryNpcEntity.class, sp.getBoundingBox().inflate(80))) {

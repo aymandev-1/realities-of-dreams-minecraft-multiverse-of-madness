@@ -30,6 +30,7 @@ import net.minecraft.world.phys.Vec3;
 import net.realitiesofdreams.RealitiesOfDreams;
 import net.realitiesofdreams.RodConfig;
 import net.realitiesofdreams.Story;
+import net.realitiesofdreams.campaign.Campaign;
 import net.realitiesofdreams.entity.StoryNpcEntity;
 import net.realitiesofdreams.network.CinematicPayload;
 import net.realitiesofdreams.network.DialogueEndPayload;
@@ -70,6 +71,8 @@ import java.util.UUID;
  */
 public final class StoryManager {
     public static final String FIRST_SCENE = "mc001_s001";
+    /** How long a story world waits for the client to say its loading screen has closed. */
+    private static final int READY_FALLBACK_TICKS = 200;
     private static final double TALK_CANCEL_DISTANCE = 16;
     private static StoryManager instance = new StoryManager(StoryMessenger.NETWORK);
 
@@ -121,6 +124,14 @@ public final class StoryManager {
         PlayerRuntime rt = runtime(p);
         PlayerStoryState state = state(p);
         SceneDef scene = engine().activeScene(state);
+        if (Campaign.isStoryWorld()) {
+            // Story saves have no overworld to speak of: the player arrives in MC-001 straight away,
+            // and the story picks up once their loading screen has closed (see onClientReady).
+            enterStoryWorld(p, state, scene);
+            rt.awaitingReady = true;
+            rt.autoStartTicks = READY_FALLBACK_TICKS;
+            return;
+        }
         if (scene != null) {
             ServerLevel level = ModDimensions.level(p.server, scene);
             if (level != null) {
@@ -133,7 +144,44 @@ public final class StoryManager {
         }
     }
 
+    private void enterStoryWorld(ServerPlayer p, PlayerStoryState state, @Nullable SceneDef active) {
+        SceneDef scene = active != null ? active : Story.content().scene(FIRST_SCENE);
+        ServerLevel level = scene == null ? null : ModDimensions.level(p.server, scene);
+        if (level == null) return;
+        SceneWorld.ensureBuilt(level, scene);
+        if (active != null) {
+            NpcDirector.reconcile(level, active, state);
+            if (p.level() != level) teleportToCheckpoint(p, active, state);
+        } else if (p.level() != level) {
+            // A new story, or Saga 1 finished so far: wake up at home in Firstbrook.
+            double[] a = ModDimensions.absolute(scene, state.completedScenes().isEmpty() ? scene.arrival() : scene.location("outside_door"));
+            p.teleportTo(level, a[0], a[1], a[2], scene.arrivalYaw(), 0);
+            p.setRespawnPosition(level.dimension(), BlockPos.containing(a[0], a[1], a[2]), scene.arrivalYaw(), true, false);
+        }
+    }
+
+    /** The player's client has finished loading: start or resume the story in a story world. */
+    public void onClientReady(ServerPlayer p) {
+        PlayerRuntime rt = runtime(p);
+        if (!rt.awaitingReady) return;
+        rt.awaitingReady = false;
+        rt.autoStartTicks = -1;
+        PlayerStoryState state = state(p);
+        String action = Campaign.takeJoinAction();
+        if (action != null && action.startsWith("replay:") && Story.content().scene(action.substring(7)) != null) {
+            restartScene(p, action.substring(7));
+            return;
+        }
+        SceneDef scene = engine().activeScene(state);
+        if (scene != null) {
+            perform(p, engine().resume(state));
+        } else if (!state.isSceneComplete(FIRST_SCENE)) {
+            startScene(p, FIRST_SCENE, true);
+        }
+    }
+
     public void onLogout(ServerPlayer p) {
+        Campaign.saveProgress(p, state(p));
         NpcDirector.releaseAll(p);
         runtimes.remove(p.getUUID());
     }
@@ -229,6 +277,7 @@ public final class StoryManager {
         }
         double[] a = ModDimensions.absolute(scene, loc);
         p.teleportTo(level, a[0], a[1], a[2], p.getYRot(), 0);
+        if (Campaign.isStoryWorld()) p.setRespawnPosition(level.dimension(), BlockPos.containing(a[0], a[1], a[2]), p.getYRot(), true, false);
     }
 
     // ---------------------------------------------------------------- per tick
@@ -238,7 +287,8 @@ public final class StoryManager {
         rt.tick++;
         if (rt.autoStartTicks > 0 && --rt.autoStartTicks == 0) {
             rt.autoStartTicks = -1;
-            if (!state(p).introOffered()) play(p);
+            if (rt.awaitingReady) onClientReady(p);
+            else if (!state(p).introOffered()) play(p);
         }
         tickDialogue(p, rt);
         if (rt.cinematicId != null) tickCinematicCues(p, rt);
@@ -661,6 +711,8 @@ public final class StoryManager {
             }
         }
         SceneDef scene = engine().activeScene(state);
+        boolean completed = effects.stream().anyMatch(e -> e instanceof Effect.SceneCompleted);
+        if (completed || !java.util.Objects.equals(rt.lastStage, state.stage())) Campaign.saveProgress(p, state);
         if (scene != null && !java.util.Objects.equals(rt.lastStage, state.stage())) {
             rt.lastStage = state.stage();
             ServerLevel level = ModDimensions.level(p.server, scene);

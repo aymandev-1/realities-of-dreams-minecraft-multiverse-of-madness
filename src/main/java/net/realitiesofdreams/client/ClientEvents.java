@@ -20,9 +20,22 @@ import net.realitiesofdreams.story.cinematic.CinematicTimeline;
 public final class ClientEvents {
     private ClientEvents() {}
 
+    private static boolean readySent;
+    private static int readyWait;
+
     @SubscribeEvent
     public static void onTick(ClientTickEvent.Post event) {
         ClientStory.tickShake();
+        net.minecraft.client.Minecraft mc = net.minecraft.client.Minecraft.getInstance();
+        if (!readySent && mc.player != null && mc.getConnection() != null && !(mc.screen instanceof net.minecraft.client.gui.screens.ReceivingLevelScreen)
+                && !(mc.screen instanceof net.minecraft.client.gui.screens.LevelLoadingScreen)) {
+            // Give the world a moment to appear around the player before the story goes on.
+            readyWait++;
+            if ((readyWait > 10 && mc.levelRenderer.hasRenderedAllSections()) || readyWait > 160) {
+                readySent = true;
+                PacketDistributor.sendToServer(new net.realitiesofdreams.network.ClientReadyPayload());
+            }
+        }
         if (CinematicPlayer.active()) {
             CinematicPlayer.tick();
             return;
@@ -86,8 +99,16 @@ public final class ClientEvents {
     }
 
     @SubscribeEvent
+    public static void onLogin(ClientPlayerNetworkEvent.LoggingIn event) {
+        readySent = false;
+        readyWait = 0;
+    }
+
+    @SubscribeEvent
     public static void onLogout(ClientPlayerNetworkEvent.LoggingOut event) {
         CinematicPlayer.reset();
         ClientStory.reset();
+        ClientAppearance.reset();
+        readySent = false;
     }
 }

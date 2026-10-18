@@ -74,8 +74,8 @@ public final class RodGameTests {
         helper.assertTrue(access.registryOrThrow(Registries.DIMENSION_TYPE).containsKey(RealitiesOfDreams.id("mc_001")), "MC-001 dimension type not loaded");
         ServerLevel mc001 = server.getLevel(ModDimensions.MC_001);
         if (mc001 != null) {
-            helper.assertTrue(mc001.getBlockState(new BlockPos(200, 63, 200)).is(Blocks.GRASS_BLOCK), "MC-001 ground is not grass at y=63");
-            helper.assertTrue(mc001.getBlockState(new BlockPos(200, 64, 200)).isAir(), "MC-001 is not open above ground");
+            helper.assertTrue(mc001.getBlockState(new BlockPos(-40, 63, 40)).is(Blocks.GRASS_BLOCK), "Firstbrook ground is not grass at y=63");
+            helper.assertTrue(mc001.getBlockState(new BlockPos(-40, 64, 40)).isAir(), "Firstbrook is not open above ground");
         }
         helper.succeed();
     }

@@ -1,23 +1,24 @@
-# Playtesting Scene 001 on Windows
+# Playtesting on Windows
 
-Only **Scene 001, "A Morning in Firstbrook"**, is playable. Scenes 002–020 are not implemented yet:
-when Scene 001 ends, the game says the next scene is unreleased and leaves you in Firstbrook.
+What you can play: the **Realities of Dreams main menu**, **New Story** into MC-001, the redesigned
+**Firstbrook**, and **Scene 001, "A Morning in Firstbrook"**, start to finish, with **Continue
+Story** afterwards. Scenes 002–020 are not implemented yet: after Scene 001 you are free to explore
+MC-001, and Chapter Selection shows the later scenes as locked.
 
 You need Minecraft Java **1.21.1** with **NeoForge 21.1.x** (CI builds against 21.1.172).
 
 ## Option A: install the built mod jar (no development tools needed)
 
-1. Open the latest green run of **Build and test** on the `claude/project-thread-0cmccg` branch:
+1. Open the latest green run of **Build and test** for the `claude/gracious-bell-lrzhza` branch:
    <https://github.com/aymandev-1/realities-of-dreams-minecraft-multiverse-of-madness/actions>
 2. Under **Artifacts**, download `realitiesofdreams-mod-jar` and unzip it. It contains one file,
-   `realitiesofdreams-0.1.0.jar`. That is the playable mod. The build makes no sources jar, so you
-   can't pick the wrong one.
+   `realitiesofdreams-0.1.0.jar`. That is the whole mod: textures, sounds, music and the world are
+   inside it. There is no separate resource pack to install.
 3. Install NeoForge 21.1.x for 1.21.1 with the NeoForge installer, or create a NeoForge 1.21.1
    instance in a launcher such as Prism, CurseForge or Modrinth.
 4. Copy `realitiesofdreams-0.1.0.jar` into that instance's `mods` folder. For the vanilla launcher
    that is `%APPDATA%\.minecraft\mods`.
-5. Start the game, create a **new world** with **Allow Cheats: ON** (the `/rod dev` commands need
-   it), and type `/rod play`.
+5. Start the game. The Realities of Dreams main menu appears instead of the usual title screen.
 
 ## Option B: build and run from source
 
@@ -27,74 +28,100 @@ You need Minecraft Java **1.21.1** with **NeoForge 21.1.x** (CI builds against 2
    ```bat
    git clone https://github.com/aymandev-1/realities-of-dreams-minecraft-multiverse-of-madness.git
    cd realities-of-dreams-minecraft-multiverse-of-madness
-   git checkout claude/project-thread-0cmccg
+   git checkout claude/gracious-bell-lrzhza
    gradlew.bat build
-   ```
-
-   The first build downloads Minecraft and NeoForge, which takes a few minutes. The mod jar is
-   written to `build\libs\realitiesofdreams-0.1.0.jar`.
-3. Run a development client that already has the mod loaded:
-
-   ```bat
    gradlew.bat runClient
    ```
 
-   The `client` run configuration is defined in `build.gradle` (`neoForge { runs { client { … } } }`)
-   and uses `run\client` as its game folder. Create a world with cheats on, then type `/rod play`.
-4. Optional checks:
+   The first build downloads Minecraft and NeoForge (a few minutes). The jar is written to
+   `build\libs\realitiesofdreams-0.1.0.jar`; `runClient` starts the game with the mod loaded.
+3. Optional checks:
+   - `gradlew.bat :story-core:test` runs the story engine and world-data unit tests.
    - `gradlew.bat runGameTestServer` runs the in-game tests on a headless server.
-   - `gradlew.bat runClient -Prod.autotest=true` replays the automated playtest and saves
-     screenshots to `run\client\screenshots`.
+   - `gradlew.bat runClient -Prod.autotest=true` plays the whole thing automatically (menu, New Story,
+     Scene 001, save and Continue) and saves screenshots to `run\client\screenshots`.
 
-## Playing Scene 001
+## What to test
 
-Type `/rod play`. You don't need to right-click anyone: every conversation starts when you walk
-near the character.
+### 1. The main menu
 
-1. A sunrise cinematic plays over Firstbrook, then cuts to Steve waking in his house while Elara
-   calls through the window.
-2. Steve's chest holds food and starter gear. Walk out of the front door.
-3. Elara joins you and talks as she walks beside you. Follow the lane east, over the bridge, to the
-   farms.
-4. A farmer speaks when you get near.
-5. Walk to the village square (the well). The camera turns to the northern hills and the ground
-   shakes, then Elara asks if you felt that.
-6. Elder Rowan walks over to you. The scene completes, you get your rewards and the game saves.
+- Title, subtitle, the turning panorama of Firstbrook and the faint gateway rings; menu music.
+- Move through the menu with the mouse, and with **Tab / arrow keys + Enter**.
+- **Continue Story** and **Chapter / Saga Selection** are greyed out until you have a story save.
+- **Settings**, **Multiplayer**, the language and accessibility buttons and **Mods** open the usual
+  Minecraft screens. **Minecraft Menu** shows the vanilla title screen; its top-left button brings
+  you back.
+- Resize the window and change GUI Scale: the menu should always fit.
 
-Subtitles stand in for voice acting. Sounds are vanilla placeholders.
+### 2. New Story
+
+Click **New Story**. You don't create a world, pick a game mode, type a command or teleport:
+
+1. A story save named "Realities of Dreams — MC-001" is created next to your other worlds (your
+   other worlds are never touched). The first load takes a little longer while Firstbrook is built
+   and the valley around it generated.
+2. The opening cinematic plays: the valley at sunrise, Firstbrook, Steve asleep at home, Elara at
+   the window.
+3. You wake as **Primordial Steve** (classic Steve skin, whatever your account skin is). Check
+   first person (your arm) and third person (F5).
+4. Walk out of the front door. Elara joins you and talks as you walk; you never need to click
+   anyone. Follow the lane east past the fields, then to the village square.
+5. The camera turns to the northern ridge, the ground trembles, Elara and Steve talk, and Elder
+   Rowan comes over. "Mission Complete — A New Morning", rewards, journal entry.
+
+If a story save already exists, New Story asks first and keeps the old save as a dated backup in
+your worlds list.
+
+### 3. Explore Firstbrook
+
+After Scene 001, walk around: Steve's house, Elder Rowan's house and the council fire, Elara's home,
+Orin's workshop and house, Bram's guard station, the watchtower (climb it), the gate, the
+storehouse, the market, the bakery, the Millers' two-storey house, the farmhouse, fields, the barn
+and animal pens, the training ground, the woodcutter's camp, the house under construction, the
+dock, the river and bridge, and the trail north to the ruin on the ridge and the waterfall.
+Villagers walk between home, work and the market, opening doors. Mining, building and crafting work
+as normal; only a handful of story blocks (Steve's door and bed, the well, the bridge deck, the gate,
+the ruin) can't be broken in survival.
+
+### 4. Save and Continue
+
+Press Esc → **Save and Quit to Title**. The menu now shows **Continue Story** with your scene and
+objective. Click it: you are back where you were, still Primordial Steve. Try quitting in the middle
+of the walk too: the conversation picks up again when you continue.
+
+## Controls
+
+| Key | Action |
+|---|---|
+| WASD, Space, mouse | Move, jump, look (your normal Minecraft controls) |
+| **V** | Finish the current subtitle line / next line; skip a cinematic |
+| 1–4 or mouse | Pick a reply when a conversation offers choices |
+| F5 | Change camera (see Primordial Steve) |
 
 ## Test commands (operators only)
 
-None of these do anything unless you are an operator (cheats on). Survival players never see them.
+Story saves are created without cheats. To use these, open the story save to LAN with **Allow
+Cheats: ON** (Esc → Open to LAN), or use a creative copy of the save.
 
 | Command | What it does |
 |---|---|
-| `/rod play` | Start or continue the story |
 | `/rod status` | Show the current scene and stage |
-| `/rod leave` | Go back to the overworld, keeping your progress |
 | `/rod dev restart` | Restart Scene 001 from the opening cinematic |
-| `/rod dev reset` | Erase all story progress |
 | `/rod dev stage <id>` | Jump to a stage: `opening`, `leave_house`, `explore`, `to_square`, `foreshadow`, `feel_that`, `rowan` |
 | `/rod dev progress` | Show the stage, flags, finished dialogues and fired triggers |
-| `/rod dev tp firstbrook` / `/rod dev tp house` | Teleport to the village square or into Steve's house |
-| `/rod dev lineup` / `/rod dev lineup all` | Line up the 11 named characters and one NPC of each type (`all`: every Saga 1 NPC) to check skins |
-| `/rod dev clear` | Remove characters spawned by test commands |
+| `/rod dev tp firstbrook` / `/rod dev tp house` | Teleport to the square or into Steve's house |
+| `/rod dev lineup` / `/rod dev lineup all` | Line up the Saga 1 characters to check skins |
 | `/rod dev npcs` | List story characters near you |
-| `/rod dev npc <character> follow\|stay\|approach\|goto <location>` | Move a character, for example `/rod dev npc elara follow` |
-| `/rod dev talk <dialogue>` | Play a dialogue, for example `walk_bridge` |
-| `/rod dev proximity` | Explain why each nearby talk trigger will or won't fire |
-| `/rod dev save` | Save the story state now, so you can test reloading |
+| `/rod dev save` | Save the story state now |
 
-**Testing save and reload:** in the middle of the walk, type `/rod dev save`, quit to the title
-screen, reload the world and type `/rod play`. The conversation you were in starts again and the
-scene can still be finished.
+In an ordinary (non-story) world the story no longer starts by itself; `/rod play` still starts it.
 
 ## Known issues and placeholders
 
-- Only Scene 001 exists. There is nothing to play after Rowan arrives.
-- Scene 001 dialogue is provisional until the canon script is supplied.
-- No voice acting (subtitles only), no custom animations, and vanilla sounds as placeholders.
-  Birds and lantern sway are suggested with particles.
-- Faction NPC skins are generated (shared uniforms, different faces). The 11 named characters use
-  your original skins unchanged.
-- Time in Firstbrook is fixed at sunrise.
+- Only Scene 001 is playable. Scenes 002–020, the monument, Sylvaris, Valebridge and the gateway
+  chamber are not built yet.
+- MC-001 is fixed at sunrise, so villagers don't sleep at night yet.
+- Music and interface sounds are original synthesised placeholders; there is no voice acting
+  (subtitles only). See [ASSETS.md](ASSETS.md).
+- Firstbrook's villagers, farmers and guards use generated skins (shared outfits, different faces).
+- No controller support: Minecraft Java has none built in.

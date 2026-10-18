@@ -30,7 +30,8 @@ public record SceneDef(String id, String title, String universe, int saga, int s
 
     /**
      * Where a character stands, and from which stage they are present. activity: "idle" (potters
-     * near home), "work" (busy with the item in hand) or "patrol" (walks the route of locations).
+     * near home), "work" (busy with the item in hand), "patrol" (walks the route of locations) or
+     * "routine" (goes between the route's stops, staying a few minutes at each).
      */
     public record NpcPlacement(String character, String location, String fromStage, String untilStage, float yaw,
                                String activity, String held, List<String> route) {

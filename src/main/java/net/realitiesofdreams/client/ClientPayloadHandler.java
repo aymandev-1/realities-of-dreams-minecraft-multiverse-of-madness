@@ -2,6 +2,7 @@ package net.realitiesofdreams.client;
 
 import net.minecraft.client.Minecraft;
 import net.realitiesofdreams.Story;
+import net.realitiesofdreams.network.AppearancePayload;
 import net.realitiesofdreams.network.CinematicPayload;
 import net.realitiesofdreams.network.DialogueEndPayload;
 import net.realitiesofdreams.network.DialogueLinePayload;
@@ -35,7 +36,13 @@ public final class ClientPayloadHandler {
     }
 
     public static void objective(ObjectivePayload p) {
+        ObjectivePayload before = ClientStory.objective;
         ClientStory.objective = p.text().isEmpty() ? null : p;
+        if (ClientStory.objective != null && (before == null || !before.text().equals(p.text()))) ClientStory.objectiveChanged();
+    }
+
+    public static void appearance(AppearancePayload p) {
+        ClientAppearance.set(p.player(), p.character());
     }
 
     public static void hint(HintPayload p) {

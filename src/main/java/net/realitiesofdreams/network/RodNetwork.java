@@ -15,19 +15,22 @@ public final class RodNetwork {
 
     @SubscribeEvent
     public static void register(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar r = event.registrar("1");
+        PayloadRegistrar r = event.registrar("2");
         // Client handlers are only ever invoked on the client; the lambdas keep client classes unloaded on servers.
         r.playToClient(DialogueLinePayload.TYPE, DialogueLinePayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.line(p)));
         r.playToClient(DialogueEndPayload.TYPE, DialogueEndPayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.end(p)));
         r.playToClient(ObjectivePayload.TYPE, ObjectivePayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.objective(p)));
         r.playToClient(CinematicPayload.TYPE, CinematicPayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.cinematic(p)));
         r.playToClient(HintPayload.TYPE, HintPayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.hint(p)));
+        r.playToClient(AppearancePayload.TYPE, AppearancePayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.appearance(p)));
         r.playToClient(ShakePayload.TYPE, ShakePayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientPayloadHandler.shake(p)));
 
         r.playToServer(DialogueChoicePayload.TYPE, DialogueChoicePayload.STREAM_CODEC,
                 (p, ctx) -> ctx.enqueueWork(() -> StoryManager.get().onChoice((ServerPlayer) ctx.player(), p.session(), p.choice())));
         r.playToServer(DialogueSkipPayload.TYPE, DialogueSkipPayload.STREAM_CODEC,
                 (p, ctx) -> ctx.enqueueWork(() -> StoryManager.get().onSkip((ServerPlayer) ctx.player(), p.session())));
+        r.playToServer(ClientReadyPayload.TYPE, ClientReadyPayload.STREAM_CODEC,
+                (p, ctx) -> ctx.enqueueWork(() -> StoryManager.get().onClientReady((ServerPlayer) ctx.player())));
         r.playToServer(CinematicDonePayload.TYPE, CinematicDonePayload.STREAM_CODEC,
                 (p, ctx) -> ctx.enqueueWork(() -> StoryManager.get().onCinematicDone((ServerPlayer) ctx.player(), p.id())));
     }

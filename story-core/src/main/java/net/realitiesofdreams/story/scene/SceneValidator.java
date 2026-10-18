@@ -74,8 +74,9 @@ public final class SceneValidator {
         }
         for (SceneDef.NpcPlacement n : s.npcs()) {
             n.route().forEach(r -> location(s, r, p + "npc " + n.character() + " route", errors));
-            if (!Set.of("idle", "work", "patrol").contains(n.activity())) errors.add(p + "npc " + n.character() + ": unknown activity " + n.activity());
-            if (n.activity().equals("patrol") && n.route().size() < 2) errors.add(p + "npc " + n.character() + ": a patrol needs two route points");
+            if (!Set.of("idle", "work", "patrol", "routine").contains(n.activity())) errors.add(p + "npc " + n.character() + ": unknown activity " + n.activity());
+            if ((n.activity().equals("patrol") || n.activity().equals("routine")) && n.route().size() < 2)
+                errors.add(p + "npc " + n.character() + ": a " + n.activity() + " needs two route points");
         }
         for (SceneDef.AreaTrigger t : s.areaTriggers()) {
             location(s, t.location(), p + "area trigger " + t.id(), errors);

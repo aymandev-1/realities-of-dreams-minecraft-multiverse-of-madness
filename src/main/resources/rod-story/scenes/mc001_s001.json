@@ -270,6 +270,126 @@
           -4
         ],
         "radius": 1.5
+      },
+      "bakery_inside": {
+        "pos": [
+          -11,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "millers_door": {
+        "pos": [
+          -1,
+          0,
+          13
+        ],
+        "radius": 1.5
+      },
+      "millers_inside": {
+        "pos": [
+          -1,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "storehouse_front": {
+        "pos": [
+          -22,
+          0,
+          -15
+        ],
+        "radius": 1.5
+      },
+      "farmhouse_door": {
+        "pos": [
+          2,
+          0,
+          24
+        ],
+        "radius": 1.5
+      },
+      "pens_gate": {
+        "pos": [
+          -24,
+          0,
+          22
+        ],
+        "radius": 1.5
+      },
+      "council_fire": {
+        "pos": [
+          -23,
+          0,
+          0
+        ],
+        "radius": 1.5
+      },
+      "training_yard": {
+        "pos": [
+          -34,
+          0,
+          -12
+        ],
+        "radius": 1.5
+      },
+      "weaver_door": {
+        "pos": [
+          -20,
+          0,
+          -11
+        ],
+        "radius": 1.5
+      },
+      "dock": {
+        "pos": [
+          35,
+          0,
+          29
+        ],
+        "radius": 1.5
+      },
+      "construction": {
+        "pos": [
+          40,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "market_3": {
+        "pos": [
+          -5,
+          0,
+          10
+        ],
+        "radius": 1.5
+      },
+      "market_cart": {
+        "pos": [
+          0,
+          0,
+          9
+        ],
+        "radius": 1.5
+      },
+      "guard_station_door": {
+        "pos": [
+          3,
+          0,
+          -18
+        ],
+        "radius": 1.5
+      },
+      "orin_house_door": {
+        "pos": [
+          18,
+          0,
+          -9
+        ],
+        "radius": 1.5
       }
     },
     "npcs": [
@@ -368,7 +488,14 @@
       {
         "character": "firstbrook_villager_3",
         "location": "well_side",
-        "yaw": 200
+        "yaw": 200,
+        "activity": "routine",
+        "route": [
+          "well_side",
+          "market_2",
+          "bakery_inside",
+          "square_west"
+        ]
       },
       {
         "character": "firstbrook_villager_4",
@@ -382,14 +509,59 @@
       {
         "character": "firstbrook_villager_5",
         "location": "cottage_door",
-        "yaw": 0
+        "yaw": 0,
+        "activity": "routine",
+        "route": [
+          "cottage_door",
+          "millers_inside",
+          "market_path",
+          "council_fire"
+        ]
       },
       {
         "character": "firstbrook_villager_6",
         "location": "workshop_yard",
         "yaw": 270,
+        "activity": "routine",
+        "held": "minecraft:iron_ingot",
+        "route": [
+          "workshop_yard",
+          "orin_house_door",
+          "storehouse_front",
+          "workshop_yard"
+        ]
+      },
+      {
+        "character": "merchant_1",
+        "location": "market_3",
+        "yaw": 180,
         "activity": "work",
-        "held": "minecraft:iron_ingot"
+        "held": "minecraft:emerald"
+      },
+      {
+        "character": "merchant_2",
+        "location": "market_cart",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:pumpkin_pie"
+      },
+      {
+        "character": "merchant_3",
+        "location": "storehouse_front",
+        "activity": "routine",
+        "route": [
+          "storehouse_front",
+          "market_cart",
+          "farmhouse_door",
+          "pens_gate"
+        ]
+      },
+      {
+        "character": "merchant_4",
+        "location": "dock",
+        "yaw": 270,
+        "activity": "work",
+        "held": "minecraft:fishing_rod"
       }
     ],
     "stages": [
@@ -1015,18 +1187,18 @@
           "t": 0,
           "pos": [
             2,
-            6.5,
+            10.5,
             8
           ],
           "yaw": -176.2,
-          "pitch": -5.5,
+          "pitch": -8.5,
           "fov": 60
         },
         {
           "t": 70,
           "pos": [
             3,
-            7,
+            11.5,
             4
           ],
           "yaw": -176.5,

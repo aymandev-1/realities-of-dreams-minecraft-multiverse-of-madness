@@ -38,6 +38,8 @@ final class PlayerRuntime {
     int approachTicks;
 
     int autoStartTicks = -1;
+    /** In a story world: waiting for the client's loading screen to close before the story goes on. */
+    boolean awaitingReady;
     int chatterCooldown = 200;
     int idleTicks;
     @Nullable Vec3 lastPos;

@@ -7,6 +7,7 @@ issueTrackerURL = "https://github.com/aymandev-1/realities-of-dreams-minecraft-m
 modId = "realitiesofdreams"
 version = "0.1.0"
 displayName = "Realities of Dreams: Minecraft Multiverse of Madness"
+logoFile = "realitiesofdreams_logo.png"
 authors = "aymandev-1"
 description = '''
 A cinematic story across 10,000 Minecraft universes. Begins in MC-001 with Scene 001: Tremors at Dawn.
@@ -25,3 +26,6 @@ type = "required"
 versionRange = "[1.21.1,1.21.2)"
 ordering = "NONE"
 side = "BOTH"
+
+[[mixins]]
+config = "realitiesofdreams.mixins.json"

@@ -76,6 +76,15 @@ public final class ClientStory {
         if (shakeTicks > 0) shakeTicks--;
     }
 
+    /** Time the current objective appeared, for the HUD's "new objective" flourish. */
+    static long objectiveSinceMs;
+
+    static void objectiveChanged() {
+        objectiveSinceMs = System.currentTimeMillis();
+        Minecraft.getInstance().getSoundManager().play(net.minecraft.client.resources.sounds.SimpleSoundInstance.forUI(
+                net.realitiesofdreams.registry.ModSounds.QUEST_UPDATE.get(), 1.0F, 0.6F));
+    }
+
     static void reset() {
         line = null;
         objective = null;

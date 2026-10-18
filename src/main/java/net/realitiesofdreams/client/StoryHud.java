@@ -17,6 +17,15 @@ import java.util.List;
 /** Conversation subtitles, passing remarks and the objective tracker with a direction arrow. */
 public final class StoryHud {
     private static final int GOLD = 0xFFE8B84A;
+    private static final net.minecraft.resources.ResourceLocation DIALOGUE_PANEL = net.realitiesofdreams.RealitiesOfDreams.id("textures/gui/hud/dialogue_panel.png");
+    private static final net.minecraft.resources.ResourceLocation OBJECTIVE_PANEL = net.realitiesofdreams.RealitiesOfDreams.id("textures/gui/hud/objective_panel.png");
+
+    private static void panel(GuiGraphics g, net.minecraft.resources.ResourceLocation tex, int x, int y, int w, int h, int texW, int texH) {
+        com.mojang.blaze3d.systems.RenderSystem.enableBlend();
+        com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();
+        g.blit(tex, x, y, w, h, 0, 0, texW, texH, texW, texH);
+        com.mojang.blaze3d.systems.RenderSystem.disableBlend();
+    }
 
     private StoryHud() {}
 
@@ -34,8 +43,7 @@ public final class StoryHud {
             int boxH = 22 + Math.max(2, font.split(FormattedText.of(line.text()), boxW - 16).size()) * 10;
             int bottom = mc.screen instanceof DialogueChoiceScreen ? height - 66 - line.choices().size() * 24 : height - 62;
             int x = (width - boxW) / 2, y = bottom - boxH;
-            g.fill(x, y, x + boxW, bottom, 0xB0101018);
-            g.fill(x, y, x + boxW, y + 1, GOLD);
+            panel(g, DIALOGUE_PANEL, x, y, boxW, bottom - y, 256, 64);
             g.drawString(font, line.speakerName(), x + 8, y + 6, GOLD, true);
             for (int i = 0; i < lines.size(); i++) g.drawString(font, lines.get(i), x + 8, y + 18 + i * 10, 0xFFF2F2F2, true);
             if (line.choices().isEmpty()) {
@@ -87,9 +95,15 @@ public final class StoryHud {
         String header = o.label() + "  ·  " + o.title();
         String text = o.text() + (o.progress().isEmpty() ? "" : "  (" + o.progress() + ")");
         int w = Math.max(font.width(header), font.width(text) + 14) + 16;
-        int x = 8, y = 8;
-        g.fill(x, y, x + w, y + 30, 0x90101018);
-        g.fill(x, y, x + 2, y + 30, 0xFFE8B84A);
+        // A new objective slides in with a brief gold glow.
+        long age = System.currentTimeMillis() - ClientStory.objectiveSinceMs;
+        float in = Mth.clamp(age / 350f, 0f, 1f);
+        int x = 8 - (int) ((1 - in) * (1 - in) * (w + 10)), y = 8;
+        panel(g, OBJECTIVE_PANEL, x, y, w + 24, 30, 256, 32);
+        if (age < 2500) {
+            int glow = (int) (Mth.clamp(1 - age / 2500f, 0f, 1f) * 110);
+            g.fill(x, y, x + w, y + 30, glow << 24 | 0xE8B84A);
+        }
         g.drawString(font, header, x + 8, y + 5, 0xFFA8A8B0, false);
         g.drawString(font, "◆ " + text, x + 8, y + 17, 0xFFFFFFFF, true);
         if (!o.hasTarget()) return;

@@ -23,6 +23,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.OpenDoorGoal;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -59,6 +61,11 @@ public class StoryNpcEntity extends PathfinderMob {
     public StoryNpcEntity(EntityType<? extends StoryNpcEntity> type, Level level) {
         super(type, level);
         setPersistenceRequired();
+        // Villagers live in houses: they open doors, walk through and close them behind them.
+        if (getNavigation() instanceof GroundPathNavigation nav) {
+            nav.setCanOpenDoors(true);
+            nav.setCanPassDoors(true);
+        }
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -80,6 +87,7 @@ public class StoryNpcEntity extends PathfinderMob {
         goalSelector.addGoal(0, new FloatGoal(this));
         goalSelector.addGoal(1, new TalkGoal());
         goalSelector.addGoal(1, new LookAtPointGoal());
+        goalSelector.addGoal(1, new OpenDoorGoal(this, true));
         goalSelector.addGoal(2, new ApproachGoal());
         goalSelector.addGoal(3, new FollowGoal());
         goalSelector.addGoal(4, new PatrolGoal());
@@ -150,7 +158,10 @@ public class StoryNpcEntity extends PathfinderMob {
         return approachTarget;
     }
 
-    /** "idle", "work" (busy with the held item at home) or "patrol" (walks the route). */
+    /**
+     * "idle", "work" (busy with the held item at home), "patrol" (walks the route, pausing briefly) or
+     * "routine" (goes about the day between the route's stops, staying a while at each).
+     */
     public void setActivity(String activity, List<BlockPos> route) {
         this.activity = activity == null ? "idle" : activity;
         this.route.clear();
@@ -159,6 +170,10 @@ public class StoryNpcEntity extends PathfinderMob {
 
     public String activity() {
         return activity;
+    }
+
+    private boolean routeActivity() {
+        return "patrol".equals(activity) || "routine".equals(activity);
     }
 
     /** Lies down in the bed at pos (an actor asleep at the start of a scene). */
@@ -265,7 +280,10 @@ public class StoryNpcEntity extends PathfinderMob {
         }
     }
 
-    /** Walks between the points of a route, pausing at each (guards on their rounds). */
+    /**
+     * Walks between the points of a route, pausing at each: guards on their rounds ("patrol"), or
+     * villagers going between home, work and the market ("routine", with long stays).
+     */
     private class PatrolGoal extends Goal {
         private int index;
         private int pause;
@@ -276,7 +294,7 @@ public class StoryNpcEntity extends PathfinderMob {
 
         @Override
         public boolean canUse() {
-            return "patrol".equals(activity) && route.size() >= 2 && followTarget == null && approachTarget == null;
+            return routeActivity() && route.size() >= 2 && followTarget == null && approachTarget == null && talkTarget == null;
         }
 
         @Override
@@ -285,10 +303,10 @@ public class StoryNpcEntity extends PathfinderMob {
             Vec3 t = Vec3.atBottomCenterOf(target);
             if (position().distanceTo(t) < 1.6) {
                 getNavigation().stop();
-                if (pause <= 0) pause = 40 + getRandom().nextInt(60);
+                if (pause <= 0) pause = "routine".equals(activity) ? 240 + getRandom().nextInt(360) : 40 + getRandom().nextInt(60);
                 if (--pause <= 0) index = (index + 1) % route.size();
             } else if (getNavigation().isDone()) {
-                getNavigation().moveTo(t.x, t.y, t.z, 0.55);
+                getNavigation().moveTo(t.x, t.y, t.z, "routine".equals(activity) ? 0.5 : 0.55);
             }
         }
 
@@ -443,7 +461,7 @@ public class StoryNpcEntity extends PathfinderMob {
 
         @Override
         public boolean canUse() {
-            if (home == null || followTarget != null || ("patrol".equals(activity) && route.size() >= 2)) return false;
+            if (home == null || followTarget != null || (routeActivity() && route.size() >= 2)) return false;
             Vec3 h = Vec3.atBottomCenterOf(home);
             if (position().distanceTo(h) > 2.5) {
                 target = h;

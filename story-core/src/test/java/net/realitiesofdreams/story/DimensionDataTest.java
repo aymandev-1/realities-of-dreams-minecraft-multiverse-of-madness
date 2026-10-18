@@ -2,6 +2,7 @@ package net.realitiesofdreams.story;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import net.realitiesofdreams.story.world.Mc001Terrain;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStreamReader;
@@ -11,7 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The game-test server only creates vanilla dimensions, so the MC-001 dimension files are checked
- * here: the scene layout assumes the grass surface is at y=63 (anchor y=64 stands on it).
+ * here: MC-001 uses the mod's own generator and biome source, and the scenes' anchor matches the
+ * authored terrain (village ground at y = 63, the anchor y = 64 standing on it).
  */
 class DimensionDataTest {
     private static JsonObject read(String path) throws Exception {
@@ -22,20 +24,25 @@ class DimensionDataTest {
     }
 
     @Test
-    void mc001GroundIsAtSceneAnchor() throws Exception {
+    void mc001UsesTheAuthoredGenerator() throws Exception {
         JsonObject type = read("/data/realitiesofdreams/dimension_type/mc_001.json");
         JsonObject dim = read("/data/realitiesofdreams/dimension/mc_001.json");
         assertEquals("realitiesofdreams:mc_001", dim.get("type").getAsString());
+        JsonObject gen = dim.getAsJsonObject("generator");
+        assertEquals("realitiesofdreams:mc001", gen.get("type").getAsString());
+        assertEquals("minecraft:overworld", gen.get("settings").getAsString(), "MC-001 keeps normal Minecraft terrain, caves and ores");
+        JsonObject biomes = gen.getAsJsonObject("biome_source");
+        assertEquals("realitiesofdreams:mc001", biomes.get("type").getAsString());
+        for (String k : new String[] {"wilds", "village", "hills", "mountains", "woodland", "valley"}) assertTrue(biomes.has(k), "biome " + k);
+        assertTrue(type.get("min_y").getAsInt() <= Mc001Terrain.ANCHOR_Y - 64 && type.get("height").getAsInt() >= 384);
+    }
 
-        int minY = type.get("min_y").getAsInt();
-        int height = 0;
-        String top = null;
-        for (var layer : dim.getAsJsonObject("generator").getAsJsonObject("settings").getAsJsonArray("layers")) {
-            height += layer.getAsJsonObject().get("height").getAsInt();
-            top = layer.getAsJsonObject().get("block").getAsString();
-        }
-        assertEquals("minecraft:grass_block", top);
-        assertEquals(63, minY + height - 1, "grass surface y");
-        assertTrue(type.get("height").getAsInt() >= height);
+    @Test
+    void scenesAreAnchoredOnTheAuthoredTerrain() throws Exception {
+        JsonObject s001 = read("/rod-story/scenes/mc001_s001.json").getAsJsonObject("scene");
+        var anchor = s001.getAsJsonArray("anchor");
+        assertEquals(Mc001Terrain.ANCHOR_X, anchor.get(0).getAsInt());
+        assertEquals(Mc001Terrain.ANCHOR_Y, anchor.get(1).getAsInt());
+        assertEquals(Mc001Terrain.ANCHOR_Z, anchor.get(2).getAsInt());
     }
 }

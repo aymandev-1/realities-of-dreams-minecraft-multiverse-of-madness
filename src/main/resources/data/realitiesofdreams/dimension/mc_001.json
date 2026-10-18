@@ -1,18 +1,19 @@
 {
   "type": "realitiesofdreams:mc_001",
   "generator": {
-    "type": "minecraft:flat",
-    "settings": {
-      "biome": "minecraft:meadow",
-      "features": false,
-      "lakes": false,
-      "structure_overrides": [],
-      "layers": [
-        {"block": "minecraft:bedrock", "height": 1},
-        {"block": "minecraft:stone", "height": 120},
-        {"block": "minecraft:dirt", "height": 6},
-        {"block": "minecraft:grass_block", "height": 1}
-      ]
+    "type": "realitiesofdreams:mc001",
+    "settings": "minecraft:overworld",
+    "biome_source": {
+      "type": "realitiesofdreams:mc001",
+      "wilds": {
+        "type": "minecraft:multi_noise",
+        "preset": "minecraft:overworld"
+      },
+      "village": "minecraft:plains",
+      "hills": "minecraft:meadow",
+      "mountains": "minecraft:taiga",
+      "woodland": "minecraft:forest",
+      "valley": "minecraft:sunflower_plains"
     }
   }
 }
