@@ -588,6 +588,12 @@ public final class StoryManager {
     public void perform(ServerPlayer p, List<Effect> effects) {
         PlayerRuntime rt = runtime(p);
         PlayerStoryState state = state(p);
+        // Effects belong to the scene that produced them, even when the same batch also completed it
+        // (Rowan's final approach is ordered in the moment Scene 001 ends).
+        SceneDef batchScene = engine().activeScene(state);
+        if (batchScene == null) {
+            for (Effect e : effects) if (e instanceof Effect.SceneCompleted c) batchScene = Story.content().scene(c.sceneId());
+        }
         for (Effect e : effects) {
             switch (e) {
                 case Effect.ShowObjective o -> {
@@ -605,12 +611,12 @@ public final class StoryManager {
                     if (rt.busy()) rt.presentation.add(c);
                     else startCinematic(p, rt, c.cinematicId());
                 }
-                case Effect.NpcCommand n -> NpcDirector.command(p, engine().activeScene(state), state, n);
+                case Effect.NpcCommand n -> NpcDirector.command(p, batchScene, state, n);
                 case Effect.Hint h -> messenger.send(p, new HintPayload(h.text(), h.ticks()));
                 case Effect.Shake sh -> messenger.send(p, new ShakePayload(sh.intensity(), sh.ticks()));
                 case Effect.Say say -> ambient(p, say.character(), say.text());
                 case Effect.TeleportPlayer tp -> {
-                    SceneDef scene = engine().activeScene(state);
+                    SceneDef scene = batchScene;
                     ServerLevel level = scene == null ? null : ModDimensions.level(p.server, scene);
                     if (level != null && p.level() == level) {
                         double[] a = ModDimensions.absolute(scene, scene.location(tp.location()));
@@ -619,7 +625,7 @@ public final class StoryManager {
                 }
                 case Effect.Journal j -> updateJournal(p, state, j.entryId());
                 case Effect.Particles pa -> {
-                    SceneDef scene = engine().activeScene(state);
+                    SceneDef scene = batchScene;
                     if (scene != null && p.level() == ModDimensions.level(p.server, scene)
                             && BuiltInRegistries.PARTICLE_TYPE.get(ResourceLocation.parse(pa.particle())) instanceof SimpleParticleType type) {
                         double[] a = ModDimensions.absolute(scene, scene.location(pa.location()));
@@ -635,7 +641,7 @@ public final class StoryManager {
                 case Effect.PlaySound s -> p.playNotifySound(SoundEvent.createVariableRangeEvent(ResourceLocation.parse(s.sound())),
                         SoundSource.MASTER, s.volume(), s.pitch());
                 case Effect.WorldChange w -> {
-                    SceneDef scene = engine().activeScene(state);
+                    SceneDef scene = batchScene;
                     ServerLevel level = scene == null ? null : ModDimensions.level(p.server, scene);
                     if (level != null && p.level() == level) SceneWorld.applyChange(level, scene, w.change());
                 }

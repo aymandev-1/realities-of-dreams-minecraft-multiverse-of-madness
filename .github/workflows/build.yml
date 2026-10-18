@@ -50,6 +50,8 @@ jobs:
   # Saga 1 character and plays Scene 001 to the end. See ClientAutotest.java.
   client-playtest:
     needs: build
+    # Screenshots are worth having even when a game test fails.
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     permissions:

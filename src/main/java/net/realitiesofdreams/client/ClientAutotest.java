@@ -154,9 +154,9 @@ public final class ClientAutotest {
         });
         step("opening: valley", 150, () -> shot("s001_01_opening_valley"));
         step("opening: village", 160, () -> shot("s001_02_opening_village"));
-        step("opening: Steve asleep", 160, () -> shot("s001_03_opening_asleep"));
-        step("opening: awake", 100, () -> shot("s001_04_opening_another_morning"));
-        step("opening: window", 110, () -> shot("s001_05_opening_window"));
+        step("opening: Steve asleep", 130, () -> shot("s001_03_opening_asleep"));
+        step("opening: awake", 70, () -> shot("s001_04_opening_another_morning"));
+        step("opening: window", 100, () -> shot("s001_05_opening_window"));
         step("opening: Elara", 120, () -> shot("s001_06_opening_elara"));
         step("player in control", 0, () -> "leave_house".equals(stage()), 900, () -> {
             logState();
