@@ -60,7 +60,7 @@ class CinematicTest {
         assertEquals(1f, tl.fadeAlpha(400), 1e-6);
         assertEquals(0f, tl.fadeAlpha(600), 1e-6);
         CameraPose end = tl.sample(opening.duration());
-        assertEquals(17.5, end.x(), 1e-6);
+        assertEquals(18.5, end.x(), 1e-6);
         assertEquals(15.5, end.z(), 1e-6);
         assertEquals("primordial_steve", tl.subtitlesAt(500).get(0).speaker());
         assertEquals("Another morning.", tl.subtitlesAt(500).get(0).text());

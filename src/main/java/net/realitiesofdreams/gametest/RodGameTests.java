@@ -167,7 +167,7 @@ public final class RodGameTests {
             expectStage(helper, m, player, "leave_house");
             helper.assertTrue(NpcDirector.find(level, "primordial_steve") == null, "the sleeping actor was not replaced by the player");
             helper.assertTrue(!player.hasEffect(net.minecraft.world.effect.MobEffects.INVISIBILITY), "player still invisible");
-            helper.assertTrue(player.position().distanceTo(net.minecraft.world.phys.Vec3.atBottomCenterOf(rel(17, 0, 15))) < 0.6, "player not standing where Steve woke: " + player.position());
+            helper.assertTrue(player.position().distanceTo(net.minecraft.world.phys.Vec3.atBottomCenterOf(rel(18, 0, 15))) < 0.6, "player not standing where Steve woke: " + player.position());
             helper.assertTrue(sent.stream().anyMatch(p -> p instanceof HintPayload), "movement hint not shown");
 
             // Walk out of the front door: Elara joins and the walking conversation starts by itself.

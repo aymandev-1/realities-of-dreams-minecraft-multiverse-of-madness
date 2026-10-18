@@ -122,36 +122,9 @@ public final class ClientAutotest {
     private static void script() {
         Minecraft mc = Minecraft.getInstance();
         SceneDef scene = Story.content().scene("mc001_s001");
-        step("enter Firstbrook", 60, () -> command("rod dev tp firstbrook"));
-        step("let the village load", 200, () -> mc.options.hideGui = true);
-
-        // Character skins: the 11 named Saga 1 characters, then one of each generated NPC type.
-        List<String> named = new ArrayList<>();
-        List<String> types = new ArrayList<>();
-        Set<String> seenTypes = new LinkedHashSet<>();
-        for (CharacterDef c : Story.content().characters().all()) {
-            if (!c.castIn(1) || !c.usesPlayerModel()) continue;
-            if (!c.generated()) named.add(c.id());
-            else if (seenTypes.add(c.id().replaceAll("_\\d+$", ""))) types.add(c.id());
-        }
-        List<List<String>> groups = new ArrayList<>();
-        for (int i = 0; i < named.size(); i += 4) groups.add(named.subList(i, Math.min(named.size(), i + 4)));
-        for (int i = 0; i < types.size(); i += 4) groups.add(types.subList(i, Math.min(types.size(), i + 4)));
-        for (int g = 0; g < groups.size(); g++) {
-            List<String> group = groups.get(g);
-            String name = String.format("skins_%02d_%s", g + 1, String.join("-", group));
-            step("line up " + group, 0, () -> onServer(sp -> lineUp(sp, scene, group)));
-            step("front " + group, 40, () -> shot(name + "_front"));
-            step("turn around", 0, () -> onServer(sp -> turn(sp, 0)));
-            step("back " + group, 20, () -> shot(name + "_back"));
-        }
-        step("clear the line-up", 0, () -> onServer(sp -> clear(sp)));
-
         // Scene 001, played as a player would: no clicking on characters.
-        step("start Scene 001", 10, () -> {
-            mc.options.hideGui = false;
-            command("rod play");
-        });
+        // A new player is taken into Scene 001 automatically a few seconds after joining.
+        step("story starts on its own", 0, CinematicPlayer::active, 600, () -> log("opening cinematic started"));
         step("opening: valley", 150, () -> shot("s001_01_opening_valley"));
         step("opening: village", 160, () -> shot("s001_02_opening_village"));
         step("opening: Steve asleep", 130, () -> shot("s001_03_opening_asleep"));
@@ -180,13 +153,40 @@ public final class ClientAutotest {
         }
         step("arrive in the square", 0, () -> onServer(sp -> moveTo(sp, scene, 2, 3, 180)));
         step("ridge cinematic", 60, () -> shot("s001_13_ridge"));
-        step("did you feel that", 0, () -> "feel_that".equals(stage()) || isComplete(), 400, () -> shot("s001_14_feel_that"));
+        step("did you feel that", 0, () -> "feel_that".equals(stage()) || isComplete(), 400, ClientAutotest::logState);
+        step("feel what?", 40, () -> shot("s001_14_feel_that"));
         step("Rowan arrives", 0, ClientAutotest::isComplete, 1200, () -> {
             onServer(sp -> face(sp, 90, 5));
             shot("s001_15_mission_complete");
         });
         step("Rowan comes over", 80, () -> shot("s001_16_rowan_approaches"));
         step("Rowan arrived", 120, () -> shot("s001_17_rowan_arrived"));
+        // Character skins, photographed once the scene is over: the 11 named Saga 1 characters,
+        // then one of each generated NPC type.
+        step("skins: first person", 0, () -> {
+            mc.options.setCameraType(CameraType.FIRST_PERSON);
+            mc.options.hideGui = true;
+        });
+        List<String> named = new ArrayList<>();
+        List<String> types = new ArrayList<>();
+        Set<String> seenTypes = new LinkedHashSet<>();
+        for (CharacterDef c : Story.content().characters().all()) {
+            if (!c.castIn(1) || !c.usesPlayerModel()) continue;
+            if (!c.generated()) named.add(c.id());
+            else if (seenTypes.add(c.id().replaceAll("_\\d+$", ""))) types.add(c.id());
+        }
+        List<List<String>> groups = new ArrayList<>();
+        for (int i = 0; i < named.size(); i += 4) groups.add(named.subList(i, Math.min(named.size(), i + 4)));
+        for (int i = 0; i < types.size(); i += 4) groups.add(types.subList(i, Math.min(types.size(), i + 4)));
+        for (int g = 0; g < groups.size(); g++) {
+            List<String> group = groups.get(g);
+            String name = String.format("skins_%02d_%s", g + 1, String.join("-", group));
+            step("line up " + group, 0, () -> onServer(sp -> lineUp(sp, scene, group)));
+            step("front " + group, 40, () -> shot(name + "_front"));
+            step("turn around", 0, () -> onServer(sp -> turn(sp, 0)));
+            step("back " + group, 20, () -> shot(name + "_back"));
+        }
+        step("clear the line-up", 0, () -> onServer(sp -> clear(sp)));
         step("save", 0, () -> command("rod dev save"));
         step("final state", 40, () -> {
             logState();
@@ -289,6 +289,9 @@ public final class ClientAutotest {
         if (sp == null) return;
         PlayerStoryState s = ModAttachments.story(sp);
         log("state: " + s.toJson());
+        Minecraft mc = Minecraft.getInstance();
+        log(String.format("player: %.1f,%.1f,%.1f yaw %.0f pitch %.0f, camera %s", sp.getX(), sp.getY(), sp.getZ(), sp.getYRot(), sp.getXRot(),
+                mc.getCameraEntity() == mc.player ? "player (" + mc.options.getCameraType() + ")" : String.valueOf(mc.getCameraEntity())));
         List<String> npcs = new ArrayList<>();
         for (StoryNpcEntity n : sp.serverLevel().getEntitiesOfClass(StoryNpcEntity.class, sp.getBoundingBox().inflate(80))) {
             npcs.add(String.format("%s@%.1f,%.1f,%.1f%s%s", n.characterId(), n.getX(), n.getY(), n.getZ(),
