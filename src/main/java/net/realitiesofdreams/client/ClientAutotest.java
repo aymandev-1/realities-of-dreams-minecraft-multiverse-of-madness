@@ -260,6 +260,32 @@ public final class ClientAutotest {
                     check(ModAttachments.story(serverPlayer()).journal().contains("northern_trail"), "Scene 003 journal entry missing");
                 });
 
+        // Scene 004 follows on: Orin's workshop and the survey kit.
+        SceneDef s4 = Story.content().scene("mc001_s004");
+        step("Scene 004 starts", 0, () -> "mc001_s004".equals(activeScene()) && !busy(), 20 * 60, () -> goTo(s4, "workshop_front", 180, 5));
+        step("walk into the workshop", 20, () -> goTo(s4, "workshop_inside", 180, 10));
+        step("Orin speaks", 0, ClientAutotest::busy, 200, () -> shot("s004_01_orin"));
+        step("the sketch", 0, () -> "kit".equals(stage()) && !busy(), 20 * 90, () -> onServer(sp -> face(sp, -110, 35)));
+        step("sketch on the table", 15, () -> shot("s004_02_sketch_and_supplies"));
+        step("at the workbench", 0, () -> goTo(s4, "workbench_front", -90, 30));
+        step("Orin's warning", 0, ClientAutotest::busy, 200, () -> shot("s004_03_pickaxe_warning"));
+        // The kit is made by crafting; here the result of that crafting is put in the inventory.
+        step("craft the survey kit", 0, () -> !busy(), 20 * 60, () -> onServer(sp -> {
+            for (net.minecraft.world.item.ItemStack it : List.of(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.COMPASS),
+                    new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.LEAD), new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.WHITE_DYE),
+                    new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.TORCH, 8), new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.IRON_PICKAXE))) {
+                sp.getInventory().add(it);
+            }
+        }));
+        step("compass cinematic", 0, () -> "compass".equals(stage()), 200, () -> {});
+        step("the needle spins to the paper", 50, () -> shot("s004_04_compass_cinematic"));
+        step("Scene 004 complete", 0, () -> { ServerPlayer sp = serverPlayer(); return sp != null && ModAttachments.story(sp).isSceneComplete("mc001_s004"); },
+                20 * 90, () -> {
+                    shot("s004_05_mission_complete");
+                    logState();
+                    check(ModAttachments.story(serverPlayer()).journal().contains("survey_kit"), "Scene 004 journal entry missing");
+                });
+
         // Primordial Steve in daylight, from the front and behind.
         step("appearance outdoors", 0, () -> onServer(sp -> moveTo(sp, scene, -3, 1, 0)));
         step("third person front outdoors", 10, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_FRONT));

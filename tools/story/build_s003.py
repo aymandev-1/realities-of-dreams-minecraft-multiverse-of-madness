@@ -45,7 +45,7 @@ scene = {
                     "Bram's word at the barrier, clue remarks and Elara's closing line are new gameplay text.",
     "dimension": "realitiesofdreams:mc_001", "site": "firstbrook", "anchor": [0, 64, 0],
     "arrival": {"pos": [0, 0, -18], "yaw": 180},
-    "next_scene": "unreleased:mc001_s004",
+    "next_scene": "mc001_s004",
     "locations": locs, "npcs": npcs,
     "clues": {
         "dropped_lantern": {"name": "Dropped lantern", "pos": [2, 11, -74], "block": "minecraft:lantern", "dialogue": "clue_lantern"},

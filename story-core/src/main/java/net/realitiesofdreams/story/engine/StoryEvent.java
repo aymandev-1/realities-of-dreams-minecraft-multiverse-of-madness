@@ -7,4 +7,6 @@ public sealed interface StoryEvent {
     record Reached(String location) implements StoryEvent {}
     record ClueExamined(String clueId) implements StoryEvent {}
     record FlagSet(String flag) implements StoryEvent {}
+    /** The player now carries everything the current ITEMS stage asks for. */
+    record ItemsCollected(String stage) implements StoryEvent {}
 }

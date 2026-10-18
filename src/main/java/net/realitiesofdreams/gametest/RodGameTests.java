@@ -345,6 +345,57 @@ public final class RodGameTests {
         }
     }
 
+    /** Plays Scene 004 in Orin's workshop: the conversation, the sketch, crafting the survey kit, the compass cinematic. */
+    @GameTest(template = "empty", batch = "firstbrook_workshop", timeoutTicks = 1200)
+    public static void scene004BuildsTheSurveyKit(GameTestHelper helper) {
+        ServerLevel level = stageFirstbrook(helper);
+        StoryManager previous = StoryManager.get();
+        ServerPlayer player = helper.makeMockServerPlayerInLevel();
+        List<CustomPacketPayload> sent = new ArrayList<>();
+        StoryManager m = new StoryManager((p, payload) -> sent.add(payload));
+        StoryManager.setInstanceForTesting(m);
+        try {
+            ModAttachments.story(player).setIntroOffered(true);
+            m.restartScene(player, "mc001_s004");
+            SceneDef s4 = Story.content().scene("mc001_s004");
+            walk(m, player, level, s4, "workshop_inside");
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("Before you ask, no, I haven't worked out what happened.")),
+                    "Orin did not speak when Steve came in");
+            finishDialogues(m, player);
+            helper.assertTrue(!level.getEntitiesOfClass(net.minecraft.world.entity.decoration.ItemFrame.class,
+                    new net.minecraft.world.phys.AABB(rel(12, 1, -6))).isEmpty(), "Elara's sketch is not on the survey table");
+            expectStage(helper, m, player, "kit");
+            helper.assertTrue(level.getBlockState(rel(12, 0, -7)).is(Blocks.CRAFTING_TABLE), "workbench missing");
+            helper.assertTrue(level.getBlockEntity(rel(10, 0, -10)) instanceof net.minecraft.world.level.block.entity.ChestBlockEntity c
+                    && c.countItem(Items.SLIME_BALL) == 1 && c.countItem(Items.IRON_INGOT) >= 3, "survey supplies missing");
+            // Carry the kit the way a player who has crafted it would; the story counts it.
+            player.getInventory().clearContent();
+            for (ItemStack it : List.of(new ItemStack(Items.COMPASS), new ItemStack(Items.LEAD), new ItemStack(Items.WHITE_DYE),
+                    new ItemStack(Items.TORCH, 4))) player.getInventory().add(it);
+            for (int i = 0; i < 40; i++) m.tick(player);
+            expectStage(helper, m, player, "kit");
+            helper.assertTrue(ModAttachments.story(player).value(net.realitiesofdreams.story.engine.SceneEngine.ITEMS_PROGRESS) == 3, "kit progress not counted");
+            // Standing by the workbench, Orin gives his warning about the pickaxe.
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("This time, don't.")) || m.inDialogue(player),
+                    "Orin's pickaxe warning did not play at the workbench");
+            finishDialogues(m, player);
+            player.getInventory().add(new ItemStack(Items.TORCH, 4));
+            player.getInventory().add(new ItemStack(Items.IRON_PICKAXE));
+            for (int i = 0; i < 40 && m.cinematic(player) == null; i++) m.tick(player);
+            helper.assertTrue("mc001_s004_compass".equals(m.cinematic(player)), "compass cinematic did not play once the kit was complete");
+            m.onCinematicDone(player, "mc001_s004_compass");
+            finishDialogues(m, player);
+            PlayerStoryState st = ModAttachments.story(player);
+            helper.assertTrue(st.isSceneComplete("mc001_s004") && st.hasFlag("mc001.orin.adviser"), "Scene 004 not completed");
+            helper.succeed();
+        } finally {
+            NpcDirector.releaseAll(player);
+            StoryManager.setInstanceForTesting(previous);
+            level.getServer().getPlayerList().remove(player);
+            unstage(level);
+        }
+    }
+
     /** Stands the player on a scene location and lets the story notice. */
     private static void walk(StoryManager m, ServerPlayer p, ServerLevel level, SceneDef scene, String location) {
         double[] a = ModDimensions.absolute(scene, scene.location(location));

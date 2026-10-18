@@ -113,6 +113,9 @@ public final class SceneWorld {
             }
             case "mc001_s003_pulse_on" -> net.realitiesofdreams.world.site.NorthernTrail.pulse(level, a, true);
             case "mc001_s003_pulse_off" -> net.realitiesofdreams.world.site.NorthernTrail.pulse(level, a, false);
+            case "mc001_s004_supplies" -> net.realitiesofdreams.world.site.OrinWorkshop.supplies(level, a);
+            case "mc001_s004_sketch" -> net.realitiesofdreams.world.site.OrinWorkshop.sketch(level, a);
+            case "mc001_s004_compass" -> net.realitiesofdreams.world.site.OrinWorkshop.compass(level, a);
             default -> RealitiesOfDreams.LOGGER.warn("Unknown world change {}", change);
         }
         data.markDone("change:" + change);

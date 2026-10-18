@@ -135,8 +135,8 @@ cinematics = {
     "mc001_s002_compass": {
         "duration": 170, "fade_in": 12, "fade_out": 12, "hide_player": False,
         "keyframes": [
-            {"t": 0, "pos": [4.5, 2.0, -0.4], "yaw": 24, "pitch": 12, "fov": 50},
-            {"t": 44, "pos": [4.2, 1.95, -0.1], "yaw": 26, "pitch": 18, "fov": 42},
+            {"t": 0, "pos": [6.0, 2.3, -2.2], "yaw": 34, "pitch": 11, "fov": 50},
+            {"t": 44, "pos": [5.4, 2.2, -1.5], "yaw": 35, "pitch": 13, "fov": 44},
             {"t": 46, "pos": [10.5, 30, -88], "yaw": 180, "pitch": 13, "fov": 50},
             {"t": 120, "pos": [10.5, 29.4, -94], "yaw": 180, "pitch": 14, "fov": 40},
             {"t": 170, "pos": [10.5, 29.2, -96], "yaw": 180, "pitch": 14, "fov": 38}],

@@ -131,8 +131,26 @@ public final class SceneEngine {
             case REACH -> event instanceof StoryEvent.Reached e && e.location().equals(v);
             case FLAG -> event instanceof StoryEvent.FlagSet e && e.flag().equals(v);
             case CLUES -> false;
+            case ITEMS -> event instanceof StoryEvent.ItemsCollected e && e.stage().equals(stage.id());
         };
     }
+
+    /** One item an ITEMS stage asks for. */
+    public record ItemGoal(String item, int count) {}
+
+    /** "minecraft:compass,minecraft:torch*8" as goals. */
+    public static List<ItemGoal> stageItems(StageDef stage) {
+        List<ItemGoal> out = new java.util.ArrayList<>();
+        if (stage.completionValue() == null) return out;
+        for (String part : stage.completionValue().split(",")) {
+            String[] p = part.trim().split("\\*");
+            out.add(new ItemGoal(p[0], p.length > 1 ? Integer.parseInt(p[1]) : 1));
+        }
+        return out;
+    }
+
+    /** State value holding how many of an ITEMS stage's goals the player has (kept up to date by the game). */
+    public static final String ITEMS_PROGRESS = "items.progress";
 
     public static List<String> stageClues(StageDef stage) {
         return stage.completionValue() == null ? List.of() : Arrays.asList(stage.completionValue().split(","));
@@ -174,6 +192,8 @@ public final class SceneEngine {
             List<String> clues = stageClues(stage);
             long found = clues.stream().filter(state.cluesFound()::contains).count();
             progress = found + "/" + clues.size();
+        } else if (stage.completion() == CompletionType.ITEMS) {
+            progress = state.value(ITEMS_PROGRESS) + "/" + stageItems(stage).size();
         }
         return new Effect.ShowObjective(scene.label(), scene.title(), stage.objective(), scene.location(stage.target()), progress);
     }

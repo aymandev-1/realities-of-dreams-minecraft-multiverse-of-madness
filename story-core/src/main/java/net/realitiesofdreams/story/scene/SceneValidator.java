@@ -62,6 +62,7 @@ public final class SceneValidator {
                 case REACH -> location(s, v, sp + "reach", errors);
                 case CLUES -> SceneEngine.stageClues(st).forEach(c -> { if (!s.clues().containsKey(c)) errors.add(sp + "clue " + c + " missing"); });
                 case FLAG -> { if (v == null) errors.add(sp + "flag completion without a flag"); }
+                case ITEMS -> { if (v == null || SceneEngine.stageItems(st).isEmpty()) errors.add(sp + "items completion without items"); }
             }
             actions(content, s, st.onEnter(), sp, errors);
             actions(content, s, st.onComplete(), sp, errors);

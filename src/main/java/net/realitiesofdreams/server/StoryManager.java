@@ -326,6 +326,7 @@ public final class StoryManager {
 
         if (rt.tick % 5 == 0 && !rt.busy()) tickProximity(p, rt, scene, state);
         if (rt.tick % 10 == 0 && !rt.busy()) tickReach(p, scene, state);
+        if (rt.tick % 20 == 15) tickItems(p, rt, scene, state);
         if (rt.tick % 10 == 5 && rt.cinematicId == null) {
             perform(p, engine().checkAreas(state, loc -> loc != null && distance(p, scene, loc) <= loc.radius()));
         }
@@ -376,6 +377,27 @@ public final class StoryManager {
     private void fireTrigger(ServerPlayer p, SceneDef.TriggerDef trigger, StoryNpcEntity npc) {
         state(p).markTriggerFired(trigger.id());
         startDialogue(p, trigger.dialogue(), npc);
+    }
+
+    /** ITEMS stages: counts what the player carries, updates the tracker, and completes when all is there. */
+    private void tickItems(ServerPlayer p, PlayerRuntime rt, SceneDef scene, PlayerStoryState state) {
+        SceneDef.StageDef stage = engine().activeStage(state);
+        if (stage == null || stage.completion() != SceneDef.CompletionType.ITEMS) return;
+        List<SceneEngine.ItemGoal> goals = SceneEngine.stageItems(stage);
+        int have = 0;
+        for (SceneEngine.ItemGoal g : goals) {
+            Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(g.item()));
+            int n = 0;
+            for (ItemStack s : p.getInventory().items) if (s.is(item)) n += s.getCount();
+            for (ItemStack s : p.getInventory().offhand) if (s.is(item)) n += s.getCount();
+            if (n >= g.count()) have++;
+        }
+        if (have != state.value(SceneEngine.ITEMS_PROGRESS) || !state.hasValue(SceneEngine.ITEMS_PROGRESS)) {
+            state.setValue(SceneEngine.ITEMS_PROGRESS, have);
+            perform(p, List.of(engine().objective(state, scene, stage)));
+        }
+        // The tracker keeps counting during a conversation; the kit only completes once it has ended.
+        if (have == goals.size() && !rt.busy()) perform(p, engine().handle(state, new StoryEvent.ItemsCollected(stage.id())));
     }
 
     private void tickReach(ServerPlayer p, SceneDef scene, PlayerStoryState state) {

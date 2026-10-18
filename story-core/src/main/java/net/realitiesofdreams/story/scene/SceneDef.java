@@ -52,7 +52,8 @@ public record SceneDef(String id, String title, String universe, int saga, int s
         }
     }
 
-    public enum CompletionType { CINEMATIC_END, DIALOGUE_END, REACH, CLUES, FLAG }
+    /** ITEMS: the player carries everything listed, e.g. "minecraft:compass,minecraft:torch*8". */
+    public enum CompletionType { CINEMATIC_END, DIALOGUE_END, REACH, CLUES, FLAG, ITEMS }
 
     public record StageDef(String id, String objective, String target, List<ActionDef> onEnter,
                            CompletionType completion, String completionValue, List<ActionDef> onComplete,
