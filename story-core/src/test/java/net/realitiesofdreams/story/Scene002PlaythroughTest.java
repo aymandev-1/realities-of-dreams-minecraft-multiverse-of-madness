@@ -69,7 +69,7 @@ class Scene002PlaythroughTest {
     @Test
     void sceneOneLeadsIntoSceneTwo() {
         assertEquals("mc001_s002", content.scene("mc001_s001").nextScene());
-        assertEquals("unreleased:mc001_s003", scene.nextScene());
+        assertEquals("mc001_s003", scene.nextScene());
         assertEquals(2, scene.sceneNumber());
     }
 

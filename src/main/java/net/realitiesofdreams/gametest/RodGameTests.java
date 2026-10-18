@@ -270,7 +270,8 @@ public final class RodGameTests {
             m.onCinematicDone(player, "mc001_s002_compass");
             finishDialogues(m, player);
             PlayerStoryState s2state = ModAttachments.story(player);
-            helper.assertTrue(s2state.isSceneComplete("mc001_s002") && s2state.activeScene() == null, "Scene 002 not completed");
+            helper.assertTrue(s2state.isSceneComplete("mc001_s002"), "Scene 002 not completed");
+            helper.assertTrue("mc001_s003".equals(s2state.activeScene()), "Scene 003 did not follow on: " + s2state.activeScene());
             helper.assertTrue(s2state.hasFlag("mc001.s003.survey_approved") && s2state.journal().contains("northern_disturbance"), "Scene 002 outcome missing");
             boolean compass = false;
             for (ItemStack st : player.getInventory().items) compass |= st.is(Items.COMPASS) && st.getHoverName().getString().equals("Strange Compass");
@@ -282,6 +283,74 @@ public final class RodGameTests {
             level.getServer().getPlayerList().remove(player);
             unstage(level);
         }
+    }
+
+    /** Plays Scene 003 on the northern trail: barrier, tracks, the climb to the scout's camp, the marker and the pulse. */
+    @GameTest(template = "empty", batch = "firstbrook_trail", timeoutTicks = 1200)
+    public static void scene003PlaysOnTheNorthernTrail(GameTestHelper helper) {
+        ServerLevel level = stageFirstbrook(helper);
+        for (int cx = -1; cx <= 1; cx++) for (int cz = -7; cz <= -2; cz++) level.setChunkForced(cx, cz, true);
+        StoryManager previous = StoryManager.get();
+        ServerPlayer player = helper.makeMockServerPlayerInLevel();
+        List<CustomPacketPayload> sent = new ArrayList<>();
+        StoryManager m = new StoryManager((p, payload) -> sent.add(payload));
+        StoryManager.setInstanceForTesting(m);
+        try {
+            ModAttachments.story(player).setIntroOffered(true);
+            m.restartScene(player, "mc001_s003");
+            expectStage(helper, m, player, "to_trail");
+            SceneDef s3 = Story.content().scene("mc001_s003");
+            for (SceneDef.ClueDef clue : s3.clues().values()) {
+                BlockPos at = ModDimensions.absoluteBlock(s3, clue.pos());
+                helper.assertTrue(net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(level.getBlockState(at).getBlock()).toString().equals(clue.block()),
+                        clue.id() + " block not placed at " + at + ": " + level.getBlockState(at));
+            }
+            helper.assertTrue(level.getBlockState(rel(9, 17, -76)).isSolid() && level.getBlockState(rel(9, 18, -76)).isAir(), "the outcrop to climb is missing");
+            helper.assertTrue(level.getBlockState(rel(9, 21, -92)).is(Blocks.CHISELED_TUFF), "the carved stone is missing");
+
+            walk(m, player, level, s3, "trail_gate");
+            expectStage(helper, m, player, "follow_trail");
+            walk(m, player, level, s3, "footprints");
+            helper.assertTrue("mc001_s003_tracks".equals(m.cinematic(player)), "tracks cinematic did not play");
+            m.onCinematicDone(player, "mc001_s003_tracks");
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("Look at this.")), "Elara did not speak at the tracks");
+            finishDialogues(m, player);
+            expectStage(helper, m, player, "investigate");
+            walk(m, player, level, s3, "mid_trail");
+            helper.assertTrue(m.inDialogue(player), "the valley conversation did not start");
+            finishDialogues(m, player);
+            for (String id : List.of("dropped_lantern", "scout_pack", "survey_marker")) {
+                m.onBlockUse(player, ModDimensions.absoluteBlock(s3, s3.clues().get(id).pos()));
+                helper.assertTrue(ModAttachments.story(player).cluesFound().contains(id), id + " did not respond to a right-click");
+                finishDialogues(m, player);
+            }
+            expectStage(helper, m, player, "markings");
+            walk(m, player, level, s3, "markings");
+            helper.assertTrue("mc001_s003_pulse".equals(m.cinematic(player)), "pulse cinematic did not play");
+            m.onCinematicDone(player, "mc001_s003_pulse");
+            finishDialogues(m, player);
+            PlayerStoryState st = ModAttachments.story(player);
+            helper.assertTrue(st.isSceneComplete("mc001_s003") && st.journal().contains("northern_trail"), "Scene 003 not completed");
+            helper.assertTrue(level.getBlockState(rel(9, 21, -92)).is(Blocks.CHISELED_TUFF), "the markings did not go dark again");
+            boolean map = false;
+            for (ItemStack it : player.getInventory().items) map |= it.is(Items.MAP);
+            helper.assertTrue(map, "the Northern Trail map was not given");
+            helper.succeed();
+        } finally {
+            NpcDirector.releaseAll(player);
+            StoryManager.setInstanceForTesting(previous);
+            level.getServer().getPlayerList().remove(player);
+            for (int cx = -1; cx <= 1; cx++) for (int cz = -7; cz <= -2; cz++) level.setChunkForced(cx, cz, false);
+            unstage(level);
+        }
+    }
+
+    /** Stands the player on a scene location and lets the story notice. */
+    private static void walk(StoryManager m, ServerPlayer p, ServerLevel level, SceneDef scene, String location) {
+        double[] a = ModDimensions.absolute(scene, scene.location(location));
+        p.teleportTo(level, a[0], a[1], a[2], 180, 0);
+        String stage = m.state(p).stage();
+        for (int i = 0; i < 40 && stage.equals(m.state(p).stage()) && !m.inDialogue(p) && m.cinematic(p) == null; i++) m.tick(p);
     }
 
     /** Villagers work and patrol, and Elara keeps up with Steve. */

@@ -47,7 +47,7 @@ scene = {
                     "Clue inspection lines are new gameplay text, not from the screenplay.",
     "dimension": "realitiesofdreams:mc_001", "site": "firstbrook", "anchor": [0, 64, 0],
     "arrival": {"pos": [2, 0, 3], "yaw": 180},
-    "next_scene": "unreleased:mc001_s003",
+    "next_scene": "mc001_s003",
     "locations": locs, "npcs": npcs,
     "clues": {
         "cracked_wall": {"name": "Cracked wall", "pos": [5, 0, -7], "block": "minecraft:cracked_stone_bricks", "dialogue": "clue_wall"},

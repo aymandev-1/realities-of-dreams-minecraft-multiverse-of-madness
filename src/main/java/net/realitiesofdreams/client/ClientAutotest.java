@@ -77,6 +77,8 @@ public final class ClientAutotest {
     @SubscribeEvent
     public static void onTick(ClientTickEvent.Post event) {
         if (!ENABLED) return;
+        // Make it obvious this window is not a game to play: the test moves the player around.
+        if (ticks % 20 == 0) Minecraft.getInstance().getWindow().setTitle("AUTOMATED TEST - do not play (Realities of Dreams)");
         if (!started) {
             started = true;
             script();
@@ -223,6 +225,39 @@ public final class ClientAutotest {
                     for (net.minecraft.world.item.ItemStack st : sp.getInventory().items) compass |= st.is(net.minecraft.world.item.Items.COMPASS);
                     check(compass, "the Strange Compass was not given");
                     check(ModAttachments.story(sp).journal().contains("northern_disturbance"), "Scene 002 journal entry missing");
+                });
+
+        // Scene 003 follows on: up the northern trail with Elara.
+        SceneDef s3 = Story.content().scene("mc001_s003");
+        step("Scene 003 starts", 0, () -> "mc001_s003".equals(activeScene()) && !busy(), 20 * 60, () -> goTo(s3, "trail_gate", 180, 5));
+        step("Bram's barrier", 30, () -> shot("s003_01_barrier"));
+        step("follow the trail", 0, () -> "follow_trail".equals(stage()), 200, () -> goTo(s3, "footprints", 180, 20));
+        step("tracks cinematic", 0, () -> "tracks".equals(stage()), 200, () -> {});
+        step("Elara at the tracks", 50, () -> shot("s003_02_tracks"));
+        step("tracks conversation", 0, () -> "investigate".equals(stage()), 20 * 90, () -> shot("s003_03_tracks_talk_done"));
+        step("up the trail", 0, () -> goTo(s3, "mid_trail", 180, 5));
+        step("walking conversation", 0, ClientAutotest::busy, 200, () -> shot("s003_04_valley_talk"));
+        Object[][] trailClues = {{"dropped_lantern", 2, 11, -72, 180f, 45f}, {"scout_pack", 9, 18, -77, -90f, 35f}, {"survey_marker", 6, 19, -86, 180f, 40f}};
+        for (Object[] c : trailClues) {
+            String clueId = (String) c[0];
+            SceneDef.ClueDef clue = s3.clues().get(clueId);
+            step("walk to " + clueId, 0, () -> !busy(), 20 * 60, () -> onServer(sp -> {
+                double[] p = ModDimensions.absolute(s3, new SceneDef.Location((int) c[1], (int) c[2], (int) c[3], 1));
+                sp.teleportTo(sp.serverLevel(), p[0], p[1], p[2], (float) c[4], (float) c[5]);
+            }));
+            step("photograph " + clueId, 20, () -> shot("s003_clue_" + clueId));
+            step("examine " + clueId, 0, () -> useBlock(s3, clue.pos()));
+            step(clueId + " found", 0, () -> clueFound(clueId), 100, () -> {});
+            step(clueId + " remark", 30, () -> shot("s003_clue_" + clueId + "_remark"));
+        }
+        step("to the carved stone", 0, () -> "markings".equals(stage()) && !busy(), 20 * 60, () -> goTo(s3, "markings", -90, 10));
+        step("pulse cinematic", 0, () -> "pulse".equals(stage()), 200, () -> {});
+        step("the markings pulse", 40, () -> shot("s003_05_pulse"));
+        step("Scene 003 complete", 0, () -> { ServerPlayer sp = serverPlayer(); return sp != null && ModAttachments.story(sp).isSceneComplete("mc001_s003"); },
+                20 * 90, () -> {
+                    shot("s003_06_mission_complete");
+                    logState();
+                    check(ModAttachments.story(serverPlayer()).journal().contains("northern_trail"), "Scene 003 journal entry missing");
                 });
 
         // Primordial Steve in daylight, from the front and behind.
@@ -416,6 +451,13 @@ public final class ClientAutotest {
     private static boolean busy() {
         ServerPlayer sp = serverPlayer();
         return sp != null && (net.realitiesofdreams.server.StoryManager.get().inDialogue(sp) || net.realitiesofdreams.server.StoryManager.get().cinematic(sp) != null);
+    }
+
+    private static void goTo(SceneDef scene, String location, float yaw, float pitch) {
+        onServer(sp -> {
+            double[] p = ModDimensions.absolute(scene, scene.location(location));
+            sp.teleportTo(sp.serverLevel(), p[0], p[1], p[2], yaw, pitch);
+        });
     }
 
     private static boolean clueFound(String id) {

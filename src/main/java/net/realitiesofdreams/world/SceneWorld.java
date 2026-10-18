@@ -105,6 +105,14 @@ public final class SceneWorld {
             case "mc001_s002_aftermath" -> aftermath(level, scene, a);
             case "mc001_s002_ruin_light_on" -> ruinLight(level, a, true);
             case "mc001_s002_ruin_light_off" -> ruinLight(level, a, false);
+            case "mc001_s003_trail" -> {
+                net.realitiesofdreams.world.site.NorthernTrail.build(level, a);
+                placeClues(level, scene);
+                SceneDef.ClueDef pack = scene.clues().get("scout_pack");
+                if (pack != null) net.realitiesofdreams.world.site.NorthernTrail.fillPack(level, a, ModDimensions.absoluteBlock(scene, pack.pos()));
+            }
+            case "mc001_s003_pulse_on" -> net.realitiesofdreams.world.site.NorthernTrail.pulse(level, a, true);
+            case "mc001_s003_pulse_off" -> net.realitiesofdreams.world.site.NorthernTrail.pulse(level, a, false);
             default -> RealitiesOfDreams.LOGGER.warn("Unknown world change {}", change);
         }
         data.markDone("change:" + change);
@@ -133,7 +141,12 @@ public final class SceneWorld {
                         : net.minecraft.world.level.block.Blocks.STONE_BUTTON).defaultBlockState(), FLAGS);
             level.setBlock(a.offset(r[0], -1, r[1]), net.minecraft.world.level.block.Blocks.GRAVEL.defaultBlockState(), FLAGS);
         }
-        // Every clue's block, where the scene places it.
+        placeClues(level, scene);
+        reportBook(level, scene);
+    }
+
+    /** Places every clue's block where the scene says it is. */
+    private static void placeClues(ServerLevel level, SceneDef scene) {
         for (SceneDef.ClueDef clue : scene.clues().values()) {
             BlockPos at = ModDimensions.absoluteBlock(scene, clue.pos());
             var block = net.minecraft.core.registries.BuiltInRegistries.BLOCK.get(ResourceLocation.parse(clue.block()));
@@ -143,7 +156,6 @@ public final class SceneWorld {
             }
             level.setBlock(at, state, FLAGS);
         }
-        reportBook(level, scene);
     }
 
     /**
