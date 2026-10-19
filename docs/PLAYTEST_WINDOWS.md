@@ -138,7 +138,7 @@ In an ordinary (non-story) world the story no longer starts by itself; `/rod pla
 - Only Scene 001 is playable. Scenes 002–020, the monument, Sylvaris, Valebridge and the gateway
   chamber are not built yet.
 - MC-001 is fixed at sunrise, so villagers don't sleep at night yet.
-- Music and interface sounds are original synthesised placeholders. Scenes 001 to 004 are fully voiced
+- Music and interface sounds are original synthesised placeholders. Scenes 001 to 006 are fully voiced
   (turn it up or down with **Options → Music & Sounds → Voice/Speech**); later scenes show
   subtitles only until they are recorded. See [ASSETS.md](ASSETS.md).
 - Firstbrook's villagers, farmers and guards use generated skins (shared outfits, different faces).

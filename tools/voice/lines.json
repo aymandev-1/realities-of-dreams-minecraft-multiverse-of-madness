@@ -1,5 +1,12 @@
 [
   {
+    "key": "v_fc0a5d663b2a",
+    "speaker": "bram",
+    "text": "And that one looks like the old Stonecrown fortress.",
+    "direction": "gruff, recognising it",
+    "seconds": 3.04
+  },
+  {
     "key": "v_82ab83d9f3cc",
     "speaker": "bram",
     "text": "Everyone listen! Nobody goes past the north marker without an escort.",
@@ -56,6 +63,13 @@
     "seconds": 1.84
   },
   {
+    "key": "v_2b9fa8e4e551",
+    "speaker": "bram",
+    "text": "That's bigger than it looked from the watchtower.",
+    "direction": "impressed, a little uneasy, looking up",
+    "seconds": 2.96
+  },
+  {
     "key": "v_1d92e4e0b119",
     "speaker": "bram",
     "text": "The northern path isn't safe. Loose rocks came down just before dawn.",
@@ -68,6 +82,13 @@
     "text": "The trail's closed past the old posts, but the Elder says you two may pass. Mind the loose rock.",
     "direction": "gruff but friendly, matter-of-fact",
     "seconds": 6.0
+  },
+  {
+    "key": "v_d417a77ea566",
+    "speaker": "bram",
+    "text": "Then we're not staying here after dark.",
+    "direction": "firm, decisive, uneasy",
+    "seconds": 2.16
   },
   {
     "key": "v_4a71c53d295a",
@@ -147,6 +168,13 @@
     "seconds": 3.12
   },
   {
+    "key": "v_01fee40899c8",
+    "speaker": "elara",
+    "text": "Look at their shapes. That one resembles the towers of Eldervale.",
+    "direction": "intrigued, pointing something out",
+    "seconds": 3.6
+  },
+  {
     "key": "v_c25f56cb328d",
     "speaker": "elara",
     "text": "Look at this.",
@@ -196,6 +224,13 @@
     "seconds": 2.56
   },
   {
+    "key": "v_9f43096a21ef",
+    "speaker": "elara",
+    "text": "Steve! Move away!",
+    "direction": "shouting, alarmed, urgent",
+    "seconds": 1.68
+  },
+  {
     "key": "v_f41d0b0e5c49",
     "speaker": "elara",
     "text": "Steve! You awake in there?",
@@ -215,6 +250,13 @@
     "text": "That's where I was heading.",
     "direction": "eager",
     "seconds": 1.12
+  },
+  {
+    "key": "v_3e372d672aed",
+    "speaker": "elara",
+    "text": "The outer walls weren't visible yesterday.",
+    "direction": "thoughtful, observant",
+    "seconds": 2.08
   },
   {
     "key": "v_da9d5d67f118",
@@ -392,6 +434,20 @@
     "seconds": 1.92
   },
   {
+    "key": "v_dc85ffc35c2b",
+    "speaker": "orin",
+    "text": "I don't know. But somebody wanted them remembered together.",
+    "direction": "slow, reverent, studying the carving",
+    "seconds": 4.5
+  },
+  {
+    "key": "v_f059c8956f8e",
+    "speaker": "orin",
+    "text": "I saw. It started before your hand reached the stone.",
+    "direction": "quiet, unsettled, certain",
+    "seconds": 4.3
+  },
+  {
     "key": "v_7c3325dd447b",
     "speaker": "orin",
     "text": "Markings?",
@@ -406,11 +462,32 @@
     "seconds": 5.2
   },
   {
+    "key": "v_ad56bbf9bfb7",
+    "speaker": "orin",
+    "text": "Possibly. Or six settlements.",
+    "direction": "considering, scholarly",
+    "seconds": 3.12
+  },
+  {
     "key": "v_640bdb28c20c",
     "speaker": "orin",
     "text": "That's not a natural crack.",
     "direction": "low, troubled, examining it closely",
     "seconds": 2.16
+  },
+  {
+    "key": "v_edcbcdba3121",
+    "speaker": "orin",
+    "text": "That's what worries me.",
+    "direction": "quiet, worried",
+    "seconds": 1.68
+  },
+  {
+    "key": "v_704924be5942",
+    "speaker": "orin",
+    "text": "They've been buried for generations. The disturbance must've exposed them.",
+    "direction": "old scholar, explaining, slightly breathless from the climb",
+    "seconds": 4.7
   },
   {
     "key": "v_0e43dbfe52f0",
@@ -525,6 +602,13 @@
     "seconds": 1.2
   },
   {
+    "key": "v_cc136038b5bc",
+    "speaker": "primordial_steve",
+    "text": "I didn't touch anything.",
+    "direction": "shaken, defensive, stepping back",
+    "seconds": 1.44
+  },
+  {
     "key": "v_71f6cec37f68",
     "speaker": "primordial_steve",
     "text": "I'll have a look.",
@@ -572,6 +656,13 @@
     "text": "Probably nothing.",
     "direction": "unconvinced, brushing it off",
     "seconds": 1.2
+  },
+  {
+    "key": "v_7d32f37413f6",
+    "speaker": "primordial_steve",
+    "text": "Six towers?",
+    "direction": "curious, studying a carving",
+    "seconds": 1.52
   },
   {
     "key": "v_b86255ec6125",
@@ -623,6 +714,13 @@
     "seconds": 1.76
   },
   {
+    "key": "v_3ef0b207ece1",
+    "speaker": "primordial_steve",
+    "text": "Then the ground didn't just shake. Something underneath moved.",
+    "direction": "serious, realising something",
+    "seconds": 4.3
+  },
+  {
     "key": "v_57f41b6b98c1",
     "speaker": "primordial_steve",
     "text": "These cracks are fresh. The stones were pushed up from below, not knocked down.",
@@ -670,6 +768,13 @@
     "text": "What's wrong?",
     "direction": "concerned",
     "seconds": 0.96
+  },
+  {
+    "key": "v_8defef14006c",
+    "speaker": "primordial_steve",
+    "text": "Why would somebody carve all six here?",
+    "direction": "puzzled, thinking aloud",
+    "seconds": 2.72
   },
   {
     "key": "v_06076b65d787",
