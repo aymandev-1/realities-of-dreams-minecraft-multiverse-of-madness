@@ -105,6 +105,13 @@
     "seconds": 1.44
   },
   {
+    "key": "v_22e612076827",
+    "speaker": "elara",
+    "text": "Below the monument?",
+    "direction": "surprised, uneasy",
+    "seconds": 1.28
+  },
+  {
     "key": "v_41d5b4e0247e",
     "speaker": "elara",
     "text": "Different how?",
@@ -189,6 +196,13 @@
     "seconds": 1.84
   },
   {
+    "key": "v_d116beca16be",
+    "speaker": "elara",
+    "text": "Maybe the other kingdoms have seen these symbols.",
+    "direction": "hopeful, thoughtful",
+    "seconds": 2.16
+  },
+  {
     "key": "v_49240f6484c1",
     "speaker": "elara",
     "text": "Maybe. But the tracks stop here.",
@@ -222,6 +236,20 @@
     "text": "Orin said you'd sleep until noon if nobody checked.",
     "direction": "teasing",
     "seconds": 2.56
+  },
+  {
+    "key": "v_80292b2340bd",
+    "speaker": "elara",
+    "text": "Orin, what are they pointing toward?",
+    "direction": "curious, careful",
+    "seconds": 1.68
+  },
+  {
+    "key": "v_8deb0348f0c5",
+    "speaker": "elara",
+    "text": "Six points.",
+    "direction": "softly, in awe",
+    "seconds": 1.36
   },
   {
     "key": "v_9f43096a21ef",
@@ -420,11 +448,25 @@
     "seconds": 2.32
   },
   {
+    "key": "v_eceed1fd39de",
+    "speaker": "orin",
+    "text": "All three? At exactly the same time?",
+    "direction": "incredulous, sharp",
+    "seconds": 3.12
+  },
+  {
     "key": "v_b05a69b66304",
     "speaker": "orin",
     "text": "Before you ask, no, I haven't worked out what happened.",
     "direction": "gruff, not looking up from his work",
     "seconds": 4.1
+  },
+  {
+    "key": "v_fa3b6149e56f",
+    "speaker": "orin",
+    "text": "Did you both see that?",
+    "direction": "breathless, astonished",
+    "seconds": 1.52
   },
   {
     "key": "v_a51a067cf02c",
@@ -446,6 +488,13 @@
     "text": "I saw. It started before your hand reached the stone.",
     "direction": "quiet, unsettled, certain",
     "seconds": 4.3
+  },
+  {
+    "key": "v_0159c1f8d3b2",
+    "speaker": "orin",
+    "text": "I've tried three compasses. Every single one is wrong.",
+    "direction": "frustrated, exasperated old scholar",
+    "seconds": 4.2
   },
   {
     "key": "v_7c3325dd447b",
@@ -483,6 +532,13 @@
     "seconds": 1.68
   },
   {
+    "key": "v_b7cd1fb06359",
+    "speaker": "orin",
+    "text": "Then where?",
+    "direction": "urgent, impatient",
+    "seconds": 1.2
+  },
+  {
     "key": "v_704924be5942",
     "speaker": "orin",
     "text": "They've been buried for generations. The disturbance must've exposed them.",
@@ -502,6 +558,20 @@
     "text": "Very serious. I want measurements before somebody destroys the evidence.",
     "direction": "grave, deliberate",
     "seconds": 5.1
+  },
+  {
+    "key": "v_dfca4b6aabac",
+    "speaker": "orin",
+    "text": "We're going to need information from outside Firstbrook.",
+    "direction": "decisive, serious",
+    "seconds": 4.0
+  },
+  {
+    "key": "v_c6cd4729ec3a",
+    "speaker": "orin",
+    "text": "Whatever is buried beneath that structure.",
+    "direction": "low, ominous, staring at the monument",
+    "seconds": 3.2
   },
   {
     "key": "v_599bf7d86150",
@@ -567,6 +637,13 @@
     "seconds": 1.04
   },
   {
+    "key": "v_9cbd9853724e",
+    "speaker": "primordial_steve",
+    "text": "Below.",
+    "direction": "quiet, looking down at the needle",
+    "seconds": 0.8
+  },
+  {
     "key": "v_d334f39b3848",
     "speaker": "primordial_steve",
     "text": "Did you feel that?",
@@ -586,6 +663,13 @@
     "text": "Don't say that. Something always happens when somebody says that.",
     "direction": "half-joking, wary",
     "seconds": 3.68
+  },
+  {
+    "key": "v_e4fcc7e908bf",
+    "speaker": "primordial_steve",
+    "text": "Farther than that, I think.",
+    "direction": "thoughtful, unsettled, slow",
+    "seconds": 2.24
   },
   {
     "key": "v_89817c55e8f0",
@@ -614,6 +698,20 @@
     "text": "I'll have a look.",
     "direction": "determined",
     "seconds": 1.12
+  },
+  {
+    "key": "v_9678e8197911",
+    "speaker": "primordial_steve",
+    "text": "Like the monument carving.",
+    "direction": "realising, quiet",
+    "seconds": 1.68
+  },
+  {
+    "key": "v_f4832db35c51",
+    "speaker": "primordial_steve",
+    "text": "Maybe they're all broken.",
+    "direction": "casual, shrugging",
+    "seconds": 1.6
   },
   {
     "key": "v_2896f69b51b1",
@@ -698,6 +796,13 @@
     "text": "The ruins?",
     "direction": "squinting, uncertain",
     "seconds": 1.12
+  },
+  {
+    "key": "v_4fe82da2e777",
+    "speaker": "primordial_steve",
+    "text": "The signal isn't ahead of us.",
+    "direction": "puzzled, studying the compass",
+    "seconds": 2.16
   },
   {
     "key": "v_4ca715020d00",
