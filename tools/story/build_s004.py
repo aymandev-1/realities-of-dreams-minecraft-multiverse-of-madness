@@ -55,7 +55,7 @@ scene = {
          "on_enter": [{"type": "world_change", "id": "mc001_s004_supplies"},
                       {"type": "hint", "ticks": 260,
                        "text": "Survey kit: a compass, rope (a lead), chalk (white dye), 8 torches and an iron pickaxe. "
-                               "Supplies are in the chest; craft them at the workbench."}],
+                               "Supplies are in the chest; craft them at the workbench. The pickaxe hangs on the workshop's back wall."}],
          "complete": {"type": "items", "value": KIT}},
         {"id": "compass", "checkpoint": "workshop_inside",
          "on_enter": [{"type": "start_cinematic", "id": "mc001_s004_compass"}],
