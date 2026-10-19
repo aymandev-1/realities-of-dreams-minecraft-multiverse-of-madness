@@ -42,7 +42,7 @@ scene = {
                     "The survey-kit hint and the outcome message are new gameplay text.",
     "dimension": "realitiesofdreams:mc_001", "site": "firstbrook", "anchor": [0, 64, 0],
     "arrival": {"pos": [11, 0, -2], "yaw": 180},
-    "next_scene": "unreleased:mc001_s005",
+    "next_scene": "mc001_s005",
     "locations": locs, "npcs": npcs, "clues": {},
     "stages": [
         {"id": "to_workshop", "objective": "Take the news to Orin's workshop", "target": "workshop_inside", "checkpoint": "workshop_front",

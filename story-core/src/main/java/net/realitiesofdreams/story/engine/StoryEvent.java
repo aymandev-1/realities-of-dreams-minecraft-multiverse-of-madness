@@ -9,4 +9,6 @@ public sealed interface StoryEvent {
     record FlagSet(String flag) implements StoryEvent {}
     /** The player now carries everything the current ITEMS stage asks for. */
     record ItemsCollected(String stage) implements StoryEvent {}
+    /** Every spot of the current BLOCKS stage now matches (built, lit, cleared...). */
+    record BlocksDone(String stage) implements StoryEvent {}
 }

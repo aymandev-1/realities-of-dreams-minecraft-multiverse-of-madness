@@ -1,0 +1,1399 @@
+{
+  "scene": {
+    "id": "mc001_s005",
+    "title": "Bram's Volunteers",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 5,
+    "canon_status": "Saga 1 screenplay, Version 1 (docs/story/SAGA_1_SCREENPLAY.md): spoken dialogue verbatim. Hints and the outcome message are new gameplay text.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "firstbrook",
+    "anchor": [
+      0,
+      64,
+      0
+    ],
+    "arrival": {
+      "pos": [
+        0,
+        0,
+        -18
+      ],
+      "yaw": 180
+    },
+    "next_scene": "unreleased:mc001_s006",
+    "locations": {
+      "bedroom": {
+        "pos": [
+          14,
+          0,
+          17
+        ],
+        "radius": 2
+      },
+      "bed": {
+        "pos": [
+          19,
+          0,
+          15
+        ],
+        "radius": 1
+      },
+      "actor_stand": {
+        "pos": [
+          18,
+          0,
+          15
+        ],
+        "radius": 1
+      },
+      "house_storage": {
+        "pos": [
+          13,
+          0,
+          18
+        ],
+        "radius": 2.5
+      },
+      "outside_door": {
+        "pos": [
+          16,
+          0,
+          12
+        ],
+        "radius": 2.5
+      },
+      "elara_start": {
+        "pos": [
+          26,
+          0,
+          12
+        ],
+        "radius": 2
+      },
+      "elara_window": {
+        "pos": [
+          18,
+          0,
+          12
+        ],
+        "radius": 1.5
+      },
+      "farm_road": {
+        "pos": [
+          12,
+          0,
+          11
+        ],
+        "radius": 4
+      },
+      "square": {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "radius": 5
+      },
+      "square_lantern": {
+        "pos": [
+          3,
+          2.5,
+          -4
+        ],
+        "radius": 1
+      },
+      "ridge": {
+        "pos": [
+          10,
+          30,
+          -112
+        ],
+        "radius": 4
+      },
+      "ridge_trees": {
+        "pos": [
+          14,
+          12,
+          -66
+        ],
+        "radius": 6
+      },
+      "rowan_door": {
+        "pos": [
+          -7,
+          0,
+          -3
+        ],
+        "radius": 2
+      },
+      "rowan_home": {
+        "pos": [
+          -11,
+          0,
+          -3
+        ],
+        "radius": 2
+      },
+      "orin_workshop": {
+        "pos": [
+          11,
+          0,
+          -8
+        ],
+        "radius": 2
+      },
+      "bram_bridge": {
+        "pos": [
+          36,
+          0,
+          13
+        ],
+        "radius": 2
+      },
+      "farm_west_edge": {
+        "pos": [
+          12,
+          0,
+          10
+        ],
+        "radius": 2
+      },
+      "farm_east_edge": {
+        "pos": [
+          24,
+          0,
+          10
+        ],
+        "radius": 2
+      },
+      "farm_inner": {
+        "pos": [
+          7,
+          0,
+          6
+        ],
+        "radius": 2
+      },
+      "lane_west": {
+        "pos": [
+          6,
+          0,
+          11
+        ],
+        "radius": 2
+      },
+      "lane_east": {
+        "pos": [
+          27,
+          0,
+          11
+        ],
+        "radius": 2
+      },
+      "north_road": {
+        "pos": [
+          0,
+          0,
+          -9
+        ],
+        "radius": 2
+      },
+      "gate": {
+        "pos": [
+          0,
+          0,
+          -20
+        ],
+        "radius": 2
+      },
+      "gate_post": {
+        "pos": [
+          -4,
+          0,
+          -21
+        ],
+        "radius": 2
+      },
+      "market_1": {
+        "pos": [
+          -13,
+          0,
+          10
+        ],
+        "radius": 1.5
+      },
+      "market_2": {
+        "pos": [
+          -9,
+          0,
+          10
+        ],
+        "radius": 1.5
+      },
+      "well_side": {
+        "pos": [
+          2,
+          0,
+          -3
+        ],
+        "radius": 1.5
+      },
+      "square_west": {
+        "pos": [
+          -4,
+          0,
+          3
+        ],
+        "radius": 1.5
+      },
+      "market_path": {
+        "pos": [
+          -11,
+          0,
+          12
+        ],
+        "radius": 1.5
+      },
+      "cottage_door": {
+        "pos": [
+          -12,
+          0,
+          13
+        ],
+        "radius": 1.5
+      },
+      "workshop_yard": {
+        "pos": [
+          16,
+          0,
+          -4
+        ],
+        "radius": 1.5
+      },
+      "bakery_inside": {
+        "pos": [
+          -11,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "millers_door": {
+        "pos": [
+          -1,
+          0,
+          13
+        ],
+        "radius": 1.5
+      },
+      "millers_inside": {
+        "pos": [
+          -1,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "storehouse_front": {
+        "pos": [
+          -22,
+          0,
+          -15
+        ],
+        "radius": 1.5
+      },
+      "farmhouse_door": {
+        "pos": [
+          2,
+          0,
+          24
+        ],
+        "radius": 1.5
+      },
+      "pens_gate": {
+        "pos": [
+          -24,
+          0,
+          22
+        ],
+        "radius": 1.5
+      },
+      "council_fire": {
+        "pos": [
+          -23,
+          0,
+          0
+        ],
+        "radius": 1.5
+      },
+      "training_yard": {
+        "pos": [
+          -34,
+          0,
+          -12
+        ],
+        "radius": 1.5
+      },
+      "weaver_door": {
+        "pos": [
+          -20,
+          0,
+          -11
+        ],
+        "radius": 1.5
+      },
+      "dock": {
+        "pos": [
+          35,
+          0,
+          29
+        ],
+        "radius": 1.5
+      },
+      "construction": {
+        "pos": [
+          40,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "market_3": {
+        "pos": [
+          -5,
+          0,
+          10
+        ],
+        "radius": 1.5
+      },
+      "market_cart": {
+        "pos": [
+          0,
+          0,
+          9
+        ],
+        "radius": 1.5
+      },
+      "guard_station_door": {
+        "pos": [
+          3,
+          0,
+          -18
+        ],
+        "radius": 1.5
+      },
+      "orin_house_door": {
+        "pos": [
+          18,
+          0,
+          -9
+        ],
+        "radius": 1.5
+      },
+      "rowan_square": {
+        "pos": [
+          -2,
+          0,
+          -2
+        ],
+        "radius": 2
+      },
+      "cracked_wall": {
+        "pos": [
+          5,
+          0,
+          -7
+        ],
+        "radius": 2.5
+      },
+      "surveyor_table": {
+        "pos": [
+          3,
+          0,
+          3
+        ],
+        "radius": 2.5
+      },
+      "tower_report": {
+        "pos": [
+          -7,
+          0,
+          -16
+        ],
+        "radius": 2.5
+      },
+      "compass_spot": {
+        "pos": [
+          3,
+          0,
+          1
+        ],
+        "radius": 1.5
+      },
+      "bram_patrol": {
+        "pos": [
+          0,
+          0,
+          -19
+        ],
+        "radius": 2
+      },
+      "trail_gate": {
+        "pos": [
+          0,
+          0,
+          -25
+        ],
+        "radius": 3
+      },
+      "bram_gate": {
+        "pos": [
+          2,
+          0,
+          -25
+        ],
+        "radius": 1.5
+      },
+      "footprints": {
+        "pos": [
+          2,
+          6,
+          -60
+        ],
+        "radius": 3
+      },
+      "elara_crouch": {
+        "pos": [
+          3,
+          6,
+          -58
+        ],
+        "radius": 1
+      },
+      "mid_trail": {
+        "pos": [
+          3,
+          9,
+          -68
+        ],
+        "radius": 6
+      },
+      "lantern_spot": {
+        "pos": [
+          2,
+          11,
+          -74
+        ],
+        "radius": 2
+      },
+      "rock_ledge": {
+        "pos": [
+          9,
+          18,
+          -76
+        ],
+        "radius": 2.5
+      },
+      "marker_spot": {
+        "pos": [
+          5,
+          19,
+          -87
+        ],
+        "radius": 2.5
+      },
+      "markings": {
+        "pos": [
+          8,
+          20,
+          -92
+        ],
+        "radius": 3
+      },
+      "markings_stone": {
+        "pos": [
+          9,
+          21,
+          -92
+        ],
+        "radius": 1.5
+      },
+      "workshop_inside": {
+        "pos": [
+          11,
+          0,
+          -6
+        ],
+        "radius": 3
+      },
+      "workbench_front": {
+        "pos": [
+          11,
+          0,
+          -7
+        ],
+        "radius": 2
+      },
+      "orin_table": {
+        "pos": [
+          11,
+          0,
+          -8
+        ],
+        "radius": 1
+      },
+      "survey_table": {
+        "pos": [
+          12,
+          1,
+          -6
+        ],
+        "radius": 1
+      },
+      "workshop_front": {
+        "pos": [
+          11,
+          0,
+          -3
+        ],
+        "radius": 2
+      },
+      "gate_outside": {
+        "pos": [
+          0,
+          0,
+          -25
+        ],
+        "radius": 3
+      },
+      "bram_brief": {
+        "pos": [
+          -1,
+          0,
+          -31
+        ],
+        "radius": 1
+      },
+      "vol_1": {
+        "pos": [
+          -2,
+          0,
+          -28
+        ],
+        "radius": 1
+      },
+      "vol_2": {
+        "pos": [
+          0,
+          0,
+          -28
+        ],
+        "radius": 1
+      },
+      "vol_3": {
+        "pos": [
+          2,
+          0,
+          -28
+        ],
+        "radius": 1
+      },
+      "vol_4": {
+        "pos": [
+          -4,
+          0,
+          -29
+        ],
+        "radius": 1
+      },
+      "barricade": {
+        "pos": [
+          6,
+          0,
+          -31
+        ],
+        "radius": 3
+      },
+      "platform_base": {
+        "pos": [
+          9,
+          0,
+          -33
+        ],
+        "radius": 2
+      },
+      "platform_top": {
+        "pos": [
+          9,
+          5,
+          -36
+        ],
+        "radius": 2
+      },
+      "route": {
+        "pos": [
+          -1,
+          0,
+          -33
+        ],
+        "radius": 6
+      },
+      "supply_spot": {
+        "pos": [
+          12,
+          0,
+          -36
+        ],
+        "radius": 2
+      },
+      "rubble": {
+        "pos": [
+          1,
+          0,
+          -39
+        ],
+        "radius": 3
+      },
+      "worker_trapped": {
+        "pos": [
+          1,
+          0,
+          -42
+        ],
+        "radius": 1
+      },
+      "bram_far": {
+        "pos": [
+          1,
+          0,
+          -45
+        ],
+        "radius": 1
+      },
+      "orin_platform": {
+        "pos": [
+          7,
+          0,
+          -34
+        ],
+        "radius": 1
+      },
+      "rowan_platform": {
+        "pos": [
+          6,
+          0,
+          -36
+        ],
+        "radius": 1
+      }
+    },
+    "npcs": [
+      {
+        "character": "elara",
+        "location": "elara_start",
+        "yaw": 90
+      },
+      {
+        "character": "orin",
+        "location": "orin_workshop",
+        "yaw": 0,
+        "activity": "work",
+        "held": "minecraft:iron_pickaxe"
+      },
+      {
+        "character": "bram",
+        "location": "bram_brief",
+        "yaw": 0,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "elder_rowan",
+        "location": "rowan_door",
+        "yaw": 90
+      },
+      {
+        "character": "firstbrook_farmer_1",
+        "location": "farm_west_edge",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:iron_hoe"
+      },
+      {
+        "character": "firstbrook_farmer_2",
+        "location": "farm_inner",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:wheat"
+      },
+      {
+        "character": "firstbrook_farmer_3",
+        "location": "farm_east_edge",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:stone_hoe"
+      },
+      {
+        "character": "firstbrook_guard_1",
+        "location": "vol_2",
+        "yaw": 180,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "firstbrook_guard_2",
+        "location": "vol_3",
+        "yaw": 180,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "firstbrook_guard_3",
+        "location": "vol_4",
+        "yaw": 180,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "firstbrook_villager_1",
+        "location": "market_1",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:bread"
+      },
+      {
+        "character": "firstbrook_villager_2",
+        "location": "vol_1",
+        "yaw": 180
+      },
+      {
+        "character": "firstbrook_villager_3",
+        "location": "well_side",
+        "yaw": 200,
+        "activity": "routine",
+        "route": [
+          "well_side",
+          "market_2",
+          "bakery_inside",
+          "square_west"
+        ]
+      },
+      {
+        "character": "firstbrook_villager_4",
+        "location": "square_west",
+        "activity": "patrol",
+        "route": [
+          "square_west",
+          "market_path"
+        ]
+      },
+      {
+        "character": "firstbrook_villager_5",
+        "location": "cottage_door",
+        "yaw": 0,
+        "activity": "routine",
+        "route": [
+          "cottage_door",
+          "millers_inside",
+          "market_path",
+          "council_fire"
+        ]
+      },
+      {
+        "character": "firstbrook_villager_6",
+        "location": "workshop_yard",
+        "yaw": 270,
+        "activity": "routine",
+        "held": "minecraft:iron_ingot",
+        "route": [
+          "workshop_yard",
+          "orin_house_door",
+          "storehouse_front",
+          "workshop_yard"
+        ]
+      },
+      {
+        "character": "merchant_1",
+        "location": "market_3",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:emerald"
+      },
+      {
+        "character": "merchant_2",
+        "location": "market_cart",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:pumpkin_pie"
+      },
+      {
+        "character": "merchant_3",
+        "location": "storehouse_front",
+        "activity": "routine",
+        "route": [
+          "storehouse_front",
+          "market_cart",
+          "farmhouse_door",
+          "pens_gate"
+        ]
+      },
+      {
+        "character": "merchant_4",
+        "location": "dock",
+        "yaw": 270,
+        "activity": "work",
+        "held": "minecraft:fishing_rod"
+      },
+      {
+        "character": "expedition_worker_1",
+        "location": "worker_trapped",
+        "from_stage": "hazard",
+        "yaw": 180,
+        "held": "minecraft:stone_pickaxe"
+      }
+    ],
+    "clues": {},
+    "stages": [
+      {
+        "id": "arrive",
+        "objective": "Meet Bram at the north gate",
+        "target": "gate_outside",
+        "checkpoint": "gate",
+        "on_enter": [
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "world_change",
+            "id": "mc001_s005_worksite"
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "gate_outside"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s005_volunteers"
+          }
+        ]
+      },
+      {
+        "id": "volunteers_cine",
+        "checkpoint": "gate_outside",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s005_volunteers"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "volunteers"
+          }
+        ]
+      },
+      {
+        "id": "volunteers_talk",
+        "checkpoint": "gate_outside",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "volunteers"
+        },
+        "on_complete": [
+          {
+            "type": "give_item",
+            "item": "minecraft:oak_planks",
+            "count": "12"
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:torch",
+            "count": "6"
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:barrel",
+            "count": "2",
+            "name": "Supply crate"
+          }
+        ]
+      },
+      {
+        "id": "barricade",
+        "objective": "Build the barricade between the posts",
+        "target": "barricade",
+        "checkpoint": "gate_outside",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Green sparkles mark where blocks are needed. Place blocks with {use}."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "solid|4,0,-32;6,0,-32;8,0,-32;4,1,-32;6,1,-32;8,1,-32"
+        }
+      },
+      {
+        "id": "platform",
+        "objective": "Repair the watch platform",
+        "target": "platform_base",
+        "checkpoint": "gate_outside",
+        "complete": {
+          "type": "blocks",
+          "value": "solid|9,4,-37;10,4,-37;10,4,-36"
+        }
+      },
+      {
+        "id": "lights",
+        "objective": "Light the safe route",
+        "target": "route",
+        "checkpoint": "gate_outside",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "Put a torch on top of each lantern post."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "light|1,2,-29;-5,2,-31;1,2,-34;-4,2,-37"
+        }
+      },
+      {
+        "id": "supplies",
+        "objective": "Move the supply crates beside the platform",
+        "target": "supply_spot",
+        "checkpoint": "gate_outside",
+        "complete": {
+          "type": "blocks",
+          "value": "minecraft:barrel|12,0,-36;12,0,-37"
+        }
+      },
+      {
+        "id": "hazard",
+        "objective": "Clear the rockfall",
+        "target": "rubble",
+        "checkpoint": "gate_outside",
+        "on_enter": [
+          {
+            "type": "world_change",
+            "id": "mc001_s005_rockfall"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:entity.generic.explode",
+            "volume": 0.5,
+            "pitch": 0.5
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.gravel.fall",
+            "volume": 1.0,
+            "pitch": 0.6
+          },
+          {
+            "type": "shake",
+            "intensity": 0.12,
+            "ticks": 30
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_far"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_far"
+          },
+          {
+            "type": "start_dialogue",
+            "id": "rockfall"
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "air|-1,0,-40;0,0,-40;1,0,-40;2,0,-40;3,0,-40;-1,1,-40;0,1,-40;1,1,-40;2,1,-40;3,1,-40"
+        }
+      },
+      {
+        "id": "rescued",
+        "checkpoint": "rubble",
+        "on_enter": [
+          {
+            "type": "start_dialogue",
+            "id": "nicely_done"
+          }
+        ],
+        "complete": {
+          "type": "dialogue_end",
+          "value": "nicely_done"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "orin",
+            "location": "orin_platform"
+          },
+          {
+            "type": "npc_stay",
+            "character": "orin",
+            "location": "orin_platform"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elder_rowan",
+            "location": "rowan_platform"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elder_rowan",
+            "location": "rowan_platform"
+          }
+        ]
+      },
+      {
+        "id": "to_platform",
+        "objective": "Climb the watch platform",
+        "target": "platform_top",
+        "checkpoint": "platform_base",
+        "complete": {
+          "type": "reach",
+          "value": "platform_top"
+        },
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s005_monument"
+          }
+        ]
+      },
+      {
+        "id": "spot",
+        "checkpoint": "platform_top",
+        "on_enter": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s005_spot"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s005_spot"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "there_it_is"
+          }
+        ]
+      },
+      {
+        "id": "there_talk",
+        "checkpoint": "platform_top",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "there_it_is"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s005_rise"
+          }
+        ]
+      },
+      {
+        "id": "rise",
+        "checkpoint": "platform_top",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s005_rise"
+        },
+        "on_complete": [
+          {
+            "type": "title",
+            "title": "Mission Complete",
+            "subtitle": "Secure the Northern Road"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7
+          },
+          {
+            "type": "journal",
+            "id": "north_road"
+          },
+          {
+            "type": "message",
+            "text": "Act I complete: the north road is secure, and the investigation party can enter the ancient ruins."
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.north_road.secure"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.act1.complete"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s005.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [],
+    "area_triggers": [],
+    "chatter": []
+  },
+  "dialogues": {
+    "volunteers": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "bram",
+          "text": "Everyone listen! Nobody goes past the north marker without an escort.",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "firstbrook_villager_2",
+          "text": "It's just an old ruin.",
+          "next": "c"
+        },
+        "c": {
+          "speaker": "bram",
+          "text": "Then you won't mind waiting until we know it's safe.",
+          "next": "d"
+        },
+        "d": {
+          "speaker": "bram",
+          "text": "Good. I need somebody who knows how to build a proper barricade.",
+          "next": "e"
+        },
+        "e": {
+          "speaker": "primordial_steve",
+          "text": "You could've just asked.",
+          "next": "f"
+        },
+        "f": {
+          "speaker": "bram",
+          "text": "I was hoping you'd volunteer."
+        }
+      }
+    },
+    "rockfall": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "expedition_worker_1",
+          "text": "Help! I can't get through!",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "primordial_steve",
+          "text": "Stay back from the rocks!",
+          "next": "c"
+        },
+        "c": {
+          "speaker": "bram",
+          "text": "I'll clear the other side!"
+        }
+      }
+    },
+    "nicely_done": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "bram",
+          "text": "Nicely done.",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "primordial_steve",
+          "text": "We're lucky nobody got hurt.",
+          "next": "c"
+        },
+        "c": {
+          "speaker": "bram",
+          "text": "Luck won't keep us safe forever."
+        }
+      }
+    },
+    "there_it_is": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "elara",
+          "text": "There it is.",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "primordial_steve",
+          "text": "The ruins?",
+          "next": "c"
+        },
+        "c": {
+          "speaker": "orin",
+          "text": "Not exactly. That structure doesn't match any record I've seen.",
+          "next": "d"
+        },
+        "d": {
+          "speaker": "elder_rowan",
+          "text": "Then we proceed carefully.",
+          "next": "e"
+        },
+        "e": {
+          "speaker": "primordial_steve",
+          "text": "We go tomorrow."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s005_volunteers": {
+      "duration": 140,
+      "fade_in": 12,
+      "fade_out": 10,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            5.0,
+            3.0,
+            -34.0
+          ],
+          "yaw": 53,
+          "pitch": 11,
+          "fov": 58
+        },
+        {
+          "t": 140,
+          "pos": [
+            4.2,
+            2.6,
+            -33.2
+          ],
+          "yaw": 54,
+          "pitch": 10,
+          "fov": 50
+        }
+      ],
+      "subtitles": [],
+      "sounds": [
+        {
+          "t": 10,
+          "sound": "minecraft:block.wood.place",
+          "volume": 0.6
+        },
+        {
+          "t": 60,
+          "sound": "minecraft:block.anvil.use",
+          "volume": 0.2,
+          "pitch": 0.9
+        }
+      ]
+    },
+    "mc001_s005_spot": {
+      "duration": 140,
+      "fade_in": 10,
+      "fade_out": 0,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            9.5,
+            6.6,
+            -36.5
+          ],
+          "yaw": -169.5,
+          "pitch": -17,
+          "fov": 34
+        },
+        {
+          "t": 140,
+          "pos": [
+            9.5,
+            6.6,
+            -36.8
+          ],
+          "yaw": -169.6,
+          "pitch": -17,
+          "fov": 24
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 20,
+          "duration": 80,
+          "text": "Beyond the valley, something old stands against the sky.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 30,
+          "sound": "minecraft:block.beacon.ambient",
+          "volume": 0.5,
+          "pitch": 0.5
+        }
+      ]
+    },
+    "mc001_s005_rise": {
+      "duration": 200,
+      "fade_in": 0,
+      "fade_out": 20,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            9.5,
+            8.0,
+            -34.0
+          ],
+          "yaw": -170,
+          "pitch": -15,
+          "fov": 50
+        },
+        {
+          "t": 200,
+          "pos": [
+            14.0,
+            55.0,
+            -20.0
+          ],
+          "yaw": -171.5,
+          "pitch": -4,
+          "fov": 55
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 60,
+          "duration": 110,
+          "text": "ACT I COMPLETE",
+          "style": "title"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:ui.toast.challenge_complete",
+          "volume": 0.3,
+          "pitch": 0.7
+        }
+      ]
+    }
+  },
+  "journal": {
+    "north_road": {
+      "title": "Secure the Northern Road",
+      "text": "Bram rounded up volunteers at the north gate and, as usual, volunteered me. We built a barricade, mended the watch platform, lit the posts along the road and moved the supplies. Then the hillside came down across the path with a worker caught behind it. We dug him out; nobody was hurt. From the platform I saw it: a structure on the mountain beyond the valley that Orin says matches no record he has. We go tomorrow, carefully."
+    }
+  }
+}

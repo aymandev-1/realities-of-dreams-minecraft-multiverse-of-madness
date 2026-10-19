@@ -327,6 +327,7 @@ public final class StoryManager {
         if (rt.tick % 5 == 0 && !rt.busy()) tickProximity(p, rt, scene, state);
         if (rt.tick % 10 == 0 && !rt.busy()) tickReach(p, scene, state);
         if (rt.tick % 20 == 15) tickItems(p, rt, scene, state);
+        if (rt.tick % 10 == 7) tickBlocks(p, rt, scene, state);
         if (rt.tick % 10 == 5 && rt.cinematicId == null) {
             perform(p, engine().checkAreas(state, loc -> loc != null && distance(p, scene, loc) <= loc.radius()));
         }
@@ -398,6 +399,36 @@ public final class StoryManager {
         }
         // The tracker keeps counting during a conversation; the kit only completes once it has ended.
         if (have == goals.size() && !rt.busy()) perform(p, engine().handle(state, new StoryEvent.ItemsCollected(stage.id())));
+    }
+
+    /**
+     * BLOCKS stages: checks each spot (built, lit, cleared or a given block), marks the ones still to
+     * do with particles, updates the tracker, and completes once every spot matches.
+     */
+    private void tickBlocks(ServerPlayer p, PlayerRuntime rt, SceneDef scene, PlayerStoryState state) {
+        SceneDef.StageDef stage = engine().activeStage(state);
+        if (stage == null || stage.completion() != SceneDef.CompletionType.BLOCKS) return;
+        SceneEngine.BlockGoal goal = SceneEngine.stageBlocks(stage);
+        ServerLevel level = p.serverLevel();
+        BlockPos anchor = ModDimensions.anchor(scene);
+        int done = 0;
+        for (int[] s : goal.spots()) {
+            BlockPos pos = anchor.offset(s[0], s[1], s[2]);
+            var bs = level.getBlockState(pos);
+            boolean ok = switch (goal.mode()) {
+                case "solid" -> !bs.getCollisionShape(level, pos).isEmpty();
+                case "light" -> bs.getLightEmission(level, pos) > 0;
+                case "air" -> bs.isAir() || bs.canBeReplaced();
+                default -> BuiltInRegistries.BLOCK.getKey(bs.getBlock()).toString().equals(goal.mode());
+            };
+            if (ok) done++;
+            else if (rt.tick % 20 == 7) level.sendParticles(p, ParticleTypes.HAPPY_VILLAGER, false, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 2, 0.3, 0.3, 0.3, 0);
+        }
+        if (done != state.value(SceneEngine.BLOCKS_PROGRESS) || !state.hasValue(SceneEngine.BLOCKS_PROGRESS)) {
+            state.setValue(SceneEngine.BLOCKS_PROGRESS, done);
+            perform(p, List.of(engine().objective(state, scene, stage)));
+        }
+        if (done == goal.spots().size() && !rt.busy()) perform(p, engine().handle(state, new StoryEvent.BlocksDone(stage.id())));
     }
 
     private void tickReach(ServerPlayer p, SceneDef scene, PlayerStoryState state) {

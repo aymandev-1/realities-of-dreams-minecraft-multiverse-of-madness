@@ -52,8 +52,12 @@ public record SceneDef(String id, String title, String universe, int saga, int s
         }
     }
 
-    /** ITEMS: the player carries everything listed, e.g. "minecraft:compass,minecraft:torch*8". */
-    public enum CompletionType { CINEMATIC_END, DIALOGUE_END, REACH, CLUES, FLAG, ITEMS }
+    /**
+     * ITEMS: the player carries everything listed, e.g. "minecraft:compass,minecraft:torch*8".
+     * BLOCKS: the world matches at every listed spot, "MODE|x,y,z;x,y,z", where MODE is solid, light,
+     * air or a block id (relative coordinates; building, lighting, clearing or placing work).
+     */
+    public enum CompletionType { CINEMATIC_END, DIALOGUE_END, REACH, CLUES, FLAG, ITEMS, BLOCKS }
 
     public record StageDef(String id, String objective, String target, List<ActionDef> onEnter,
                            CompletionType completion, String completionValue, List<ActionDef> onComplete,

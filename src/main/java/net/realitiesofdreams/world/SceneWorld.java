@@ -116,6 +116,9 @@ public final class SceneWorld {
             case "mc001_s004_supplies" -> net.realitiesofdreams.world.site.OrinWorkshop.supplies(level, a);
             case "mc001_s004_sketch" -> net.realitiesofdreams.world.site.OrinWorkshop.sketch(level, a);
             case "mc001_s004_compass" -> net.realitiesofdreams.world.site.OrinWorkshop.compass(level, a);
+            case "mc001_s005_worksite" -> net.realitiesofdreams.world.site.NorthRoad.worksite(level, a);
+            case "mc001_s005_rockfall" -> net.realitiesofdreams.world.site.NorthRoad.rockfall(level, a);
+            case "mc001_s005_monument" -> net.realitiesofdreams.world.site.NorthRoad.monumentSilhouette(level, a);
             default -> RealitiesOfDreams.LOGGER.warn("Unknown world change {}", change);
         }
         data.markDone("change:" + change);

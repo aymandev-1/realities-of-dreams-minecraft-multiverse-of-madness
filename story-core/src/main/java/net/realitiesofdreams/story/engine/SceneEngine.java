@@ -132,6 +132,7 @@ public final class SceneEngine {
             case FLAG -> event instanceof StoryEvent.FlagSet e && e.flag().equals(v);
             case CLUES -> false;
             case ITEMS -> event instanceof StoryEvent.ItemsCollected e && e.stage().equals(stage.id());
+            case BLOCKS -> event instanceof StoryEvent.BlocksDone e && e.stage().equals(stage.id());
         };
     }
 
@@ -148,6 +149,24 @@ public final class SceneEngine {
         }
         return out;
     }
+
+    /** A BLOCKS stage: what each spot must become, and where the spots are (relative to the scene anchor). */
+    public record BlockGoal(String mode, List<int[]> spots) {}
+
+    public static BlockGoal stageBlocks(StageDef stage) {
+        String v = stage.completionValue() == null ? "" : stage.completionValue();
+        int bar = v.indexOf('|');
+        List<int[]> spots = new java.util.ArrayList<>();
+        if (bar < 0) return new BlockGoal("solid", spots);
+        for (String s : v.substring(bar + 1).split(";")) {
+            String[] c = s.trim().split(",");
+            if (c.length == 3) spots.add(new int[] {Integer.parseInt(c[0].trim()), Integer.parseInt(c[1].trim()), Integer.parseInt(c[2].trim())});
+        }
+        return new BlockGoal(v.substring(0, bar).trim(), spots);
+    }
+
+    /** State value holding how many spots of a BLOCKS stage are done (kept up to date by the game). */
+    public static final String BLOCKS_PROGRESS = "blocks.progress";
 
     /** State value holding how many of an ITEMS stage's goals the player has (kept up to date by the game). */
     public static final String ITEMS_PROGRESS = "items.progress";
@@ -194,6 +213,8 @@ public final class SceneEngine {
             progress = found + "/" + clues.size();
         } else if (stage.completion() == CompletionType.ITEMS) {
             progress = state.value(ITEMS_PROGRESS) + "/" + stageItems(stage).size();
+        } else if (stage.completion() == CompletionType.BLOCKS) {
+            progress = state.value(BLOCKS_PROGRESS) + "/" + stageBlocks(stage).spots().size();
         }
         return new Effect.ShowObjective(scene.label(), scene.title(), stage.objective(), scene.location(stage.target()), progress);
     }

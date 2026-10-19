@@ -120,6 +120,7 @@ public final class RodCommands {
             case FLAG -> m.handleEvent(p, new StoryEvent.FlagSet(v));
             case CLUES -> SceneEngine.stageClues(stage).forEach(id -> m.handleEvent(p, new StoryEvent.ClueExamined(id)));
             case ITEMS -> m.handleEvent(p, new StoryEvent.ItemsCollected(stage.id()));
+            case BLOCKS -> m.handleEvent(p, new StoryEvent.BlocksDone(stage.id()));
         }
         return 1;
     }
