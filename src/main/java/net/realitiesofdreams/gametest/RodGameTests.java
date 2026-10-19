@@ -467,6 +467,83 @@ public final class RodGameTests {
         }
     }
 
+    /**
+     * Scene 006 at the monument's own site: the party arrives on the causeway, the collapsed stair is
+     * rebuilt block by block, the panels and the fracture are examined, the earth over the carving is
+     * dug away, and the pillar's lines light and go dark again.
+     */
+    @GameTest(template = "empty", batch = "monument", timeoutTicks = 1600)
+    public static void scene006RecordsTheMonument(GameTestHelper helper) {
+        ServerLevel level = helper.getLevel();
+        ModDimensions.useLevelForTesting(level);
+        for (int cx = 0; cx <= 4; cx++) for (int cz = -15; cz <= -9; cz++) level.setChunkForced(cx, cz, true);
+        StoryManager previous = StoryManager.get();
+        ServerPlayer player = helper.makeMockServerPlayerInLevel();
+        List<CustomPacketPayload> sent = new ArrayList<>();
+        StoryManager m = new StoryManager((p, payload) -> sent.add(payload));
+        StoryManager.setInstanceForTesting(m);
+        try {
+            ModAttachments.story(player).setIntroOffered(true);
+            m.restartScene(player, "mc001_s006");
+            SceneDef s6 = Story.content().scene("mc001_s006");
+            BlockPos a = ModDimensions.anchor(s6);
+            helper.assertTrue(level.getBlockState(a.offset(0, 3, 0)).is(Blocks.POLISHED_DEEPSLATE), "the terrace was not built");
+            helper.assertTrue(level.getBlockState(a.offset(0, 2, 10)).isAir(), "the collapsed stair is already there");
+            helper.assertTrue(level.getBlockState(a.offset(-6, 5, 3)).is(Blocks.CHISELED_DEEPSLATE), "the carved panels were not placed");
+            helper.assertTrue(!level.getBlockState(a.offset(0, 5, -4)).isAir(), "the carving is not hidden behind earth");
+            double[] trail = ModDimensions.absolute(s6, s6.location("trail_start"));
+            helper.assertTrue(player.position().distanceTo(new net.minecraft.world.phys.Vec3(trail[0], trail[1], trail[2])) < 3,
+                    "the player was not taken to the mountain trail");
+            helper.assertTrue("mc001_s006_approach".equals(m.cinematic(player)), "the approach cinematic did not play");
+            m.onCinematicDone(player, "mc001_s006_approach");
+            walk(m, player, level, s6, "courtyard");
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().startsWith("That's bigger")), "Bram did not speak at the monument");
+            finishDialogues(m, player);
+
+            expectStage(helper, m, player, "entrance");
+            List<int[]> steps = net.realitiesofdreams.story.engine.SceneEngine.stageBlocks(s6.stage("entrance")).spots();
+            for (int i = 0; i < steps.size(); i++) {
+                if (i == steps.size() - 1) {
+                    tickUntil(m, player, () -> false, 20);
+                    expectStage(helper, m, player, "entrance");
+                }
+                int[] s = steps.get(i);
+                level.setBlock(a.offset(s[0], s[1], s[2]), Blocks.DEEPSLATE_BRICKS.defaultBlockState(), 3);
+            }
+            tickUntil(m, player, () -> !"entrance".equals(m.state(player).stage()), 40);
+
+            for (String clue : new String[] {"panel_west", "panel_east", "panel_north"}) {
+                expectStage(helper, m, player, "panels");
+                helper.assertTrue(m.onBlockUse(player, ModDimensions.absoluteBlock(s6, s6.clues().get(clue).pos())), clue + " was not a clue");
+            }
+            expectStage(helper, m, player, "fracture");
+            helper.assertTrue(player.getInventory().items.stream().anyMatch(it -> it.is(Items.SPYGLASS)), "Orin did not lend his measuring glass");
+            m.onBlockUse(player, ModDimensions.absoluteBlock(s6, s6.clues().get("fracture").pos()));
+
+            expectStage(helper, m, player, "uncover");
+            for (int[] s : net.realitiesofdreams.story.engine.SceneEngine.stageBlocks(s6.stage("uncover")).spots())
+                level.setBlock(a.offset(s[0], s[1], s[2]), Blocks.AIR.defaultBlockState(), 3);
+            tickUntil(m, player, () -> m.inDialogue(player), 40);
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("Six towers?")), "the carving was not discussed");
+            finishDialogues(m, player);
+
+            helper.assertTrue("mc001_s006_light".equals(m.cinematic(player)), "the pillar cinematic did not play");
+            m.onCinematicDone(player, "mc001_s006_light");
+            helper.assertTrue(level.getBlockState(a.offset(-1, 10, -1)).is(Blocks.SEA_LANTERN), "the pillar's lines did not light");
+            finishDialogues(m, player);
+            helper.assertTrue(level.getBlockState(a.offset(-1, 10, -1)).is(Blocks.CHISELED_DEEPSLATE), "the light did not fade");
+            PlayerStoryState st = ModAttachments.story(player);
+            helper.assertTrue(st.isSceneComplete("mc001_s006") && st.hasFlag("mc001.monument.recorded") && st.journal().contains("monument"), "Scene 006 not completed");
+            helper.succeed();
+        } finally {
+            NpcDirector.releaseAll(player);
+            StoryManager.setInstanceForTesting(previous);
+            level.getServer().getPlayerList().remove(player);
+            for (int cx = 0; cx <= 4; cx++) for (int cz = -15; cz <= -9; cz++) level.setChunkForced(cx, cz, false);
+            ModDimensions.useLevelForTesting(null);
+        }
+    }
+
     /** Stands the player on a scene location and lets the story notice. */
     private static void walk(StoryManager m, ServerPlayer p, ServerLevel level, SceneDef scene, String location) {
         double[] a = ModDimensions.absolute(scene, scene.location(location));

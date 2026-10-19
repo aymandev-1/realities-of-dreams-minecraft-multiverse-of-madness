@@ -323,6 +323,45 @@ public final class ClientAutotest {
                     check(ModAttachments.story(serverPlayer()).journal().contains("north_road"), "Scene 005 journal entry missing");
                 });
 
+        // Scene 006 follows on: the next morning the party climbs to the monument (its own site, at the
+        // anchor 40, 108, -200). The stair is rebuilt and the earth dug away block by block, as in Scene 005.
+        SceneDef s6 = Story.content().scene("mc001_s006");
+        step("Scene 006 starts", 0, () -> "mc001_s006".equals(activeScene()), 20 * 60, () -> {});
+        step("the approach", 80, () -> shot("s006_01_approach"));
+        step("up the causeway", 0, () -> "to_courtyard".equals(stage()) && !busy(), 20 * 60, () -> goTo(s6, "courtyard", 180, -12));
+        step("Bram at the monument", 0, ClientAutotest::busy, 200, () -> shot("s006_02_courtyard"));
+        step("the collapsed stair", 0, () -> "entrance".equals(stage()) && !busy(), 20 * 90, () -> goTo(s6, "courtyard", 180, 12));
+        step("stair gap photo", 20, () -> shot("s006_03_collapsed_stair"));
+        step("build the stair", 0, () -> fillSpots(s6, "entrance", net.minecraft.world.level.block.Blocks.DEEPSLATE_BRICKS.defaultBlockState()));
+        step("stair built", 0, () -> "panels".equals(stage()), 100, () -> goTo(s6, "stair_top", 180, 10));
+        step("the terrace", 20, () -> shot("s006_04_terrace"));
+        Object[][] panels = {{"panel_west", -6, 4, 5, 180f, 35f}, {"panel_east", 6, 4, 5, 180f, 35f},
+                {"panel_north", 5, 4, -3, 180f, -5f}, {"fracture", 0, 4, 3, 180f, 30f}};
+        for (Object[] c : panels) {
+            String clueId = (String) c[0];
+            SceneDef.ClueDef clue = s6.clues().get(clueId);
+            step("walk to " + clueId, 0, () -> !busy(), 20 * 60, () -> onServer(sp -> {
+                double[] p = ModDimensions.absolute(s6, new SceneDef.Location((int) c[1], (int) c[2], (int) c[3], 1));
+                sp.teleportTo(sp.serverLevel(), p[0], p[1], p[2], (float) c[4], (float) c[5]);
+            }));
+            step("photograph " + clueId, 15, () -> shot("s006_clue_" + clueId));
+            step("examine " + clueId, 0, () -> useBlock(s6, clue.pos()));
+            step(clueId + " recorded", 0, () -> clueFound(clueId), 100, () -> {});
+        }
+        step("the fallen earth", 0, () -> "uncover".equals(stage()) && !busy(), 20 * 30, () -> goTo(s6, "carving", 180, 10));
+        step("earth photo", 20, () -> shot("s006_05_fallen_earth"));
+        step("dig it away", 0, () -> fillSpots(s6, "uncover", net.minecraft.world.level.block.Blocks.AIR.defaultBlockState()));
+        step("six towers", 0, ClientAutotest::busy, 100, () -> {});
+        step("the carving uncovered", 30, () -> shot("s006_06_six_structures"));
+        step("pillar cinematic", 0, () -> "light".equals(stage()), 20 * 90, () -> {});
+        step("the pillar lights", 70, () -> shot("s006_07_pillar_light"));
+        step("Scene 006 complete", 0, () -> { ServerPlayer sp = serverPlayer(); return sp != null && ModAttachments.story(sp).isSceneComplete("mc001_s006"); },
+                20 * 90, () -> {
+                    shot("s006_08_mission_complete");
+                    logState();
+                    check(ModAttachments.story(serverPlayer()).journal().contains("monument"), "Scene 006 journal entry missing");
+                });
+
         // Primordial Steve in daylight, from the front and behind.
         step("appearance outdoors", 0, () -> onServer(sp -> moveTo(sp, scene, -3, 1, 0)));
         step("third person front outdoors", 10, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_FRONT));

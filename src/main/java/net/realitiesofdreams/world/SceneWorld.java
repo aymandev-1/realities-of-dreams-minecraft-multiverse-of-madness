@@ -40,13 +40,21 @@ public final class SceneWorld {
 
     /**
      * Builds the scene's site once per world. Scenes that share a site (Firstbrook hosts Scenes
-     * 001 to 005) share one build. Each piece is recorded as it finishes, so a build interrupted
-     * by a crash resumes where it stopped.
+     * 001 to 005) share one build; the northern monument (Scene 006 on) has its own. Each
+     * Firstbrook piece is recorded as it finishes, so a build interrupted by a crash resumes
+     * where it stopped.
      */
     public static void ensureBuilt(ServerLevel level, SceneDef scene) {
         SceneWorldData data = SceneWorldData.get(level);
         String key = "built:site:" + scene.site();
         if (data.isDone(key)) return;
+        if (scene.site().equals("northern_monument")) {
+            net.realitiesofdreams.world.site.NorthernMonument.build(level, ModDimensions.anchor(scene));
+            placeClues(level, scene);
+            data.markDone(key);
+            RealitiesOfDreams.LOGGER.info("Built site {}", scene.site());
+            return;
+        }
         SiteLayout layout = layout(scene.site());
         if (layout == null || !scene.site().equals("firstbrook")) {
             RealitiesOfDreams.LOGGER.warn("No builder for site {} (scene {})", scene.site(), scene.id());
@@ -118,7 +126,12 @@ public final class SceneWorld {
             case "mc001_s004_compass" -> net.realitiesofdreams.world.site.OrinWorkshop.compass(level, a);
             case "mc001_s005_worksite" -> net.realitiesofdreams.world.site.NorthRoad.worksite(level, a);
             case "mc001_s005_rockfall" -> net.realitiesofdreams.world.site.NorthRoad.rockfall(level, a);
-            case "mc001_s005_monument" -> net.realitiesofdreams.world.site.NorthRoad.monumentSilhouette(level, a);
+            case "mc001_s005_monument" -> {
+                // Once the monument has been built for Scene 006, the distant silhouette must not cover it.
+                if (!data.isDone("built:site:northern_monument")) net.realitiesofdreams.world.site.NorthRoad.monumentSilhouette(level, a);
+            }
+            case "mc001_s006_glow_on" -> net.realitiesofdreams.world.site.NorthernMonument.glow(level, a, true);
+            case "mc001_s006_glow_off" -> net.realitiesofdreams.world.site.NorthernMonument.glow(level, a, false);
             default -> RealitiesOfDreams.LOGGER.warn("Unknown world change {}", change);
         }
         data.markDone("change:" + change);
