@@ -71,6 +71,8 @@ public final class ClientAutotest {
     private static int wait, waited, ticks;
     private static final List<String> failures = new ArrayList<>();
     private static net.minecraft.world.phys.Vec3 routineStart;
+    /** Farthest villager_3 has been from where it stood when the player took control (sampled once a second). */
+    private static double routineFarthest;
 
     private ClientAutotest() {}
 
@@ -90,6 +92,10 @@ public final class ClientAutotest {
             return;
         }
         if (steps.isEmpty()) return;
+        if (routineStart != null && ticks % 20 == 0) {
+            net.minecraft.world.phys.Vec3 at = npcPos("firstbrook_villager_3");
+            if (at != null) routineFarthest = Math.max(routineFarthest, at.distanceTo(routineStart));
+        }
         Step s = steps.peek();
         if (wait < s.delay()) {
             wait++;
@@ -469,8 +475,9 @@ public final class ClientAutotest {
             shot("player_05_square_back");
             mc.options.setCameraType(CameraType.FIRST_PERSON);
             net.minecraft.world.phys.Vec3 now = npcPos("firstbrook_villager_3");
-            log("villager_3 is now at " + now);
-            check(routineStart != null && now != null && now.distanceTo(routineStart) > 3, "a villager on a daily routine did not move");
+            log("villager_3 is now at " + now + ", farthest from its start " + routineFarthest);
+            // Over a long run the routine can bring it back home, so judge by how far it went.
+            check(routineStart != null && routineFarthest > 3, "a villager on a daily routine did not move");
         });
 
         // A tour of Firstbrook and the valley around it, photographed from a spectator camera.
