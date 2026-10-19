@@ -415,7 +415,7 @@ public final class RodGameTests {
             walk(m, player, level, s5, "gate_outside");
             helper.assertTrue("mc001_s005_volunteers".equals(m.cinematic(player)), "the volunteers cinematic did not play");
             m.onCinematicDone(player, "mc001_s005_volunteers");
-            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("It's just an old ruin.")), "the volunteers did not talk");
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().startsWith("Everyone listen!")), "the volunteers did not talk");
             finishDialogues(m, player);
             int planks = 0;
             for (ItemStack it : player.getInventory().items) if (it.is(Items.OAK_PLANKS)) planks += it.getCount();
