@@ -44,6 +44,9 @@ public final class ClientEvents {
             CinematicPlayer.tick();
             return;
         }
+        while (RodKeys.HELP.consumeClick()) {
+            if (mc.screen == null && mc.player != null) mc.setScreen(new StoryHelpScreen());
+        }
         while (RodKeys.CONTINUE.consumeClick()) {
             if (ClientStory.line == null || !ClientStory.line.choices().isEmpty()) continue;
             if (ClientStory.visibleChars() < ClientStory.line.text().length()) {
@@ -122,5 +125,14 @@ public final class ClientEvents {
         ClientStory.reset();
         ClientAppearance.reset();
         readySent = false;
+    }
+
+    /** The pause menu gets a "Story help" button while a story objective is showing. */
+    @SubscribeEvent
+    public static void onScreenInit(net.neoforged.neoforge.client.event.ScreenEvent.Init.Post event) {
+        if (!(event.getScreen() instanceof net.minecraft.client.gui.screens.PauseScreen pause) || !pause.showsPauseMenu()) return;
+        if (ClientStory.objective == null || ClientStory.objective.text().isEmpty()) return;
+        event.addListener(net.minecraft.client.gui.components.Button.builder(net.minecraft.network.chat.Component.literal("Story help"),
+                b -> net.minecraft.client.Minecraft.getInstance().setScreen(new StoryHelpScreen())).bounds(8, 8, 90, 20).build());
     }
 }

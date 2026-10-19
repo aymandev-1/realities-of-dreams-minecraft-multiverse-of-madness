@@ -25,6 +25,7 @@ public final class ClientSetup {
     @SubscribeEvent
     public static void keys(RegisterKeyMappingsEvent event) {
         event.register(RodKeys.CONTINUE);
+        event.register(RodKeys.HELP);
     }
 
     @SubscribeEvent

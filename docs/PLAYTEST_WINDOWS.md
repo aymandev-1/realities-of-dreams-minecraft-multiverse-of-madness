@@ -111,6 +111,7 @@ of the walk too: the conversation picks up again when you continue.
 |---|---|
 | WASD, Space, mouse | Move, jump, look (your normal Minecraft controls) |
 | **V** | Finish the current subtitle line / next line; skip a cinematic |
+| **H** | Story help (also in the pause menu): what to do now, the controls, a hint, **skip this step** (builds, clears or takes you there for you) and back to the last checkpoint |
 | 1–4 or mouse | Pick a reply when a conversation offers choices |
 | F5 | Change camera (see Primordial Steve) |
 

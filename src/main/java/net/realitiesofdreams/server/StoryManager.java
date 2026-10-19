@@ -266,6 +266,111 @@ public final class StoryManager {
         return true;
     }
 
+    // ---------------------------------------------------------------- help menu
+
+    /** The help menu's hint button: repeats the stage's own hint, or says how this kind of objective is done. */
+    public void helpHint(ServerPlayer p) {
+        SceneDef.StageDef stage = engine().activeStage(state(p));
+        if (stage == null) {
+            messenger.send(p, new HintPayload("No story objective right now. Explore freely, or pick a chapter from the main menu.", 200));
+            return;
+        }
+        for (ActionDef a : stage.onEnter()) {
+            if (a.type().equals("hint")) {
+                messenger.send(p, new HintPayload(a.arg("text"), 240));
+                return;
+            }
+        }
+        String text = switch (stage.completion()) {
+            case REACH -> "Follow the gold arrow next to the objective (top left) to the next place.";
+            case BLOCKS -> "Green sparkles mark each spot to build, light or clear. Place blocks with {use}, break them with {attack}.";
+            case CLUES -> "Sparkles mark the things to examine. Walk up to each one and press {use}.";
+            case ITEMS -> "Gather what the objective lists; the tracker counts what you carry.";
+            case DIALOGUE_END -> "Walk up to the person you need and they will start talking. {continue} moves the conversation on.";
+            case CINEMATIC_END -> "A cutscene is playing. {continue} skips it.";
+            case FLAG -> "Follow the objective at the top left of the screen.";
+        };
+        messenger.send(p, new HintPayload(text, 240));
+    }
+
+    /**
+     * Completes the current objective for a player who is stuck (help menu, or /rod scene skip). The
+     * world is left as if they had done it: blocks are placed or cleared, missing items handed over,
+     * and the player is taken to a place they had to reach. False if there is nothing to skip.
+     */
+    public boolean skipStage(ServerPlayer p) {
+        PlayerStoryState state = state(p);
+        SceneDef scene = engine().activeScene(state);
+        SceneDef.StageDef stage = engine().activeStage(state);
+        if (scene == null || stage == null) return false;
+        PlayerRuntime rt = runtime(p);
+        if (rt.dialogue != null) {
+            messenger.send(p, new HintPayload("Let the conversation finish first: {continue} moves it on.", 120));
+            return false;
+        }
+        String v = stage.completionValue();
+        switch (stage.completion()) {
+            case CINEMATIC_END -> onCinematicDone(p, v);
+            case DIALOGUE_END -> handleEvent(p, new StoryEvent.DialogueFinished(v));
+            case REACH -> {
+                SceneDef.Location loc = scene.location(v);
+                ServerLevel level = ModDimensions.level(p.server, scene);
+                if (loc != null && level != null) {
+                    double[] a = ModDimensions.absolute(scene, loc);
+                    p.teleportTo(level, a[0], a[1], a[2], p.getYRot(), p.getXRot());
+                }
+                handleEvent(p, new StoryEvent.Reached(v));
+            }
+            case FLAG -> handleEvent(p, new StoryEvent.FlagSet(v));
+            case CLUES -> SceneEngine.stageClues(stage).forEach(id -> handleEvent(p, new StoryEvent.ClueExamined(id)));
+            case ITEMS -> {
+                for (SceneEngine.ItemGoal g : SceneEngine.stageItems(stage)) {
+                    Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(g.item()));
+                    int n = 0;
+                    for (ItemStack s : p.getInventory().items) if (s.is(item)) n += s.getCount();
+                    for (ItemStack s : p.getInventory().offhand) if (s.is(item)) n += s.getCount();
+                    if (n < g.count()) p.getInventory().placeItemBackInInventory(new ItemStack(item, g.count() - n));
+                }
+                handleEvent(p, new StoryEvent.ItemsCollected(stage.id()));
+            }
+            case BLOCKS -> {
+                SceneEngine.BlockGoal goal = SceneEngine.stageBlocks(stage);
+                ServerLevel level = p.serverLevel();
+                BlockPos anchor = ModDimensions.anchor(scene);
+                for (int[] s : goal.spots()) {
+                    BlockPos pos = anchor.offset(s[0], s[1], s[2]);
+                    if (spotDone(level, pos, goal.mode())) continue;
+                    var block = switch (goal.mode()) {
+                        case "solid" -> net.minecraft.world.level.block.Blocks.SPRUCE_PLANKS.defaultBlockState();
+                        case "light" -> net.minecraft.world.level.block.Blocks.TORCH.defaultBlockState();
+                        case "air" -> net.minecraft.world.level.block.Blocks.AIR.defaultBlockState();
+                        default -> BuiltInRegistries.BLOCK.get(ResourceLocation.parse(goal.mode())).defaultBlockState();
+                    };
+                    level.setBlock(pos, block, 3);
+                }
+                handleEvent(p, new StoryEvent.BlocksDone(stage.id()));
+            }
+        }
+        return true;
+    }
+
+    /** The help menu's checkpoint button: back to where the current part of the scene starts. */
+    public void helpCheckpoint(ServerPlayer p) {
+        PlayerStoryState state = state(p);
+        SceneDef scene = engine().activeScene(state);
+        if (scene != null) teleportToCheckpoint(p, scene, state);
+    }
+
+    private static boolean spotDone(ServerLevel level, BlockPos pos, String mode) {
+        var bs = level.getBlockState(pos);
+        return switch (mode) {
+            case "solid" -> !bs.getCollisionShape(level, pos).isEmpty();
+            case "light" -> bs.getLightEmission(level, pos) > 0;
+            case "air" -> bs.isAir() || bs.canBeReplaced();
+            default -> BuiltInRegistries.BLOCK.getKey(bs.getBlock()).toString().equals(mode);
+        };
+    }
+
     private void stopPresentation(ServerPlayer p, PlayerRuntime rt) {
         if (rt.dialogue != null) {
             clearSpeaker(p, rt);
@@ -414,14 +519,7 @@ public final class StoryManager {
         int done = 0;
         for (int[] s : goal.spots()) {
             BlockPos pos = anchor.offset(s[0], s[1], s[2]);
-            var bs = level.getBlockState(pos);
-            boolean ok = switch (goal.mode()) {
-                case "solid" -> !bs.getCollisionShape(level, pos).isEmpty();
-                case "light" -> bs.getLightEmission(level, pos) > 0;
-                case "air" -> bs.isAir() || bs.canBeReplaced();
-                default -> BuiltInRegistries.BLOCK.getKey(bs.getBlock()).toString().equals(goal.mode());
-            };
-            if (ok) done++;
+            if (spotDone(level, pos, goal.mode())) done++;
             else if (rt.tick % 20 == 7) level.sendParticles(p, ParticleTypes.HAPPY_VILLAGER, false, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 2, 0.3, 0.3, 0.3, 0);
         }
         if (done != state.value(SceneEngine.BLOCKS_PROGRESS) || !state.hasValue(SceneEngine.BLOCKS_PROGRESS)) {

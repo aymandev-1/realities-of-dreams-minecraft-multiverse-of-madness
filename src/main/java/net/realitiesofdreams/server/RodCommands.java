@@ -103,24 +103,12 @@ public final class RodCommands {
         return 1;
     }
 
-    /** Fires the event the current stage is waiting for, so each stage can be tested in isolation. */
+    /** Completes the current stage the way the help menu's skip does, so each stage can be tested in isolation. */
     private static int skip(CommandContext<CommandSourceStack> c) throws CommandSyntaxException {
         ServerPlayer p = c.getSource().getPlayerOrException();
-        StoryManager m = StoryManager.get();
-        SceneDef.StageDef stage = Story.engine().activeStage(m.state(p));
-        if (stage == null) {
-            c.getSource().sendFailure(Component.literal("No scene in progress."));
+        if (!StoryManager.get().skipStage(p)) {
+            c.getSource().sendFailure(Component.literal("No objective to skip right now."));
             return 0;
-        }
-        String v = stage.completionValue();
-        switch (stage.completion()) {
-            case CINEMATIC_END -> m.onCinematicDone(p, v);
-            case DIALOGUE_END -> m.handleEvent(p, new StoryEvent.DialogueFinished(v));
-            case REACH -> m.handleEvent(p, new StoryEvent.Reached(v));
-            case FLAG -> m.handleEvent(p, new StoryEvent.FlagSet(v));
-            case CLUES -> SceneEngine.stageClues(stage).forEach(id -> m.handleEvent(p, new StoryEvent.ClueExamined(id)));
-            case ITEMS -> m.handleEvent(p, new StoryEvent.ItemsCollected(stage.id()));
-            case BLOCKS -> m.handleEvent(p, new StoryEvent.BlocksDone(stage.id()));
         }
         return 1;
     }

@@ -106,6 +106,7 @@ public final class StoryHud {
         }
         g.drawString(font, header, x + 8, y + 5, 0xFFA8A8B0, false);
         g.drawString(font, "◆ " + text, x + 8, y + 17, 0xFFFFFFFF, true);
+        g.drawString(font, "[" + RodKeys.HELP.getTranslatedKeyMessage().getString() + "] help", x + 8, y + 33, 0xB0A8A8B0, true);
         if (!o.hasTarget()) return;
 
         Vec3 target = new Vec3(o.x(), o.y(), o.z());

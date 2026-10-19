@@ -155,6 +155,12 @@ public final class ClientAutotest {
             routineStart = npcPos("firstbrook_villager_3");
             log("villager_3 starts at " + routineStart);
         });
+        step("story help menu", 5, () -> mc.setScreen(new StoryHelpScreen()));
+        step("photograph the help menu", 10, () -> {
+            check(mc.screen instanceof StoryHelpScreen, "the story help menu did not open");
+            shot("help_01_menu");
+        });
+        step("close the help menu", 0, () -> mc.setScreen(null));
         step("Primordial Steve appearance", 20, () -> {
             check(ClientAppearance.overridden(mc.player.getUUID()), "player is not drawn as Primordial Steve");
             String tex = mc.player.getSkin().texture().toString();

@@ -396,6 +396,51 @@ public final class RodGameTests {
         }
     }
 
+    /**
+     * The help menu's skip on Scene 005's building jobs: the barricade is built and the lanterns lit
+     * for the player, the story moves on, and the hint button answers.
+     */
+    @GameTest(template = "empty", batch = "firstbrook_help", timeoutTicks = 600)
+    public static void helpMenuSkipsAStep(GameTestHelper helper) {
+        ServerLevel level = stageFirstbrook(helper);
+        StoryManager previous = StoryManager.get();
+        ServerPlayer player = helper.makeMockServerPlayerInLevel();
+        List<CustomPacketPayload> sent = new ArrayList<>();
+        StoryManager m = new StoryManager((p, payload) -> sent.add(payload));
+        StoryManager.setInstanceForTesting(m);
+        SceneDef s5 = Story.content().scene("mc001_s005");
+        List<int[]> barricade = net.realitiesofdreams.story.engine.SceneEngine.stageBlocks(s5.stage("barricade")).spots();
+        List<int[]> lights = net.realitiesofdreams.story.engine.SceneEngine.stageBlocks(s5.stage("lights")).spots();
+        try {
+            ModAttachments.story(player).setIntroOffered(true);
+            m.restartScene(player, "mc001_s005");
+            for (int[] s : barricade) level.setBlock(rel(s[0], s[1], s[2]), Blocks.AIR.defaultBlockState(), 3);
+            for (int[] s : lights) level.setBlock(rel(s[0], s[1], s[2]), Blocks.AIR.defaultBlockState(), 3);
+            helper.assertTrue(m.jumpToStage(player, "barricade"), "could not reach the barricade job");
+            sent.clear();
+            m.helpHint(player);
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof net.realitiesofdreams.network.HintPayload h && h.text().contains("Green sparkles")),
+                    "the hint button did not repeat the stage's hint");
+            helper.assertTrue(m.skipStage(player), "skip did nothing");
+            for (int[] s : barricade)
+                helper.assertTrue(!level.getBlockState(rel(s[0], s[1], s[2])).getCollisionShape(level, rel(s[0], s[1], s[2])).isEmpty(), "the barricade was not built by the skip");
+            expectStage(helper, m, player, "platform");
+            helper.assertTrue(m.jumpToStage(player, "lights"), "could not reach the lights job");
+            helper.assertTrue(m.skipStage(player), "skip did nothing on the lights");
+            for (int[] s : lights)
+                helper.assertTrue(level.getBlockState(rel(s[0], s[1], s[2])).getLightEmission(level, rel(s[0], s[1], s[2])) > 0, "a lantern post was not lit by the skip");
+            expectStage(helper, m, player, "supplies");
+            helper.succeed();
+        } finally {
+            for (int[] s : barricade) level.setBlock(rel(s[0], s[1], s[2]), Blocks.AIR.defaultBlockState(), 3);
+            for (int[] s : lights) level.setBlock(rel(s[0], s[1], s[2]), Blocks.AIR.defaultBlockState(), 3);
+            NpcDirector.releaseAll(player);
+            StoryManager.setInstanceForTesting(previous);
+            level.getServer().getPlayerList().remove(player);
+            unstage(level);
+        }
+    }
+
     /** Plays Scene 005 on the north road: every job is checked against the blocks actually in the world. */
     @GameTest(template = "empty", batch = "firstbrook_road", timeoutTicks = 1600)
     public static void scene005SecuresTheNorthRoad(GameTestHelper helper) {

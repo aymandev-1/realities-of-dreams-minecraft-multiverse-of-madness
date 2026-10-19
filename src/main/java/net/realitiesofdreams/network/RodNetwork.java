@@ -31,6 +31,15 @@ public final class RodNetwork {
                 (p, ctx) -> ctx.enqueueWork(() -> StoryManager.get().onSkip((ServerPlayer) ctx.player(), p.session())));
         r.playToServer(ClientReadyPayload.TYPE, ClientReadyPayload.STREAM_CODEC,
                 (p, ctx) -> ctx.enqueueWork(() -> StoryManager.get().onClientReady((ServerPlayer) ctx.player())));
+        r.playToServer(StoryHelpPayload.TYPE, StoryHelpPayload.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> {
+            ServerPlayer sp = (ServerPlayer) ctx.player();
+            switch (p.action()) {
+                case "hint" -> StoryManager.get().helpHint(sp);
+                case "skip" -> StoryManager.get().skipStage(sp);
+                case "checkpoint" -> StoryManager.get().helpCheckpoint(sp);
+                default -> { }
+            }
+        }));
         r.playToServer(CinematicDonePayload.TYPE, CinematicDonePayload.STREAM_CODEC,
                 (p, ctx) -> ctx.enqueueWork(() -> StoryManager.get().onCinematicDone((ServerPlayer) ctx.player(), p.id())));
     }
