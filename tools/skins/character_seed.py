@@ -133,6 +133,11 @@ NPC_TYPES = [
     ("merchant", "Travelling Merchant", "Merchant", "Independent traders", 4, [11, 12], "The eastern road caravan and Valebridge's market."),
     ("raider", "Raider", "Raider", "Eastern road raiders", 4, [11], "Human raiders who attack the caravan."),
     ("raider_leader", "Raider Leader", "Raider Leader", "Eastern road raiders", 1, [11], "Leader of the eastern road raiders."),
+    ("valebridge_citizen", "Valebridge Citizen", "Citizen", "Eldervale", 8, [12, 17], "Residents of Valebridge, Eldervale's capital."),
+    ("irondeep_miner", "Irondeep Miner", "Miner", "Stonecrown", 8, [13], "Miners, smiths and residents of Irondeep."),
+    ("sunspire_citizen", "Sunspire Citizen", "Citizen", "Solkar", 8, [14], "Residents, traders and copyists of Sunspire."),
+    ("emberhold_citizen", "Emberhold Citizen", "Citizen", "Veyrath", 8, [15], "Forge workers and residents of Emberhold."),
+    ("tidewatch_dockhand", "Tidewatch Dockhand", "Dockhand", "Thalassia", 8, [16], "Dock workers, divers and fishers of Tidewatch."),
 ]
 
 # Factions and Saga 1 scene appearances of the named MC-001 cast (from each scene's cast list).

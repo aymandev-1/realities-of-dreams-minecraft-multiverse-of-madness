@@ -178,7 +178,7 @@ Primordial Steve keeps his normal classic Steve skin throughout Saga 1. `primord
 
 ![Generated TMMA skins](images/tmma_generated_sheet.png)
 
-## MC-001 Saga 1 NPCs (55)
+## MC-001 Saga 1 NPCs (95)
 
 | ID | Name | Universe | Faction | Model | Notes |
 |---|---|---|---|---|---|
@@ -237,6 +237,46 @@ Primordial Steve keeps his normal classic Steve skin throughout Saga 1. `primord
 | `raider_3` | Raider #3 | MC-001 | Eastern road raiders | slim | Human raiders who attack the caravan. Generated NPC appearance: long white hair, hazel eyes, scar, hood and face cloth. Outfit shared by every Raider. |
 | `raider_4` | Raider #4 | MC-001 | Eastern road raiders | wide | Human raiders who attack the caravan. Generated NPC appearance: bun ginger hair, hazel eyes, eyepatch, scar, face cloth. Outfit shared by every Raider. |
 | `raider_leader_1` | Raider Leader #1 | MC-001 | Eastern road raiders | wide | Leader of the eastern road raiders. Generated NPC appearance: swept white hair, green eyes, scar. Outfit shared by every Raider Leader. |
+| `valebridge_citizen_1` | Valebridge Citizen #1 | MC-001 | Eldervale | wide | Residents of Valebridge, Eldervale's capital. Generated NPC appearance: long auburn hair, brown eyes, glasses, earring, black coif. Outfit shared by every Valebridge Citizen. |
+| `valebridge_citizen_2` | Valebridge Citizen #2 | MC-001 | Eldervale | wide | Residents of Valebridge, Eldervale's capital. Generated NPC appearance: long grey hair, hazel eyes, freckles, earring. Outfit shared by every Valebridge Citizen. |
+| `valebridge_citizen_3` | Valebridge Citizen #3 | MC-001 | Eldervale | slim | Residents of Valebridge, Eldervale's capital. Generated NPC appearance: buzz dark brown hair, green eyes, earring, felt hat. Outfit shared by every Valebridge Citizen. |
+| `valebridge_citizen_4` | Valebridge Citizen #4 | MC-001 | Eldervale | wide | Residents of Valebridge, Eldervale's capital. Generated NPC appearance: bald ginger hair, hazel eyes, earring, moustache, felt hat. Outfit shared by every Valebridge Citizen. |
+| `valebridge_citizen_5` | Valebridge Citizen #5 | MC-001 | Eldervale | wide | Residents of Valebridge, Eldervale's capital. Generated NPC appearance: bun dark brown hair, brown eyes, earring. Outfit shared by every Valebridge Citizen. |
+| `valebridge_citizen_6` | Valebridge Citizen #6 | MC-001 | Eldervale | slim | Residents of Valebridge, Eldervale's capital. Generated NPC appearance: short brown hair, green eyes, freckles, felt hat. Outfit shared by every Valebridge Citizen. |
+| `valebridge_citizen_7` | Valebridge Citizen #7 | MC-001 | Eldervale | wide | Residents of Valebridge, Eldervale's capital. Generated NPC appearance: short blonde hair, brown eyes, moustache, felt hat. Outfit shared by every Valebridge Citizen. |
+| `valebridge_citizen_8` | Valebridge Citizen #8 | MC-001 | Eldervale | wide | Residents of Valebridge, Eldervale's capital. Generated NPC appearance: long dark brown hair, grey eyes, freckles. Outfit shared by every Valebridge Citizen. |
+| `irondeep_miner_1` | Irondeep Miner #1 | MC-001 | Stonecrown | wide | Miners, smiths and residents of Irondeep. Generated NPC appearance: bald black hair, hazel eyes, soot smudges, moustache, headband. Outfit shared by every Irondeep Miner. |
+| `irondeep_miner_2` | Irondeep Miner #2 | MC-001 | Stonecrown | wide | Miners, smiths and residents of Irondeep. Generated NPC appearance: bun brown hair, green eyes, freckles, scar, soot smudges, headband. Outfit shared by every Irondeep Miner. |
+| `irondeep_miner_3` | Irondeep Miner #3 | MC-001 | Stonecrown | slim | Miners, smiths and residents of Irondeep. Generated NPC appearance: swept grey hair, blue eyes, beard, soot smudges, scar, leather cap. Outfit shared by every Irondeep Miner. |
+| `irondeep_miner_4` | Irondeep Miner #4 | MC-001 | Stonecrown | wide | Miners, smiths and residents of Irondeep. Generated NPC appearance: bald auburn hair, grey eyes, scar, soot smudges, iron helm. Outfit shared by every Irondeep Miner. |
+| `irondeep_miner_5` | Irondeep Miner #5 | MC-001 | Stonecrown | wide | Miners, smiths and residents of Irondeep. Generated NPC appearance: bun brown hair, green eyes, soot smudges, scar. Outfit shared by every Irondeep Miner. |
+| `irondeep_miner_6` | Irondeep Miner #6 | MC-001 | Stonecrown | slim | Miners, smiths and residents of Irondeep. Generated NPC appearance: buzz ginger hair, blue eyes, glasses, soot smudges. Outfit shared by every Irondeep Miner. |
+| `irondeep_miner_7` | Irondeep Miner #7 | MC-001 | Stonecrown | wide | Miners, smiths and residents of Irondeep. Generated NPC appearance: swept black hair, green eyes, soot smudges, scar, leather cap. Outfit shared by every Irondeep Miner. |
+| `irondeep_miner_8` | Irondeep Miner #8 | MC-001 | Stonecrown | wide | Miners, smiths and residents of Irondeep. Generated NPC appearance: swept auburn hair, brown eyes, beard, freckles, scar, moustache, iron helm. Outfit shared by every Irondeep Miner. |
+| `sunspire_citizen_1` | Sunspire Citizen #1 | MC-001 | Solkar | wide | Residents, traders and copyists of Sunspire. Generated NPC appearance: short grey hair, hazel eyes, freckles, moustache, glasses. Outfit shared by every Sunspire Citizen. |
+| `sunspire_citizen_2` | Sunspire Citizen #2 | MC-001 | Solkar | wide | Residents, traders and copyists of Sunspire. Generated NPC appearance: long grey hair, brown eyes, glasses, headwrap. Outfit shared by every Sunspire Citizen. |
+| `sunspire_citizen_3` | Sunspire Citizen #3 | MC-001 | Solkar | slim | Residents, traders and copyists of Sunspire. Generated NPC appearance: short black hair, green eyes, moustache, headwrap. Outfit shared by every Sunspire Citizen. |
+| `sunspire_citizen_4` | Sunspire Citizen #4 | MC-001 | Solkar | wide | Residents, traders and copyists of Sunspire. Generated NPC appearance: short brown hair, grey eyes, beard, glasses, earring. Outfit shared by every Sunspire Citizen. |
+| `sunspire_citizen_5` | Sunspire Citizen #5 | MC-001 | Solkar | wide | Residents, traders and copyists of Sunspire. Generated NPC appearance: buzz blonde hair, grey eyes, beard, earring, headwrap. Outfit shared by every Sunspire Citizen. |
+| `sunspire_citizen_6` | Sunspire Citizen #6 | MC-001 | Solkar | slim | Residents, traders and copyists of Sunspire. Generated NPC appearance: buzz ginger hair, green eyes, moustache, earring, headwrap. Outfit shared by every Sunspire Citizen. |
+| `sunspire_citizen_7` | Sunspire Citizen #7 | MC-001 | Solkar | wide | Residents, traders and copyists of Sunspire. Generated NPC appearance: swept ginger hair, green eyes, glasses, headwrap. Outfit shared by every Sunspire Citizen. |
+| `sunspire_citizen_8` | Sunspire Citizen #8 | MC-001 | Solkar | wide | Residents, traders and copyists of Sunspire. Generated NPC appearance: bun black hair, green eyes, beard, glasses. Outfit shared by every Sunspire Citizen. |
+| `emberhold_citizen_1` | Emberhold Citizen #1 | MC-001 | Veyrath | wide | Forge workers and residents of Emberhold. Generated NPC appearance: bald brown hair, blue eyes, beard, soot smudges, leather cap. Outfit shared by every Emberhold Citizen. |
+| `emberhold_citizen_2` | Emberhold Citizen #2 | MC-001 | Veyrath | wide | Forge workers and residents of Emberhold. Generated NPC appearance: buzz black hair, hazel eyes, scar, earring, headband. Outfit shared by every Emberhold Citizen. |
+| `emberhold_citizen_3` | Emberhold Citizen #3 | MC-001 | Veyrath | slim | Forge workers and residents of Emberhold. Generated NPC appearance: short brown hair, grey eyes, earring, scar, leather cap. Outfit shared by every Emberhold Citizen. |
+| `emberhold_citizen_4` | Emberhold Citizen #4 | MC-001 | Veyrath | wide | Forge workers and residents of Emberhold. Generated NPC appearance: buzz brown hair, hazel eyes, beard, scar, earring, headband. Outfit shared by every Emberhold Citizen. |
+| `emberhold_citizen_5` | Emberhold Citizen #5 | MC-001 | Veyrath | wide | Forge workers and residents of Emberhold. Generated NPC appearance: long white hair, green eyes, soot smudges. Outfit shared by every Emberhold Citizen. |
+| `emberhold_citizen_6` | Emberhold Citizen #6 | MC-001 | Veyrath | slim | Forge workers and residents of Emberhold. Generated NPC appearance: buzz brown hair, grey eyes, scar, soot smudges. Outfit shared by every Emberhold Citizen. |
+| `emberhold_citizen_7` | Emberhold Citizen #7 | MC-001 | Veyrath | wide | Forge workers and residents of Emberhold. Generated NPC appearance: bald auburn hair, grey eyes, scar. Outfit shared by every Emberhold Citizen. |
+| `emberhold_citizen_8` | Emberhold Citizen #8 | MC-001 | Veyrath | wide | Forge workers and residents of Emberhold. Generated NPC appearance: bun brown hair, blue eyes, scar, earring, headband. Outfit shared by every Emberhold Citizen. |
+| `tidewatch_dockhand_1` | Tidewatch Dockhand #1 | MC-001 | Thalassia | wide | Dock workers, divers and fishers of Tidewatch. Generated NPC appearance: bald ginger hair, blue eyes, beard, scar, eyepatch, bandana. Outfit shared by every Tidewatch Dockhand. |
+| `tidewatch_dockhand_2` | Tidewatch Dockhand #2 | MC-001 | Thalassia | wide | Dock workers, divers and fishers of Tidewatch. Generated NPC appearance: long auburn hair, brown eyes, moustache. Outfit shared by every Tidewatch Dockhand. |
+| `tidewatch_dockhand_3` | Tidewatch Dockhand #3 | MC-001 | Thalassia | slim | Dock workers, divers and fishers of Tidewatch. Generated NPC appearance: buzz white hair, grey eyes, beard, moustache, bandana. Outfit shared by every Tidewatch Dockhand. |
+| `tidewatch_dockhand_4` | Tidewatch Dockhand #4 | MC-001 | Thalassia | wide | Dock workers, divers and fishers of Tidewatch. Generated NPC appearance: swept brown hair, brown eyes, moustache, bandana. Outfit shared by every Tidewatch Dockhand. |
+| `tidewatch_dockhand_5` | Tidewatch Dockhand #5 | MC-001 | Thalassia | wide | Dock workers, divers and fishers of Tidewatch. Generated NPC appearance: bald grey hair, green eyes, beard, eyepatch, earring. Outfit shared by every Tidewatch Dockhand. |
+| `tidewatch_dockhand_6` | Tidewatch Dockhand #6 | MC-001 | Thalassia | slim | Dock workers, divers and fishers of Tidewatch. Generated NPC appearance: short black hair, blue eyes, beard, scar, bandana. Outfit shared by every Tidewatch Dockhand. |
+| `tidewatch_dockhand_7` | Tidewatch Dockhand #7 | MC-001 | Thalassia | wide | Dock workers, divers and fishers of Tidewatch. Generated NPC appearance: bald brown hair, hazel eyes, scar, bandana. Outfit shared by every Tidewatch Dockhand. |
+| `tidewatch_dockhand_8` | Tidewatch Dockhand #8 | MC-001 | Thalassia | wide | Dock workers, divers and fishers of Tidewatch. Generated NPC appearance: bald dark brown hair, brown eyes, beard, earring. Outfit shared by every Tidewatch Dockhand. |
 
 Every member of a type wears the same outfit, pixel for pixel (checked when the textures are built). Faces, skin tones, hair, builds and identifying features differ, and no two generated NPCs share a face. Faction colours follow each civilisation's named leader in your collection.
 
@@ -258,5 +298,10 @@ Every member of a type wears the same outfit, pixel for pixel (checked when the 
 | Travelling Merchant (`merchant_N`) | Merchant | Independent traders | MC-001 | 4 | 011, 012 | bare head, felt hat |
 | Raider (`raider_N`) | Raider | Eastern road raiders | MC-001 | 4 | 011 | face cloth, raider hood, raider hood cloth |
 | Raider Leader (`raider_leader_N`) | Raider Leader | Eastern road raiders | MC-001 | 1 | 011 | bare head |
+| Valebridge Citizen (`valebridge_citizen_N`) | Citizen | Eldervale | MC-001 | 8 | 012, 017 | bare head, coif, felt hat |
+| Irondeep Miner (`irondeep_miner_N`) | Miner | Stonecrown | MC-001 | 8 | 013 | bare head, headband, iron helm, leather cap |
+| Sunspire Citizen (`sunspire_citizen_N`) | Citizen | Solkar | MC-001 | 8 | 014 | bare head, headwrap |
+| Emberhold Citizen (`emberhold_citizen_N`) | Citizen | Veyrath | MC-001 | 8 | 015 | bare head, headband, leather cap |
+| Tidewatch Dockhand (`tidewatch_dockhand_N`) | Dockhand | Thalassia | MC-001 | 8 | 016 | bandana, bare head, knit cap |
 
 ![Generated Saga 1 NPCs](images/saga1_npc_sheet.png)

@@ -104,6 +104,19 @@ OUTFITS = {
     "raider": {"shirt": (62, 54, 50), "sleeves": 12, "gloves": (44, 36, 30), "trousers": (54, 48, 44),
                "boots": (40, 32, 26), "belt": (82, 30, 28), "coat": (84, 66, 48), "coat_trim": (66, 50, 36),
                "coat_rows": 3, "strap": (38, 30, 24), "patches": (98, 80, 60)},
+    "valebridge_citizen": {"shirt": (196, 198, 206), "sleeves": 10, "trousers": (52, 54, 64), "boots": (44, 36, 30),
+                           "belt": (30, 30, 34), "coat": (60, 72, 104), "coat_trim": (196, 200, 210), "coat_open": True,
+                           "coat_rows": 3, "collar": (226, 226, 222)},
+    "irondeep_miner": {"shirt": (110, 100, 88), "sleeves": 6, "gloves": (96, 74, 50), "trousers": (62, 60, 62),
+                       "boots": (44, 40, 38), "boot_rows": 4, "belt": (86, 64, 40), "strap": (78, 58, 38),
+                       "pouch": (120, 92, 56), "apron": (74, 70, 70), "apron_rows": 3},
+    "sunspire_citizen": {"shirt": (232, 218, 182), "sleeves": 8, "trousers": (214, 196, 156), "boots": (150, 112, 70),
+                         "boot_rows": 2, "robe": True, "sash": (190, 120, 50), "collar": (190, 120, 50)},
+    "emberhold_citizen": {"shirt": (58, 62, 92), "sleeves": 10, "gloves": (60, 46, 36), "trousers": (40, 40, 52),
+                          "boots": (30, 28, 30), "belt": (196, 150, 64), "apron": (92, 56, 40), "apron_rows": 4,
+                          "collar": (196, 150, 64)},
+    "tidewatch_dockhand": {"shirt": (220, 218, 210), "stripes": (44, 66, 110), "sleeves": 4, "trousers": (52, 60, 84),
+                           "boots": (36, 34, 34), "belt": (90, 66, 40), "gloves": (110, 84, 56), "strap": (150, 120, 80)},
     "raider_leader": {"shirt": (52, 44, 40), "sleeves": 12, "gloves": (38, 30, 26), "trousers": (46, 40, 36),
                       "boots": (34, 28, 22), "belt": (140, 34, 30), "coat": (70, 52, 38), "coat_trim": (140, 34, 30),
                       "coat_open": True, "coat_rows": 6, "fur": (150, 130, 104), "pauldrons": (112, 110, 108)},
@@ -127,6 +140,11 @@ HEADWEAR = {
     "merchant": ["felt_hat", None],
     "raider": ["raider_hood", "face_cloth", "raider_hood_cloth"],
     "raider_leader": [None],
+    "valebridge_citizen": [None, None, "coif", "felt_hat"],
+    "irondeep_miner": ["leather_cap", "iron_helm", None, "headband"],
+    "sunspire_citizen": ["headwrap", None, "headwrap"],
+    "emberhold_citizen": [None, "headband", "leather_cap"],
+    "tidewatch_dockhand": ["knit_cap", "bandana", None],
 }
 
 # Identifying features each type may carry (each individual gets at most one or two).
@@ -147,6 +165,11 @@ FEATURES = {
     "merchant": ["moustache", "earring", "glasses"],
     "raider": ["scar", "eyepatch", "soot"],
     "raider_leader": ["scar"],
+    "valebridge_citizen": ["moustache", "earring", "glasses", "freckle_band"],
+    "irondeep_miner": ["soot", "scar", "moustache"],
+    "sunspire_citizen": ["earring", "moustache", "glasses"],
+    "emberhold_citizen": ["soot", "scar", "earring"],
+    "tidewatch_dockhand": ["scar", "earring", "moustache", "eyepatch"],
 }
 
 

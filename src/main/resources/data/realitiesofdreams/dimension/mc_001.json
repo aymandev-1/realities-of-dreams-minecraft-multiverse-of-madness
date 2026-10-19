@@ -13,7 +13,12 @@
       "hills": "minecraft:meadow",
       "mountains": "minecraft:taiga",
       "woodland": "minecraft:forest",
-      "valley": "minecraft:sunflower_plains"
+      "valley": "minecraft:sunflower_plains",
+      "regions": {
+        "sunspire": "minecraft:desert",
+        "emberhold": "minecraft:badlands",
+        "tidewatch": "minecraft:beach"
+      }
     }
   }
 }

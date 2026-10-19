@@ -33,10 +33,47 @@ public final class Mc001Terrain {
     /** Firstbrook's anchor in MC-001 block coordinates (the scenes' "anchor"). */
     public static final int ANCHOR_X = 0, ANCHOR_Y = 64, ANCHOR_Z = 0;
 
+    /**
+     * The far capitals (Scenes 013 to 016) stand on authored plateaus of their own out in natural
+     * terrain: flat out to {@code radius} at height {@code height}, then blending back into ordinary
+     * land over the next {@code blend} blocks. Each has a fixed biome so its grass, sky and weather
+     * fit (desert for Sunspire, and so on). Irondeep is underground and needs no plateau.
+     */
+    public record Region(String id, int x, int z, int radius, int blend, int height, String biome) {
+        public double distance(int px, int pz) {
+            return Math.hypot(px - x, pz - z);
+        }
+
+        /** 1 on the plateau, 0 in natural terrain, smooth between. */
+        public double weight(int px, int pz) {
+            double d = distance(px, pz);
+            if (d <= radius) return 1;
+            if (d >= radius + blend) return 0;
+            double t = (d - radius) / blend;
+            return 1 - t * t * (3 - 2 * t);
+        }
+    }
+
+    public static final java.util.List<Region> REGIONS = java.util.List.of(
+            new Region("sunspire", 520, 420, 100, 70, 4, "minecraft:desert"),
+            new Region("emberhold", -560, -60, 100, 70, 8, "minecraft:badlands"),
+            new Region("tidewatch", 60, 620, 100, 70, 1, "minecraft:beach"));
+
+    /** The region whose plateau shapes this column, or null. */
+    public static Region regionAt(int x, int z) {
+        for (Region r : REGIONS) if (r.weight(x, z) > 0) return r;
+        return null;
+    }
+
     private Mc001Terrain() {}
 
     /** The authored height at a column, before blending with natural terrain. */
     public static int height(int x, int z) {
+        Region region = regionAt(x, z);
+        if (region != null) {
+            double out = Math.max(0, region.distance(x, z) - region.radius);
+            return (int) Math.round(region.height + roll(x, z) * Math.min(1, out / 20.0));
+        }
         double h;
         if (z > HILLS_START_Z) {
             double outside = Math.max(0, Math.max(Math.abs(x) - VILLAGE_HALF, z - VILLAGE_HALF));
@@ -72,6 +109,8 @@ public final class Mc001Terrain {
 
     /** How strongly the authored shape applies here: 1 near Firstbrook, 0 in natural terrain. */
     public static double weight(int x, int z) {
+        Region region = regionAt(x, z);
+        if (region != null) return region.weight(x, z);
         double d = Math.hypot(x, z);
         if (d <= AUTHORED_RADIUS) return 1;
         if (d >= NATURAL_RADIUS) return 0;

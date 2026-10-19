@@ -57,7 +57,7 @@ class ContentTest {
         long tmma = content.characters().all().stream().filter(c -> c.generated() && "TMMA".equals(c.faction())).count();
         assertEquals(20, tmma);
         long saga1Npcs = content.characters().all().stream().filter(c -> c.generated() && "MC-001 Saga 1 NPCs".equals(c.group())).count();
-        assertEquals(55, saga1Npcs);
+        assertEquals(95, saga1Npcs);
     }
 
     @Test
