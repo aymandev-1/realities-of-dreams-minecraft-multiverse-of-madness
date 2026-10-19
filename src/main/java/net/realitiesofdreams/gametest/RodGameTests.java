@@ -555,6 +555,7 @@ public final class RodGameTests {
         List<CustomPacketPayload> sent = new ArrayList<>();
         StoryManager m = new StoryManager((p, payload) -> sent.add(payload));
         StoryManager.setInstanceForTesting(m);
+        boolean passed = false;
         try {
             ModAttachments.story(player).setIntroOffered(true);
             m.restartScene(player, "mc001_s007");
@@ -562,10 +563,6 @@ public final class RodGameTests {
             BlockPos a = ModDimensions.anchor(s7);
             helper.assertTrue(level.getBlockState(a.offset(13, 0, -3)).is(Blocks.LODESTONE), "the survey stakes were not set out");
             helper.assertTrue(level.getBlockState(a.offset(0, 0, 23)).is(Blocks.CHISELED_STONE_BRICKS), "the pedestal is missing");
-            int frames = level.getEntitiesOfClass(net.minecraft.world.entity.decoration.ItemFrame.class,
-                    new net.minecraft.world.phys.AABB(a.offset(4, 0, 18).getCenter(), a.offset(8, 2, 20).getCenter()),
-                    f -> f.getItem().is(Items.COMPASS)).size();
-            helper.assertTrue(frames == 3, "Orin's three compasses are not on the table (" + frames + ")");
             walk(m, player, level, s7, "field_table");
             helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().startsWith("I've tried three compasses")), "Orin did not speak");
             finishDialogues(m, player);
@@ -588,12 +585,21 @@ public final class RodGameTests {
             finishDialogues(m, player);
             PlayerStoryState st = ModAttachments.story(player);
             helper.assertTrue(st.isSceneComplete("mc001_s007") && st.hasFlag("mc001.anomaly_compass") && st.journal().contains("anomaly_compass"), "Scene 007 not completed");
-            helper.succeed();
+            // The compass frames are entities, which only become visible once the forced chunks have ticked.
+            BlockPos a7 = a;
+            helper.succeedWhen(() -> {
+                int frames = level.getEntitiesOfClass(net.minecraft.world.entity.decoration.ItemFrame.class,
+                        new net.minecraft.world.phys.AABB(a7.offset(4, 0, 18).getCenter(), a7.offset(8, 2, 20).getCenter()),
+                        f -> f.getItem().is(Items.COMPASS)).size();
+                helper.assertTrue(frames == 3, "Orin's three compasses are not on the table (" + frames + ")");
+                for (int cx = 0; cx <= 4; cx++) for (int cz = -15; cz <= -9; cz++) level.setChunkForced(cx, cz, false);
+            });
+            passed = true;
         } finally {
             NpcDirector.releaseAll(player);
             StoryManager.setInstanceForTesting(previous);
             level.getServer().getPlayerList().remove(player);
-            for (int cx = 0; cx <= 4; cx++) for (int cz = -15; cz <= -9; cz++) level.setChunkForced(cx, cz, false);
+            if (!passed) for (int cx = 0; cx <= 4; cx++) for (int cz = -15; cz <= -9; cz++) level.setChunkForced(cx, cz, false);
             ModDimensions.useLevelForTesting(null);
         }
     }

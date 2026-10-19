@@ -47,7 +47,14 @@ public final class SceneWorld {
     public static void ensureBuilt(ServerLevel level, SceneDef scene) {
         SceneWorldData data = SceneWorldData.get(level);
         String key = "built:site:" + scene.site();
-        if (data.isDone(key)) return;
+        if (data.isDone(key)) {
+            // A scene played out of order (chapter select) at an already-built monument still gets its clue blocks.
+            if (scene.site().equals("northern_monument") && !data.isDone("clues:" + scene.id())) {
+                placeClues(level, scene);
+                data.markDone("clues:" + scene.id());
+            }
+            return;
+        }
         if (scene.site().equals("valley_crossing")) {
             net.realitiesofdreams.world.site.ValleyCrossing.build(level, ModDimensions.anchor(scene));
             // Scenes 008 and 009 share the valley; each one's clue blocks are part of the place.
@@ -59,6 +66,7 @@ public final class SceneWorld {
         if (scene.site().equals("northern_monument")) {
             net.realitiesofdreams.world.site.NorthernMonument.build(level, ModDimensions.anchor(scene));
             placeClues(level, scene);
+            data.markDone("clues:" + scene.id());
             data.markDone(key);
             RealitiesOfDreams.LOGGER.info("Built site {}", scene.site());
             return;
