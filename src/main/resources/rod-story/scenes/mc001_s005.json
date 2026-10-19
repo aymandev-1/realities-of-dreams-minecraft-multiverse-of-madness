@@ -902,17 +902,17 @@
           {
             "type": "give_item",
             "item": "minecraft:oak_planks",
-            "count": "12"
+            "count": 12
           },
           {
             "type": "give_item",
             "item": "minecraft:torch",
-            "count": "6"
+            "count": 6
           },
           {
             "type": "give_item",
             "item": "minecraft:barrel",
-            "count": "2",
+            "count": 2,
             "name": "Supply crate"
           }
         ]

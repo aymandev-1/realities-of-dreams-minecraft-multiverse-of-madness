@@ -286,6 +286,43 @@ public final class ClientAutotest {
                     check(ModAttachments.story(serverPlayer()).journal().contains("survey_kit"), "Scene 004 journal entry missing");
                 });
 
+        // Scene 005 follows on: Bram's volunteers secure the north road. The building is done by placing
+        // and breaking the blocks the stages check, the way a player would.
+        SceneDef s5 = Story.content().scene("mc001_s005");
+        step("Scene 005 starts", 0, () -> "mc001_s005".equals(activeScene()) && !busy(), 20 * 60, () -> goTo(s5, "gate_outside", 180, 10));
+        step("volunteers cinematic", 0, ClientAutotest::busy, 200, () -> {});
+        step("Bram gathers volunteers", 60, () -> shot("s005_01_volunteers"));
+        step("volunteers talk", 0, () -> "barricade".equals(stage()) && !busy(), 20 * 90, () -> onServer(sp -> moveTo(sp, s5, 6, -28, 180)));
+        step("the barricade gaps", 20, () -> shot("s005_02_barricade_gaps"));
+        Object[][] jobs = {{"barricade", net.minecraft.world.level.block.Blocks.OAK_PLANKS, "platform"},
+                {"platform", net.minecraft.world.level.block.Blocks.SPRUCE_PLANKS, "lights"},
+                {"lights", net.minecraft.world.level.block.Blocks.TORCH, "supplies"},
+                {"supplies", net.minecraft.world.level.block.Blocks.BARREL, "hazard"}};
+        for (Object[] job : jobs) {
+            String stage = (String) job[0], next = (String) job[2];
+            step("build: " + stage, 0, () -> stage.equals(stage()) && !busy(), 20 * 30,
+                    () -> fillSpots(s5, stage, ((net.minecraft.world.level.block.Block) job[1]).defaultBlockState()));
+            step(stage + " done", 0, () -> next.equals(stage()), 100, () -> {});
+        }
+        step("the rockfall", 0, ClientAutotest::busy, 100, () -> onServer(sp -> moveTo(sp, s5, 1, -36, 180)));
+        step("rocks across the road", 30, () -> shot("s005_03_rockfall"));
+        step("clear the rubble", 0, () -> "hazard".equals(stage()) && !busy(), 20 * 60,
+                () -> fillSpots(s5, "hazard", net.minecraft.world.level.block.Blocks.AIR.defaultBlockState()));
+        step("worker rescued", 0, () -> "to_platform".equals(stage()) && !busy(), 20 * 60, () -> shot("s005_04_rescued"));
+        step("the finished work site", 0, () -> onServer(sp -> moveTo(sp, s5, 3, -26, -150)));
+        step("work site photo", 30, () -> shot("s005_05_worksite_done"));
+        step("climb the platform", 0, () -> goTo(s5, "platform_top", 180, 0));
+        step("spot cinematic", 0, () -> "spot".equals(stage()), 200, () -> {});
+        step("the monument on the horizon", 80, () -> shot("s005_06_monument_spotted"));
+        step("there it is", 0, () -> "rise".equals(stage()), 20 * 90, () -> {});
+        step("the camera rises", 90, () -> shot("s005_07_act1_complete"));
+        step("Scene 005 complete", 0, () -> { ServerPlayer sp = serverPlayer(); return sp != null && ModAttachments.story(sp).isSceneComplete("mc001_s005"); },
+                20 * 90, () -> {
+                    shot("s005_08_mission_complete");
+                    logState();
+                    check(ModAttachments.story(serverPlayer()).journal().contains("north_road"), "Scene 005 journal entry missing");
+                });
+
         // Primordial Steve in daylight, from the front and behind.
         step("appearance outdoors", 0, () -> onServer(sp -> moveTo(sp, scene, -3, 1, 0)));
         step("third person front outdoors", 10, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_FRONT));
@@ -554,6 +591,15 @@ public final class ClientAutotest {
     private static void moveTo(ServerPlayer sp, SceneDef scene, int x, int z, float yaw) {
         double[] a = ModDimensions.absolute(scene, new SceneDef.Location(x, 0, z, 1));
         sp.teleportTo(sp.serverLevel(), a[0], a[1], a[2], yaw, 10);
+    }
+
+    /** Sets every spot a BLOCKS stage checks, as a player placing (or breaking) those blocks would. */
+    private static void fillSpots(SceneDef scene, String stage, net.minecraft.world.level.block.state.BlockState block) {
+        onServer(sp -> {
+            net.minecraft.core.BlockPos anchor = ModDimensions.anchor(scene);
+            for (int[] s : net.realitiesofdreams.story.engine.SceneEngine.stageBlocks(scene.stage(stage)).spots())
+                sp.serverLevel().setBlock(anchor.offset(s[0], s[1], s[2]), block, 3);
+        });
     }
 
     private static void face(ServerPlayer sp, float yaw, float pitch) {

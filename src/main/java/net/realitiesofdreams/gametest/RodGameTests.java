@@ -396,6 +396,77 @@ public final class RodGameTests {
         }
     }
 
+    /** Plays Scene 005 on the north road: every job is checked against the blocks actually in the world. */
+    @GameTest(template = "empty", batch = "firstbrook_road", timeoutTicks = 1600)
+    public static void scene005SecuresTheNorthRoad(GameTestHelper helper) {
+        ServerLevel level = stageFirstbrook(helper);
+        StoryManager previous = StoryManager.get();
+        ServerPlayer player = helper.makeMockServerPlayerInLevel();
+        List<CustomPacketPayload> sent = new ArrayList<>();
+        StoryManager m = new StoryManager((p, payload) -> sent.add(payload));
+        StoryManager.setInstanceForTesting(m);
+        try {
+            ModAttachments.story(player).setIntroOffered(true);
+            m.restartScene(player, "mc001_s005");
+            SceneDef s5 = Story.content().scene("mc001_s005");
+            helper.assertTrue(level.getBlockState(rel(3, 0, -32)).is(Blocks.STRIPPED_SPRUCE_LOG), "barricade posts missing");
+            helper.assertTrue(level.getBlockState(rel(9, 4, -37)).isAir() && level.getBlockState(rel(8, 4, -37)).is(Blocks.SPRUCE_PLANKS),
+                    "the watch platform is not damaged the way the scene expects");
+            walk(m, player, level, s5, "gate_outside");
+            helper.assertTrue("mc001_s005_volunteers".equals(m.cinematic(player)), "the volunteers cinematic did not play");
+            m.onCinematicDone(player, "mc001_s005_volunteers");
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("It's just an old ruin.")), "the volunteers did not talk");
+            finishDialogues(m, player);
+            int planks = 0;
+            for (ItemStack it : player.getInventory().items) if (it.is(Items.OAK_PLANKS)) planks += it.getCount();
+            helper.assertTrue(planks == 12, "Bram did not hand over the planks (" + planks + ")");
+
+            Object[][] jobs = {{"barricade", Blocks.OAK_PLANKS}, {"platform", Blocks.SPRUCE_PLANKS}, {"lights", Blocks.TORCH}, {"supplies", Blocks.BARREL}};
+            for (Object[] job : jobs) {
+                String stage = (String) job[0];
+                expectStage(helper, m, player, stage);
+                List<int[]> spots = net.realitiesofdreams.story.engine.SceneEngine.stageBlocks(s5.stage(stage)).spots();
+                for (int i = 0; i < spots.size(); i++) {
+                    if (i == spots.size() - 1) {
+                        tickUntil(m, player, () -> false, 20);
+                        expectStage(helper, m, player, stage);
+                        helper.assertTrue(ModAttachments.story(player).value(net.realitiesofdreams.story.engine.SceneEngine.BLOCKS_PROGRESS) == spots.size() - 1,
+                                stage + " progress not counted");
+                    }
+                    int[] s = spots.get(i);
+                    level.setBlock(rel(s[0], s[1], s[2]), ((net.minecraft.world.level.block.Block) job[1]).defaultBlockState(), 3);
+                }
+                tickUntil(m, player, () -> !stage.equals(m.state(player).stage()), 40);
+            }
+
+            expectStage(helper, m, player, "hazard");
+            helper.assertTrue(level.getBlockState(rel(1, 0, -40)).isSolid(), "the rockfall did not block the road");
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("Help! I can't get through!")), "the trapped worker did not call out");
+            finishDialogues(m, player);
+            for (int[] s : net.realitiesofdreams.story.engine.SceneEngine.stageBlocks(s5.stage("hazard")).spots())
+                level.setBlock(rel(s[0], s[1], s[2]), Blocks.AIR.defaultBlockState(), 3);
+            tickUntil(m, player, () -> m.inDialogue(player), 40);
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("Nicely done.")), "Bram did not thank Steve");
+            finishDialogues(m, player);
+
+            expectStage(helper, m, player, "to_platform");
+            walk(m, player, level, s5, "platform_top");
+            helper.assertTrue("mc001_s005_spot".equals(m.cinematic(player)), "the monument was not spotted from the platform");
+            m.onCinematicDone(player, "mc001_s005_spot");
+            finishDialogues(m, player);
+            helper.assertTrue("mc001_s005_rise".equals(m.cinematic(player)), "the closing cinematic did not play");
+            m.onCinematicDone(player, "mc001_s005_rise");
+            PlayerStoryState st = ModAttachments.story(player);
+            helper.assertTrue(st.isSceneComplete("mc001_s005") && st.hasFlag("mc001.act1.complete") && st.journal().contains("north_road"), "Scene 005 not completed");
+            helper.succeed();
+        } finally {
+            NpcDirector.releaseAll(player);
+            StoryManager.setInstanceForTesting(previous);
+            level.getServer().getPlayerList().remove(player);
+            unstage(level);
+        }
+    }
+
     /** Stands the player on a scene location and lets the story notice. */
     private static void walk(StoryManager m, ServerPlayer p, ServerLevel level, SceneDef scene, String location) {
         double[] a = ModDimensions.absolute(scene, scene.location(location));

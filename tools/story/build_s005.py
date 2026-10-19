@@ -75,9 +75,9 @@ scene = {
         {"id": "volunteers_talk", "checkpoint": "gate_outside",
          "complete": {"type": "dialogue_end", "value": "volunteers"},
          "on_complete": [
-             {"type": "give_item", "item": "minecraft:oak_planks", "count": "12"},
-             {"type": "give_item", "item": "minecraft:torch", "count": "6"},
-             {"type": "give_item", "item": "minecraft:barrel", "count": "2", "name": "Supply crate"}]},
+             {"type": "give_item", "item": "minecraft:oak_planks", "count": 12},
+             {"type": "give_item", "item": "minecraft:torch", "count": 6},
+             {"type": "give_item", "item": "minecraft:barrel", "count": 2, "name": "Supply crate"}]},
         {"id": "barricade", "objective": "Build the barricade between the posts", "target": "barricade", "checkpoint": "gate_outside",
          "on_enter": [{"type": "hint", "ticks": 200, "text": "Green sparkles mark where blocks are needed. Place blocks with {use}."}],
          "complete": {"type": "blocks", "value": BARRICADE}},
