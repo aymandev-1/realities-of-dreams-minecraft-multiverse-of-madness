@@ -217,6 +217,26 @@ public final class NorthernMonument {
         }
     }
 
+    /**
+     * Scene 007: Orin's field table with the three compasses he gave up on, lying in frames on the
+     * table, and the stone pedestal. The survey stakes are the scene's clue blocks (lodestones).
+     */
+    public static void survey(ServerLevel level, BlockPos anchor) {
+        NorthernMonument m = new NorthernMonument(level, anchor);
+        m.set(7, 0, 19, Blocks.SPRUCE_PLANKS);
+        m.set(7, 0, 20, Blocks.SPRUCE_STAIRS.defaultBlockState().setValue(StairBlock.FACING, Direction.NORTH));
+        for (int x = 5; x <= 7; x++) {
+            BlockPos at = anchor.offset(x, 1, 19);
+            level.setBlock(at, Blocks.AIR.defaultBlockState(), FLAGS);
+            net.minecraft.world.entity.decoration.ItemFrame frame = new net.minecraft.world.entity.decoration.ItemFrame(level, at, Direction.UP);
+            frame.setItem(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.COMPASS), false);
+            level.addFreshEntity(frame);
+        }
+        // The pedestal: a plinth of old stone in the courtyard, its top the clue block.
+        for (int[] c : new int[][] {{-1, 22}, {1, 22}, {-1, 24}, {1, 24}}) m.set(c[0], -1, c[1], Blocks.POLISHED_ANDESITE);
+        m.set(0, -1, 23, Blocks.POLISHED_ANDESITE);
+    }
+
     /** Orin's survey gear and Bram's lookout post in the courtyard. */
     private void camp() {
         set(5, 0, 19, Blocks.BARREL);

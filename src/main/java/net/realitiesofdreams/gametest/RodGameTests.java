@@ -544,6 +544,60 @@ public final class RodGameTests {
         }
     }
 
+    /** Scene 007 at Orin's field table: the compasses, three survey readings, the map and the pedestal. */
+    @GameTest(template = "empty", batch = "monument_compass", timeoutTicks = 1600)
+    public static void scene007FollowsTheCompass(GameTestHelper helper) {
+        ServerLevel level = helper.getLevel();
+        ModDimensions.useLevelForTesting(level);
+        for (int cx = 0; cx <= 4; cx++) for (int cz = -15; cz <= -9; cz++) level.setChunkForced(cx, cz, true);
+        StoryManager previous = StoryManager.get();
+        ServerPlayer player = helper.makeMockServerPlayerInLevel();
+        List<CustomPacketPayload> sent = new ArrayList<>();
+        StoryManager m = new StoryManager((p, payload) -> sent.add(payload));
+        StoryManager.setInstanceForTesting(m);
+        try {
+            ModAttachments.story(player).setIntroOffered(true);
+            m.restartScene(player, "mc001_s007");
+            SceneDef s7 = Story.content().scene("mc001_s007");
+            BlockPos a = ModDimensions.anchor(s7);
+            helper.assertTrue(level.getBlockState(a.offset(13, 0, -3)).is(Blocks.LODESTONE), "the survey stakes were not set out");
+            helper.assertTrue(level.getBlockState(a.offset(0, 0, 23)).is(Blocks.CHISELED_STONE_BRICKS), "the pedestal is missing");
+            int frames = level.getEntitiesOfClass(net.minecraft.world.entity.decoration.ItemFrame.class,
+                    new net.minecraft.world.phys.AABB(a.offset(4, 0, 18).getCenter(), a.offset(8, 2, 20).getCenter()),
+                    f -> f.getItem().is(Items.COMPASS)).size();
+            helper.assertTrue(frames == 3, "Orin's three compasses are not on the table (" + frames + ")");
+            walk(m, player, level, s7, "field_table");
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().startsWith("I've tried three compasses")), "Orin did not speak");
+            finishDialogues(m, player);
+            helper.assertTrue("mc001_s007_needles".equals(m.cinematic(player)), "the needles cinematic did not play");
+            m.onCinematicDone(player, "mc001_s007_needles");
+            finishDialogues(m, player);
+
+            for (String clue : new String[] {"survey_1", "survey_2", "survey_3"}) {
+                expectStage(helper, m, player, "readings");
+                helper.assertTrue(m.onBlockUse(player, ModDimensions.absoluteBlock(s7, s7.clues().get(clue).pos())), clue + " was not a clue");
+            }
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("The signal isn't ahead of us.")), "the reading was not discussed");
+            finishDialogues(m, player);
+            expectStage(helper, m, player, "compare");
+            m.onBlockUse(player, ModDimensions.absoluteBlock(s7, s7.clues().get("survey_map").pos()));
+            expectStage(helper, m, player, "pedestal");
+            m.onBlockUse(player, ModDimensions.absoluteBlock(s7, s7.clues().get("pedestal").pos()));
+            helper.assertTrue("mc001_s007_projection".equals(m.cinematic(player)), "the projection cinematic did not play");
+            m.onCinematicDone(player, "mc001_s007_projection");
+            finishDialogues(m, player);
+            PlayerStoryState st = ModAttachments.story(player);
+            helper.assertTrue(st.isSceneComplete("mc001_s007") && st.hasFlag("mc001.anomaly_compass") && st.journal().contains("anomaly_compass"), "Scene 007 not completed");
+            helper.succeed();
+        } finally {
+            NpcDirector.releaseAll(player);
+            StoryManager.setInstanceForTesting(previous);
+            level.getServer().getPlayerList().remove(player);
+            for (int cx = 0; cx <= 4; cx++) for (int cz = -15; cz <= -9; cz++) level.setChunkForced(cx, cz, false);
+            ModDimensions.useLevelForTesting(null);
+        }
+    }
+
     /** Stands the player on a scene location and lets the story notice. */
     private static void walk(StoryManager m, ServerPlayer p, ServerLevel level, SceneDef scene, String location) {
         double[] a = ModDimensions.absolute(scene, scene.location(location));

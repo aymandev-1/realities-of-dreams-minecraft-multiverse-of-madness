@@ -362,6 +362,34 @@ public final class ClientAutotest {
                     check(ModAttachments.story(serverPlayer()).journal().contains("monument"), "Scene 006 journal entry missing");
                 });
 
+        // Scene 007 follows on at Orin's field table in the monument courtyard.
+        SceneDef s7 = Story.content().scene("mc001_s007");
+        step("Scene 007 starts", 0, () -> "mc001_s007".equals(activeScene()) && !busy(), 20 * 60, () -> goTo(s7, "field_table", 180, 30));
+        step("Orin's compasses", 0, ClientAutotest::busy, 200, () -> shot("s007_01_field_table"));
+        step("needles cinematic", 0, () -> "needles".equals(stage()), 20 * 60, () -> {});
+        step("the needles turn", 60, () -> shot("s007_02_needles"));
+        Object[][] stakes = {{"survey_1", -13, 0, 10, 180f, 35f}, {"survey_2", 13, 0, -1, 180f, 35f},
+                {"survey_3", 0, 7, -5, 180f, 35f}, {"survey_map", 6, 0, 21, 180f, 40f}, {"pedestal", 0, 0, 25, 180f, 35f}};
+        for (Object[] c : stakes) {
+            String clueId = (String) c[0];
+            SceneDef.ClueDef clue = s7.clues().get(clueId);
+            step("walk to " + clueId, 0, () -> !busy() && java.util.Set.of("readings", "compare", "pedestal").contains(stage()), 20 * 60, () -> onServer(sp -> {
+                double[] p = ModDimensions.absolute(s7, new SceneDef.Location((int) c[1], (int) c[2], (int) c[3], 1));
+                sp.teleportTo(sp.serverLevel(), p[0], p[1], p[2], (float) c[4], (float) c[5]);
+            }));
+            step("photograph " + clueId, 15, () -> shot("s007_clue_" + clueId));
+            step("use " + clueId, 0, () -> useBlock(s7, clue.pos()));
+            step(clueId + " done", 0, () -> clueFound(clueId), 100, () -> {});
+        }
+        step("projection cinematic", 0, () -> "projection".equals(stage()), 100, () -> {});
+        step("six points above the compass", 70, () -> shot("s007_03_projection"));
+        step("Scene 007 complete", 0, () -> { ServerPlayer sp = serverPlayer(); return sp != null && ModAttachments.story(sp).isSceneComplete("mc001_s007"); },
+                20 * 90, () -> {
+                    shot("s007_04_mission_complete");
+                    logState();
+                    check(ModAttachments.story(serverPlayer()).journal().contains("anomaly_compass"), "Scene 007 journal entry missing");
+                });
+
         // Primordial Steve in daylight, from the front and behind.
         step("appearance outdoors", 0, () -> onServer(sp -> moveTo(sp, scene, -3, 1, 0)));
         step("third person front outdoors", 10, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_FRONT));

@@ -132,6 +132,10 @@ public final class SceneWorld {
             }
             case "mc001_s006_glow_on" -> net.realitiesofdreams.world.site.NorthernMonument.glow(level, a, true);
             case "mc001_s006_glow_off" -> net.realitiesofdreams.world.site.NorthernMonument.glow(level, a, false);
+            case "mc001_s007_survey" -> {
+                net.realitiesofdreams.world.site.NorthernMonument.survey(level, a);
+                placeClues(level, scene);
+            }
             default -> RealitiesOfDreams.LOGGER.warn("Unknown world change {}", change);
         }
         data.markDone("change:" + change);
