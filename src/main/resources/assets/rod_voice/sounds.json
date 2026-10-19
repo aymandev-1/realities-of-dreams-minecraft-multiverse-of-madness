@@ -1,4 +1,46 @@
 {
+  "v_82ab83d9f3cc": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_82ab83d9f3cc"
+      }
+    ]
+  },
+  "v_2693ed66d3b4": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_2693ed66d3b4"
+      }
+    ]
+  },
+  "v_e07fcf0c4106": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_e07fcf0c4106"
+      }
+    ]
+  },
+  "v_6692f44d9b62": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_6692f44d9b62"
+      }
+    ]
+  },
+  "v_afa12cfce341": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_afa12cfce341"
+      }
+    ]
+  },
+  "v_2e4a99aee249": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_2e4a99aee249"
+      }
+    ]
+  },
   "v_693a64d5be1a": {
     "sounds": [
       {
@@ -24,6 +66,13 @@
     "sounds": [
       {
         "name": "rod_voice:bram/v_fdb2870d550f"
+      }
+    ]
+  },
+  "v_4a71c53d295a": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_4a71c53d295a"
       }
     ]
   },
@@ -188,6 +237,13 @@
       }
     ]
   },
+  "v_dc5b57d61394": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_dc5b57d61394"
+      }
+    ]
+  },
   "v_332e93524e9f": {
     "sounds": [
       {
@@ -293,10 +349,31 @@
       }
     ]
   },
+  "v_0a20325b6403": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_0a20325b6403"
+      }
+    ]
+  },
+  "v_9c17574158b6": {
+    "sounds": [
+      {
+        "name": "rod_voice:expedition_worker_1/v_9c17574158b6"
+      }
+    ]
+  },
   "v_ee035f42c275": {
     "sounds": [
       {
         "name": "rod_voice:firstbrook_farmer_1/v_ee035f42c275"
+      }
+    ]
+  },
+  "v_5ac724c11b93": {
+    "sounds": [
+      {
+        "name": "rod_voice:firstbrook_villager_2/v_5ac724c11b93"
       }
     ]
   },
@@ -318,6 +395,13 @@
     "sounds": [
       {
         "name": "rod_voice:orin/v_7c3325dd447b"
+      }
+    ]
+  },
+  "v_f86da225263f": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_f86da225263f"
       }
     ]
   },
@@ -489,6 +573,13 @@
       }
     ]
   },
+  "v_b86255ec6125": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_b86255ec6125"
+      }
+    ]
+  },
   "v_eef8611849ff": {
     "sounds": [
       {
@@ -507,6 +598,13 @@
     "sounds": [
       {
         "name": "rod_voice:primordial_steve/v_350289e73479"
+      }
+    ]
+  },
+  "v_4924ba050bb6": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_4924ba050bb6"
       }
     ]
   },
@@ -545,6 +643,13 @@
       }
     ]
   },
+  "v_1151528979b6": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_1151528979b6"
+      }
+    ]
+  },
   "v_1435838f604c": {
     "sounds": [
       {
@@ -552,10 +657,24 @@
       }
     ]
   },
+  "v_b966238cf869": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_b966238cf869"
+      }
+    ]
+  },
   "v_bf2bb777aca2": {
     "sounds": [
       {
         "name": "rod_voice:primordial_steve/v_bf2bb777aca2"
+      }
+    ]
+  },
+  "v_06076b65d787": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_06076b65d787"
       }
     ]
   },

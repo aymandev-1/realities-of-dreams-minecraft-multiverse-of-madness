@@ -1,5 +1,47 @@
 [
   {
+    "key": "v_82ab83d9f3cc",
+    "speaker": "bram",
+    "text": "Everyone listen! Nobody goes past the north marker without an escort.",
+    "direction": "shouting to a crowd, commanding",
+    "seconds": 4.6
+  },
+  {
+    "key": "v_2693ed66d3b4",
+    "speaker": "bram",
+    "text": "Good. I need somebody who knows how to build a proper barricade.",
+    "direction": "turning, pleased to see him",
+    "seconds": 3.6
+  },
+  {
+    "key": "v_e07fcf0c4106",
+    "speaker": "bram",
+    "text": "I was hoping you'd volunteer.",
+    "direction": "dry, a hint of a smile",
+    "seconds": 1.92
+  },
+  {
+    "key": "v_6692f44d9b62",
+    "speaker": "bram",
+    "text": "I'll clear the other side!",
+    "direction": "shouting, already moving",
+    "seconds": 1.92
+  },
+  {
+    "key": "v_afa12cfce341",
+    "speaker": "bram",
+    "text": "Luck won't keep us safe forever.",
+    "direction": "grim, quiet",
+    "seconds": 2.0
+  },
+  {
+    "key": "v_2e4a99aee249",
+    "speaker": "bram",
+    "text": "Nicely done.",
+    "direction": "out of breath, approving",
+    "seconds": 1.36
+  },
+  {
     "key": "v_693a64d5be1a",
     "speaker": "bram",
     "text": "No. I closed the trail before the traders reached it.",
@@ -26,6 +68,13 @@
     "text": "The trail's closed past the old posts, but the Elder says you two may pass. Mind the loose rock.",
     "direction": "gruff but friendly, matter-of-fact",
     "seconds": 6.0
+  },
+  {
+    "key": "v_4a71c53d295a",
+    "speaker": "bram",
+    "text": "Then you won't mind waiting until we know it's safe.",
+    "direction": "flat, unimpressed",
+    "seconds": 2.72
   },
   {
     "key": "v_5e9702a58eaf",
@@ -189,6 +238,13 @@
     "seconds": 1.68
   },
   {
+    "key": "v_dc5b57d61394",
+    "speaker": "elara",
+    "text": "There it is.",
+    "direction": "hushed, awed, looking into the distance",
+    "seconds": 0.96
+  },
+  {
     "key": "v_332e93524e9f",
     "speaker": "elara",
     "text": "These have stood for a hundred years. And there's another stone further up. Look at it.",
@@ -294,11 +350,32 @@
     "seconds": 2.64
   },
   {
+    "key": "v_0a20325b6403",
+    "speaker": "elder_rowan",
+    "text": "Then we proceed carefully.",
+    "direction": "calm, measured, wise",
+    "seconds": 2.16
+  },
+  {
+    "key": "v_9c17574158b6",
+    "speaker": "expedition_worker_1",
+    "text": "Help! I can't get through!",
+    "direction": "panicked, shouting from behind rubble",
+    "seconds": 1.84
+  },
+  {
     "key": "v_ee035f42c275",
     "speaker": "firstbrook_farmer_1",
     "text": "Morning, Steve!",
     "direction": "calling out warmly from a field",
     "seconds": 1.36
+  },
+  {
+    "key": "v_5ac724c11b93",
+    "speaker": "firstbrook_villager_2",
+    "text": "It's just an old ruin.",
+    "direction": "dismissive, rolling his eyes",
+    "seconds": 2.32
   },
   {
     "key": "v_b05a69b66304",
@@ -320,6 +397,13 @@
     "text": "Markings?",
     "direction": "pausing, suddenly interested",
     "seconds": 1.2
+  },
+  {
+    "key": "v_f86da225263f",
+    "speaker": "orin",
+    "text": "Not exactly. That structure doesn't match any record I've seen.",
+    "direction": "slow, troubled, unusually serious",
+    "seconds": 5.2
   },
   {
     "key": "v_640bdb28c20c",
@@ -490,6 +574,13 @@
     "seconds": 1.2
   },
   {
+    "key": "v_b86255ec6125",
+    "speaker": "primordial_steve",
+    "text": "Stay back from the rocks!",
+    "direction": "urgent, shouting",
+    "seconds": 2.0
+  },
+  {
     "key": "v_eef8611849ff",
     "speaker": "primordial_steve",
     "text": "That's not normal.",
@@ -509,6 +600,13 @@
     "text": "The night watch's report. 'Two tremors before dawn. Light seen beneath the stones of the northern ridge. Gone within moments.'",
     "direction": "reading aloud, slowly",
     "seconds": 10.0
+  },
+  {
+    "key": "v_4924ba050bb6",
+    "speaker": "primordial_steve",
+    "text": "The ruins?",
+    "direction": "squinting, uncertain",
+    "seconds": 1.12
   },
   {
     "key": "v_4ca715020d00",
@@ -546,6 +644,13 @@
     "seconds": 1.6
   },
   {
+    "key": "v_1151528979b6",
+    "speaker": "primordial_steve",
+    "text": "We go tomorrow.",
+    "direction": "determined, quietly resolute",
+    "seconds": 1.12
+  },
+  {
     "key": "v_1435838f604c",
     "speaker": "primordial_steve",
     "text": "We haven't asked yet.",
@@ -553,11 +658,25 @@
     "seconds": 1.6
   },
   {
+    "key": "v_b966238cf869",
+    "speaker": "primordial_steve",
+    "text": "We're lucky nobody got hurt.",
+    "direction": "relieved, catching his breath",
+    "seconds": 1.84
+  },
+  {
     "key": "v_bf2bb777aca2",
     "speaker": "primordial_steve",
     "text": "What's wrong?",
     "direction": "concerned",
     "seconds": 0.96
+  },
+  {
+    "key": "v_06076b65d787",
+    "speaker": "primordial_steve",
+    "text": "You could've just asked.",
+    "direction": "wry, amused",
+    "seconds": 1.52
   },
   {
     "key": "v_18d45ba95dec",

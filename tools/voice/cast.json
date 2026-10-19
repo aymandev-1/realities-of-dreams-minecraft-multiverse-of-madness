@@ -24,6 +24,14 @@
     "orin": {
       "voice": "Grampa Werthers - Old & Cranky",
       "voice_id": "MKlLqCItoCkvdhrxgtLv"
+    },
+    "firstbrook_villager_2": {
+      "voice": "Rai",
+      "voice_id": "Cx1u6YPIa1SPiAbYj3gJ"
+    },
+    "expedition_worker_1": {
+      "voice": "Harry (Default Voice)",
+      "voice_id": "uq0HIbNZKn11Hs5ifEdd"
     }
   },
   "prompting": "The prompt is the subtitle text exactly, preceded by the direction in square brackets, e.g. \"[uneasy, quiet] Did you feel that?\". Directions are recorded per line in lines.json."
