@@ -285,6 +285,8 @@ public final class StoryManager {
             case REACH -> "Follow the gold arrow next to the objective (top left) to the next place.";
             case BLOCKS -> "Green sparkles mark each spot to build, light or clear. Place blocks with {use}, break them with {attack}.";
             case CLUES -> "Sparkles mark the things to examine. Walk up to each one and press {use}.";
+            case SEQUENCE -> "These have to be used in the right order. Look for what tells you the order, then press {use} on each in turn.";
+            case DEFEATED -> "Fight them off with {attack}. They give up and run once they have taken enough.";
             case ITEMS -> "Gather what the objective lists; the tracker counts what you carry.";
             case DIALOGUE_END -> "Walk up to the person you need and they will start talking. {continue} moves the conversation on.";
             case CINEMATIC_END -> "A cutscene is playing. {continue} skips it.";
@@ -322,7 +324,16 @@ public final class StoryManager {
                 handleEvent(p, new StoryEvent.Reached(v));
             }
             case FLAG -> handleEvent(p, new StoryEvent.FlagSet(v));
-            case CLUES -> SceneEngine.stageClues(stage).forEach(id -> handleEvent(p, new StoryEvent.ClueExamined(id)));
+            case CLUES, SEQUENCE -> SceneEngine.stageClues(stage).forEach(id -> handleEvent(p, new StoryEvent.ClueExamined(id)));
+            case DEFEATED -> {
+                ServerLevel level = ModDimensions.level(p.server, scene);
+                for (String foe : SceneEngine.stageFoes(stage)) {
+                    StoryNpcEntity npc = level == null ? null : NpcDirector.find(level, foe);
+                    if (npc != null) npc.discard();
+                    state.setFlag(SceneEngine.defeatedFlag(scene, foe));
+                }
+                handleEvent(p, new StoryEvent.Defeated(stage.id()));
+            }
             case ITEMS -> {
                 for (SceneEngine.ItemGoal g : SceneEngine.stageItems(stage)) {
                     Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(g.item()));
@@ -337,14 +348,15 @@ public final class StoryManager {
                 SceneEngine.BlockGoal goal = SceneEngine.stageBlocks(stage);
                 ServerLevel level = p.serverLevel();
                 BlockPos anchor = ModDimensions.anchor(scene);
-                for (int[] s : goal.spots()) {
+                for (int i = 0; i < goal.spots().size(); i++) {
+                    int[] s = goal.spots().get(i);
                     BlockPos pos = anchor.offset(s[0], s[1], s[2]);
-                    if (spotDone(level, pos, goal.mode())) continue;
-                    var block = switch (goal.mode()) {
+                    if (spotDone(level, pos, goal.modeAt(i))) continue;
+                    var block = switch (goal.modeAt(i)) {
                         case "solid" -> net.minecraft.world.level.block.Blocks.SPRUCE_PLANKS.defaultBlockState();
                         case "light" -> net.minecraft.world.level.block.Blocks.TORCH.defaultBlockState();
                         case "air" -> net.minecraft.world.level.block.Blocks.AIR.defaultBlockState();
-                        default -> BuiltInRegistries.BLOCK.get(ResourceLocation.parse(goal.mode())).defaultBlockState();
+                        default -> BuiltInRegistries.BLOCK.get(ResourceLocation.parse(goal.modeAt(i))).defaultBlockState();
                     };
                     level.setBlock(pos, block, 3);
                 }
@@ -433,6 +445,7 @@ public final class StoryManager {
         if (rt.tick % 10 == 0 && !rt.busy()) tickReach(p, scene, state);
         if (rt.tick % 20 == 15) tickItems(p, rt, scene, state);
         if (rt.tick % 10 == 7) tickBlocks(p, rt, scene, state);
+        if (rt.tick % 10 == 3) tickDefeated(p, rt, scene, state);
         if (rt.tick % 10 == 5 && rt.cinematicId == null) {
             perform(p, engine().checkAreas(state, loc -> loc != null && distance(p, scene, loc) <= loc.radius()));
         }
@@ -517,9 +530,10 @@ public final class StoryManager {
         ServerLevel level = p.serverLevel();
         BlockPos anchor = ModDimensions.anchor(scene);
         int done = 0;
-        for (int[] s : goal.spots()) {
+        for (int i = 0; i < goal.spots().size(); i++) {
+            int[] s = goal.spots().get(i);
             BlockPos pos = anchor.offset(s[0], s[1], s[2]);
-            if (spotDone(level, pos, goal.mode())) done++;
+            if (spotDone(level, pos, goal.modeAt(i))) done++;
             else if (rt.tick % 20 == 7) level.sendParticles(p, ParticleTypes.HAPPY_VILLAGER, false, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 2, 0.3, 0.3, 0.3, 0);
         }
         if (done != state.value(SceneEngine.BLOCKS_PROGRESS) || !state.hasValue(SceneEngine.BLOCKS_PROGRESS)) {
@@ -527,6 +541,32 @@ public final class StoryManager {
             perform(p, List.of(engine().objective(state, scene, stage)));
         }
         if (done == goal.spots().size() && !rt.busy()) perform(p, engine().handle(state, new StoryEvent.BlocksDone(stage.id())));
+    }
+
+    /** State value holding how many foes of a DEFEATED stage have been beaten (for the tracker). */
+    private static final String DEFEATED_PROGRESS = "defeated.progress";
+
+    /**
+     * DEFEATED stages: an enemy that has been beaten gives up and runs; record it so it does not come
+     * back, update the tracker, and complete once every listed enemy has been seen off.
+     */
+    private void tickDefeated(ServerPlayer p, PlayerRuntime rt, SceneDef scene, PlayerStoryState state) {
+        SceneDef.StageDef stage = engine().activeStage(state);
+        if (stage == null || stage.completion() != SceneDef.CompletionType.DEFEATED) return;
+        int done = 0;
+        for (String foe : SceneEngine.stageFoes(stage)) {
+            String flag = SceneEngine.defeatedFlag(scene, foe);
+            if (!state.hasFlag(flag)) {
+                StoryNpcEntity npc = NpcDirector.find(p.serverLevel(), foe);
+                if (npc != null && npc.hasYielded()) state.setFlag(flag);
+            }
+            if (state.hasFlag(flag)) done++;
+        }
+        if (done != state.value(DEFEATED_PROGRESS) || !state.hasValue(DEFEATED_PROGRESS)) {
+            state.setValue(DEFEATED_PROGRESS, done);
+            perform(p, List.of(engine().objective(state, scene, stage)));
+        }
+        if (done == SceneEngine.stageFoes(stage).size() && !rt.busy()) perform(p, engine().handle(state, new StoryEvent.Defeated(stage.id())));
     }
 
     private void tickReach(ServerPlayer p, SceneDef scene, PlayerStoryState state) {
@@ -576,7 +616,7 @@ public final class StoryManager {
 
     private void highlightClues(ServerPlayer p, SceneDef scene, PlayerStoryState state) {
         SceneDef.StageDef stage = engine().activeStage(state);
-        if (stage == null || stage.completion() != SceneDef.CompletionType.CLUES) return;
+        if (stage == null || (stage.completion() != SceneDef.CompletionType.CLUES && stage.completion() != SceneDef.CompletionType.SEQUENCE)) return;
         for (String id : SceneEngine.stageClues(stage)) {
             if (state.cluesFound().contains(id)) continue;
             BlockPos pos = ModDimensions.absoluteBlock(scene, scene.clues().get(id).pos());
@@ -596,7 +636,8 @@ public final class StoryManager {
         PlayerStoryState state = state(p);
         SceneDef scene = engine().activeScene(state);
         SceneDef.StageDef stage = engine().activeStage(state);
-        if (scene == null || stage == null || stage.completion() != SceneDef.CompletionType.CLUES) return false;
+        if (scene == null || stage == null
+                || (stage.completion() != SceneDef.CompletionType.CLUES && stage.completion() != SceneDef.CompletionType.SEQUENCE)) return false;
         if (p.level() != ModDimensions.level(p.server, scene)) return false;
         for (String id : SceneEngine.stageClues(stage)) {
             BlockPos pos = ModDimensions.absoluteBlock(scene, scene.clues().get(id).pos());

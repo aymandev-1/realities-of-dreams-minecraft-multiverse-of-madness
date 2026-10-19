@@ -46,6 +46,8 @@ public final class NpcDirector {
      */
     public static void reconcile(ServerLevel level, SceneDef scene, PlayerStoryState state) {
         for (String character : scene.npcs().stream().map(SceneDef.NpcPlacement::character).distinct().toList()) {
+            // An enemy beaten in this scene has run off; it does not come back.
+            if (state.hasFlag(net.realitiesofdreams.story.engine.SceneEngine.defeatedFlag(scene, character))) continue;
             SceneDef.NpcPlacement placement = placement(scene, state, character);
             StoryNpcEntity npc = find(level, character);
             if (placement != null) {
@@ -195,6 +197,12 @@ public final class NpcDirector {
             }
             case "approach" -> {
                 if (npc != null) npc.approachAndStay(p.getUUID());
+            }
+            case "hostile" -> {
+                if (npc != null && !npc.hasYielded()) {
+                    npc.setFollowTarget(null);
+                    npc.setActivity("hostile", List.of());
+                }
             }
             case "look" -> {
                 if (npc != null && at != null) npc.lookTowards(new Vec3(at[0], at[1] + 1.5, at[2]), 80);

@@ -111,6 +111,24 @@ public final class SceneEngine {
         if (scene == null || stage == null) return;
         if (event instanceof StoryEvent.DialogueFinished d) state.setFlag(dialogueDoneFlag(scene, d.dialogueId()));
 
+        if (event instanceof StoryEvent.ClueExamined clue && stage.completion() == CompletionType.SEQUENCE) {
+            List<String> order = stageClues(stage);
+            if (!order.contains(clue.clueId()) || state.cluesFound().contains(clue.clueId())) return;
+            String expected = order.stream().filter(c -> !state.cluesFound().contains(c)).findFirst().orElse(null);
+            if (clue.clueId().equals(expected)) {
+                state.addClue(clue.clueId());
+                SceneDef.ClueDef def = scene.clues().get(clue.clueId());
+                if (def != null && def.dialogue() != null) out.add(new Effect.StartDialogue(def.dialogue()));
+                out.add(objective(state, scene, stage));
+                if (state.cluesFound().containsAll(order)) completeStage(state, scene, stage, out, queue);
+            } else {
+                // Out of order: the mechanism resets (harmlessly) and the player starts the sequence again.
+                state.cluesFound().removeAll(order);
+                runActions(state, scene, stage.onWrong(), out, queue);
+                out.add(objective(state, scene, stage));
+            }
+            return;
+        }
         if (event instanceof StoryEvent.ClueExamined clue) {
             SceneDef.ClueDef def = scene.clues().get(clue.clueId());
             if (def == null || stage.completion() != CompletionType.CLUES || !stageClues(stage).contains(clue.clueId())) return;
@@ -130,9 +148,10 @@ public final class SceneEngine {
             case DIALOGUE_END -> event instanceof StoryEvent.DialogueFinished e && e.dialogueId().equals(v);
             case REACH -> event instanceof StoryEvent.Reached e && e.location().equals(v);
             case FLAG -> event instanceof StoryEvent.FlagSet e && e.flag().equals(v);
-            case CLUES -> false;
+            case CLUES, SEQUENCE -> false;
             case ITEMS -> event instanceof StoryEvent.ItemsCollected e && e.stage().equals(stage.id());
             case BLOCKS -> event instanceof StoryEvent.BlocksDone e && e.stage().equals(stage.id());
+            case DEFEATED -> event instanceof StoryEvent.Defeated e && e.stage().equals(stage.id());
         };
     }
 
@@ -150,19 +169,44 @@ public final class SceneEngine {
         return out;
     }
 
-    /** A BLOCKS stage: what each spot must become, and where the spots are (relative to the scene anchor). */
-    public record BlockGoal(String mode, List<int[]> spots) {}
+    /**
+     * A BLOCKS stage: what each spot must become, and where the spots are (relative to the scene
+     * anchor). modes holds each spot's own mode; mode is the first group's.
+     */
+    public record BlockGoal(String mode, List<int[]> spots, List<String> modes) {
+        public String modeAt(int i) {
+            return modes.get(i);
+        }
+    }
 
     public static BlockGoal stageBlocks(StageDef stage) {
         String v = stage.completionValue() == null ? "" : stage.completionValue();
-        int bar = v.indexOf('|');
         List<int[]> spots = new java.util.ArrayList<>();
-        if (bar < 0) return new BlockGoal("solid", spots);
-        for (String s : v.substring(bar + 1).split(";")) {
-            String[] c = s.trim().split(",");
-            if (c.length == 3) spots.add(new int[] {Integer.parseInt(c[0].trim()), Integer.parseInt(c[1].trim()), Integer.parseInt(c[2].trim())});
+        List<String> modes = new java.util.ArrayList<>();
+        String first = null;
+        for (String group : v.split("\\s\\+\\s")) {
+            int bar = group.indexOf('|');
+            if (bar < 0) continue;
+            String mode = group.substring(0, bar).trim();
+            if (first == null) first = mode;
+            for (String s : group.substring(bar + 1).split(";")) {
+                String[] c = s.trim().split(",");
+                if (c.length != 3) continue;
+                spots.add(new int[] {Integer.parseInt(c[0].trim()), Integer.parseInt(c[1].trim()), Integer.parseInt(c[2].trim())});
+                modes.add(mode);
+            }
         }
-        return new BlockGoal(v.substring(0, bar).trim(), spots);
+        return new BlockGoal(first == null ? "solid" : first, spots, modes);
+    }
+
+    /** The characters a DEFEATED stage lists. */
+    public static List<String> stageFoes(StageDef stage) {
+        return stage.completionValue() == null ? List.of() : Arrays.asList(stage.completionValue().split(","));
+    }
+
+    /** Flag recording that a hostile character in this scene has been beaten (reset with the scene). */
+    public static String defeatedFlag(SceneDef scene, String character) {
+        return scene.id().replace("_s", ".s") + ".defeated." + character;
     }
 
     /** State value holding how many spots of a BLOCKS stage are done (kept up to date by the game). */
@@ -207,7 +251,7 @@ public final class SceneEngine {
 
     public Effect objective(PlayerStoryState state, SceneDef scene, StageDef stage) {
         String progress = null;
-        if (stage.completion() == CompletionType.CLUES) {
+        if (stage.completion() == CompletionType.CLUES || stage.completion() == CompletionType.SEQUENCE) {
             List<String> clues = stageClues(stage);
             long found = clues.stream().filter(state.cluesFound()::contains).count();
             progress = found + "/" + clues.size();
@@ -215,6 +259,9 @@ public final class SceneEngine {
             progress = state.value(ITEMS_PROGRESS) + "/" + stageItems(stage).size();
         } else if (stage.completion() == CompletionType.BLOCKS) {
             progress = state.value(BLOCKS_PROGRESS) + "/" + stageBlocks(stage).spots().size();
+        } else if (stage.completion() == CompletionType.DEFEATED) {
+            List<String> foes = stageFoes(stage);
+            progress = foes.stream().filter(f -> state.hasFlag(defeatedFlag(scene, f))).count() + "/" + foes.size();
         }
         return new Effect.ShowObjective(scene.label(), scene.title(), stage.objective(), scene.location(stage.target()), progress);
     }
@@ -274,6 +321,7 @@ public final class SceneEngine {
             case "npc_wake" -> out.add(new Effect.NpcCommand("wake", a.arg("character"), null));
             case "npc_approach" -> out.add(new Effect.NpcCommand("approach", a.arg("character"), null));
             case "npc_look" -> out.add(new Effect.NpcCommand("look", a.arg("character"), a.arg("location")));
+            case "npc_hostile" -> out.add(new Effect.NpcCommand("hostile", a.arg("character"), a.arg("location")));
             case "hint" -> out.add(new Effect.Hint(a.arg("text"), Integer.parseInt(a.arg("ticks", "120"))));
             case "shake" -> out.add(new Effect.Shake(Float.parseFloat(a.arg("intensity", "0.1")), Integer.parseInt(a.arg("ticks", "20"))));
             case "say" -> out.add(new Effect.Say(a.arg("character"), a.arg("text")));

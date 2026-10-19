@@ -26,6 +26,11 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.OpenDoorGoal;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -57,6 +62,7 @@ public class StoryNpcEntity extends PathfinderMob {
     private final List<BlockPos> route = new ArrayList<>();
     @Nullable private Vec3 lookPos;
     private int lookTicks;
+    private int retreatTicks;
 
     public StoryNpcEntity(EntityType<? extends StoryNpcEntity> type, Level level) {
         super(type, level);
@@ -72,6 +78,7 @@ public class StoryNpcEntity extends PathfinderMob {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.3)
+                .add(Attributes.ATTACK_DAMAGE, 1.0)
                 .add(Attributes.FOLLOW_RANGE, 48.0);
     }
 
@@ -85,6 +92,21 @@ public class StoryNpcEntity extends PathfinderMob {
     @Override
     protected void registerGoals() {
         goalSelector.addGoal(0, new FloatGoal(this));
+        goalSelector.addGoal(0, new RetreatGoal());
+        goalSelector.addGoal(2, new FightGoal());
+        goalSelector.addGoal(2, new DefendGoal());
+        targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false,
+                e -> isHostile() && !((Player) e).isCreative()) {
+            @Override
+            public boolean canUse() {
+                return isHostile() && super.canUse();
+            }
+
+            @Override
+            public boolean canContinueToUse() {
+                return isHostile() && super.canContinueToUse();
+            }
+        });
         goalSelector.addGoal(1, new TalkGoal());
         goalSelector.addGoal(1, new LookAtPointGoal());
         goalSelector.addGoal(1, new OpenDoorGoal(this, true));
@@ -172,6 +194,21 @@ public class StoryNpcEntity extends PathfinderMob {
         return activity;
     }
 
+    /** A story enemy (a raider): fights the player until beaten, then gives up and retreats. */
+    public boolean isHostile() {
+        return "hostile".equals(activity);
+    }
+
+    /** Beaten in a fight: no longer hostile, running away. */
+    public boolean hasYielded() {
+        return "yielded".equals(activity);
+    }
+
+    /** Health at which an enemy gives up the fight. */
+    private float yieldHealth() {
+        return getMaxHealth() * 0.4F;
+    }
+
     private boolean routeActivity() {
         return "patrol".equals(activity) || "routine".equals(activity);
     }
@@ -218,7 +255,29 @@ public class StoryNpcEntity extends PathfinderMob {
 
     @Override
     public boolean isInvulnerableTo(DamageSource source) {
-        return !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY);
+        if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return false;
+        // Story enemies can be hit by the player and by companions fighting alongside; nothing else hurts anyone.
+        return !(isHostile() && (source.getEntity() instanceof Player || source.getEntity() instanceof StoryNpcEntity));
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        if (isHostile() && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) amount = Math.min(amount, getHealth() - 1);
+        boolean hurt = super.hurt(source, amount);
+        if (hurt && isHostile() && getHealth() <= yieldHealth()) yieldFight();
+        return hurt;
+    }
+
+    /** Gives up: drops the weapon and runs off (the story notices and records the fight as won). */
+    public void yieldFight() {
+        activity = "yielded";
+        setTarget(null);
+        ItemStack weapon = getMainHandItem();
+        if (!weapon.isEmpty() && level() instanceof ServerLevel sl) {
+            sl.sendParticles(ParticleTypes.CRIT, getX(), getY() + 1, getZ(), 12, 0.3, 0.4, 0.3, 0.1);
+            setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+        }
+        retreatTicks = 60;
     }
 
     @Override
@@ -482,6 +541,111 @@ public class StoryNpcEntity extends PathfinderMob {
         @Override
         public boolean canContinueToUse() {
             return !getNavigation().isDone() && followTarget == null;
+        }
+    }
+
+    /** A story enemy closes in on the player and strikes with what it holds. */
+    private class FightGoal extends MeleeAttackGoal {
+        FightGoal() {
+            super(StoryNpcEntity.this, 1.1, false);
+        }
+
+        @Override
+        public boolean canUse() {
+            return isHostile() && super.canUse();
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return isHostile() && super.canContinueToUse();
+        }
+
+        /** A blow every second and a half: a fight the player can win with ordinary tools. */
+        @Override
+        protected int getAttackInterval() {
+            return adjustedTickDelay(30);
+        }
+    }
+
+    /** A story enemy's blow costs the player one heart (scaled by difficulty), whatever it holds. */
+    @Override
+    public boolean doHurtTarget(net.minecraft.world.entity.Entity target) {
+        if (!isHostile()) return false;
+        swing(InteractionHand.MAIN_HAND);
+        return target.hurt(damageSources().mobAttack(this), 2.0F);
+    }
+
+    /** A beaten enemy runs from the fight and is gone a few seconds later. */
+    private class RetreatGoal extends Goal {
+        RetreatGoal() {
+            setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            return hasYielded();
+        }
+
+        @Override
+        public void tick() {
+            if (retreatTicks % 20 == 0) {
+                Player p = level().getNearestPlayer(StoryNpcEntity.this, 32);
+                Vec3 away = p == null ? position().add(10, 0, 0) : position().add(position().subtract(p.position()).multiply(1, 0, 1).normalize().scale(12));
+                getNavigation().moveTo(away.x, away.y, away.z, 1.3);
+            }
+            if (--retreatTicks <= 0 && level() instanceof ServerLevel sl) {
+                sl.sendParticles(ParticleTypes.POOF, getX(), getY() + 0.8, getZ(), 16, 0.3, 0.5, 0.3, 0.02);
+                discard();
+            }
+        }
+    }
+
+    /**
+     * A companion with a weapon in hand helps in a fight: steps in against an enemy near the player
+     * it follows. The blows are light; the player does most of the work.
+     */
+    private class DefendGoal extends Goal {
+        @Nullable private StoryNpcEntity foe;
+        private int cooldown;
+
+        DefendGoal() {
+            setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            if (isHostile() || hasYielded() || followTarget == null || getMainHandItem().isEmpty() || talkTarget != null) return false;
+            Player p = player(followTarget);
+            if (p == null) return false;
+            foe = level().getEntitiesOfClass(StoryNpcEntity.class, p.getBoundingBox().inflate(10), StoryNpcEntity::isHostile)
+                    .stream().min((a, b) -> Double.compare(a.distanceTo(StoryNpcEntity.this), b.distanceTo(StoryNpcEntity.this))).orElse(null);
+            return foe != null;
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            Player p = player(followTarget);
+            return foe != null && foe.isAlive() && foe.isHostile() && p != null && foe.distanceTo(p) < 14;
+        }
+
+        @Override
+        public void tick() {
+            if (foe == null) return;
+            getLookControl().setLookAt(foe, 30.0F, 30.0F);
+            if (distanceTo(foe) > 2.2F) {
+                if (getNavigation().isDone() || tickCount % 10 == 0) getNavigation().moveTo(foe, 1.0);
+            } else if (--cooldown <= 0) {
+                getNavigation().stop();
+                swing(InteractionHand.MAIN_HAND);
+                foe.hurt(damageSources().mobAttack(StoryNpcEntity.this), 1.0F);
+                cooldown = 30;
+            }
+        }
+
+        @Override
+        public void stop() {
+            foe = null;
+            getNavigation().stop();
         }
     }
 }

@@ -55,9 +55,25 @@ public final class SceneWorld {
             }
             return;
         }
-        if (scene.site().equals("valley_crossing")) {
-            net.realitiesofdreams.world.site.ValleyCrossing.build(level, ModDimensions.anchor(scene));
-            // Scenes 008 and 009 share the valley; each one's clue blocks are part of the place.
+        java.util.function.BiConsumer<ServerLevel, BlockPos> site = switch (scene.site()) {
+            case "valley_crossing" -> net.realitiesofdreams.world.site.ValleyCrossing::build;
+            case "sylvaris_outpost" -> net.realitiesofdreams.world.site.SylvarisOutpost::build;
+            case "eastern_road" -> net.realitiesofdreams.world.site.EasternRoad::build;
+            case "valebridge" -> net.realitiesofdreams.world.site.Valebridge::build;
+            case "gateway_chamber" -> (l, a) -> {
+                // The excavation is dug beneath the monument's courtyard, so the monument must stand first.
+                if (!data.isDone("built:site:northern_monument")) {
+                    net.realitiesofdreams.world.site.NorthernMonument.build(l, a);
+                    data.markDone("built:site:northern_monument");
+                }
+                net.realitiesofdreams.world.site.GatewayChamber.build(l, a);
+            };
+            default -> null;
+        };
+        if (site != null) {
+            site.accept(level, ModDimensions.anchor(scene));
+            // Scenes that share a site (008 and 009 in the valley, 012 to 017 in Valebridge) each have
+            // their clue blocks placed with it: they are part of the place.
             for (SceneDef s : net.realitiesofdreams.Story.content().scenes()) if (s.site().equals(scene.site())) placeClues(level, s);
             data.markDone(key);
             RealitiesOfDreams.LOGGER.info("Built site {}", scene.site());
@@ -151,6 +167,15 @@ public final class SceneWorld {
             case "mc001_s008_collapse" -> net.realitiesofdreams.world.site.ValleyCrossing.collapse(level, a);
             case "mc001_s008_crate_saved" -> net.realitiesofdreams.world.site.ValleyCrossing.crateSaved(level, a);
             case "mc001_s009_lantern" -> net.realitiesofdreams.world.site.ValleyCrossing.lanternRolls(level, a);
+            case "mc001_s016_table" -> net.realitiesofdreams.world.site.Valebridge.tableFragments(level, a, 5);
+            case "mc001_s017_skylight" -> net.realitiesofdreams.world.site.Valebridge.skylight(level, a);
+            case "mc001_s018_door_open" -> net.realitiesofdreams.world.site.GatewayChamber.openDoor(level, a);
+            case "mc001_s019_rings" -> net.realitiesofdreams.world.site.GatewayChamber.ringsTurn(level, a);
+            case "mc001_s019_collapse" -> net.realitiesofdreams.world.site.GatewayChamber.collapse(level, a);
+            case "mc001_s019_cleared" -> net.realitiesofdreams.world.site.GatewayChamber.cleared(level, a);
+            case "mc001_s019_portal_on" -> net.realitiesofdreams.world.site.GatewayChamber.surface(level, a, "on");
+            case "mc001_s019_portal_stars" -> net.realitiesofdreams.world.site.GatewayChamber.surface(level, a, "stars");
+            case "mc001_s019_portal_off" -> net.realitiesofdreams.world.site.GatewayChamber.surface(level, a, "off");
             case "mc001_s007_survey" -> {
                 net.realitiesofdreams.world.site.NorthernMonument.survey(level, a);
                 placeClues(level, scene);

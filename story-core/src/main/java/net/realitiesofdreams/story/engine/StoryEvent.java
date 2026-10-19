@@ -11,4 +11,6 @@ public sealed interface StoryEvent {
     record ItemsCollected(String stage) implements StoryEvent {}
     /** Every spot of the current BLOCKS stage now matches (built, lit, cleared...). */
     record BlocksDone(String stage) implements StoryEvent {}
+    /** Every character the current DEFEATED stage lists has been beaten. */
+    record Defeated(String stage) implements StoryEvent {}
 }

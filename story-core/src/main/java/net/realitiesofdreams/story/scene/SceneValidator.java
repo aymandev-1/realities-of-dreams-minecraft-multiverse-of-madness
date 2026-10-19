@@ -16,7 +16,7 @@ public final class SceneValidator {
     private static final Set<String> ACTIONS = Set.of("set_flag", "clear_flag", "start_dialogue", "start_cinematic",
             "npc_follow", "npc_stay", "npc_move", "npc_spawn", "npc_despawn", "title", "give_item", "hold_item", "sound",
             "world_change", "message", "npc_sleep", "npc_wake", "npc_approach", "npc_look", "hint", "shake", "say",
-            "teleport_player", "journal", "set_value", "add_value", "particles");
+            "teleport_player", "journal", "set_value", "add_value", "particles", "npc_hostile");
 
     private SceneValidator() {}
 
@@ -60,13 +60,18 @@ public final class SceneValidator {
                 case CINEMATIC_END -> { if (content.cinematic(v) == null) errors.add(sp + "cinematic " + v + " missing"); }
                 case DIALOGUE_END -> { if (content.dialogue(v) == null) errors.add(sp + "dialogue " + v + " missing"); }
                 case REACH -> location(s, v, sp + "reach", errors);
-                case CLUES -> SceneEngine.stageClues(st).forEach(c -> { if (!s.clues().containsKey(c)) errors.add(sp + "clue " + c + " missing"); });
+                case CLUES, SEQUENCE -> SceneEngine.stageClues(st).forEach(c -> { if (!s.clues().containsKey(c)) errors.add(sp + "clue " + c + " missing"); });
                 case FLAG -> { if (v == null) errors.add(sp + "flag completion without a flag"); }
                 case ITEMS -> { if (v == null || SceneEngine.stageItems(st).isEmpty()) errors.add(sp + "items completion without items"); }
                 case BLOCKS -> { if (v == null || SceneEngine.stageBlocks(st).spots().isEmpty()) errors.add(sp + "blocks completion without spots"); }
+                case DEFEATED -> SceneEngine.stageFoes(st).forEach(c -> {
+                    character(content, c, sp + "defeated", errors);
+                    if (s.placementsFor(c).stream().noneMatch(n -> n.activity().equals("hostile"))) errors.add(sp + c + " has no hostile placement");
+                });
             }
             actions(content, s, st.onEnter(), sp, errors);
             actions(content, s, st.onComplete(), sp, errors);
+            actions(content, s, st.onWrong(), sp, errors);
         }
         for (SceneDef.TriggerDef t : s.triggers()) {
             character(content, t.character(), p + "trigger " + t.id(), errors);
@@ -76,7 +81,7 @@ public final class SceneValidator {
         }
         for (SceneDef.NpcPlacement n : s.npcs()) {
             n.route().forEach(r -> location(s, r, p + "npc " + n.character() + " route", errors));
-            if (!Set.of("idle", "work", "patrol", "routine").contains(n.activity())) errors.add(p + "npc " + n.character() + ": unknown activity " + n.activity());
+            if (!Set.of("idle", "work", "patrol", "routine", "hostile").contains(n.activity())) errors.add(p + "npc " + n.character() + ": unknown activity " + n.activity());
             if ((n.activity().equals("patrol") || n.activity().equals("routine")) && n.route().size() < 2)
                 errors.add(p + "npc " + n.character() + ": a " + n.activity() + " needs two route points");
         }

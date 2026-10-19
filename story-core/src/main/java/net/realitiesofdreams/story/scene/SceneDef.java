@@ -55,13 +55,17 @@ public record SceneDef(String id, String title, String universe, int saga, int s
     /**
      * ITEMS: the player carries everything listed, e.g. "minecraft:compass,minecraft:torch*8".
      * BLOCKS: the world matches at every listed spot, "MODE|x,y,z;x,y,z", where MODE is solid, light,
-     * air or a block id (relative coordinates; building, lighting, clearing or placing work).
+     * air or a block id (relative coordinates; building, lighting, clearing or placing work). Several
+     * groups with different modes are joined with " + ", e.g. "minecraft:torch|1,0,1 + air|2,0,2".
+     * SEQUENCE: the listed clues must be used in that order; a wrong one resets the sequence and
+     * runs the stage's on_wrong actions (a lock mechanism, evidence presented in order).
+     * DEFEATED: every listed character (hostile NPCs) has been beaten and has retreated.
      */
-    public enum CompletionType { CINEMATIC_END, DIALOGUE_END, REACH, CLUES, FLAG, ITEMS, BLOCKS }
+    public enum CompletionType { CINEMATIC_END, DIALOGUE_END, REACH, CLUES, FLAG, ITEMS, BLOCKS, SEQUENCE, DEFEATED }
 
     public record StageDef(String id, String objective, String target, List<ActionDef> onEnter,
                            CompletionType completion, String completionValue, List<ActionDef> onComplete,
-                           String next, String checkpoint, boolean chatter) {
+                           String next, String checkpoint, boolean chatter, List<ActionDef> onWrong) {
         static StageDef fromJson(JsonObject o) {
             String id = Json.req(o, "id", "stage");
             JsonObject c = Json.obj(o, "complete");
@@ -75,7 +79,7 @@ public record SceneDef(String id, String title, String universe, int saga, int s
             return new StageDef(id, Json.str(o, "objective", ""), Json.str(o, "target", null),
                     ActionDef.listFrom(o, "on_enter"), ct, Json.str(c, "value", null),
                     ActionDef.listFrom(o, "on_complete"), Json.str(o, "next", null),
-                    Json.str(o, "checkpoint", null), Json.bool(o, "chatter", false));
+                    Json.str(o, "checkpoint", null), Json.bool(o, "chatter", false), ActionDef.listFrom(o, "on_wrong"));
         }
     }
 
