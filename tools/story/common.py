@@ -97,7 +97,8 @@ def write_scene(scene_id, previous, scene, dialogues, cinematics, journal):
     path = SCENES + scene_id + ".json"
     json.dump({"scene": scene, "dialogues": dialogues, "cinematics": cinematics, "journal": journal},
               open(path, "w", encoding="utf8"), indent=2, ensure_ascii=False)
-    if previous:
+    import os
+    if previous and os.path.exists(SCENES + previous + ".json"):
         prev_path = SCENES + previous + ".json"
         prev = json.load(open(prev_path, encoding="utf8"))
         prev["scene"]["next_scene"] = scene_id
@@ -105,5 +106,6 @@ def write_scene(scene_id, previous, scene, dialogues, cinematics, journal):
     index = json.load(open(INDEX))
     if scene_id + ".json" not in index["scenes"]:
         index["scenes"].append(scene_id + ".json")
+        index["scenes"].sort()
     json.dump(index, open(INDEX, "w"), indent=2)
     print("wrote", path)
