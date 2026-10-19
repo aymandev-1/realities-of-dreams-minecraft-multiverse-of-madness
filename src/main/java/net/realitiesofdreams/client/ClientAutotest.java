@@ -390,6 +390,76 @@ public final class ClientAutotest {
                     check(ModAttachments.story(serverPlayer()).journal().contains("anomaly_compass"), "Scene 007 journal entry missing");
                 });
 
+        // Scenes 008 and 009 follow on in the valley east of the monument (anchor 90, 96, -150).
+        SceneDef s8 = Story.content().scene("mc001_s008");
+        step("Scene 008 starts", 0, () -> "mc001_s008".equals(activeScene()), 20 * 60, () -> {});
+        step("the valley from above", 120, () -> shot("s008_01_valley"));
+        step("at the valley's edge", 0, () -> "to_bridge".equals(stage()) && !busy(), 20 * 90, () -> goTo(s8, "bridge_west", -90, 10));
+        step("the bridge gives way", 0, () -> "rescue".equals(stage()), 100, () -> {});
+        step("the broken bridge", 20, () -> shot("s008_02_bridge_collapsed"));
+        step("reach for the crate", 0, () -> onServer(sp -> {
+            double[] p = ModDimensions.absolute(s8, new SceneDef.Location(7, 0, 0, 1));
+            sp.teleportTo(sp.serverLevel(), p[0], p[1], p[2], -60f, 30f);
+        }));
+        step("save the crate", 10, () -> useBlock(s8, s8.clues().get("crate").pos()));
+        step("mend the bridge", 0, () -> "bridge".equals(stage()), 100, () -> fillSpots(s8, "bridge", net.minecraft.world.level.block.Blocks.OAK_PLANKS.defaultBlockState()));
+        step("bridge mended", 0, () -> "cross".equals(stage()), 100, () -> shot("s008_03_bridge_mended"));
+        step("cross the river", 0, () -> goTo(s8, "east_bank", -90, 5));
+        step("Elara on the east bank", 0, ClientAutotest::busy, 200, () -> shot("s008_04_walking_talk"));
+        step("make camp", 0, () -> "camp".equals(stage()) && !busy(), 20 * 90, () -> fillSpots(s8, "camp", net.minecraft.world.level.block.Blocks.CAMPFIRE.defaultBlockState()));
+        step("camp made", 0, () -> "markers".equals(stage()), 100, () -> goTo(s8, "camp_side", 0, 20));
+        step("the field camp", 20, () -> shot("s008_05_field_camp"));
+        Object[][] markers = {{"marker_1", 30, 0, -20}, {"marker_2", 52, 0, 20}, {"marker_3", 58, 0, -8}};
+        for (Object[] c : markers) {
+            String clueId = (String) c[0];
+            SceneDef.ClueDef clue = s8.clues().get(clueId);
+            step("walk to " + clueId, 0, () -> !busy() && "markers".equals(stage()), 20 * 30, () -> onServer(sp -> {
+                double[] p = ModDimensions.absolute(s8, new SceneDef.Location((int) c[1], (int) c[2], (int) c[3], 1));
+                sp.teleportTo(sp.serverLevel(), p[0], p[1], p[2], 180f, 30f);
+            }));
+            step("photograph " + clueId, 10, () -> shot("s008_" + clueId));
+            step("use " + clueId, 0, () -> useBlock(s8, clue.pos()));
+            step(clueId + " found", 0, () -> clueFound(clueId), 100, () -> {});
+        }
+        step("berries", 0, () -> "provisions".equals(stage()) && !busy(), 20 * 90, () -> onServer(sp ->
+                sp.getInventory().add(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.SWEET_BERRIES, 6))));
+        step("up the overlook", 0, () -> "to_overlook".equals(stage()), 200, () -> goTo(s8, "overlook_top", -70, 5));
+        step("needle cinematic", 0, () -> "needle".equals(stage()), 100, () -> {});
+        step("the campsite in the distance", 60, () -> shot("s008_06_campsite_spotted"));
+        step("Scene 008 complete", 0, () -> { ServerPlayer sp = serverPlayer(); return sp != null && ModAttachments.story(sp).isSceneComplete("mc001_s008"); },
+                20 * 60, () -> {
+                    shot("s008_07_mission_complete");
+                    check(ModAttachments.story(serverPlayer()).journal().contains("valley"), "Scene 008 journal entry missing");
+                });
+
+        SceneDef s9 = Story.content().scene("mc001_s009");
+        step("Scene 009 starts", 0, () -> "mc001_s009".equals(activeScene()) && !busy(), 20 * 60, () -> goTo(s9, "camp_edge", -90, 5));
+        step("the empty campsite", 0, ClientAutotest::busy, 200, () -> shot("s009_01_campsite"));
+        Object[][] evidence = {{"journal", 76, 0, 4, 0f, 35f}, {"lantern", 88, 0, -12, -90f, 35f}, {"erased_map", 82, 0, -4, 180f, 35f},
+                {"tracks", 88, 0, 12, -90f, 50f}, {"supply_chest", 72, 0, 6, 0f, 35f}};
+        for (Object[] c : evidence) {
+            String clueId = (String) c[0];
+            SceneDef.ClueDef clue = s9.clues().get(clueId);
+            step("walk to " + clueId, 0, () -> !busy() && "investigate".equals(stage()), 20 * 60, () -> onServer(sp -> {
+                double[] p = ModDimensions.absolute(s9, new SceneDef.Location((int) c[1], (int) c[2], (int) c[3], 1));
+                sp.teleportTo(sp.serverLevel(), p[0], p[1], p[2], (float) c[4], (float) c[5]);
+            }));
+            step("photograph " + clueId, 10, () -> shot("s009_clue_" + clueId));
+            step("examine " + clueId, 0, () -> useBlock(s9, clue.pos()));
+            step(clueId + " found", 0, () -> clueFound(clueId), 100, () -> {});
+        }
+        step("tremor cinematic", 0, () -> "tremor".equals(stage()), 20 * 60, () -> {});
+        step("the lantern rolls", 60, () -> shot("s009_02_tremor"));
+        step("to the post", 0, () -> "to_post".equals(stage()) && !busy(), 20 * 60, () -> goTo(s9, "post", 180, -15));
+        step("the woodland emblem", 15, () -> shot("s009_03_sylvaris_post"));
+        step("examine the post", 0, () -> useBlock(s9, s9.clues().get("sylvaris_post").pos()));
+        step("Scene 009 complete", 0, () -> { ServerPlayer sp = serverPlayer(); return sp != null && ModAttachments.story(sp).isSceneComplete("mc001_s009"); },
+                20 * 60, () -> {
+                    shot("s009_04_mission_complete");
+                    logState();
+                    check(ModAttachments.story(serverPlayer()).journal().contains("missing_expedition"), "Scene 009 journal entry missing");
+                });
+
         // Primordial Steve in daylight, from the front and behind.
         step("appearance outdoors", 0, () -> onServer(sp -> moveTo(sp, scene, -3, 1, 0)));
         step("third person front outdoors", 10, () -> mc.options.setCameraType(CameraType.THIRD_PERSON_FRONT));

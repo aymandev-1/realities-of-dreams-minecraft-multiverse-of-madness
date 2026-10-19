@@ -598,6 +598,97 @@ public final class RodGameTests {
         }
     }
 
+    /**
+     * Scenes 008 and 009 in the valley: the bridge gives way and is mended, the camp is made, the
+     * markers found and berries picked; then the campsite's clues, the tremor and the Sylvaris post.
+     */
+    @GameTest(template = "empty", batch = "valley", timeoutTicks = 2400)
+    public static void scenes008And009CrossTheValley(GameTestHelper helper) {
+        ServerLevel level = helper.getLevel();
+        ModDimensions.useLevelForTesting(level);
+        for (int cx = 3; cx <= 11; cx++) for (int cz = -12; cz <= -8; cz++) level.setChunkForced(cx, cz, true);
+        StoryManager previous = StoryManager.get();
+        ServerPlayer player = helper.makeMockServerPlayerInLevel();
+        List<CustomPacketPayload> sent = new ArrayList<>();
+        StoryManager m = new StoryManager((p, payload) -> sent.add(payload));
+        StoryManager.setInstanceForTesting(m);
+        try {
+            ModAttachments.story(player).setIntroOffered(true);
+            m.restartScene(player, "mc001_s008");
+            SceneDef s8 = Story.content().scene("mc001_s008");
+            BlockPos a = ModDimensions.anchor(s8);
+            helper.assertTrue(level.getBlockState(a.offset(11, -1, 0)).is(Blocks.STONE_BRICKS) || level.getBlockState(a.offset(11, -1, 0)).is(Blocks.CRACKED_STONE_BRICKS),
+                    "the old bridge is not whole");
+            helper.assertTrue(level.getBlockState(a.offset(11, -7, 5)).is(Blocks.WATER), "the river is missing");
+            helper.assertTrue(level.getBlockState(a.offset(76, 0, 6)).is(Blocks.LECTERN), "Scene 009's campsite clues were not placed");
+            helper.assertTrue("mc001_s008_valley".equals(m.cinematic(player)), "the valley cinematic did not play");
+            m.onCinematicDone(player, "mc001_s008_valley");
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("Beautiful, isn't it?")), "Elara did not speak at the valley's edge");
+            finishDialogues(m, player);
+
+            expectStage(helper, m, player, "to_bridge");
+            walk(m, player, level, s8, "bridge_west");
+            helper.assertTrue(level.getBlockState(a.offset(11, -1, 0)).isAir(), "the bridge did not give way");
+            expectStage(helper, m, player, "rescue");
+            m.onBlockUse(player, ModDimensions.absoluteBlock(s8, s8.clues().get("crate").pos()));
+            helper.assertTrue(level.getBlockState(a.offset(9, 0, 1)).isAir(), "the crate is still on the edge");
+            helper.assertTrue(player.getInventory().items.stream().anyMatch(it -> it.is(Items.BARREL)), "the crate was not saved");
+            expectStage(helper, m, player, "bridge");
+            for (int[] sp : net.realitiesofdreams.story.engine.SceneEngine.stageBlocks(s8.stage("bridge")).spots())
+                level.setBlock(a.offset(sp[0], sp[1], sp[2]), Blocks.OAK_PLANKS.defaultBlockState(), 3);
+            tickUntil(m, player, () -> !"bridge".equals(m.state(player).stage()), 40);
+            expectStage(helper, m, player, "cross");
+            walk(m, player, level, s8, "east_bank");
+            finishDialogues(m, player);
+            expectStage(helper, m, player, "camp");
+            level.setBlock(a.offset(26, 0, 6), Blocks.CAMPFIRE.defaultBlockState(), 3);
+            tickUntil(m, player, () -> !"camp".equals(m.state(player).stage()), 40);
+            for (String clue : new String[] {"marker_1", "marker_2", "marker_3"}) {
+                expectStage(helper, m, player, "markers");
+                m.onBlockUse(player, ModDimensions.absoluteBlock(s8, s8.clues().get(clue).pos()));
+            }
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().startsWith("Rowan said you were always")), "Bram did not tell the tunnel story");
+            finishDialogues(m, player);
+            expectStage(helper, m, player, "provisions");
+            player.getInventory().add(new ItemStack(Items.SWEET_BERRIES, 6));
+            tickUntil(m, player, () -> !"provisions".equals(m.state(player).stage()), 60);
+            walk(m, player, level, s8, "overlook_top");
+            helper.assertTrue("mc001_s008_needle".equals(m.cinematic(player)), "the needle cinematic did not play");
+            m.onCinematicDone(player, "mc001_s008_needle");
+            finishDialogues(m, player);
+            PlayerStoryState st = ModAttachments.story(player);
+            helper.assertTrue(st.isSceneComplete("mc001_s008") && st.hasFlag("mc001.valley.camp") && st.journal().contains("valley"), "Scene 008 not completed");
+
+            // Scene 009 carries straight on at the campsite.
+            SceneDef s9 = Story.content().scene("mc001_s009");
+            helper.assertTrue("mc001_s009".equals(st.activeScene()), "Scene 009 did not start");
+            walk(m, player, level, s9, "camp_edge");
+            helper.assertTrue(sent.stream().anyMatch(p -> p instanceof DialogueLinePayload l && l.text().equals("Nobody here.")), "Bram did not speak at the campsite");
+            finishDialogues(m, player);
+            expectStage(helper, m, player, "investigate");
+            for (String clue : new String[] {"journal", "lantern", "erased_map", "tracks", "supply_chest"}) {
+                expectStage(helper, m, player, "investigate");
+                m.onBlockUse(player, ModDimensions.absoluteBlock(s9, s9.clues().get(clue).pos()));
+                finishDialogues(m, player);
+            }
+            helper.assertTrue("mc001_s009_tremor".equals(m.cinematic(player)), "the tremor cinematic did not play");
+            m.onCinematicDone(player, "mc001_s009_tremor");
+            helper.assertTrue(level.getBlockState(a.offset(78, 1, 2)).is(Blocks.LANTERN), "the lantern did not roll along the table");
+            finishDialogues(m, player);
+            expectStage(helper, m, player, "to_post");
+            m.onBlockUse(player, ModDimensions.absoluteBlock(s9, s9.clues().get("sylvaris_post").pos()));
+            finishDialogues(m, player);
+            helper.assertTrue(st.isSceneComplete("mc001_s009") && st.journal().contains("missing_expedition"), "Scene 009 not completed");
+            helper.succeed();
+        } finally {
+            NpcDirector.releaseAll(player);
+            StoryManager.setInstanceForTesting(previous);
+            level.getServer().getPlayerList().remove(player);
+            for (int cx = 3; cx <= 11; cx++) for (int cz = -12; cz <= -8; cz++) level.setChunkForced(cx, cz, false);
+            ModDimensions.useLevelForTesting(null);
+        }
+    }
+
     /** Stands the player on a scene location and lets the story notice. */
     private static void walk(StoryManager m, ServerPlayer p, ServerLevel level, SceneDef scene, String location) {
         double[] a = ModDimensions.absolute(scene, scene.location(location));

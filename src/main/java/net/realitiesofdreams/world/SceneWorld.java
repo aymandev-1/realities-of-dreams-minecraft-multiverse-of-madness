@@ -48,6 +48,14 @@ public final class SceneWorld {
         SceneWorldData data = SceneWorldData.get(level);
         String key = "built:site:" + scene.site();
         if (data.isDone(key)) return;
+        if (scene.site().equals("valley_crossing")) {
+            net.realitiesofdreams.world.site.ValleyCrossing.build(level, ModDimensions.anchor(scene));
+            // Scenes 008 and 009 share the valley; each one's clue blocks are part of the place.
+            for (SceneDef s : net.realitiesofdreams.Story.content().scenes()) if (s.site().equals(scene.site())) placeClues(level, s);
+            data.markDone(key);
+            RealitiesOfDreams.LOGGER.info("Built site {}", scene.site());
+            return;
+        }
         if (scene.site().equals("northern_monument")) {
             net.realitiesofdreams.world.site.NorthernMonument.build(level, ModDimensions.anchor(scene));
             placeClues(level, scene);
@@ -132,6 +140,9 @@ public final class SceneWorld {
             }
             case "mc001_s006_glow_on" -> net.realitiesofdreams.world.site.NorthernMonument.glow(level, a, true);
             case "mc001_s006_glow_off" -> net.realitiesofdreams.world.site.NorthernMonument.glow(level, a, false);
+            case "mc001_s008_collapse" -> net.realitiesofdreams.world.site.ValleyCrossing.collapse(level, a);
+            case "mc001_s008_crate_saved" -> net.realitiesofdreams.world.site.ValleyCrossing.crateSaved(level, a);
+            case "mc001_s009_lantern" -> net.realitiesofdreams.world.site.ValleyCrossing.lanternRolls(level, a);
             case "mc001_s007_survey" -> {
                 net.realitiesofdreams.world.site.NorthernMonument.survey(level, a);
                 placeClues(level, scene);
