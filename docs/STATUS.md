@@ -1,9 +1,9 @@
 # Development Status
 
 Milestone: **MC-001 vertical slice** (main menu → New Story → Scene 001 → explore Firstbrook →
-Save → Continue). Updated 2026-10-18.
+Save → Continue). Updated 2026-10-19.
 
-**Playable: Scenes 001 and 002, out of Saga 1's 20 scenes.** How to play it:
+**Playable: Scenes 001 to 009, out of Saga 1's 20 scenes** (005–009 awaiting the owner's review). How to play it:
 [PLAYTEST_WINDOWS.md](PLAYTEST_WINDOWS.md). World layout: [WORLD_MC001.md](WORLD_MC001.md).
 Assets and placeholders: [ASSETS.md](ASSETS.md).
 
@@ -48,8 +48,8 @@ Assets and placeholders: [ASSETS.md](ASSETS.md).
 | Structure-template override per piece | Implemented, compiled | No templates authored yet, so not exercised |
 | Protected story blocks (doors, bed, well, lantern, bridge, gate, ruin) against survival breaking/placing and explosions | Implemented, compiled | Not covered by an automated test yet |
 | Chunk-aware NPCs, no permanent loading | Implemented | NPCs only exist in loaded chunks; nothing is force-loaded outside game tests |
-| Awakening Valley camps, damaged bridge, abandoned campsite | Designed | [WORLD_MC001.md](WORLD_MC001.md) |
-| Ancient Northern Monument | Designed | Scenes 006–007 |
+| Awakening Valley crossing, east-bank camp, abandoned campsite | Implemented, tested | Scenes 008–009; game test `scenes008And009CrossTheValley` |
+| Ancient Northern Monument | Implemented, tested | Scenes 006–007; game tests `scene006RecordsTheMonument`, `scene007FollowsTheCompass` |
 | Sylvaris Forest Outpost | Designed | Scene 010 |
 | Valebridge (city, castle, throne room, council, archive, harbour) | Designed | Scenes 012–017 |
 | Stonecrown, Solkar, Veyrath, Thalassia presences | Designed | Scenes 013–017 |
@@ -69,10 +69,10 @@ Assets and placeholders: [ASSETS.md](ASSETS.md).
 
 | Feature | Status | Why / next step |
 |---|---|---|
-| Scenes 003–020 | Not started | Next milestone: Scene 003, Elara's Northern Trail |
+| Scenes 010–020 | Not started | Next batch: Scenes 010–014, starting at the Sylvaris Forest Outpost |
 | NPCs sleeping and waking on a day/night cycle | Blocked | MC-001 is fixed at sunrise; needs the per-scene time-of-day system planned for Scene 008 |
 | NPCs reacting to danger, rescuing civilians, combat | Not started | Needs Scene 011's raiders |
-| Voice acting | Scenes 001 to 007 voiced (129 lines); later scenes not yet | Plays on the Voice/Speech volume slider; a line without a recording shows its subtitle only |
+| Voice acting | Scenes 001 to 009 voiced (166 lines); later scenes not yet | Plays on the Voice/Speech volume slider; a line without a recording shows its subtitle only |
 | Composed music score, hand-drawn title art | Not started | Original synthesised/generated placeholders ship now |
 | Journal and investigation screens | Not started | Steve's journal is a vanilla written book |
 | Six-civilisation banners, insignia, ancient inscriptions, gateway effects, custom particles | Not started | Scenes 006+ |

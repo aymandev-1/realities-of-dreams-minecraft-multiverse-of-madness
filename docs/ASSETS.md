@@ -31,7 +31,7 @@ ship, but meant to be replaced by hand-made work. **Not started** = nothing exis
 | `ui.story_begin` | `sounds/ui/story_begin.ogg` | Synthesised | Original placeholder |
 | `ui.quest_update` | `sounds/ui/quest_update.ogg` | Synthesised | Original placeholder |
 | Ambient story sounds (water, birds, hammer) | — | Vanilla sound events played by cinematics | Placeholder (vanilla) |
-| Voice acting, Scenes 001 to 007 (129 lines: Steve, Elara, Elder Rowan, Bram, Orin, a farmer, a volunteer, a worker) | `assets/rod_voice/sounds/<speaker>/v_*.ogg` | Generated with ElevenLabs (model eleven_v4) on the project owner's account; cast and per-line direction in `tools/voice/cast.json` and `tools/voice/lines.json`, imported with `tools/voice/import_voice.py` | Final for now (re-record if a line's text changes; unvoiced lines fall back to subtitles) |
+| Voice acting, Scenes 001 to 009 (166 lines: Steve, Elara, Elder Rowan, Bram, Orin, a farmer, a volunteer, a worker) | `assets/rod_voice/sounds/<speaker>/v_*.ogg` | Generated with ElevenLabs (model eleven_v4) on the project owner's account; cast and per-line direction in `tools/voice/cast.json` and `tools/voice/lines.json`, imported with `tools/voice/import_voice.py` | Final for now (re-record if a line's text changes; unvoiced lines fall back to subtitles) |
 
 No audio or artwork from other games is used. Vanilla Minecraft sounds are referenced by id, not
 copied.

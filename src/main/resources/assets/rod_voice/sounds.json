@@ -6,6 +6,13 @@
       }
     ]
   },
+  "v_f3a5f8b3a11b": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_f3a5f8b3a11b"
+      }
+    ]
+  },
   "v_82ab83d9f3cc": {
     "sounds": [
       {
@@ -17,6 +24,13 @@
     "sounds": [
       {
         "name": "rod_voice:bram/v_2693ed66d3b4"
+      }
+    ]
+  },
+  "v_bc0b09f1f795": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_bc0b09f1f795"
       }
     ]
   },
@@ -52,6 +66,41 @@
     "sounds": [
       {
         "name": "rod_voice:bram/v_693a64d5be1a"
+      }
+    ]
+  },
+  "v_5f5abf5ae502": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_5f5abf5ae502"
+      }
+    ]
+  },
+  "v_3ed8fb73d581": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_3ed8fb73d581"
+      }
+    ]
+  },
+  "v_59c1e2fb193c": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_59c1e2fb193c"
+      }
+    ]
+  },
+  "v_9bf6e42b8de7": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_9bf6e42b8de7"
+      }
+    ]
+  },
+  "v_7876e8e1cf3c": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_7876e8e1cf3c"
       }
     ]
   },
@@ -97,10 +146,45 @@
       }
     ]
   },
+  "v_3c74480d5ec8": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_3c74480d5ec8"
+      }
+    ]
+  },
+  "v_90dbbc54812a": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_90dbbc54812a"
+      }
+    ]
+  },
+  "v_b6f27fa18fb3": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_b6f27fa18fb3"
+      }
+    ]
+  },
   "v_5e9702a58eaf": {
     "sounds": [
       {
         "name": "rod_voice:elara/v_5e9702a58eaf"
+      }
+    ]
+  },
+  "v_802d4d27bb58": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_802d4d27bb58"
+      }
+    ]
+  },
+  "v_c9195865a6f7": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_c9195865a6f7"
       }
     ]
   },
@@ -122,6 +206,13 @@
     "sounds": [
       {
         "name": "rod_voice:elara/v_41da756d4212"
+      }
+    ]
+  },
+  "v_78ba35e16655": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_78ba35e16655"
       }
     ]
   },
@@ -153,6 +244,13 @@
       }
     ]
   },
+  "v_b06878d9f022": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_b06878d9f022"
+      }
+    ]
+  },
   "v_14ce6933c04c": {
     "sounds": [
       {
@@ -167,6 +265,13 @@
       }
     ]
   },
+  "v_9824e028ab41": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_9824e028ab41"
+      }
+    ]
+  },
   "v_28bd48815627": {
     "sounds": [
       {
@@ -178,6 +283,13 @@
     "sounds": [
       {
         "name": "rod_voice:elara/v_01fee40899c8"
+      }
+    ]
+  },
+  "v_b065ffdd43ed": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_b065ffdd43ed"
       }
     ]
   },
@@ -199,6 +311,13 @@
     "sounds": [
       {
         "name": "rod_voice:elara/v_d116beca16be"
+      }
+    ]
+  },
+  "v_36bcf5409f72": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_36bcf5409f72"
       }
     ]
   },
@@ -251,6 +370,20 @@
       }
     ]
   },
+  "v_a8c05446f121": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_a8c05446f121"
+      }
+    ]
+  },
+  "v_ec48570c0c2c": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_ec48570c0c2c"
+      }
+    ]
+  },
   "v_9f43096a21ef": {
     "sounds": [
       {
@@ -265,6 +398,13 @@
       }
     ]
   },
+  "v_663ce0f9b839": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_663ce0f9b839"
+      }
+    ]
+  },
   "v_4a938f8ef96d": {
     "sounds": [
       {
@@ -276,6 +416,13 @@
     "sounds": [
       {
         "name": "rod_voice:elara/v_4790e5de4fc3"
+      }
+    ]
+  },
+  "v_205abfb36eb3": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_205abfb36eb3"
       }
     ]
   },
@@ -307,6 +454,13 @@
       }
     ]
   },
+  "v_d641ecba99b0": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_d641ecba99b0"
+      }
+    ]
+  },
   "v_dc5b57d61394": {
     "sounds": [
       {
@@ -318,6 +472,13 @@
     "sounds": [
       {
         "name": "rod_voice:elara/v_332e93524e9f"
+      }
+    ]
+  },
+  "v_4b3d1642161f": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_4b3d1642161f"
       }
     ]
   },
@@ -678,6 +839,20 @@
       }
     ]
   },
+  "v_b7d59a68dce3": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_b7d59a68dce3"
+      }
+    ]
+  },
+  "v_8babe1403d45": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_8babe1403d45"
+      }
+    ]
+  },
   "v_d3e80de41e0f": {
     "sounds": [
       {
@@ -692,10 +867,38 @@
       }
     ]
   },
+  "v_535a8a387724": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_535a8a387724"
+      }
+    ]
+  },
   "v_71f6cec37f68": {
     "sounds": [
       {
         "name": "rod_voice:primordial_steve/v_71f6cec37f68"
+      }
+    ]
+  },
+  "v_d83f6a6e269b": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_d83f6a6e269b"
+      }
+    ]
+  },
+  "v_865a63c8b87a": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_865a63c8b87a"
+      }
+    ]
+  },
+  "v_fbbe6b72be21": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_fbbe6b72be21"
       }
     ]
   },
@@ -724,6 +927,13 @@
     "sounds": [
       {
         "name": "rod_voice:primordial_steve/v_393d7e945418"
+      }
+    ]
+  },
+  "v_2824da53a39a": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_2824da53a39a"
       }
     ]
   },
@@ -762,6 +972,13 @@
       }
     ]
   },
+  "v_97aea094cc90": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_97aea094cc90"
+      }
+    ]
+  },
   "v_b86255ec6125": {
     "sounds": [
       {
@@ -783,6 +1000,20 @@
       }
     ]
   },
+  "v_a760328c5433": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_a760328c5433"
+      }
+    ]
+  },
+  "v_eef58bda0cac": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_eef58bda0cac"
+      }
+    ]
+  },
   "v_350289e73479": {
     "sounds": [
       {
@@ -794,6 +1025,13 @@
     "sounds": [
       {
         "name": "rod_voice:primordial_steve/v_4924ba050bb6"
+      }
+    ]
+  },
+  "v_c6f226a1d7ec": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_c6f226a1d7ec"
       }
     ]
   },
@@ -818,6 +1056,13 @@
       }
     ]
   },
+  "v_2d70c6b7d606": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_2d70c6b7d606"
+      }
+    ]
+  },
   "v_3ef0b207ece1": {
     "sounds": [
       {
@@ -839,10 +1084,24 @@
       }
     ]
   },
+  "v_de74d828258d": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_de74d828258d"
+      }
+    ]
+  },
   "v_664b53768813": {
     "sounds": [
       {
         "name": "rod_voice:primordial_steve/v_664b53768813"
+      }
+    ]
+  },
+  "v_53a79268a6ac": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_53a79268a6ac"
       }
     ]
   },

@@ -32,8 +32,8 @@ is y = 63 (the anchor stands on it). North is −z.
 | Mountains at the valley's northern edge | z < −150 | Terrain only |
 | East woodland | x > 40 | Natural forest |
 | Southmere lake | centre (32, 112), radius 16 | Terrain only |
-| Ancient Northern Monument (Scenes 006–007) | planned around (40, —, −320), beyond the ridge | Not started |
-| Expedition camps, damaged bridge, abandoned campsite (Scenes 008–009) | planned along the northern trail, z −150..−300 | Not started |
+| Ancient Northern Monument (Scenes 006–007) | anchor (40, 108, −200), north of the ridge where Scene 005's silhouette stands; `NorthernMonument.java` | Built (courtyard, terrace, carving, split pillar, Orin's field table and survey) |
+| Awakening Valley crossing, east-bank camp, abandoned campsite (Scenes 008–009) | anchor (90, 96, −150), east of the monument, x 60..185; `ValleyCrossing.java` | Built (gorge and collapsing bridge, survey markers, overlook, campsite, Sylvaris post) |
 | Sylvaris Forest Outpost (Scene 010) | planned east, around (+450, —, −150), in a forest region | Not started |
 | Valebridge, Eldervale's capital (Scenes 012–017) | planned south, around (0, —, +700), on the coast | Not started |
 | Stonecrown, Solkar, Veyrath, Thalassia presences (Scenes 013–017) | planned as quarters of Valebridge first, then their own regions | Not started |
