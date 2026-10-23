@@ -1,0 +1,571 @@
+Autotest started; 365 steps
+step: main menu
+Realities of Dreams main menu is showing
+step: menu faded in
+screenshot menu_01_title
+step: press New Story
+pressed "New Story" on RodTitleScreen
+step: confirm if asked
+step: story save created and joined
+step: opening cinematic starts by itself
+opening cinematic started
+step: opening: valley
+screenshot s001_01_opening_valley
+step: opening: village
+screenshot s001_02_opening_village
+step: opening: Steve asleep
+screenshot s001_03_opening_asleep
+step: opening: awake
+screenshot s001_04_opening_another_morning
+step: opening: window
+screenshot s001_05_opening_window
+step: opening: Elara
+screenshot s001_06_opening_elara
+step: player in control
+state: {"format":1,"scene":"mc001_s001","stage":"leave_house","intro_offered":true,"flags":[],"clues":[],"completed":[],"fired":[],"chatter":[],"values":{},"journal":[]}
+player: 18.5,64.0,15.5 in realitiesofdreams:mc_001 yaw 180 pitch 0, camera player (FIRST_PERSON)
+voice: 166 recordings loaded, speaking now: false
+characters: [firstbrook_villager_1@-12.5,64.0,10.5, firstbrook_villager_2@-8.7,64.0,10.4, firstbrook_villager_4@-7.9,64.0,10.9, merchant_1@-4.5,64.0,10.5, firstbrook_villager_5@-0.5,64.0,17.0, firstbrook_guard_3@-3.5,64.0,-20.5, merchant_3@-4.6,64.0,-4.6, firstbrook_farmer_1@12.5,63.9,10.5, firstbrook_farmer_2@7.5,63.9,6.5, merchant_2@0.5,64.0,9.5, firstbrook_guard_1@8.1,64.0,11.5, firstbrook_guard_2@0.5,64.0,-18.1, orin@11.5,64.0,-7.5, firstbrook_villager_3@2.5,64.0,-2.5, firstbrook_farmer_3@24.5,63.9,10.5, elara@18.1,63.9,11.9, firstbrook_villager_6@18.1,64.0,-7.0, bram@36.5,63.9,13.5, merchant_4@35.5,64.0,29.5]
+villager_3 starts at (2.5, 64.0, -2.5)
+screenshot s001_07_in_control
+step: story help menu
+step: photograph the help menu
+step: close the help menu
+screenshot help_01_menu
+step: Primordial Steve appearance
+player skin: realitiesofdreams:textures/entity/character/primordial_steve.png model WIDE
+step: first-person arm
+step: first-person shot
+step: third person (front)
+screenshot player_01_first_person_arm
+step: primordial steve front
+step: third person (back)
+screenshot player_02_primordial_steve_front
+step: primordial steve back
+step: look round the house
+screenshot player_03_primordial_steve_back
+step: house interior
+step: leave the house
+screenshot s001_08_house_interior
+step: Elara joins
+step: walking conversation
+screenshot s001_09_elara_joins
+step: walk west to x=15
+step: walk west to x=14
+step: walk west to x=13
+step: walk west to x=12
+step: walk west to x=11
+step: walk west to x=10
+step: walk west to x=9
+step: walking with Elara
+screenshot s001_10_walk_and_talk
+step: farmer greets Steve
+screenshot s001_11_walk_finished
+step: farmer
+screenshot s001_12_farmer_done
+step: walk to the square z=11
+step: walk to the square z=10
+step: walk to the square z=9
+step: walk to the square z=8
+step: walk to the square z=7
+step: walk to the square z=6
+step: walk to the square z=5
+step: walk to the square z=4
+step: arrive in the square
+step: ridge cinematic
+screenshot s001_13_ridge
+step: did you feel that
+state: {"format":1,"scene":"mc001_s001","stage":"feel_that","intro_offered":true,"flags":["npc.follow.elara","mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning"],"clues":[],"completed":[],"fired":["farmer_morning"],"chatter":[],"values":{},"journal":[]}
+player: 2.5,64.0,3.5 in realitiesofdreams:mc_001 yaw -180 pitch 10, camera player (THIRD_PERSON_BACK)
+voice: 166 recordings loaded, speaking now: false
+characters: [firstbrook_villager_1@-12.5,64.0,10.5, firstbrook_villager_2@-8.9,64.0,10.3, firstbrook_villager_4@-6.4,64.0,5.9, merchant_1@-4.5,64.0,10.5, firstbrook_villager_5@-3.3,64.0,14.5, firstbrook_villager_3@-10.4,64.0,15.0, firstbrook_guard_3@-3.5,64.0,-20.5, firstbrook_villager_6@-9.9,64.0,-12.5, firstbrook_farmer_1@12.5,63.9,10.5, firstbrook_farmer_2@7.6,63.9,6.4, merchant_2@0.5,64.0,9.5, merchant_3@0.5,64.0,8.0, elara@3.2,64.0,5.2 following, firstbrook_guard_2@0.5,63.9,-17.3, orin@11.5,64.0,-7.5, firstbrook_farmer_3@24.5,63.9,10.5, firstbrook_guard_1@17.6,63.9,11.5, bram@36.5,63.9,13.5, merchant_4@35.5,64.0,29.5]
+step: feel what?
+screenshot s001_14_feel_that
+step: Rowan arrives
+screenshot s001_15_mission_complete
+step: Rowan comes over
+screenshot s001_16_rowan_approaches
+step: Rowan arrived
+step: Scene 002 starts by itself
+screenshot s001_17_rowan_arrived
+screenshot s002_01_rowan_warning
+step: Rowan's warning
+screenshot s002_02_almost_deliberate
+step: warning finished
+state: {"format":1,"scene":"mc001_s002","stage":"inspect","intro_offered":true,"flags":["npc.follow.elara","mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning","mc001.s001.dialogue_done.feel_that","mc001.s001.rowan_arrived","mc001.firstbrook.explore_unlocked","mc001.s001.complete","mc001.s002.dialogue_done.rowan_warning"],"clues":[],"completed":["mc001_s001"],"fired":["farmer_morning","rowan_warning"],"chatter":[],"values":{"rel.elara":0},"journal":["firstbrook_morning"]}
+player: 1.5,64.0,3.6 in realitiesofdreams:mc_001 yaw 90 pitch 5, camera player (THIRD_PERSON_BACK)
+voice: 166 recordings loaded, speaking now: false
+characters: [firstbrook_villager_1@-12.5,64.0,10.5, firstbrook_villager_2@-9.0,64.0,10.3, firstbrook_villager_4@-7.5,64.0,10.4, merchant_1@-4.5,64.0,10.5, firstbrook_villager_5@-9.1,64.0,12.3, firstbrook_villager_3@-5.8,64.0,4.9, firstbrook_guard_3@-3.5,64.0,-20.5, firstbrook_guard_2@-1.8,64.0,-20.4, elder_rowan@-1.5,64.0,-0.2, firstbrook_villager_6@-4.0,64.0,-12.5, firstbrook_farmer_1@12.5,63.9,10.5, firstbrook_farmer_2@7.6,63.9,6.4, merchant_2@0.4,64.0,11.1, elara@2.7,64.0,5.4 following, merchant_3@3.7,63.9,23.6, orin@11.5,64.0,-7.5, bram@0.5,64.0,-9.9, firstbrook_farmer_3@24.5,63.9,10.5, firstbrook_guard_1@23.3,64.0,11.5, merchant_4@35.5,64.0,29.5]
+step: walk to cracked_wall
+step: look at cracked_wall
+step: photograph cracked_wall
+step: examine cracked_wall
+step: cracked_wall found
+screenshot s002_clue_cracked_wall
+step: cracked_wall remark
+screenshot s002_clue_cracked_wall_remark
+step: walk to spinning_compass
+step: look at spinning_compass
+step: photograph spinning_compass
+step: examine spinning_compass
+step: spinning_compass found
+screenshot s002_clue_spinning_compass
+step: spinning_compass remark
+screenshot s002_clue_spinning_compass_remark
+step: walk to tower_report
+step: look at tower_report
+step: photograph tower_report
+step: examine tower_report
+step: tower_report found
+screenshot s002_clue_tower_report
+step: tower_report remark
+step: Bram arrives
+step: Bram's report
+screenshot s002_clue_tower_report_remark
+screenshot s002_03_bram_report
+step: compass cinematic
+step: the needle spins
+screenshot s002_04_needle_spins
+step: light beneath the ruin
+screenshot s002_05_light_beneath_ruin
+step: Scene 002 complete
+state: {"format":1,"scene":"mc001_s003","stage":"to_trail","intro_offered":true,"flags":["npc.follow.elara","mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning","mc001.s001.dialogue_done.feel_that","mc001.s001.rowan_arrived","mc001.firstbrook.explore_unlocked","mc001.s001.complete","mc001.s002.dialogue_done.rowan_warning","mc001.s002.dialogue_done.clue_wall","mc001.s002.dialogue_done.clue_compass","mc001.s002.dialogue_done.clue_report","mc001.s002.dialogue_done.bram_report","mc001.s002.dialogue_done.heading_north","mc001.s003.survey_approved","mc001.s002.complete"],"clues":["cracked_wall","spinning_compass","tower_report"],"completed":["mc001_s001","mc001_s002"],"fired":["farmer_morning","rowan_warning","bram_report"],"chatter":[],"values":{"rel.elara":1},"journal":["firstbrook_morning","northern_disturbance"]}
+player: 3.5,64.0,1.5 in realitiesofdreams:mc_001 yaw -135 pitch 0, camera player (THIRD_PERSON_BACK)
+voice: 166 recordings loaded, speaking now: false
+characters: [merchant_3@-21.5,64.0,-14.5, firstbrook_villager_1@-13.5,64.0,9.3, firstbrook_villager_2@-9.0,64.0,10.3, firstbrook_villager_4@-9.1,64.0,12.1, merchant_1@-4.5,64.0,10.5, firstbrook_villager_3@-6.5,64.0,7.9, firstbrook_villager_5@-12.0,64.0,12.0, firstbrook_guard_3@-2.2,64.0,-22.4, firstbrook_guard_2@-2.8,64.0,-19.5, elder_rowan@-2.8,64.0,-1.8, firstbrook_farmer_1@12.5,63.9,10.5, firstbrook_farmer_2@7.6,63.9,6.4, firstbrook_guard_1@14.4,63.9,11.5, merchant_2@0.4,64.0,11.1, orin@11.5,64.0,-7.5, elara@2.9,64.0,-0.2 following, firstbrook_villager_6@8.6,64.0,-3.6, bram@0.5,64.0,-14.4, firstbrook_farmer_3@24.5,63.9,10.5, merchant_4@35.5,64.0,29.5]
+step: Scene 003 starts
+screenshot s002_06_mission_complete
+step: Bram's barrier
+step: follow the trail
+screenshot s003_01_barrier
+step: tracks cinematic
+step: Elara at the tracks
+screenshot s003_02_tracks
+step: tracks conversation
+step: up the trail
+screenshot s003_03_tracks_talk_done
+step: walking conversation
+screenshot s003_04_valley_talk
+step: walk to dropped_lantern
+step: photograph dropped_lantern
+step: examine dropped_lantern
+step: dropped_lantern found
+screenshot s003_clue_dropped_lantern
+step: dropped_lantern remark
+screenshot s003_clue_dropped_lantern_remark
+step: walk to scout_pack
+step: photograph scout_pack
+step: examine scout_pack
+step: scout_pack found
+screenshot s003_clue_scout_pack
+step: scout_pack remark
+screenshot s003_clue_scout_pack_remark
+step: walk to survey_marker
+step: photograph survey_marker
+step: examine survey_marker
+step: survey_marker found
+screenshot s003_clue_survey_marker
+step: survey_marker remark
+screenshot s003_clue_survey_marker_remark
+step: to the carved stone
+step: pulse cinematic
+step: the markings pulse
+screenshot s003_05_pulse
+step: Scene 003 complete
+state: {"format":1,"scene":"mc001_s004","stage":"to_workshop","intro_offered":true,"flags":["mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning","mc001.s001.dialogue_done.feel_that","mc001.s001.rowan_arrived","mc001.firstbrook.explore_unlocked","mc001.s001.complete","mc001.s002.dialogue_done.rowan_warning","mc001.s002.dialogue_done.clue_wall","mc001.s002.dialogue_done.clue_compass","mc001.s002.dialogue_done.clue_report","mc001.s002.dialogue_done.bram_report","mc001.s002.dialogue_done.heading_north","mc001.s003.survey_approved","mc001.s002.complete","mc001.s003.dialogue_done.tracks","npc.follow.elara","mc001.s003.dialogue_done.valley","mc001.s003.dialogue_done.clue_lantern","mc001.s003.dialogue_done.clue_pack","mc001.s003.dialogue_done.clue_marker","mc001.s003.dialogue_done.reacted","mc001.s003.northern_trail_map","mc001.s004.orin_workshop","mc001.s003.complete"],"clues":["cracked_wall","spinning_compass","tower_report","dropped_lantern","scout_pack","survey_marker"],"completed":["mc001_s001","mc001_s002","mc001_s003"],"fired":["farmer_morning","rowan_warning","bram_report","area:valley_talk"],"chatter":[],"values":{"rel.elara":2},"journal":["firstbrook_morning","northern_disturbance","northern_trail"]}
+player: 8.5,84.0,-91.5 in realitiesofdreams:mc_001 yaw -90 pitch 10, camera player (THIRD_PERSON_BACK)
+voice: 166 recordings loaded, speaking now: false
+characters: [merchant_3@-20.0,63.9,-14.4, firstbrook_guard_3@-4.3,64.0,-19.9, firstbrook_guard_2@-4.1,64.0,-18.8, elara@8.5,84.0,-89.7 following]
+step: Scene 004 starts
+screenshot s003_06_mission_complete
+step: walk into the workshop
+step: Orin speaks
+screenshot s004_01_orin
+step: the sketch
+step: sketch on the table
+step: at the workbench
+step: Orin's warning
+screenshot s004_02_sketch_and_supplies
+screenshot s004_03_pickaxe_warning
+step: craft the survey kit
+step: compass cinematic
+step: the needle spins to the paper
+screenshot s004_04_compass_cinematic
+step: Scene 004 complete
+state: {"format":1,"scene":"mc001_s005","stage":"arrive","intro_offered":true,"flags":["mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning","mc001.s001.dialogue_done.feel_that","mc001.s001.rowan_arrived","mc001.firstbrook.explore_unlocked","mc001.s001.complete","mc001.s002.dialogue_done.rowan_warning","mc001.s002.dialogue_done.clue_wall","mc001.s002.dialogue_done.clue_compass","mc001.s002.dialogue_done.clue_report","mc001.s002.dialogue_done.bram_report","mc001.s002.dialogue_done.heading_north","mc001.s003.survey_approved","mc001.s002.complete","mc001.s003.dialogue_done.tracks","npc.follow.elara","mc001.s003.dialogue_done.valley","mc001.s003.dialogue_done.clue_lantern","mc001.s003.dialogue_done.clue_pack","mc001.s003.dialogue_done.clue_marker","mc001.s003.dialogue_done.reacted","mc001.s003.northern_trail_map","mc001.s004.orin_workshop","mc001.s003.complete","mc001.s004.dialogue_done.orin_markings","mc001.s004.dialogue_done.orin_pickaxe","mc001.s004.dialogue_done.not_normal","mc001.orin.adviser","mc001.unlock.repair_station","mc001.s004.complete"],"clues":["cracked_wall","spinning_compass","tower_report","dropped_lantern","scout_pack","survey_marker"],"completed":["mc001_s001","mc001_s002","mc001_s003","mc001_s004"],"fired":["farmer_morning","rowan_warning","bram_report","area:valley_talk","area:pickaxe_warning"],"chatter":[],"values":{"rel.elara":2,"items.progress":5},"journal":["firstbrook_morning","northern_disturbance","northern_trail","survey_kit"]}
+player: 11.5,64.0,-6.5 in realitiesofdreams:mc_001 yaw -90 pitch 30, camera player (THIRD_PERSON_BACK)
+voice: 166 recordings loaded, speaking now: false
+characters: [firstbrook_villager_5@-9.3,63.9,12.6, firstbrook_villager_1@-13.5,64.0,9.3, firstbrook_villager_4@-9.0,64.0,11.9, merchant_1@-4.5,64.0,10.5, firstbrook_villager_3@-6.6,64.0,9.6, bram@-0.5,63.9,-30.5, firstbrook_villager_2@-1.5,63.9,-27.5, firstbrook_guard_3@-2.9,64.0,-20.3, firstbrook_guard_2@-4.2,64.0,-18.9, elder_rowan@-5.9,64.0,-3.5, firstbrook_villager_6@-12.9,64.0,-12.5, firstbrook_farmer_1@12.5,63.9,10.5, firstbrook_farmer_2@7.6,63.9,6.4, merchant_2@0.4,64.0,11.1, merchant_3@0.5,64.0,8.0, firstbrook_guard_1@0.5,63.9,-27.5, orin@11.5,64.0,-7.5, elara@11.5,64.0,-3.8 following, firstbrook_farmer_3@24.5,63.9,10.5, merchant_4@35.5,64.0,29.5]
+step: Scene 005 starts
+screenshot s004_05_mission_complete
+step: volunteers cinematic
+step: Bram gathers volunteers
+screenshot s005_01_volunteers
+step: volunteers talk
+step: the barricade gaps
+step: build: barricade
+screenshot s005_02_barricade_gaps
+step: barricade done
+step: build: platform
+step: platform done
+step: build: lights
+step: lights done
+step: build: supplies
+step: supplies done
+step: the rockfall
+step: rocks across the road
+screenshot s005_03_rockfall
+step: clear the rubble
+step: worker rescued
+step: the finished work site
+screenshot s005_04_rescued
+step: work site photo
+step: climb the platform
+screenshot s005_05_worksite_done
+step: spot cinematic
+step: the monument on the horizon
+screenshot s005_06_monument_spotted
+step: there it is
+step: the camera rises
+screenshot s005_07_act1_complete
+step: Scene 005 complete
+state: {"format":1,"intro_offered":true,"flags":["mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning","mc001.s001.dialogue_done.feel_that","mc001.s001.rowan_arrived","mc001.firstbrook.explore_unlocked","mc001.s001.complete","mc001.s002.dialogue_done.rowan_warning","mc001.s002.dialogue_done.clue_wall","mc001.s002.dialogue_done.clue_compass","mc001.s002.dialogue_done.clue_report","mc001.s002.dialogue_done.bram_report","mc001.s002.dialogue_done.heading_north","mc001.s003.survey_approved","mc001.s002.complete","mc001.s003.dialogue_done.tracks","npc.follow.elara","mc001.s003.dialogue_done.valley","mc001.s003.dialogue_done.clue_lantern","mc001.s003.dialogue_done.clue_pack","mc001.s003.dialogue_done.clue_marker","mc001.s003.dialogue_done.reacted","mc001.s003.northern_trail_map","mc001.s004.orin_workshop","mc001.s003.complete","mc001.s004.dialogue_done.orin_markings","mc001.s004.dialogue_done.orin_pickaxe","mc001.s004.dialogue_done.not_normal","mc001.orin.adviser","mc001.unlock.repair_station","mc001.s004.complete","mc001.s005.dialogue_done.volunteers","mc001.s005.dialogue_done.rockfall","mc001.s005.dialogue_done.nicely_done","mc001.s005.dialogue_done.there_it_is","mc001.north_road.secure","mc001.act1.complete","mc001.s005.complete"],"clues":["cracked_wall","spinning_compass","tower_report","dropped_lantern","scout_pack","survey_marker"],"completed":["mc001_s001","mc001_s002","mc001_s003","mc001_s004","mc001_s005"],"fired":["farmer_morning","rowan_warning","bram_report","area:valley_talk","area:pickaxe_warning"],"chatter":[],"values":{"rel.elara":2,"items.progress":5,"blocks.progress":10},"journal":["firstbrook_morning","northern_disturbance","northern_trail","survey_kit","north_road"]}
+player: 9.5,69.0,-35.5 in realitiesofdreams:mc_001 yaw -180 pitch 0, camera player (THIRD_PERSON_BACK)
+voice: 166 recordings loaded, speaking now: false
+characters: [firstbrook_villager_5@-21.0,64.0,2.9, firstbrook_villager_1@-13.5,64.0,9.2, firstbrook_villager_4@-9.1,64.0,12.0, merchant_1@-4.5,64.0,10.5, merchant_3@-6.8,64.0,24.5, firstbrook_guard_3@-2.2,64.0,-29.1, firstbrook_guard_1@-1.2,64.0,-28.0, firstbrook_villager_2@-1.4,64.0,-25.9, firstbrook_farmer_1@12.5,63.9,10.5, firstbrook_farmer_2@7.6,63.9,6.4, merchant_2@0.2,64.0,11.2, bram@0.9,64.0,-45.2, orin@7.5,64.0,-33.5, elder_rowan@6.4,64.0,-35.7, expedition_worker_1@3.1,64.0,-43.1, elara@9.3,64.0,-35.5 following, firstbrook_guard_2@1.7,64.0,-27.2, firstbrook_villager_6@0.4,63.9,-8.3, firstbrook_villager_3@1.0,64.0,-2.1, firstbrook_farmer_3@24.5,63.9,10.5, merchant_4@35.5,64.0,29.5]
+step: Scene 006 starts
+screenshot s005_08_mission_complete
+step: the approach
+screenshot s006_01_approach
+step: up the causeway
+step: Bram at the monument
+screenshot s006_02_courtyard
+step: the collapsed stair
+step: stair gap photo
+step: build the stair
+screenshot s006_03_collapsed_stair
+step: stair built
+step: the terrace
+step: walk to panel_west
+screenshot s006_04_terrace
+step: photograph panel_west
+step: examine panel_west
+step: panel_west recorded
+screenshot s006_clue_panel_west
+step: walk to panel_east
+step: photograph panel_east
+step: examine panel_east
+step: panel_east recorded
+screenshot s006_clue_panel_east
+step: walk to panel_north
+step: photograph panel_north
+step: examine panel_north
+screenshot s006_clue_panel_north
+step: panel_north recorded
+step: walk to fracture
+step: photograph fracture
+step: examine fracture
+screenshot s006_clue_fracture
+step: fracture recorded
+step: the fallen earth
+step: earth photo
+screenshot s006_05_fallen_earth
+step: dig it away
+step: six towers
+step: the carving uncovered
+screenshot s006_06_six_structures
+step: pillar cinematic
+step: the pillar lights
+screenshot s006_07_pillar_light
+step: Scene 006 complete
+state: {"format":1,"scene":"mc001_s007","stage":"to_table","intro_offered":true,"flags":["mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning","mc001.s001.dialogue_done.feel_that","mc001.s001.rowan_arrived","mc001.firstbrook.explore_unlocked","mc001.s001.complete","mc001.s002.dialogue_done.rowan_warning","mc001.s002.dialogue_done.clue_wall","mc001.s002.dialogue_done.clue_compass","mc001.s002.dialogue_done.clue_report","mc001.s002.dialogue_done.bram_report","mc001.s002.dialogue_done.heading_north","mc001.s003.survey_approved","mc001.s002.complete","mc001.s003.dialogue_done.tracks","mc001.s003.dialogue_done.valley","mc001.s003.dialogue_done.clue_lantern","mc001.s003.dialogue_done.clue_pack","mc001.s003.dialogue_done.clue_marker","mc001.s003.dialogue_done.reacted","mc001.s003.northern_trail_map","mc001.s004.orin_workshop","mc001.s003.complete","mc001.s004.dialogue_done.orin_markings","mc001.s004.dialogue_done.orin_pickaxe","mc001.s004.dialogue_done.not_normal","mc001.orin.adviser","mc001.unlock.repair_station","mc001.s004.complete","mc001.s005.dialogue_done.volunteers","mc001.s005.dialogue_done.rockfall","mc001.s005.dialogue_done.nicely_done","mc001.s005.dialogue_done.there_it_is","mc001.north_road.secure","mc001.act1.complete","mc001.s005.complete","mc001.s006.dialogue_done.approach","mc001.s006.dialogue_done.six_towers","mc001.s006.dialogue_done.move_away","mc001.s006.dialogue_done.didnt_touch","mc001.monument.recorded","mc001.s006.complete"],"clues":["cracked_wall","spinning_compass","tower_report","dropped_lantern","scout_pack","survey_marker","panel_west","panel_east","panel_north","fracture"],"completed":["mc001_s001","mc001_s002","mc001_s003","mc001_s004","mc001_s005","mc001_s006"],"fired":["farmer_morning","rowan_warning","bram_report","area:valley_talk","area:pickaxe_warning"],"chatter":[],"values":{"rel.elara":2,"items.progress":5,"blocks.progress":15},"journal":["firstbrook_morning","northern_disturbance","northern_trail","survey_kit","north_road","monument"]}
+player: 40.5,112.0,-202.5 in realitiesofdreams:mc_001 yaw -180 pitch 10, camera player (THIRD_PERSON_BACK)
+voice: 166 recordings loaded, speaking now: false
+characters: [bram@47.9,108.0,-186.9, orin@44.5,108.0,-178.5, elara@48.5,108.0,-178.5]
+step: Scene 007 starts
+screenshot s006_08_mission_complete
+step: Orin's compasses
+screenshot s007_01_field_table
+step: needles cinematic
+step: the needles turn
+screenshot s007_02_needles
+step: walk to survey_1
+step: photograph survey_1
+step: use survey_1
+screenshot s007_clue_survey_1
+step: survey_1 done
+step: walk to survey_2
+step: photograph survey_2
+step: use survey_2
+screenshot s007_clue_survey_2
+step: survey_2 done
+step: walk to survey_3
+step: photograph survey_3
+step: use survey_3
+step: survey_3 done
+screenshot s007_clue_survey_3
+step: walk to survey_map
+step: photograph survey_map
+step: use survey_map
+step: survey_map done
+screenshot s007_clue_survey_map
+step: walk to pedestal
+step: photograph pedestal
+step: use pedestal
+step: pedestal done
+screenshot s007_clue_pedestal
+step: projection cinematic
+step: six points above the compass
+screenshot s007_03_projection
+step: Scene 007 complete
+state: {"format":1,"intro_offered":true,"flags":["mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning","mc001.s001.dialogue_done.feel_that","mc001.s001.rowan_arrived","mc001.firstbrook.explore_unlocked","mc001.s001.complete","mc001.s002.dialogue_done.rowan_warning","mc001.s002.dialogue_done.clue_wall","mc001.s002.dialogue_done.clue_compass","mc001.s002.dialogue_done.clue_report","mc001.s002.dialogue_done.bram_report","mc001.s002.dialogue_done.heading_north","mc001.s003.survey_approved","mc001.s002.complete","mc001.s003.dialogue_done.tracks","mc001.s003.dialogue_done.valley","mc001.s003.dialogue_done.clue_lantern","mc001.s003.dialogue_done.clue_pack","mc001.s003.dialogue_done.clue_marker","mc001.s003.dialogue_done.reacted","mc001.s003.northern_trail_map","mc001.s004.orin_workshop","mc001.s003.complete","mc001.s004.dialogue_done.orin_markings","mc001.s004.dialogue_done.orin_pickaxe","mc001.s004.dialogue_done.not_normal","mc001.orin.adviser","mc001.unlock.repair_station","mc001.s004.complete","mc001.s005.dialogue_done.volunteers","mc001.s005.dialogue_done.rockfall","mc001.s005.dialogue_done.nicely_done","mc001.s005.dialogue_done.there_it_is","mc001.north_road.secure","mc001.act1.complete","mc001.s005.complete","mc001.s006.dialogue_done.approach","mc001.s006.dialogue_done.six_towers","mc001.s006.dialogue_done.move_away","mc001.s006.dialogue_done.didnt_touch","mc001.monument.recorded","mc001.s006.complete","mc001.s007.dialogue_done.three_compasses","mc001.s007.dialogue_done.buried","mc001.s007.dialogue_done.below","mc001.s007.dialogue_done.six_points","mc001.anomaly_compass","mc001.s007.complete"],"clues":["cracked_wall","spinning_compass","tower_report","dropped_lantern","scout_pack","survey_marker","panel_west","panel_east","panel_north","fracture","survey_1","survey_2","survey_3","survey_map","pedestal"],"completed":["mc001_s001","mc001_s002","mc001_s003","mc001_s004","mc001_s005","mc001_s006","mc001_s007"],"fired":["farmer_morning","rowan_warning","bram_report","area:valley_talk","area:pickaxe_warning"],"chatter":[],"values":{"rel.elara":2,"items.progress":5,"blocks.progress":15},"journal":["firstbrook_morning","northern_disturbance","northern_trail","survey_kit","north_road","monument","anomaly_compass"]}
+player: 40.5,108.0,-174.5 in realitiesofdreams:mc_001 yaw -180 pitch 35, camera player (THIRD_PERSON_BACK)
+voice: 166 recordings loaded, speaking now: false
+characters: [bram@47.9,108.0,-186.9, orin@39.8,108.0,-177.5, elara@49.1,108.0,-180.5]
+screenshot s007_04_mission_complete
+step: Scene 008 starts
+step: the valley from above
+screenshot s008_01_valley
+step: at the valley's edge
+step: the bridge gives way
+step: the broken bridge
+step: reach for the crate
+screenshot s008_02_bridge_collapsed
+step: save the crate
+step: mend the bridge
+step: bridge mended
+step: cross the river
+screenshot s008_03_bridge_mended
+step: Elara on the east bank
+screenshot s008_04_walking_talk
+step: make camp
+step: camp made
+step: the field camp
+step: walk to marker_1
+screenshot s008_05_field_camp
+step: photograph marker_1
+step: use marker_1
+screenshot s008_marker_1
+step: marker_1 found
+step: walk to marker_2
+step: photograph marker_2
+step: use marker_2
+step: marker_2 found
+step: walk to marker_3
+screenshot s008_marker_2
+step: photograph marker_3
+step: use marker_3
+screenshot s008_marker_3
+step: marker_3 found
+step: berries
+step: up the overlook
+step: needle cinematic
+step: the campsite in the distance
+screenshot s008_06_campsite_spotted
+step: Scene 008 complete
+step: Scene 009 starts
+screenshot s008_07_mission_complete
+step: the empty campsite
+screenshot s009_01_campsite
+step: walk to journal
+step: photograph journal
+step: examine journal
+step: journal found
+screenshot s009_clue_journal
+step: walk to lantern
+step: photograph lantern
+step: examine lantern
+step: lantern found
+screenshot s009_clue_lantern
+step: walk to erased_map
+step: photograph erased_map
+step: examine erased_map
+step: erased_map found
+screenshot s009_clue_erased_map
+step: walk to tracks
+step: photograph tracks
+step: examine tracks
+step: tracks found
+step: walk to supply_chest
+screenshot s009_clue_tracks
+step: photograph supply_chest
+step: examine supply_chest
+step: supply_chest found
+screenshot s009_clue_supply_chest
+step: tremor cinematic
+step: the lantern rolls
+screenshot s009_02_tremor
+step: to the post
+step: the woodland emblem
+step: examine the post
+screenshot s009_03_sylvaris_post
+step: Scene 009 complete
+state: {"format":1,"intro_offered":true,"flags":["mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning","mc001.s001.dialogue_done.feel_that","mc001.s001.rowan_arrived","mc001.firstbrook.explore_unlocked","mc001.s001.complete","mc001.s002.dialogue_done.rowan_warning","mc001.s002.dialogue_done.clue_wall","mc001.s002.dialogue_done.clue_compass","mc001.s002.dialogue_done.clue_report","mc001.s002.dialogue_done.bram_report","mc001.s002.dialogue_done.heading_north","mc001.s003.survey_approved","mc001.s002.complete","mc001.s003.dialogue_done.tracks","mc001.s003.dialogue_done.valley","mc001.s003.dialogue_done.clue_lantern","mc001.s003.dialogue_done.clue_pack","mc001.s003.dialogue_done.clue_marker","mc001.s003.dialogue_done.reacted","mc001.s003.northern_trail_map","mc001.s004.orin_workshop","mc001.s003.complete","mc001.s004.dialogue_done.orin_markings","mc001.s004.dialogue_done.orin_pickaxe","mc001.s004.dialogue_done.not_normal","mc001.orin.adviser","mc001.unlock.repair_station","mc001.s004.complete","mc001.s005.dialogue_done.volunteers","mc001.s005.dialogue_done.rockfall","mc001.s005.dialogue_done.nicely_done","mc001.s005.dialogue_done.there_it_is","mc001.north_road.secure","mc001.act1.complete","mc001.s005.complete","mc001.s006.dialogue_done.approach","mc001.s006.dialogue_done.six_towers","mc001.s006.dialogue_done.move_away","mc001.s006.dialogue_done.didnt_touch","mc001.monument.recorded","mc001.s006.complete","mc001.s007.dialogue_done.three_compasses","mc001.s007.dialogue_done.buried","mc001.s007.dialogue_done.below","mc001.s007.dialogue_done.six_points","mc001.anomaly_compass","mc001.s007.complete","mc001.s008.dialogue_done.valley_edge","mc001.s008.dialogue_done.beyond","mc001.s008.dialogue_done.tunnel","mc001.s008.dialogue_done.someones_been_here","mc001.valley.camp","mc001.s008.complete","mc001.s009.dialogue_done.nobody_here","mc001.s009.dialogue_done.journal_talk","mc001.s009.dialogue_done.signal","mc001.s009.dialogue_done.sylvaris","mc001.missing_explorers.open","mc001.s009.complete"],"clues":["cracked_wall","spinning_compass","tower_report","dropped_lantern","scout_pack","survey_marker","panel_west","panel_east","panel_north","fracture","survey_1","survey_2","survey_3","survey_map","pedestal","crate","marker_1","marker_2","marker_3","journal","lantern","erased_map","tracks","supply_chest","sylvaris_post"],"completed":["mc001_s001","mc001_s002","mc001_s003","mc001_s004","mc001_s005","mc001_s006","mc001_s007","mc001_s008","mc001_s009"],"fired":["farmer_morning","rowan_warning","bram_report","area:valley_talk","area:pickaxe_warning"],"chatter":[],"values":{"rel.elara":2,"items.progress":1,"blocks.progress":1},"journal":["firstbrook_morning","northern_disturbance","northern_trail","survey_kit","north_road","monument","anomaly_compass","valley","missing_expedition"]}
+player: 156.5,96.0,-159.5 in realitiesofdreams:mc_001 yaw -180 pitch -15, camera player (THIRD_PERSON_BACK)
+voice: 166 recordings loaded, speaking now: false
+characters: [elara@157.5,96.0,-159.5, bram@160.5,96.0,-145.8]
+step: appearance outdoors
+screenshot s009_04_mission_complete
+step: third person front outdoors
+step: primordial steve in the square (front)
+step: third person back outdoors
+screenshot player_04_square_front
+step: primordial steve in the square (back)
+villager_3 is now at (1.0384217308003159, 64.0, -2.1377035538116504), farthest from its start 23.386525005725208
+step: tour: spectator
+step: tour: go to 01_firstbrook_from_south
+screenshot player_05_square_back
+step: tour: 01_firstbrook_from_south
+step: tour: go to 02_firstbrook_from_east
+screenshot tour_01_firstbrook_from_south
+step: tour: 02_firstbrook_from_east
+step: tour: go to 03_village_square
+screenshot tour_02_firstbrook_from_east
+step: tour: 03_village_square
+step: tour: go to 04_steve_house
+screenshot tour_03_village_square
+step: tour: 04_steve_house
+step: tour: go to 05_lane_and_bridge
+screenshot tour_04_steve_house
+step: tour: 05_lane_and_bridge
+step: tour: go to 06_elder_rowans_house
+screenshot tour_05_lane_and_bridge
+step: tour: 06_elder_rowans_house
+step: tour: go to 07_orins_workshop
+screenshot tour_06_elder_rowans_house
+step: tour: 07_orins_workshop
+step: tour: go to 08_bram_guard_station
+screenshot tour_07_orins_workshop
+step: tour: 08_bram_guard_station
+step: tour: go to 09_north_wall_from_the_trail
+screenshot tour_08_bram_guard_station
+step: tour: 09_north_wall_from_the_trail
+step: tour: go to 10_market
+screenshot tour_09_north_wall_from_the_trail
+step: tour: 10_market
+step: tour: go to 11_barn_and_pens
+screenshot tour_10_market
+step: tour: 11_barn_and_pens
+step: tour: go to 12_training_ground
+screenshot tour_11_barn_and_pens
+step: tour: 12_training_ground
+step: tour: go to 13_riverbank_and_dock
+screenshot tour_12_training_ground
+step: tour: 13_riverbank_and_dock
+step: tour: go to 14_northern_hills_ridge
+screenshot tour_13_riverbank_and_dock
+step: tour: 14_northern_hills_ridge
+step: tour: go to 15_ruin_on_the_ridge
+screenshot tour_14_northern_hills_ridge
+step: tour: 15_ruin_on_the_ridge
+step: tour: go to 16_waterfall
+screenshot tour_15_ruin_on_the_ridge
+step: tour: 16_waterfall
+step: tour: go to 17_southmere_lake
+screenshot tour_16_waterfall
+step: tour: 17_southmere_lake
+step: tour: go to 18_awakening_valley_north
+screenshot tour_17_southmere_lake
+step: tour: 18_awakening_valley_north
+step: tour: go to 19_steve_house_inside
+screenshot tour_18_awakening_valley_north
+step: tour: 19_steve_house_inside
+step: tour: go to 20_orin_workshop_inside
+screenshot tour_19_steve_house_inside
+step: tour: 20_orin_workshop_inside
+step: tour: go to 21_council_fire
+screenshot tour_20_orin_workshop_inside
+step: tour: 21_council_fire
+step: tour: go to 22_millers_and_bakery
+screenshot tour_21_council_fire
+step: tour: 22_millers_and_bakery
+step: tour: go to 23_firstbrook_aerial
+screenshot tour_22_millers_and_bakery
+step: tour: 23_firstbrook_aerial
+step: line up [primordial_steve, elder_rowan, elara, bram]
+screenshot tour_23_firstbrook_aerial
+step: front [primordial_steve, elder_rowan, elara, bram]
+step: turn around
+screenshot skins_01_primordial_steve-elder_rowan-elara-bram_front
+step: back [primordial_steve, elder_rowan, elara, bram]
+step: line up [captain_maren, liora, lord_kaelen, orin]
+screenshot skins_01_primordial_steve-elder_rowan-elara-bram_back
+step: front [captain_maren, liora, lord_kaelen, orin]
+step: turn around
+screenshot skins_02_captain_maren-liora-lord_kaelen-orin_front
+step: back [captain_maren, liora, lord_kaelen, orin]
+screenshot skins_02_captain_maren-liora-lord_kaelen-orin_back
+step: line up [queen_aveline, sahir, thane_garrick]
+step: front [queen_aveline, sahir, thane_garrick]
+step: turn around
+screenshot skins_03_queen_aveline-sahir-thane_garrick_front
+step: back [queen_aveline, sahir, thane_garrick]
+step: line up [firstbrook_villager_1, firstbrook_farmer_1, firstbrook_guard_1, expedition_worker_1]
+screenshot skins_03_queen_aveline-sahir-thane_garrick_back
+step: front [firstbrook_villager_1, firstbrook_farmer_1, firstbrook_guard_1, expedition_worker_1]
+step: turn around
+screenshot skins_04_firstbrook_villager_1-firstbrook_farmer_1-firstbrook_guard_1-expedition_worker_1_front
+step: back [firstbrook_villager_1, firstbrook_farmer_1, firstbrook_guard_1, expedition_worker_1]
+step: line up [expedition_researcher_1, sylvaris_ranger_1, eldervale_official_1, eldervale_royal_guard_1]
+screenshot skins_04_firstbrook_villager_1-firstbrook_farmer_1-firstbrook_guard_1-expedition_worker_1_back
+step: front [expedition_researcher_1, sylvaris_ranger_1, eldervale_official_1, eldervale_royal_guard_1]
+step: turn around
+screenshot skins_05_expedition_researcher_1-sylvaris_ranger_1-eldervale_official_1-eldervale_royal_guard_1_front
+step: back [expedition_researcher_1, sylvaris_ranger_1, eldervale_official_1, eldervale_royal_guard_1]
+step: line up [stonecrown_guard_1, stonecrown_engineer_1, solkar_scholar_1, veyrath_guard_1]
+screenshot skins_05_expedition_researcher_1-sylvaris_ranger_1-eldervale_official_1-eldervale_royal_guard_1_back
+step: front [stonecrown_guard_1, stonecrown_engineer_1, solkar_scholar_1, veyrath_guard_1]
+step: turn around
+screenshot skins_06_stonecrown_guard_1-stonecrown_engineer_1-solkar_scholar_1-veyrath_guard_1_front
+step: back [stonecrown_guard_1, stonecrown_engineer_1, solkar_scholar_1, veyrath_guard_1]
+step: line up [thalassian_sailor_1, merchant_1, raider_1, raider_leader_1]
+screenshot skins_06_stonecrown_guard_1-stonecrown_engineer_1-solkar_scholar_1-veyrath_guard_1_back
+step: front [thalassian_sailor_1, merchant_1, raider_1, raider_leader_1]
+step: turn around
+screenshot skins_07_thalassian_sailor_1-merchant_1-raider_1-raider_leader_1_front
+step: back [thalassian_sailor_1, merchant_1, raider_1, raider_leader_1]
+step: line up [valebridge_citizen_1, irondeep_miner_1, sunspire_citizen_1, emberhold_citizen_1]
+screenshot skins_07_thalassian_sailor_1-merchant_1-raider_1-raider_leader_1_back
+step: front [valebridge_citizen_1, irondeep_miner_1, sunspire_citizen_1, emberhold_citizen_1]
+step: turn around
+screenshot skins_08_valebridge_citizen_1-irondeep_miner_1-sunspire_citizen_1-emberhold_citizen_1_front
+step: back [valebridge_citizen_1, irondeep_miner_1, sunspire_citizen_1, emberhold_citizen_1]
+step: line up [tidewatch_dockhand_1]
+screenshot skins_08_valebridge_citizen_1-irondeep_miner_1-sunspire_citizen_1-emberhold_citizen_1_back
+step: front [tidewatch_dockhand_1]
+step: turn around
+screenshot skins_09_tidewatch_dockhand_1_front
+step: back [tidewatch_dockhand_1]
+step: clear the line-up
+screenshot skins_09_tidewatch_dockhand_1_back
+step: final state
+state: {"format":1,"scene":"mc001_s010","stage":"to_outpost","intro_offered":true,"flags":["mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning","mc001.s001.dialogue_done.feel_that","mc001.s001.rowan_arrived","mc001.firstbrook.explore_unlocked","mc001.s001.complete","mc001.s002.dialogue_done.rowan_warning","mc001.s002.dialogue_done.clue_wall","mc001.s002.dialogue_done.clue_compass","mc001.s002.dialogue_done.clue_report","mc001.s002.dialogue_done.bram_report","mc001.s002.dialogue_done.heading_north","mc001.s003.survey_approved","mc001.s002.complete","mc001.s003.dialogue_done.tracks","mc001.s003.dialogue_done.valley","mc001.s003.dialogue_done.clue_lantern","mc001.s003.dialogue_done.clue_pack","mc001.s003.dialogue_done.clue_marker","mc001.s003.dialogue_done.reacted","mc001.s003.northern_trail_map","mc001.s004.orin_workshop","mc001.s003.complete","mc001.s004.dialogue_done.orin_markings","mc001.s004.dialogue_done.orin_pickaxe","mc001.s004.dialogue_done.not_normal","mc001.orin.adviser","mc001.unlock.repair_station","mc001.s004.complete","mc001.s005.dialogue_done.volunteers","mc001.s005.dialogue_done.rockfall","mc001.s005.dialogue_done.nicely_done","mc001.s005.dialogue_done.there_it_is","mc001.north_road.secure","mc001.act1.complete","mc001.s005.complete","mc001.s006.dialogue_done.approach","mc001.s006.dialogue_done.six_towers","mc001.s006.dialogue_done.move_away","mc001.s006.dialogue_done.didnt_touch","mc001.monument.recorded","mc001.s006.complete","mc001.s007.dialogue_done.three_compasses","mc001.s007.dialogue_done.buried","mc001.s007.dialogue_done.below","mc001.s007.dialogue_done.six_points","mc001.anomaly_compass","mc001.s007.complete","mc001.s008.dialogue_done.valley_edge","mc001.s008.dialogue_done.beyond","mc001.s008.dialogue_done.tunnel","mc001.s008.dialogue_done.someones_been_here","mc001.valley.camp","mc001.s008.complete","mc001.s009.dialogue_done.nobody_here","mc001.s009.dialogue_done.journal_talk","mc001.s009.dialogue_done.signal","mc001.s009.dialogue_done.sylvaris","mc001.missing_explorers.open","mc001.s009.complete","npc.follow.elara","npc.follow.bram"],"clues":["cracked_wall","spinning_compass","tower_report","dropped_lantern","scout_pack","survey_marker","panel_west","panel_east","panel_north","fracture","survey_1","survey_2","survey_3","survey_map","pedestal","crate","marker_1","marker_2","marker_3","journal","lantern","erased_map","tracks","supply_chest","sylvaris_post"],"completed":["mc001_s001","mc001_s002","mc001_s003","mc001_s004","mc001_s005","mc001_s006","mc001_s007","mc001_s008","mc001_s009"],"fired":["farmer_morning","rowan_warning","bram_report","area:valley_talk","area:pickaxe_warning"],"chatter":[],"values":{"rel.elara":2,"items.progress":1,"blocks.progress":1},"journal":["firstbrook_morning","northern_disturbance","northern_trail","survey_kit","north_road","monument","anomaly_compass","valley","missing_expedition"]}
+player: 2.5,64.0,3.5 in realitiesofdreams:mc_001 yaw -180 pitch 10, camera player (FIRST_PERSON)
+voice: 166 recordings loaded, speaking now: false
+characters: [firstbrook_villager_1@-13.5,64.0,9.2, merchant_1@-4.5,64.0,10.5, firstbrook_villager_4@-8.1,64.0,11.1, firstbrook_villager_5@-9.1,64.0,12.9, firstbrook_villager_3@-10.5,64.0,17.0, firstbrook_guard_3@-5.3,64.0,-31.1, firstbrook_villager_2@-3.1,64.0,-26.3, firstbrook_villager_6@-3.3,64.0,-12.5, firstbrook_farmer_1@12.5,63.9,10.5, firstbrook_farmer_2@7.6,63.9,6.4, merchant_2@0.2,64.0,11.2, merchant_3@0.5,64.0,8.0, elara@2.4,64.0,4.8 following, bram@2.6,64.0,5.7 following, elder_rowan@6.4,64.0,-35.7, expedition_worker_1@2.9,64.0,-42.8, firstbrook_guard_2@3.2,64.0,-28.1, firstbrook_guard_1@1.8,64.0,-28.1, firstbrook_farmer_3@24.5,63.9,10.5, merchant_4@35.5,64.0,29.5]
+step: save and quit
+save and quit
+step: back at the main menu
+step: continue is offered
+checkpoint: Checkpoint[sceneId=mc001_s010, sceneNumber=10, sceneTitle=Liora's Warning, objective=Follow the forest path to the Sylvaris outpost, completed=[mc001_s001, mc001_s002, mc001_s003, mc001_s004, mc001_s005, mc001_s006, mc001_s007, mc001_s008, mc001_s009], lastPlayed=1792794754835]
+step: press Continue Story
+pressed "Continue Story" on RodTitleScreen
+screenshot menu_03_continue_available
+step: story save reloaded
+state: {"format":1,"scene":"mc001_s010","stage":"to_outpost","intro_offered":true,"flags":["mc001.s001.walk1","mc001.s001.dialogue_done.walk_bridge","mc001.s001.dialogue_done.farmer_morning","mc001.s001.dialogue_done.feel_that","mc001.s001.rowan_arrived","mc001.firstbrook.explore_unlocked","mc001.s001.complete","mc001.s002.dialogue_done.rowan_warning","mc001.s002.dialogue_done.clue_wall","mc001.s002.dialogue_done.clue_compass","mc001.s002.dialogue_done.clue_report","mc001.s002.dialogue_done.bram_report","mc001.s002.dialogue_done.heading_north","mc001.s003.survey_approved","mc001.s002.complete","mc001.s003.dialogue_done.tracks","mc001.s003.dialogue_done.valley","mc001.s003.dialogue_done.clue_lantern","mc001.s003.dialogue_done.clue_pack","mc001.s003.dialogue_done.clue_marker","mc001.s003.dialogue_done.reacted","mc001.s003.northern_trail_map","mc001.s004.orin_workshop","mc001.s003.complete","mc001.s004.dialogue_done.orin_markings","mc001.s004.dialogue_done.orin_pickaxe","mc001.s004.dialogue_done.not_normal","mc001.orin.adviser","mc001.unlock.repair_station","mc001.s004.complete","mc001.s005.dialogue_done.volunteers","mc001.s005.dialogue_done.rockfall","mc001.s005.dialogue_done.nicely_done","mc001.s005.dialogue_done.there_it_is","mc001.north_road.secure","mc001.act1.complete","mc001.s005.complete","mc001.s006.dialogue_done.approach","mc001.s006.dialogue_done.six_towers","mc001.s006.dialogue_done.move_away","mc001.s006.dialogue_done.didnt_touch","mc001.monument.recorded","mc001.s006.complete","mc001.s007.dialogue_done.three_compasses","mc001.s007.dialogue_done.buried","mc001.s007.dialogue_done.below","mc001.s007.dialogue_done.six_points","mc001.anomaly_compass","mc001.s007.complete","mc001.s008.dialogue_done.valley_edge","mc001.s008.dialogue_done.beyond","mc001.s008.dialogue_done.tunnel","mc001.s008.dialogue_done.someones_been_here","mc001.valley.camp","mc001.s008.complete","mc001.s009.dialogue_done.nobody_here","mc001.s009.dialogue_done.journal_talk","mc001.s009.dialogue_done.signal","mc001.s009.dialogue_done.sylvaris","mc001.missing_explorers.open","mc001.s009.complete","npc.follow.elara","npc.follow.bram"],"clues":["cracked_wall","spinning_compass","tower_report","dropped_lantern","scout_pack","survey_marker","panel_west","panel_east","panel_north","fracture","survey_1","survey_2","survey_3","survey_map","pedestal","crate","marker_1","marker_2","marker_3","journal","lantern","erased_map","tracks","supply_chest","sylvaris_post"],"completed":["mc001_s001","mc001_s002","mc001_s003","mc001_s004","mc001_s005","mc001_s006","mc001_s007","mc001_s008","mc001_s009"],"fired":["farmer_morning","rowan_warning","bram_report","area:valley_talk","area:pickaxe_warning"],"chatter":[],"values":{"rel.elara":2,"items.progress":1,"blocks.progress":1},"journal":["firstbrook_morning","northern_disturbance","northern_trail","survey_kit","north_road","monument","anomaly_compass","valley","missing_expedition"]}
+player: 2.5,64.0,3.5 in realitiesofdreams:mc_001 yaw -180 pitch 10, camera player (FIRST_PERSON)
+voice: 166 recordings loaded, speaking now: false
+characters: [firstbrook_villager_1@-13.5,64.0,9.2, merchant_1@-4.5,64.0,10.5, firstbrook_villager_4@-6.7,64.0,9.3, firstbrook_villager_5@-9.8,64.0,13.2, firstbrook_villager_3@-10.5,64.0,16.2, firstbrook_guard_3@-5.5,64.0,-29.5, firstbrook_villager_2@-3.1,64.0,-26.3, firstbrook_villager_6@-3.9,64.0,-11.9, firstbrook_farmer_1@12.5,63.9,10.5, firstbrook_farmer_2@7.6,63.9,6.4, merchant_2@0.2,64.0,11.2, merchant_3@0.5,64.0,7.1, elara@2.7,64.0,5.0, bram@2.8,64.0,5.8, elder_rowan@6.4,64.0,-35.7, expedition_worker_1@2.9,64.0,-42.8, firstbrook_guard_2@3.2,64.0,-28.1, firstbrook_guard_1@1.8,64.0,-28.1, firstbrook_farmer_3@24.5,63.9,10.5, merchant_4@35.5,64.0,29.5]
+step: continued in Firstbrook
+screenshot continue_01_back_in_firstbrook
+step: quit again
+save and quit
+step: main menu again
+step: chapter select
+step: chapter select shown
+step: credits
+screenshot menu_04_chapter_select
+step: credits rolling
+screenshot menu_05_credits
+step: finish
+RESULT: PASS
