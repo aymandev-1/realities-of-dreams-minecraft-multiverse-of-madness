@@ -811,4 +811,52 @@ public final class RodGameTests {
             else m.onSkip(p, m.dialogueSession(p));
         }
     }
+
+    /**
+     * Scenes 018 and 019 at the gateway chamber: the site is built under the monument with every clue
+     * block where the scenes look for it, and each story change does what the scenes rely on (the
+     * door opens, the bridge falls and Elara's alcove is blocked, the rebuilt bridge stays walkable).
+     */
+    @GameTest(template = "empty", batch = "gateway_chamber", timeoutTicks = 2400)
+    public static void gatewayChamberSupportsTheRescue(GameTestHelper helper) {
+        ServerLevel level = helper.getLevel();
+        ModDimensions.useLevelForTesting(level);
+        for (int cx = 0; cx <= 5; cx++) for (int cz = -17; cz <= -10; cz++) level.setChunkForced(cx, cz, true);
+        try {
+            SceneDef s18 = Story.content().scene("mc001_s018"), s19 = Story.content().scene("mc001_s019");
+            SceneWorld.ensureBuilt(level, s18);
+            BlockPos a = ModDimensions.anchor(s18);
+            int f = net.realitiesofdreams.world.site.GatewayChamber.FLOOR;
+            for (SceneDef s : List.of(s18, s19))
+                for (SceneDef.ClueDef c : s.clues().values()) {
+                    BlockPos at = ModDimensions.absoluteBlock(s, c.pos());
+                    String id = net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(level.getBlockState(at).getBlock()).toString();
+                    helper.assertTrue(id.equals(c.block()), s.id() + " clue " + c.id() + " is " + id + ", not " + c.block());
+                }
+            helper.assertTrue(level.getBlockState(a.offset(8, f + 2, -30)).isAir(), "a conduit socket is not empty");
+            helper.assertTrue(level.getBlockState(a.offset(20, f, -42)).is(Blocks.POLISHED_DEEPSLATE), "the bridge was not built");
+            helper.assertTrue(level.getFluidState(a.offset(15, -54, -45)).is(net.minecraft.tags.FluidTags.WATER), "the chasm has no pool");
+            helper.assertTrue(level.getBlockState(a.offset(11, f, -40)).is(Blocks.LADDER), "there is no ladder out of the pool");
+            helper.assertTrue(level.getBlockState(a.offset(25, f, -42)).is(Blocks.POLISHED_DEEPSLATE), "the first stepping stone is missing");
+
+            SceneWorld.applyChange(level, s18, "mc001_s018_conduits");
+            SceneWorld.applyChange(level, s18, "mc001_s018_door_open");
+            helper.assertTrue(level.getBlockState(a.offset(20, f + 6, -35)).isAir(), "the door did not open");
+            SceneWorld.applyChange(level, s19, "mc001_s019_rings");
+            SceneWorld.applyChange(level, s19, "mc001_s019_portal_on");
+            SceneWorld.applyChange(level, s19, "mc001_s019_bridge_falls");
+            helper.assertTrue(level.getBlockState(a.offset(20, f, -42)).isAir(), "the bridge did not fall");
+            helper.assertTrue(level.getBlockState(a.offset(20, f + 1, -61)).is(Blocks.COBBLED_DEEPSLATE), "Elara's alcove was not blocked");
+            SceneWorld.applyChange(level, s19, "mc001_s019_debris_1");
+            for (String c : List.of("mc001_s019_echo_1", "mc001_s019_echo_2", "mc001_s019_echo_3", "mc001_s019_echo_4", "mc001_first_divergence", "mc001_s019_portal_off"))
+                SceneWorld.applyChange(level, s19, c);
+            helper.assertTrue(level.getBlockState(a.offset(20, f, -41)).is(Blocks.SPRUCE_PLANKS), "the rebuilt bridge did not settle");
+            helper.assertTrue(level.getBlockState(a.offset(19, f, -41)).isAir(), "the old bridge came back after the divergence");
+            helper.assertTrue(level.getBlockState(a.offset(20, -24, -52)).is(Blocks.SEA_LANTERN), "the keystone does not glow");
+            helper.succeed();
+        } finally {
+            for (int cx = 0; cx <= 5; cx++) for (int cz = -17; cz <= -10; cz++) level.setChunkForced(cx, cz, false);
+            ModDimensions.useLevelForTesting(null);
+        }
+    }
 }

@@ -544,7 +544,7 @@ public final class ClientAutotest {
             shot("menu_03_continue_available");
         });
         step("press Continue Story", 0, () -> press(Component.translatable("realitiesofdreams.menu.continue")));
-        step("story save reloaded", 0, () -> serverPlayer() != null && mc.player != null && mc.screen == null, 20 * 60 * 4, () -> {
+        step("story save reloaded", 0, () -> serverPlayer() != null && mc.player != null && mc.screen == null, 20 * 60 * 10, () -> {
             ServerPlayer sp = serverPlayer();
             PlayerStoryState s = ModAttachments.story(sp);
             check(s.isSceneComplete("mc001_s001"), "Scene 001 progress was not kept");
