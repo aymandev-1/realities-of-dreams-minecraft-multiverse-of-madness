@@ -60,6 +60,7 @@ public final class SceneWorld {
             case "sylvaris_outpost" -> net.realitiesofdreams.world.site.SylvarisOutpost::build;
             case "eastern_road" -> net.realitiesofdreams.world.site.EasternRoad::build;
             case "valebridge" -> net.realitiesofdreams.world.site.Valebridge::build;
+            case "irondeep" -> net.realitiesofdreams.world.site.Irondeep::build;
             case "gateway_chamber" -> (l, a) -> {
                 // The excavation is dug beneath the monument's courtyard, so the monument must stand first.
                 if (!data.isDone("built:site:northern_monument")) {
@@ -167,6 +168,8 @@ public final class SceneWorld {
             case "mc001_s008_collapse" -> net.realitiesofdreams.world.site.ValleyCrossing.collapse(level, a);
             case "mc001_s008_crate_saved" -> net.realitiesofdreams.world.site.ValleyCrossing.crateSaved(level, a);
             case "mc001_s009_lantern" -> net.realitiesofdreams.world.site.ValleyCrossing.lanternRolls(level, a);
+            case "mc001_s013_drain" -> net.realitiesofdreams.world.site.Irondeep.drain(level, a);
+            case "mc001_s013_works_open" -> net.realitiesofdreams.world.site.Irondeep.worksOpen(level, a);
             case "mc001_s016_table" -> net.realitiesofdreams.world.site.Valebridge.tableFragments(level, a, 5);
             case "mc001_s017_skylight" -> net.realitiesofdreams.world.site.Valebridge.skylight(level, a);
             case "mc001_s018_door_open" -> net.realitiesofdreams.world.site.GatewayChamber.openDoor(level, a);
