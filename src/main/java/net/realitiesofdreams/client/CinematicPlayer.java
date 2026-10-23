@@ -24,6 +24,8 @@ public final class CinematicPlayer {
     @Nullable private static Marker camera;
     private static int ax, ay, az;
     private static int tick;
+    /** The post effect this cinematic has put on screen, if any. */
+    @Nullable private static String effect;
 
     private CinematicPlayer() {}
 
@@ -73,6 +75,7 @@ public final class CinematicPlayer {
         place(timeline.sample(tick));
         playSounds(prev, tick);
         if (mc.getCameraEntity() != camera) mc.setCameraEntity(camera);
+        updateEffect(mc);
         if (timeline.finished(tick)) stop(true);
     }
 
@@ -98,6 +101,7 @@ public final class CinematicPlayer {
         Minecraft mc = Minecraft.getInstance();
         String id = timeline == null ? null : timeline.def().id();
         if (id != null) VoicePlayer.stop();
+        clearEffect(mc);
         timeline = null;
         camera = null;
         if (mc.player != null) mc.setCameraEntity(mc.player);
@@ -106,8 +110,35 @@ public final class CinematicPlayer {
 
     static void reset() {
         VoicePlayer.stop();
+        clearEffect(Minecraft.getInstance());
         timeline = null;
         camera = null;
+    }
+
+    /** Shows the post effect the timeline wants at this tick, or removes the one that has ended. */
+    private static void updateEffect(Minecraft mc) {
+        String wanted = null;
+        for (CinematicDef.PostEffect e : timeline.def().effects()) if (e.activeAt(tick)) wanted = e.shader();
+        if (java.util.Objects.equals(wanted, effect)) return;
+        if (wanted == null) {
+            clearEffect(mc);
+            return;
+        }
+        effect = wanted;
+        try {
+            // GameRenderer.loadEffect is not public; the game runs with Mojang names, so reflection finds it.
+            java.lang.reflect.Method load = net.minecraft.client.renderer.GameRenderer.class.getDeclaredMethod("loadEffect", ResourceLocation.class);
+            load.setAccessible(true);
+            load.invoke(mc.gameRenderer, ResourceLocation.parse(wanted));
+        } catch (ReflectiveOperationException | RuntimeException ex) {
+            net.realitiesofdreams.RealitiesOfDreams.LOGGER.warn("Cinematic effect {} unavailable: {}", wanted, ex.toString());
+        }
+    }
+
+    private static void clearEffect(Minecraft mc) {
+        if (effect == null) return;
+        effect = null;
+        mc.gameRenderer.shutdownEffect();
     }
 
     @Nullable

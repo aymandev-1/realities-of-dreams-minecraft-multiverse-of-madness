@@ -120,10 +120,10 @@ public final class GatewayChamber {
         b.set(20, -10, 2, Blocks.GRAVEL);
         b.set(21, -11, 1, Blocks.COBBLED_DEEPSLATE);
         b.set(19, -12, 0, Blocks.GRAVEL);
-        // The collapsed steps, with a drop beneath them.
+        // The collapsed steps, with a shallow drop beneath them (a fall there is climbable).
         for (int k = GAP_FROM; k <= GAP_TO; k++) {
             int z = DIG_Z - k, floor = -1 - k;
-            for (int x = 19; x <= 21; x++) for (int y = floor - 3; y <= floor; y++) b.set(x, y, z, Blocks.AIR);
+            for (int x = 19; x <= 21; x++) for (int y = floor - 1; y <= floor; y++) b.set(x, y, z, Blocks.AIR);
         }
     }
 

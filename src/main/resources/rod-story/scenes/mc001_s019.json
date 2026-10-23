@@ -1,0 +1,1951 @@
+{
+  "scene": {
+    "id": "mc001_s019",
+    "title": "The Door That Should Not Open",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 19,
+    "canon_status": "Saga 1 revised screenplay, Version 2 (docs/story/SAGA_1_SCENES_012_019_REVISED.md): spoken dialogue verbatim, including the owner's required lines. Hints, captions, item names and the outcome message are gameplay text.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "gateway_chamber",
+    "anchor": [
+      40,
+      108,
+      -200
+    ],
+    "arrival": {
+      "pos": [
+        20,
+        -39,
+        -37
+      ],
+      "yaw": 180
+    },
+    "next_scene": "unreleased:mc001_s020",
+    "locations": {
+      "landing": {
+        "pos": [
+          20,
+          -39,
+          -37
+        ],
+        "radius": 2
+      },
+      "landing_wide": {
+        "pos": [
+          20,
+          -39,
+          -37
+        ],
+        "radius": 4
+      },
+      "elara_land": {
+        "pos": [
+          19,
+          -39,
+          -38
+        ],
+        "radius": 1
+      },
+      "bram_land": {
+        "pos": [
+          23,
+          -39,
+          -36
+        ],
+        "radius": 1
+      },
+      "orin_land": {
+        "pos": [
+          14,
+          -39,
+          -38
+        ],
+        "radius": 1
+      },
+      "sahir_land": {
+        "pos": [
+          25,
+          -39,
+          -37
+        ],
+        "radius": 1
+      },
+      "garrick_land": {
+        "pos": [
+          27,
+          -39,
+          -38
+        ],
+        "radius": 1
+      },
+      "liora_land": {
+        "pos": [
+          11,
+          -39,
+          -37
+        ],
+        "radius": 1
+      },
+      "kaelen_land": {
+        "pos": [
+          29,
+          -39,
+          -37
+        ],
+        "radius": 1
+      },
+      "res1_land": {
+        "pos": [
+          16,
+          -39,
+          -36
+        ],
+        "radius": 1
+      },
+      "res2_land": {
+        "pos": [
+          26,
+          -39,
+          -36
+        ],
+        "radius": 1
+      },
+      "res3_land": {
+        "pos": [
+          12,
+          -39,
+          -36
+        ],
+        "radius": 1
+      },
+      "elara_console": {
+        "pos": [
+          20,
+          -39,
+          -64
+        ],
+        "radius": 1
+      },
+      "dais": {
+        "pos": [
+          20,
+          -39,
+          -48
+        ],
+        "radius": 3
+      },
+      "dais_north": {
+        "pos": [
+          22,
+          -39,
+          -57
+        ],
+        "radius": 3
+      },
+      "alcove_mouth": {
+        "pos": [
+          20,
+          -39,
+          -60
+        ],
+        "radius": 2
+      },
+      "bridge_head": {
+        "pos": [
+          20,
+          -39,
+          -45
+        ],
+        "radius": 2
+      },
+      "stone_2": {
+        "pos": [
+          28,
+          -39,
+          -44
+        ],
+        "radius": 2
+      },
+      "stone_4": {
+        "pos": [
+          31,
+          -39,
+          -50
+        ],
+        "radius": 2
+      },
+      "stone_6": {
+        "pos": [
+          28,
+          -39,
+          -56
+        ],
+        "radius": 2
+      },
+      "pool": {
+        "pos": [
+          20,
+          -54,
+          -42
+        ],
+        "radius": 14
+      },
+      "hall_entry": {
+        "pos": [
+          20,
+          -39,
+          -29
+        ],
+        "radius": 2
+      },
+      "mid_stair": {
+        "pos": [
+          20,
+          -20,
+          -8
+        ],
+        "radius": 2
+      },
+      "gateway": {
+        "pos": [
+          20,
+          -31,
+          -52
+        ],
+        "radius": 2
+      },
+      "dig_top": {
+        "pos": [
+          20,
+          0,
+          14
+        ],
+        "radius": 3
+      },
+      "elara_top": {
+        "pos": [
+          18,
+          0,
+          15
+        ],
+        "radius": 1
+      },
+      "bram_top": {
+        "pos": [
+          22,
+          0,
+          16
+        ],
+        "radius": 1
+      },
+      "orin_top": {
+        "pos": [
+          16,
+          0,
+          17
+        ],
+        "radius": 1
+      },
+      "sahir_top": {
+        "pos": [
+          24,
+          0,
+          17
+        ],
+        "radius": 1
+      },
+      "garrick_top": {
+        "pos": [
+          25,
+          0,
+          15
+        ],
+        "radius": 1
+      },
+      "kaelen_top": {
+        "pos": [
+          14,
+          0,
+          15
+        ],
+        "radius": 1
+      },
+      "liora_top": {
+        "pos": [
+          19,
+          0,
+          18
+        ],
+        "radius": 1
+      },
+      "maren_top": {
+        "pos": [
+          21,
+          0,
+          19
+        ],
+        "radius": 1
+      }
+    },
+    "npcs": [
+      {
+        "character": "orin",
+        "location": "orin_land",
+        "yaw": 180
+      },
+      {
+        "character": "thane_garrick",
+        "location": "garrick_land",
+        "yaw": 180
+      },
+      {
+        "character": "sahir",
+        "location": "sahir_land",
+        "yaw": 180
+      },
+      {
+        "character": "liora",
+        "location": "liora_land",
+        "yaw": 180
+      },
+      {
+        "character": "lord_kaelen",
+        "location": "kaelen_land",
+        "yaw": 180
+      },
+      {
+        "character": "bram",
+        "location": "bram_land",
+        "yaw": 180
+      },
+      {
+        "character": "expedition_researcher_1",
+        "location": "res1_land",
+        "yaw": 180
+      },
+      {
+        "character": "expedition_researcher_2",
+        "location": "res2_land",
+        "yaw": 180
+      },
+      {
+        "character": "expedition_researcher_3",
+        "location": "res3_land",
+        "yaw": 180
+      },
+      {
+        "character": "elara",
+        "location": "elara_land",
+        "yaw": 180
+      }
+    ],
+    "clues": {
+      "s19_pylon": {
+        "name": "The landing pylon's copper heart",
+        "pos": [
+          13,
+          -38,
+          -37
+        ],
+        "block": "minecraft:copper_bulb",
+        "dialogue": "s19_pylon"
+      },
+      "s19_console": {
+        "name": "The console at the bridge head",
+        "pos": [
+          22,
+          -39,
+          -38
+        ],
+        "block": "minecraft:lodestone",
+        "dialogue": "s19_console"
+      },
+      "s19_base": {
+        "name": "Glyphs on the gateway's eastern plinth",
+        "pos": [
+          23,
+          -39,
+          -51
+        ],
+        "block": "minecraft:polished_deepslate",
+        "dialogue": "s19_base"
+      }
+    },
+    "stages": [
+      {
+        "id": "enter",
+        "checkpoint": "landing",
+        "on_enter": [
+          {
+            "type": "teleport_player",
+            "location": "landing",
+            "yaw": 180
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s019_enter"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s019_enter"
+        }
+      },
+      {
+        "id": "investigate",
+        "objective": "Examine the machinery: the landing pylon, the bridge-head console and the gateway's base",
+        "target": "landing",
+        "checkpoint": "landing",
+        "on_enter": [
+          {
+            "type": "npc_move",
+            "character": "elara",
+            "location": "elara_console"
+          },
+          {
+            "type": "hint",
+            "ticks": 280,
+            "text": "Researchers are spreading out. Elara has crossed to the console in the alcove behind the gateway. Examine the pylon west of the door, the console at the bridge head, and the glyphs on the gateway's eastern plinth across the bridge."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s19_pylon,s19_console,s19_base"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s019_rings"
+          }
+        ]
+      },
+      {
+        "id": "rings",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s019_rings"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s19_rings"
+          }
+        ]
+      },
+      {
+        "id": "rings_talk",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s19_rings"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s019_surface"
+          }
+        ]
+      },
+      {
+        "id": "surface",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s019_surface"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s19_surface"
+          }
+        ]
+      },
+      {
+        "id": "surface_talk",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s19_surface"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s019_collapse"
+          }
+        ]
+      },
+      {
+        "id": "collapse",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s019_collapse"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s19_collapse"
+          }
+        ]
+      },
+      {
+        "id": "collapse_talk",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s19_collapse"
+        },
+        "on_complete": [
+          {
+            "type": "npc_move",
+            "character": "sahir",
+            "location": "hall_entry"
+          },
+          {
+            "type": "npc_move",
+            "character": "liora",
+            "location": "hall_entry"
+          },
+          {
+            "type": "npc_move",
+            "character": "lord_kaelen",
+            "location": "hall_entry"
+          },
+          {
+            "type": "npc_move",
+            "character": "expedition_researcher_1",
+            "location": "hall_entry"
+          },
+          {
+            "type": "npc_move",
+            "character": "expedition_researcher_2",
+            "location": "hall_entry"
+          },
+          {
+            "type": "npc_move",
+            "character": "expedition_researcher_3",
+            "location": "hall_entry"
+          }
+        ]
+      },
+      {
+        "id": "traverse",
+        "objective": "Reach Elara: cross the chasm on the stepping stones",
+        "target": "dais_north",
+        "checkpoint": "landing",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 300,
+            "text": "The bridge is gone. Stepping stones curve round the east side of the chasm, starting from the landing's east end. Jump from stone to stone to the dais. If you fall, the pool will catch you: climb the ladder at the landing's west end."
+          },
+          {
+            "type": "shake",
+            "intensity": 0.1,
+            "ticks": 40
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "dais_north"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.deepslate.step",
+            "volume": 1.0,
+            "pitch": 0.8
+          }
+        ]
+      },
+      {
+        "id": "clear",
+        "objective": "Clear the fallen stone trapping Elara",
+        "target": "alcove_mouth",
+        "checkpoint": "dais_north",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:iron_pickaxe",
+            "count": 1,
+            "name": "Garrick's pick",
+            "lore": "Stonecrown steel."
+          },
+          {
+            "type": "say",
+            "character": "elara",
+            "text": "Steve! I'm here, behind the stones!"
+          },
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Break the six fallen stones across the alcove's mouth."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "air|19,-39,-61;20,-39,-61;21,-39,-61;19,-38,-61;20,-38,-61;21,-38,-61"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s19_rescue"
+          }
+        ]
+      },
+      {
+        "id": "rescue_talk",
+        "checkpoint": "dais_north",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s19_rescue"
+        },
+        "on_complete": [
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          }
+        ]
+      },
+      {
+        "id": "bridge",
+        "objective": "Rebuild the bridge so Elara can cross back",
+        "target": "bridge_head",
+        "checkpoint": "dais_north",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:spruce_planks",
+            "count": 8,
+            "name": "Expedition timber"
+          },
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "Lay a line of timber across the gap, from the stub of the bridge at the dais back to the landing. Four marked spots."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "solid|20,-40,-43;20,-40,-42;20,-40,-41;20,-40,-40"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.wood.place",
+            "volume": 1.0,
+            "pitch": 0.9
+          }
+        ]
+      },
+      {
+        "id": "cross",
+        "objective": "Get Elara back to the landing",
+        "target": "landing",
+        "checkpoint": "bridge_head",
+        "complete": {
+          "type": "reach",
+          "value": "landing"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s019_stars"
+          }
+        ]
+      },
+      {
+        "id": "stars",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s019_stars"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s19_stars"
+          }
+        ]
+      },
+      {
+        "id": "stars_talk",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s19_stars"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s019_closing"
+          }
+        ]
+      },
+      {
+        "id": "closing",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s019_closing"
+        },
+        "on_complete": [
+          {
+            "type": "set_flag",
+            "flag": "mc001_first_divergence"
+          },
+          {
+            "type": "set_flag",
+            "flag": "elara_rescued"
+          },
+          {
+            "type": "set_flag",
+            "flag": "gateway_temporal_branch_recorded"
+          },
+          {
+            "type": "set_flag",
+            "flag": "first_gateway_closed"
+          },
+          {
+            "type": "set_value",
+            "key": "primordial_steve_multiversal_travel_unlocked",
+            "value": 0
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s19_after"
+          }
+        ]
+      },
+      {
+        "id": "after_talk",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s19_after"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_top"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_top"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "orin",
+            "location": "orin_top"
+          },
+          {
+            "type": "npc_stay",
+            "character": "orin",
+            "location": "orin_top"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_top"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_top"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "thane_garrick",
+            "location": "garrick_top"
+          },
+          {
+            "type": "npc_stay",
+            "character": "thane_garrick",
+            "location": "garrick_top"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "lord_kaelen",
+            "location": "kaelen_top"
+          },
+          {
+            "type": "npc_stay",
+            "character": "lord_kaelen",
+            "location": "kaelen_top"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_top"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_top"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "captain_maren",
+            "location": "maren_top"
+          },
+          {
+            "type": "npc_stay",
+            "character": "captain_maren",
+            "location": "maren_top"
+          },
+          {
+            "type": "npc_despawn",
+            "character": "expedition_researcher_1"
+          },
+          {
+            "type": "npc_despawn",
+            "character": "expedition_researcher_2"
+          },
+          {
+            "type": "npc_despawn",
+            "character": "expedition_researcher_3"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          }
+        ]
+      },
+      {
+        "id": "escape",
+        "objective": "Get everyone out: climb the stair to the surface",
+        "target": "dig_top",
+        "checkpoint": "landing",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "The others have gone ahead. Take Elara up the stair to the camp."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "dig_top"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_top"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_top"
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s19_aftermath"
+          }
+        ]
+      },
+      {
+        "id": "aftermath",
+        "checkpoint": "dig_top",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s19_aftermath"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s019_end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "checkpoint": "dig_top",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s019_end"
+        },
+        "on_complete": [
+          {
+            "type": "set_flag",
+            "flag": "mc001_first_divergence"
+          },
+          {
+            "type": "set_flag",
+            "flag": "elara_rescued"
+          },
+          {
+            "type": "set_flag",
+            "flag": "gateway_temporal_branch_recorded"
+          },
+          {
+            "type": "set_flag",
+            "flag": "first_gateway_closed"
+          },
+          {
+            "type": "set_value",
+            "key": "primordial_steve_multiversal_travel_unlocked",
+            "value": 0
+          },
+          {
+            "type": "title",
+            "title": "Quest Complete",
+            "subtitle": "An Impossible Door"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7,
+            "pitch": 1.0
+          },
+          {
+            "type": "journal",
+            "id": "s19_journal"
+          },
+          {
+            "type": "message",
+            "text": "The gateway beneath the monument has closed. Everyone made it out."
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s019.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [],
+    "area_triggers": [
+      {
+        "id": "s19_debris_1",
+        "location": "stone_2",
+        "stages": [
+          "traverse"
+        ],
+        "actions": [
+          {
+            "type": "world_change",
+            "id": "mc001_s019_debris_1"
+          },
+          {
+            "type": "shake",
+            "intensity": 0.18,
+            "ticks": 25
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.deepslate.break",
+            "volume": 1.0,
+            "pitch": 0.6
+          },
+          {
+            "type": "say",
+            "character": "orin",
+            "text": "Keep to the stone! The rings will hold you!"
+          }
+        ]
+      },
+      {
+        "id": "s19_debris_2",
+        "location": "stone_4",
+        "stages": [
+          "traverse"
+        ],
+        "actions": [
+          {
+            "type": "world_change",
+            "id": "mc001_s019_debris_2"
+          },
+          {
+            "type": "shake",
+            "intensity": 0.18,
+            "ticks": 25
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.deepslate.break",
+            "volume": 1.0,
+            "pitch": 0.6
+          }
+        ]
+      },
+      {
+        "id": "s19_debris_3",
+        "location": "stone_6",
+        "stages": [
+          "traverse"
+        ],
+        "actions": [
+          {
+            "type": "world_change",
+            "id": "mc001_s019_debris_3"
+          },
+          {
+            "type": "shake",
+            "intensity": 0.18,
+            "ticks": 25
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.deepslate.break",
+            "volume": 1.0,
+            "pitch": 0.6
+          },
+          {
+            "type": "say",
+            "character": "bram",
+            "text": "Steve! Get them out!"
+          }
+        ]
+      },
+      {
+        "id": "s19_fell",
+        "location": "pool",
+        "stages": [
+          "traverse"
+        ],
+        "actions": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "You've fallen into the pool. Swim to the ladder at the landing's west end and climb back up."
+          }
+        ]
+      },
+      {
+        "id": "s19_stair_tremor",
+        "location": "mid_stair",
+        "stages": [
+          "escape"
+        ],
+        "actions": [
+          {
+            "type": "shake",
+            "intensity": 0.08,
+            "ticks": 30
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.gravel.fall",
+            "volume": 0.8,
+            "pitch": 0.6
+          }
+        ]
+      }
+    ],
+    "chatter": []
+  },
+  "dialogues": {
+    "s19_pylon": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "orin",
+          "text": "These channels feed the ring. Every one of them."
+        }
+      }
+    },
+    "s19_console": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "thane_garrick",
+          "text": "The bridge was built to carry weight. Something heavy was moved across it once."
+        }
+      }
+    },
+    "s19_base": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "sahir",
+          "text": "Same glyphs as the Sunspire wall. 'In its hour.'"
+        }
+      }
+    },
+    "s19_rings": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "orin",
+          "text": "Nobody touch anything.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "bram",
+          "text": "Nobody is touching anything!",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "sahir",
+          "text": "The structure is responding to something.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "primordial_steve",
+          "text": "The compass?",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "orin",
+          "text": "I don't think the compass is causing this."
+        }
+      }
+    },
+    "s19_surface": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "primordial_steve",
+          "text": "What... is that?",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "orin",
+          "text": "I don't know.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "sahir",
+          "text": "None of the records described anything like this.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "elara",
+          "text": "Steve, we have to leave.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "primordial_steve",
+          "text": "I can see something.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "elara",
+          "text": "Steve!"
+        }
+      }
+    },
+    "s19_collapse": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "elara",
+          "text": "Steve! The bridge is collapsing!",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "orin",
+          "text": "The gateway's overloading! We need to evacuate!",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "primordial_steve",
+          "text": "Elara, I'm coming!",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "elara",
+          "text": "No! You'll get trapped too!",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "primordial_steve",
+          "text": "I'm not leaving you!",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "bram",
+          "text": "Come on, everyone! Move!",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "liora",
+          "text": "The upper passage is clear!",
+          "next": "l07"
+        },
+        "l07": {
+          "speaker": "thane_garrick",
+          "text": "My engineers will hold the supports!"
+        }
+      }
+    },
+    "s19_rescue": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "primordial_steve",
+          "text": "Take my hand!",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "elara",
+          "text": "The floor's going!",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "primordial_steve",
+          "text": "I've got you."
+        }
+      }
+    },
+    "s19_stars": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "primordial_steve",
+          "text": "Those stars...",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "What about them?",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "primordial_steve",
+          "text": "I've never seen them before."
+        }
+      }
+    },
+    "s19_after": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "elara",
+          "text": "Steve? Are you alright?",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "Yeah... I think so."
+        }
+      }
+    },
+    "s19_aftermath": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "bram",
+          "text": "Everyone still alive?",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "orin",
+          "text": "I think so.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "primordial_steve",
+          "text": "What did we just see?",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "sahir",
+          "text": "Something our ancestors may have understood.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "thane_garrick",
+          "text": "Then why did they seal it?",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "lord_kaelen",
+          "text": "Perhaps because they knew exactly what would happen if it opened.",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "primordial_steve",
+          "text": "Or because they were afraid of something they couldn't explain.",
+          "next": "l07"
+        },
+        "l07": {
+          "speaker": "liora",
+          "text": "Either way, we cannot pretend this didn't happen."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s019_enter": {
+      "duration": 200,
+      "fade_in": 15,
+      "fade_out": 10,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            20.0,
+            -37.0,
+            -34.0
+          ],
+          "yaw": -180.0,
+          "pitch": -18.4,
+          "fov": 66
+        },
+        {
+          "t": 110,
+          "pos": [
+            12.0,
+            -34.0,
+            -40.0
+          ],
+          "yaw": -146.3,
+          "pitch": -7.9,
+          "fov": 60
+        },
+        {
+          "t": 200,
+          "pos": [
+            28.0,
+            -33.0,
+            -42.0
+          ],
+          "yaw": 141.3,
+          "pitch": -4.5,
+          "fov": 56
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 10,
+          "duration": 100,
+          "text": "The First Gateway chamber",
+          "style": "caption"
+        },
+        {
+          "t": 115,
+          "duration": 80,
+          "text": "Quest: An Impossible Door",
+          "style": "title"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:ambient.cave",
+          "volume": 0.6,
+          "pitch": 0.8
+        },
+        {
+          "t": 60,
+          "sound": "minecraft:block.beacon.ambient",
+          "volume": 0.5,
+          "pitch": 0.5
+        }
+      ]
+    },
+    "mc001_s019_rings": {
+      "duration": 180,
+      "fade_in": 8,
+      "fade_out": 8,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            20.0,
+            -36.5,
+            -38.0
+          ],
+          "yaw": -180.0,
+          "pitch": -21.4,
+          "fov": 62
+        },
+        {
+          "t": 180,
+          "pos": [
+            20.0,
+            -35.0,
+            -41.0
+          ],
+          "yaw": -180.0,
+          "pitch": -20.0,
+          "fov": 52
+        }
+      ],
+      "shakes": [
+        {
+          "t": 40,
+          "duration": 60,
+          "intensity": 0.12
+        }
+      ],
+      "sounds": [
+        {
+          "t": 20,
+          "sound": "minecraft:block.grindstone.use",
+          "volume": 1.0,
+          "pitch": 0.4
+        },
+        {
+          "t": 50,
+          "sound": "minecraft:block.beacon.activate",
+          "volume": 1.0,
+          "pitch": 0.5
+        },
+        {
+          "t": 120,
+          "sound": "minecraft:block.amethyst_block.resonate",
+          "volume": 1.0,
+          "pitch": 0.6
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 30,
+          "duration": 120,
+          "text": "The inner ring begins to turn. Light runs along the channels.",
+          "style": "caption"
+        }
+      ],
+      "cues": [
+        {
+          "t": 2,
+          "actions": [
+            {
+              "type": "teleport_player",
+              "location": "landing",
+              "yaw": 180
+            }
+          ]
+        },
+        {
+          "t": 50,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s019_rings"
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s019_surface": {
+      "duration": 160,
+      "fade_in": 6,
+      "fade_out": 8,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            20.0,
+            -35.5,
+            -41.0
+          ],
+          "yaw": -180.0,
+          "pitch": -22.2,
+          "fov": 55
+        },
+        {
+          "t": 160,
+          "pos": [
+            20.0,
+            -33.5,
+            -46.0
+          ],
+          "yaw": -180.0,
+          "pitch": -22.6,
+          "fov": 44
+        }
+      ],
+      "sounds": [
+        {
+          "t": 15,
+          "sound": "minecraft:block.portal.trigger",
+          "volume": 0.5,
+          "pitch": 1.6
+        },
+        {
+          "t": 30,
+          "sound": "minecraft:block.end_portal.spawn",
+          "volume": 0.6,
+          "pitch": 1.2
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 30,
+          "duration": 110,
+          "text": "A luminous surface forms inside the ring.",
+          "style": "caption"
+        }
+      ],
+      "cues": [
+        {
+          "t": 30,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s019_portal_on"
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "gateway",
+              "count": 40,
+              "spread": 4
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s019_collapse": {
+      "duration": 150,
+      "fade_in": 4,
+      "fade_out": 8,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            20.0,
+            -36.0,
+            -38.5
+          ],
+          "yaw": -180.0,
+          "pitch": 48.8,
+          "fov": 64
+        },
+        {
+          "t": 80,
+          "pos": [
+            17.0,
+            -35.0,
+            -39.0
+          ],
+          "yaw": -164.7,
+          "pitch": 14.7,
+          "fov": 66
+        },
+        {
+          "t": 150,
+          "pos": [
+            21.0,
+            -35.5,
+            -39.0
+          ],
+          "yaw": 177.5,
+          "pitch": 6.2,
+          "fov": 58
+        }
+      ],
+      "shakes": [
+        {
+          "t": 0,
+          "duration": 70,
+          "intensity": 0.45
+        },
+        {
+          "t": 90,
+          "duration": 40,
+          "intensity": 0.25
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:entity.generic.explode",
+          "volume": 0.7,
+          "pitch": 0.5
+        },
+        {
+          "t": 20,
+          "sound": "minecraft:block.deepslate.break",
+          "volume": 1.0,
+          "pitch": 0.5
+        },
+        {
+          "t": 40,
+          "sound": "minecraft:entity.generic.splash",
+          "volume": 1.0,
+          "pitch": 0.6
+        },
+        {
+          "t": 95,
+          "sound": "minecraft:block.stone.break",
+          "volume": 1.0,
+          "pitch": 0.5
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 10,
+          "duration": 70,
+          "text": "A pulse from the gateway. The bridge's middle falls into the chasm.",
+          "style": "caption"
+        },
+        {
+          "t": 90,
+          "duration": 55,
+          "text": "Stone comes down across the alcove where Elara is working.",
+          "style": "caption"
+        }
+      ],
+      "cues": [
+        {
+          "t": 15,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s019_bridge_falls"
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:cloud",
+              "location": "bridge_head",
+              "count": 30,
+              "spread": 2.5
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s019_stars": {
+      "duration": 150,
+      "fade_in": 6,
+      "fade_out": 6,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            20.0,
+            -36.0,
+            -40.0
+          ],
+          "yaw": -180.0,
+          "pitch": -22.6,
+          "fov": 50
+        },
+        {
+          "t": 150,
+          "pos": [
+            20.0,
+            -33.0,
+            -46.0
+          ],
+          "yaw": -180.0,
+          "pitch": -18.4,
+          "fov": 40
+        }
+      ],
+      "sounds": [
+        {
+          "t": 10,
+          "sound": "minecraft:block.beacon.ambient",
+          "volume": 1.0,
+          "pitch": 0.6
+        },
+        {
+          "t": 40,
+          "sound": "minecraft:block.amethyst_block.chime",
+          "volume": 0.8,
+          "pitch": 0.5
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 25,
+          "duration": 110,
+          "text": "In the ring: a horizon of unfamiliar stars.",
+          "style": "caption"
+        }
+      ],
+      "cues": [
+        {
+          "t": 20,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s019_portal_stars"
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s019_closing": {
+      "duration": 200,
+      "fade_in": 4,
+      "fade_out": 12,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            20.0,
+            -35.5,
+            -40.0
+          ],
+          "yaw": -180.0,
+          "pitch": 22.6,
+          "fov": 60
+        },
+        {
+          "t": 50,
+          "pos": [
+            20.3,
+            -35.4,
+            -40.2
+          ],
+          "yaw": 177.0,
+          "pitch": 24.1,
+          "fov": 66,
+          "roll": 2.5
+        },
+        {
+          "t": 80,
+          "pos": [
+            19.7,
+            -35.6,
+            -40.0
+          ],
+          "yaw": -177.1,
+          "pitch": 21.8,
+          "fov": 58,
+          "roll": -2.0
+        },
+        {
+          "t": 130,
+          "pos": [
+            20.0,
+            -35.0,
+            -41.0
+          ],
+          "yaw": -180.0,
+          "pitch": -15.3,
+          "fov": 52
+        },
+        {
+          "t": 200,
+          "pos": [
+            20.0,
+            -34.0,
+            -43.0
+          ],
+          "yaw": -180.0,
+          "pitch": -18.4,
+          "fov": 46
+        }
+      ],
+      "effects": [
+        {
+          "t": 40,
+          "duration": 14,
+          "shader": "realitiesofdreams:shaders/post/divergence.json"
+        },
+        {
+          "t": 60,
+          "duration": 22,
+          "shader": "realitiesofdreams:shaders/post/divergence.json"
+        }
+      ],
+      "shakes": [
+        {
+          "t": 38,
+          "duration": 46,
+          "intensity": 0.2
+        },
+        {
+          "t": 140,
+          "duration": 30,
+          "intensity": 0.3
+        }
+      ],
+      "sounds": [
+        {
+          "t": 30,
+          "sound": "minecraft:block.respawn_anchor.charge",
+          "volume": 0.9,
+          "pitch": 0.5
+        },
+        {
+          "t": 40,
+          "sound": "minecraft:block.amethyst_block.resonate",
+          "volume": 1.0,
+          "pitch": 0.5
+        },
+        {
+          "t": 60,
+          "sound": "minecraft:block.amethyst_block.resonate",
+          "volume": 1.0,
+          "pitch": 0.53
+        },
+        {
+          "t": 140,
+          "sound": "minecraft:block.end_portal_frame.fill",
+          "volume": 1.0,
+          "pitch": 0.5
+        },
+        {
+          "t": 150,
+          "sound": "minecraft:block.beacon.deactivate",
+          "volume": 1.0,
+          "pitch": 0.6
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 140,
+          "duration": 55,
+          "text": "The surface collapses inward and is gone.",
+          "style": "caption"
+        }
+      ],
+      "cues": [
+        {
+          "t": 42,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s019_echo_1"
+            }
+          ]
+        },
+        {
+          "t": 52,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s019_echo_2"
+            }
+          ]
+        },
+        {
+          "t": 64,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s019_echo_3"
+            }
+          ]
+        },
+        {
+          "t": 80,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s019_echo_4"
+            }
+          ]
+        },
+        {
+          "t": 85,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_first_divergence"
+            }
+          ]
+        },
+        {
+          "t": 145,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s019_portal_off"
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:reverse_portal",
+              "location": "gateway",
+              "count": 60,
+              "spread": 3
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s019_end": {
+      "duration": 200,
+      "fade_in": 20,
+      "fade_out": 30,
+      "hide_player": true,
+      "hold_black": 40,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            20.0,
+            -36.0,
+            -40.0
+          ],
+          "yaw": -180.0,
+          "pitch": -45.0,
+          "fov": 55
+        },
+        {
+          "t": 170,
+          "pos": [
+            20.0,
+            -30.0,
+            -46.0
+          ],
+          "yaw": -180.0,
+          "pitch": -45.0,
+          "fov": 40
+        }
+      ],
+      "dips": [
+        {
+          "t": 170,
+          "duration": 30
+        }
+      ],
+      "sounds": [
+        {
+          "t": 60,
+          "sound": "minecraft:block.beacon.ambient",
+          "volume": 0.4,
+          "pitch": 0.5
+        },
+        {
+          "t": 120,
+          "sound": "minecraft:block.piston.contract",
+          "volume": 0.5,
+          "pitch": 0.3
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 50,
+          "duration": 60,
+          "text": "The keystone pulses once, almost too faint to hear.",
+          "style": "caption"
+        },
+        {
+          "t": 115,
+          "duration": 50,
+          "text": "Deep beneath the chamber, something answers.",
+          "style": "caption"
+        }
+      ],
+      "cues": [
+        {
+          "t": 60,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:glow",
+              "location": "gateway",
+              "count": 8,
+              "spread": 0.5
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "journal": {
+    "s19_journal": {
+      "title": "The Door That Should Not Open",
+      "text": "The gateway woke while we were all in the chamber. The rings turned, and a bright surface filled the ring. Then the bridge fell and stone came down over Elara in the alcove behind it. I crossed on the stepping stones, dug her out and laid timber where the bridge had been. When we reached the landing the ring was full of stars none of us had ever seen. Then it closed, and only a faint blue light stayed in the keystone. Everyone made it out. Nobody can say what we saw."
+    }
+  }
+}

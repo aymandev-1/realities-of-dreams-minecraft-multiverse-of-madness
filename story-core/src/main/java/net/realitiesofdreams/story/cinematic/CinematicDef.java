@@ -10,7 +10,22 @@ import java.util.List;
 /** A scripted camera sequence. Positions are relative to the scene anchor; times are in ticks. */
 public record CinematicDef(String id, int duration, List<Keyframe> keyframes, List<Subtitle> subtitles,
                            List<Shake> shakes, List<SoundCue> sounds, int fadeIn, int fadeOut, boolean letterbox,
-                           boolean skippable, int holdBlack, List<Dip> dips, List<Cue> cues, boolean hidePlayer) {
+                           boolean skippable, int holdBlack, List<Dip> dips, List<Cue> cues, boolean hidePlayer,
+                           List<PostEffect> effects) {
+
+    /**
+     * A full-screen post effect (a Minecraft post chain, such as "realitiesofdreams:shaders/post/divergence.json")
+     * shown for part of the cinematic. Purely visual: if the client cannot load it, the cinematic plays without it.
+     */
+    public record PostEffect(double start, double duration, String shader) {
+        static PostEffect fromJson(JsonObject o) {
+            return new PostEffect(Json.number(o, "t", 0), Json.number(o, "duration", 20), Json.req(o, "shader", "post effect"));
+        }
+
+        public boolean activeAt(double t) {
+            return t >= start && t < start + duration;
+        }
+    }
 
     /** A brief dip to black, used to cut the camera to a new place. */
     public record Dip(double start, double duration) {
@@ -70,6 +85,7 @@ public record CinematicDef(String id, int duration, List<Keyframe> keyframes, Li
                 Json.list(o, "shakes", Shake::fromJson), Json.list(o, "sounds", SoundCue::fromJson),
                 Json.integer(o, "fade_in", 20), Json.integer(o, "fade_out", 20), Json.bool(o, "letterbox", true),
                 Json.bool(o, "skippable", true), Json.integer(o, "hold_black", 0), Json.list(o, "dips", Dip::fromJson),
-                Json.list(o, "cues", Cue::fromJson), Json.bool(o, "hide_player", false));
+                Json.list(o, "cues", Cue::fromJson), Json.bool(o, "hide_player", false),
+                Json.list(o, "effects", PostEffect::fromJson));
     }
 }

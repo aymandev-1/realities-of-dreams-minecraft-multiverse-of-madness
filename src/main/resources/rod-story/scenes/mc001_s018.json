@@ -1,0 +1,1992 @@
+{
+  "scene": {
+    "id": "mc001_s018",
+    "title": "Beneath the Ancient Stone",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 18,
+    "canon_status": "Saga 1 revised screenplay, Version 2 (docs/story/SAGA_1_SCENES_012_019_REVISED.md): spoken dialogue verbatim. Hints, captions, item names and the outcome message are gameplay text.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "gateway_chamber",
+    "anchor": [
+      40,
+      108,
+      -200
+    ],
+    "arrival": {
+      "pos": [
+        14,
+        0,
+        8
+      ],
+      "yaw": -90
+    },
+    "next_scene": "mc001_s019",
+    "locations": {
+      "camp": {
+        "pos": [
+          14,
+          0,
+          8
+        ],
+        "radius": 2
+      },
+      "elara_camp": {
+        "pos": [
+          16,
+          0,
+          6
+        ],
+        "radius": 1
+      },
+      "bram_camp": {
+        "pos": [
+          12,
+          0,
+          6
+        ],
+        "radius": 1
+      },
+      "orin_camp": {
+        "pos": [
+          16,
+          0,
+          12
+        ],
+        "radius": 1
+      },
+      "garrick_camp": {
+        "pos": [
+          22,
+          0,
+          9
+        ],
+        "radius": 1
+      },
+      "sahir_camp": {
+        "pos": [
+          13,
+          0,
+          11
+        ],
+        "radius": 1
+      },
+      "liora_camp": {
+        "pos": [
+          10,
+          0,
+          13
+        ],
+        "radius": 1
+      },
+      "kaelen_camp": {
+        "pos": [
+          26,
+          0,
+          4
+        ],
+        "radius": 1
+      },
+      "maren_camp": {
+        "pos": [
+          24,
+          0,
+          4
+        ],
+        "radius": 1
+      },
+      "kaelen_guard": {
+        "pos": [
+          27,
+          0,
+          6
+        ],
+        "radius": 1
+      },
+      "kaelen_guard_2": {
+        "pos": [
+          27,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "w1a": {
+        "pos": [
+          18,
+          0,
+          16
+        ],
+        "radius": 1
+      },
+      "w1b": {
+        "pos": [
+          22,
+          0,
+          11
+        ],
+        "radius": 1
+      },
+      "w2": {
+        "pos": [
+          23,
+          0,
+          13
+        ],
+        "radius": 1
+      },
+      "w3a": {
+        "pos": [
+          10,
+          0,
+          4
+        ],
+        "radius": 1
+      },
+      "w3b": {
+        "pos": [
+          20,
+          0,
+          4
+        ],
+        "radius": 1
+      },
+      "w4": {
+        "pos": [
+          11,
+          0,
+          15
+        ],
+        "radius": 1
+      },
+      "eng1": {
+        "pos": [
+          23,
+          0,
+          14
+        ],
+        "radius": 1
+      },
+      "eng2": {
+        "pos": [
+          16,
+          0,
+          14
+        ],
+        "radius": 1
+      },
+      "ranger_a": {
+        "pos": [
+          4,
+          0,
+          18
+        ],
+        "radius": 1
+      },
+      "ranger_b": {
+        "pos": [
+          -6,
+          0,
+          20
+        ],
+        "radius": 1
+      },
+      "sailor_a": {
+        "pos": [
+          6,
+          0,
+          10
+        ],
+        "radius": 1
+      },
+      "sailor_b": {
+        "pos": [
+          6,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "res1": {
+        "pos": [
+          11,
+          0,
+          9
+        ],
+        "radius": 1
+      },
+      "res2": {
+        "pos": [
+          12,
+          0,
+          10
+        ],
+        "radius": 1
+      },
+      "res3": {
+        "pos": [
+          18,
+          0,
+          9
+        ],
+        "radius": 1
+      },
+      "dig_top": {
+        "pos": [
+          20,
+          0,
+          14
+        ],
+        "radius": 2
+      },
+      "upper_stair": {
+        "pos": [
+          20,
+          -9,
+          3
+        ],
+        "radius": 2
+      },
+      "gap_edge": {
+        "pos": [
+          20,
+          -25,
+          -13
+        ],
+        "radius": 2
+      },
+      "team_gather": {
+        "pos": [
+          20,
+          -22,
+          -10
+        ],
+        "radius": 1
+      },
+      "lower_stair": {
+        "pos": [
+          20,
+          -33,
+          -21
+        ],
+        "radius": 2
+      },
+      "hall_entry": {
+        "pos": [
+          20,
+          -39,
+          -29
+        ],
+        "radius": 2
+      },
+      "hall_centre": {
+        "pos": [
+          20,
+          -39,
+          -30
+        ],
+        "radius": 5
+      },
+      "elara_hall": {
+        "pos": [
+          18,
+          -39,
+          -29
+        ],
+        "radius": 1
+      },
+      "bram_hall": {
+        "pos": [
+          22,
+          -39,
+          -29
+        ],
+        "radius": 1
+      },
+      "orin_hall": {
+        "pos": [
+          12,
+          -39,
+          -31
+        ],
+        "radius": 1
+      },
+      "garrick_hall": {
+        "pos": [
+          26,
+          -39,
+          -30
+        ],
+        "radius": 1
+      },
+      "sahir_hall": {
+        "pos": [
+          14,
+          -39,
+          -29
+        ],
+        "radius": 1
+      },
+      "liora_hall": {
+        "pos": [
+          28,
+          -39,
+          -29
+        ],
+        "radius": 1
+      },
+      "kaelen_hall": {
+        "pos": [
+          30,
+          -39,
+          -33
+        ],
+        "radius": 1
+      },
+      "res1_hall": {
+        "pos": [
+          10,
+          -39,
+          -33
+        ],
+        "radius": 1
+      },
+      "res2_hall": {
+        "pos": [
+          31,
+          -39,
+          -28
+        ],
+        "radius": 1
+      },
+      "res3_hall": {
+        "pos": [
+          16,
+          -39,
+          -33
+        ],
+        "radius": 1
+      },
+      "door_front": {
+        "pos": [
+          18,
+          -39,
+          -34
+        ],
+        "radius": 2
+      },
+      "landing": {
+        "pos": [
+          20,
+          -39,
+          -37
+        ],
+        "radius": 2
+      },
+      "dais": {
+        "pos": [
+          20,
+          -39,
+          -48
+        ],
+        "radius": 3
+      },
+      "elara_land": {
+        "pos": [
+          19,
+          -39,
+          -38
+        ],
+        "radius": 1
+      },
+      "bram_land": {
+        "pos": [
+          23,
+          -39,
+          -36
+        ],
+        "radius": 1
+      },
+      "orin_land": {
+        "pos": [
+          14,
+          -39,
+          -38
+        ],
+        "radius": 1
+      },
+      "sahir_land": {
+        "pos": [
+          25,
+          -39,
+          -37
+        ],
+        "radius": 1
+      },
+      "garrick_land": {
+        "pos": [
+          27,
+          -39,
+          -38
+        ],
+        "radius": 1
+      },
+      "liora_land": {
+        "pos": [
+          11,
+          -39,
+          -37
+        ],
+        "radius": 1
+      },
+      "kaelen_land": {
+        "pos": [
+          29,
+          -39,
+          -37
+        ],
+        "radius": 1
+      },
+      "pedestal": {
+        "pos": [
+          17,
+          -39,
+          -37
+        ],
+        "radius": 1
+      },
+      "gateway": {
+        "pos": [
+          20,
+          -31,
+          -52
+        ],
+        "radius": 2
+      }
+    },
+    "npcs": [
+      {
+        "character": "captain_maren",
+        "location": "maren_camp",
+        "yaw": 180
+      },
+      {
+        "character": "veyrath_guard_1",
+        "location": "kaelen_guard",
+        "yaw": 180,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "veyrath_guard_2",
+        "location": "kaelen_guard_2",
+        "yaw": 180,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "expedition_worker_1",
+        "location": "w1a",
+        "activity": "routine",
+        "route": [
+          "w1a",
+          "w1b"
+        ],
+        "held": "minecraft:barrel"
+      },
+      {
+        "character": "expedition_worker_2",
+        "location": "w2",
+        "activity": "work",
+        "yaw": 0
+      },
+      {
+        "character": "expedition_worker_3",
+        "location": "w3a",
+        "activity": "routine",
+        "route": [
+          "w3a",
+          "w3b"
+        ]
+      },
+      {
+        "character": "expedition_worker_4",
+        "location": "w4",
+        "activity": "work",
+        "yaw": 90
+      },
+      {
+        "character": "stonecrown_engineer_2",
+        "location": "eng2",
+        "activity": "work",
+        "yaw": 180,
+        "held": "minecraft:iron_pickaxe"
+      },
+      {
+        "character": "stonecrown_engineer_1",
+        "location": "eng1",
+        "activity": "work",
+        "yaw": 180,
+        "until_stage": "conduits"
+      },
+      {
+        "character": "stonecrown_engineer_1",
+        "location": "eng1",
+        "from_stage": "conduits",
+        "activity": "work",
+        "yaw": 180
+      },
+      {
+        "character": "sylvaris_ranger_1",
+        "location": "ranger_a",
+        "activity": "patrol",
+        "route": [
+          "ranger_a",
+          "ranger_b"
+        ],
+        "held": "minecraft:bow"
+      },
+      {
+        "character": "thalassian_sailor_1",
+        "location": "sailor_a",
+        "activity": "routine",
+        "route": [
+          "sailor_a",
+          "sailor_b"
+        ]
+      },
+      {
+        "character": "expedition_researcher_1",
+        "location": "res1",
+        "yaw": 90,
+        "until_stage": "escort"
+      },
+      {
+        "character": "expedition_researcher_2",
+        "location": "res2",
+        "yaw": 90,
+        "until_stage": "escort"
+      },
+      {
+        "character": "expedition_researcher_3",
+        "location": "res3",
+        "yaw": 90,
+        "until_stage": "escort"
+      }
+    ],
+    "clues": {
+      "s18_clock": {
+        "name": "A clock that does not move",
+        "pos": [
+          10,
+          -39,
+          -29
+        ],
+        "block": "minecraft:chiseled_copper",
+        "dialogue": "s18_clock"
+      },
+      "s18_twins": {
+        "name": "Twin circles carved side by side",
+        "pos": [
+          6,
+          -37,
+          -31
+        ],
+        "block": "minecraft:chiseled_tuff",
+        "dialogue": "s18_twins"
+      },
+      "s18_warning": {
+        "name": "A warning carving",
+        "pos": [
+          34,
+          -37,
+          -31
+        ],
+        "block": "minecraft:chiseled_deepslate",
+        "dialogue": "s18_warning"
+      },
+      "s18_door_carving": {
+        "name": "The six emblems on the door",
+        "pos": [
+          20,
+          -37,
+          -35
+        ],
+        "block": "minecraft:chiseled_polished_blackstone",
+        "dialogue": "s18_carving"
+      },
+      "s18_plinth": {
+        "name": "The gateway's western plinth",
+        "pos": [
+          17,
+          -39,
+          -51
+        ],
+        "block": "minecraft:polished_deepslate",
+        "dialogue": "s18_plinth"
+      },
+      "s18_bridge_grooves": {
+        "name": "Grooves worn into the bridge",
+        "pos": [
+          20,
+          -40,
+          -42
+        ],
+        "block": "minecraft:polished_deepslate",
+        "dialogue": "s18_grooves"
+      },
+      "s18_pedestal": {
+        "name": "The compass pedestal",
+        "pos": [
+          17,
+          -39,
+          -37
+        ],
+        "block": "minecraft:chiseled_polished_blackstone"
+      },
+      "s18_lock_eldervale": {
+        "name": "The Eldervale lock stone",
+        "pos": [
+          17,
+          -39,
+          -32
+        ],
+        "block": "minecraft:chiseled_stone_bricks"
+      },
+      "s18_lock_sylvaris": {
+        "name": "The Sylvaris lock stone",
+        "pos": [
+          21,
+          -39,
+          -32
+        ],
+        "block": "minecraft:oxidized_chiseled_copper"
+      },
+      "s18_lock_stonecrown": {
+        "name": "The Stonecrown lock stone",
+        "pos": [
+          25,
+          -39,
+          -32
+        ],
+        "block": "minecraft:chiseled_deepslate"
+      },
+      "s18_lock_solkar": {
+        "name": "The Solkar lock stone",
+        "pos": [
+          15,
+          -39,
+          -32
+        ],
+        "block": "minecraft:chiseled_sandstone"
+      },
+      "s18_lock_veyrath": {
+        "name": "The Veyrath lock stone",
+        "pos": [
+          23,
+          -39,
+          -32
+        ],
+        "block": "minecraft:chiseled_nether_bricks"
+      },
+      "s18_lock_thalassia": {
+        "name": "The Thalassia lock stone",
+        "pos": [
+          19,
+          -39,
+          -32
+        ],
+        "block": "minecraft:dark_prismarine"
+      }
+    },
+    "stages": [
+      {
+        "id": "dawn",
+        "checkpoint": "camp",
+        "on_enter": [
+          {
+            "type": "teleport_player",
+            "location": "camp",
+            "yaw": -90
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_camp"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_camp"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_camp"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_camp"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "orin",
+            "location": "orin_camp"
+          },
+          {
+            "type": "npc_stay",
+            "character": "orin",
+            "location": "orin_camp"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "thane_garrick",
+            "location": "garrick_camp"
+          },
+          {
+            "type": "npc_stay",
+            "character": "thane_garrick",
+            "location": "garrick_camp"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_camp"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_camp"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_camp"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_camp"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "lord_kaelen",
+            "location": "kaelen_camp"
+          },
+          {
+            "type": "npc_stay",
+            "character": "lord_kaelen",
+            "location": "kaelen_camp"
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s018_camp"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s018_camp"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s18_camp"
+          }
+        ]
+      },
+      {
+        "id": "camp_talk",
+        "checkpoint": "camp",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s18_camp"
+        }
+      },
+      {
+        "id": "secure",
+        "objective": "Secure the excavation: repair both broken supports, light the stair and clear the loose rubble",
+        "target": "dig_top",
+        "checkpoint": "dig_top",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:spruce_planks",
+            "count": 24,
+            "name": "Expedition timber",
+            "lore": "Garrick's engineers cut it to fit the old supports."
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:torch",
+            "count": 8
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:iron_pickaxe",
+            "count": 1,
+            "name": "Garrick's pick",
+            "lore": "Stonecrown steel. Mind the carvings."
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "hint",
+            "ticks": 300,
+            "text": "Green sparkles mark the work. Fit timber where the two support beams fell, set torches on the marked spots along the east wall, and break the loose rubble on the steps. Leave the carved stones in the wall alone: they are evidence."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "solid|19,-13,-4;20,-13,-4;21,-13,-4;19,-21,-12;20,-21,-12;21,-21,-12 + light|21,-5,6;21,-11,0;21,-19,-8 + air|20,-10,2;21,-11,1;19,-12,0"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.wood.place",
+            "volume": 0.8,
+            "pitch": 0.8
+          },
+          {
+            "type": "say",
+            "character": "thane_garrick",
+            "text": "The supports will hold. Mind the steps further down."
+          }
+        ]
+      },
+      {
+        "id": "gap",
+        "objective": "Rebuild the collapsed steps",
+        "target": "gap_edge",
+        "checkpoint": "upper_stair",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "Three steps have fallen away below the second support. Fill all nine marked spots with timber so the research team can get down."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "solid|19,-28,-15;20,-28,-15;21,-28,-15;19,-29,-16;20,-29,-16;21,-29,-16;19,-30,-17;20,-30,-17;21,-30,-17"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.wood.place",
+            "volume": 0.8,
+            "pitch": 0.9
+          }
+        ]
+      },
+      {
+        "id": "escort",
+        "objective": "Lead the research team down to the bottom of the stair",
+        "target": "hall_entry",
+        "checkpoint": "gap_edge",
+        "on_enter": [
+          {
+            "type": "npc_spawn",
+            "character": "expedition_researcher_1",
+            "location": "team_gather"
+          },
+          {
+            "type": "npc_stay",
+            "character": "expedition_researcher_1",
+            "location": "team_gather"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "expedition_researcher_2",
+            "location": "team_gather"
+          },
+          {
+            "type": "npc_stay",
+            "character": "expedition_researcher_2",
+            "location": "team_gather"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "expedition_researcher_3",
+            "location": "team_gather"
+          },
+          {
+            "type": "npc_stay",
+            "character": "expedition_researcher_3",
+            "location": "team_gather"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "orin",
+            "location": "team_gather"
+          },
+          {
+            "type": "npc_stay",
+            "character": "orin",
+            "location": "team_gather"
+          },
+          {
+            "type": "npc_follow",
+            "character": "orin"
+          },
+          {
+            "type": "npc_follow",
+            "character": "expedition_researcher_1"
+          },
+          {
+            "type": "npc_follow",
+            "character": "expedition_researcher_2"
+          },
+          {
+            "type": "npc_follow",
+            "character": "expedition_researcher_3"
+          },
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Orin and the first research team have come down behind you. Lead them to the foot of the stair."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "hall_entry"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "orin",
+            "location": "orin_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "orin",
+            "location": "orin_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "thane_garrick",
+            "location": "garrick_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "thane_garrick",
+            "location": "garrick_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "lord_kaelen",
+            "location": "kaelen_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "lord_kaelen",
+            "location": "kaelen_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "expedition_researcher_1",
+            "location": "res1_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "expedition_researcher_1",
+            "location": "res1_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "expedition_researcher_2",
+            "location": "res2_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "expedition_researcher_2",
+            "location": "res2_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "expedition_researcher_3",
+            "location": "res3_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "expedition_researcher_3",
+            "location": "res3_hall"
+          }
+        ]
+      },
+      {
+        "id": "conduits",
+        "objective": "Fit the three copper hearts into the empty conduit sockets",
+        "target": "hall_centre",
+        "checkpoint": "hall_entry",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:copper_block",
+            "count": 3,
+            "name": "Conduit heart",
+            "lore": "Copper cut by Garrick's engineers to the Builders' measure."
+          },
+          {
+            "type": "hint",
+            "ticks": 240,
+            "text": "The copper channels in the floor run to three empty sockets on pedestals: one at each end of the hall and one before the door. Place a conduit heart in each."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "minecraft:copper_block|8,-38,-30;32,-38,-30;20,-38,-33"
+        },
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s018_conduits"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.beacon.activate",
+            "volume": 0.9,
+            "pitch": 0.6
+          },
+          {
+            "type": "shake",
+            "intensity": 0.05,
+            "ticks": 30
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s18_conduits"
+          }
+        ]
+      },
+      {
+        "id": "conduits_talk",
+        "checkpoint": "hall_entry",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s18_conduits"
+        }
+      },
+      {
+        "id": "clocks",
+        "objective": "Investigate the three Builder devices in the Hall of Still Clocks",
+        "target": "hall_centre",
+        "checkpoint": "hall_entry",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Look for a clock that does not move, and the carvings in the hall's two end walls."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s18_clock,s18_twins,s18_warning"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s18_symbols"
+          }
+        ]
+      },
+      {
+        "id": "symbols_talk",
+        "checkpoint": "hall_entry",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s18_symbols"
+        }
+      },
+      {
+        "id": "carving",
+        "objective": "Read the carving on the sealed door",
+        "target": "door_front",
+        "checkpoint": "hall_entry",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "The six emblems are carved in a ring at the centre of the great door."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s18_door_carving"
+        }
+      },
+      {
+        "id": "locks",
+        "objective": "Press the six lock stones in the order the door shows",
+        "target": "door_front",
+        "checkpoint": "hall_entry",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 280,
+            "text": "Start with Eldervale's stone and go sunwise round the door: Eldervale, Sylvaris, Stonecrown, Solkar, Veyrath, Thalassia. Each lock stone is the same stone as that kingdom's fragment."
+          }
+        ],
+        "complete": {
+          "type": "sequence",
+          "value": "s18_lock_eldervale,s18_lock_sylvaris,s18_lock_stonecrown,s18_lock_solkar,s18_lock_veyrath,s18_lock_thalassia"
+        },
+        "on_wrong": [
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "The stones grind back into place. Begin again with Eldervale's."
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.grindstone.use",
+            "volume": 0.7,
+            "pitch": 0.6
+          }
+        ],
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s018_door"
+          }
+        ]
+      },
+      {
+        "id": "door",
+        "checkpoint": "hall_entry",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s018_door"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s18_door"
+          }
+        ]
+      },
+      {
+        "id": "door_talk",
+        "checkpoint": "hall_entry",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s18_door"
+        },
+        "on_complete": [
+          {
+            "type": "npc_move",
+            "character": "orin",
+            "location": "orin_land"
+          },
+          {
+            "type": "npc_move",
+            "character": "thane_garrick",
+            "location": "garrick_land"
+          },
+          {
+            "type": "npc_move",
+            "character": "sahir",
+            "location": "sahir_land"
+          },
+          {
+            "type": "npc_move",
+            "character": "liora",
+            "location": "liora_land"
+          },
+          {
+            "type": "npc_move",
+            "character": "lord_kaelen",
+            "location": "kaelen_land"
+          },
+          {
+            "type": "npc_move",
+            "character": "elara",
+            "location": "elara_land"
+          },
+          {
+            "type": "npc_move",
+            "character": "bram",
+            "location": "bram_land"
+          }
+        ]
+      },
+      {
+        "id": "enter",
+        "objective": "Go through the door",
+        "target": "landing",
+        "checkpoint": "hall_entry",
+        "complete": {
+          "type": "reach",
+          "value": "landing"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s18_chamber"
+          }
+        ]
+      },
+      {
+        "id": "chamber_talk",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s18_chamber"
+        }
+      },
+      {
+        "id": "survey",
+        "objective": "Survey the gateway's supports and the old bridge",
+        "target": "dais",
+        "checkpoint": "landing",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Cross the bridge to the dais. Examine the grooves in the bridge and the plinth under the gateway's west side."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s18_bridge_grooves,s18_plinth"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s18_survive"
+          }
+        ]
+      },
+      {
+        "id": "survive_talk",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s18_survive"
+        }
+      },
+      {
+        "id": "pedestal",
+        "objective": "Examine the pedestal on the landing",
+        "target": "pedestal",
+        "checkpoint": "landing",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 180,
+            "text": "Back on the landing, a pedestal like the one in the courtyard above stands west of the door."
+          },
+          {
+            "type": "hold_item",
+            "item": "minecraft:compass"
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s18_pedestal"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s18_compass"
+          }
+        ]
+      },
+      {
+        "id": "compass_talk",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s18_compass"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s018_end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "checkpoint": "landing",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s018_end"
+        },
+        "on_complete": [
+          {
+            "type": "title",
+            "title": "Quest Complete",
+            "subtitle": "The Sealed Chamber"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7,
+            "pitch": 1.0
+          },
+          {
+            "type": "journal",
+            "id": "s18_journal"
+          },
+          {
+            "type": "message",
+            "text": "The door beneath the monument is open."
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.gateway.chamber_opened"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s018.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "s18_amb_rope",
+        "character": "expedition_worker_2",
+        "dialogue": "s18_amb_rope",
+        "radius": 5,
+        "talk_radius": 5,
+        "approach": false,
+        "stages": [
+          "camp_talk",
+          "secure"
+        ],
+        "priority": 1,
+        "ambient": true
+      },
+      {
+        "id": "s18_amb_ranger",
+        "character": "sylvaris_ranger_1",
+        "dialogue": "s18_amb_ranger",
+        "radius": 5,
+        "talk_radius": 5,
+        "approach": false,
+        "stages": [
+          "camp_talk",
+          "secure"
+        ],
+        "priority": 1,
+        "ambient": true
+      },
+      {
+        "id": "s18_amb_eng",
+        "character": "stonecrown_engineer_2",
+        "dialogue": "s18_amb_eng",
+        "radius": 5,
+        "talk_radius": 5,
+        "approach": false,
+        "stages": [
+          "secure",
+          "gap"
+        ],
+        "priority": 1,
+        "ambient": true
+      }
+    ],
+    "area_triggers": [
+      {
+        "id": "s18_descent_talk",
+        "location": "lower_stair",
+        "stages": [
+          "escort"
+        ],
+        "actions": [
+          {
+            "type": "start_dialogue",
+            "id": "s18_descent"
+          }
+        ]
+      }
+    ],
+    "chatter": []
+  },
+  "dialogues": {
+    "s18_camp": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "bram",
+          "text": "I've never seen so many people working together.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "elara",
+          "text": "Let's hope they stay that way.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "orin",
+          "text": "They will if nobody touches the wrong thing.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "primordial_steve",
+          "text": "You keep saying that.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "orin",
+          "text": "And you keep reaching toward mysterious glowing stones.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "primordial_steve",
+          "text": "Fair point.",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "thane_garrick",
+          "text": "My engineers found an entrance beneath the eastern foundation.",
+          "next": "l07"
+        },
+        "l07": {
+          "speaker": "sahir",
+          "text": "Does it match the plans?",
+          "next": "l08"
+        },
+        "l08": {
+          "speaker": "thane_garrick",
+          "text": "Too closely for coincidence."
+        }
+      }
+    },
+    "s18_descent": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "elara",
+          "text": "The air feels different down here.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "Colder?",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "elara",
+          "text": "Still. Like nobody's disturbed it in centuries.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "bram",
+          "text": "Let's keep it that way.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "orin",
+          "text": "We came here specifically to disturb it.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "bram",
+          "text": "You know what I mean."
+        }
+      }
+    },
+    "s18_conduits": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "thane_garrick",
+          "text": "Copper channels, older than any mine of mine. And they're humming.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "The deep note. The Sunspire pages spoke of it."
+        }
+      }
+    },
+    "s18_clock": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "orin",
+          "text": "This mechanism has been turning for centuries and it hasn't moved an inch.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "Or it only moves when time does something it shouldn't."
+        }
+      }
+    },
+    "s18_twins": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "elara",
+          "text": "Two circles. Exactly the same.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "A door and its echo, perhaps."
+        }
+      }
+    },
+    "s18_warning": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "thane_garrick",
+          "text": "Another warning. Whoever built this was very worried about something."
+        }
+      }
+    },
+    "s18_symbols": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "orin",
+          "text": "Six symbols. Six records.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "The carvings tell us how to align them.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "primordial_steve",
+          "text": "And what's behind the door?",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "orin",
+          "text": "That's what we're here to learn."
+        }
+      }
+    },
+    "s18_carving": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "sahir",
+          "text": "Eldervale's tower at the crown. Then sunwise: the leaf of Sylvaris, the anvil of Stonecrown, the sun of Solkar, the flame of Veyrath, the wave of Thalassia."
+        }
+      }
+    },
+    "s18_door": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "bram",
+          "text": "Everybody stand back!",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "elara",
+          "text": "Steve!",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "orin",
+          "text": "It worked.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "sahir",
+          "text": "After all these generations..."
+        }
+      }
+    },
+    "s18_chamber": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "primordial_steve",
+          "text": "What is that?",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "orin",
+          "text": "I haven't the faintest idea.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "sahir",
+          "text": "The records called this place a boundary.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "elara",
+          "text": "Between what?",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "sahir",
+          "text": "That's the part they never explained."
+        }
+      }
+    },
+    "s18_grooves": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "thane_garrick",
+          "text": "Worn smooth. Something heavy crossed this bridge, many times."
+        }
+      }
+    },
+    "s18_plinth": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "sahir",
+          "text": "The same six emblems, carved at its foot."
+        }
+      }
+    },
+    "s18_survive": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "thane_garrick",
+          "text": "This chamber has survived longer than any structure I've ever seen.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "Then let's make sure it survives today."
+        }
+      }
+    },
+    "s18_compass": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "orin",
+          "text": "Don't activate anything yet.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "I wasn't planning to.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "elara",
+          "text": "Steve..."
+        }
+      }
+    },
+    "s18_amb_rope": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "expedition_worker_2",
+          "text": "Rope's for going down slowly. Not for going down fast."
+        }
+      }
+    },
+    "s18_amb_ranger": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "sylvaris_ranger_1",
+          "text": "Liora wants the treeline watched. Nobody comes up that causeway unseen."
+        }
+      }
+    },
+    "s18_amb_eng": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "stonecrown_engineer_2",
+          "text": "Every beam you fit is one less we have to carry back up."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s018_camp": {
+      "duration": 220,
+      "fade_in": 20,
+      "fade_out": 12,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            -4.0,
+            9.0,
+            26.0
+          ],
+          "yaw": -128.7,
+          "pitch": 19.4,
+          "fov": 66
+        },
+        {
+          "t": 120,
+          "pos": [
+            6.0,
+            5.0,
+            20.0
+          ],
+          "yaw": -119.7,
+          "pitch": 17.2,
+          "fov": 60
+        },
+        {
+          "t": 220,
+          "pos": [
+            24.0,
+            3.5,
+            18.0
+          ],
+          "yaw": 150.3,
+          "pitch": 34.3,
+          "fov": 55
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 10,
+          "duration": 110,
+          "text": "Dawn. The joint expedition's camp, beneath the Ancient Northern Monument",
+          "style": "caption"
+        },
+        {
+          "t": 130,
+          "duration": 80,
+          "text": "Quest: The Sealed Chamber",
+          "style": "title"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:block.campfire.crackle",
+          "volume": 0.8
+        },
+        {
+          "t": 60,
+          "sound": "minecraft:block.anvil.use",
+          "volume": 0.3,
+          "pitch": 1.4
+        },
+        {
+          "t": 140,
+          "sound": "minecraft:block.wood.hit",
+          "volume": 0.5
+        }
+      ]
+    },
+    "mc001_s018_door": {
+      "duration": 200,
+      "fade_in": 8,
+      "fade_out": 10,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            20.0,
+            -37.5,
+            -27.0
+          ],
+          "yaw": -180.0,
+          "pitch": -23.6,
+          "fov": 62
+        },
+        {
+          "t": 200,
+          "pos": [
+            20.0,
+            -37.0,
+            -30.0
+          ],
+          "yaw": -180.0,
+          "pitch": -16.7,
+          "fov": 70
+        }
+      ],
+      "shakes": [
+        {
+          "t": 30,
+          "duration": 60,
+          "intensity": 0.35
+        },
+        {
+          "t": 120,
+          "duration": 30,
+          "intensity": 0.2
+        }
+      ],
+      "sounds": [
+        {
+          "t": 10,
+          "sound": "minecraft:block.end_portal_frame.fill",
+          "volume": 1.0,
+          "pitch": 0.6
+        },
+        {
+          "t": 30,
+          "sound": "minecraft:block.piston.contract",
+          "volume": 1.0,
+          "pitch": 0.5
+        },
+        {
+          "t": 60,
+          "sound": "minecraft:block.grindstone.use",
+          "volume": 1.0,
+          "pitch": 0.4
+        },
+        {
+          "t": 100,
+          "sound": "minecraft:block.iron_door.open",
+          "volume": 1.0,
+          "pitch": 0.5
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 20,
+          "duration": 120,
+          "text": "The six locks turn together, and the great door sinks into the floor.",
+          "style": "caption"
+        }
+      ],
+      "cues": [
+        {
+          "t": 95,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s018_door_open"
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:cloud",
+              "location": "door_front",
+              "count": 30,
+              "spread": 2.5
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s018_end": {
+      "duration": 180,
+      "fade_in": 10,
+      "fade_out": 30,
+      "hide_player": true,
+      "hold_black": 30,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            20.0,
+            -36.0,
+            -40.0
+          ],
+          "yaw": -180.0,
+          "pitch": -22.6,
+          "fov": 60
+        },
+        {
+          "t": 150,
+          "pos": [
+            20.0,
+            -33.0,
+            -45.0
+          ],
+          "yaw": -180.0,
+          "pitch": -15.9,
+          "fov": 48
+        }
+      ],
+      "dips": [
+        {
+          "t": 150,
+          "duration": 30
+        }
+      ],
+      "sounds": [
+        {
+          "t": 40,
+          "sound": "minecraft:block.amethyst_block.resonate",
+          "volume": 0.6,
+          "pitch": 0.5
+        },
+        {
+          "t": 130,
+          "sound": "minecraft:block.piston.extend",
+          "volume": 0.9,
+          "pitch": 0.4
+        },
+        {
+          "t": 150,
+          "sound": "minecraft:block.iron_trapdoor.close",
+          "volume": 0.9,
+          "pitch": 0.5
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 120,
+          "duration": 50,
+          "text": "Somewhere inside the structure, something locks into place.",
+          "style": "caption"
+        }
+      ]
+    }
+  },
+  "journal": {
+    "s18_journal": {
+      "title": "The Sealed Chamber",
+      "text": "The kingdoms dug beneath the monument together. We shored up the old supports, rebuilt the fallen steps and took the first research team down. At the bottom was a hall the Builders left: copper channels that hummed when we gave them their hearts, a clock that has never moved, two circles carved exactly alike, and another warning. The door's carving gave the order of the six lock stones, and the door sank away. Behind it is a chamber with a great stone ring standing over a chasm. The compass points straight at it. Orin says nobody touches anything."
+    }
+  }
+}
