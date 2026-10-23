@@ -1,0 +1,2013 @@
+{
+  "scene": {
+    "id": "mc001_s015",
+    "title": "The Lord of Emberhold",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 15,
+    "canon_status": "Saga 1 revised screenplay, Version 2 (docs/story/SAGA_1_SCENES_012_019_REVISED.md): spoken dialogue verbatim. Hints, captions, item names and the outcome message are gameplay text.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "emberhold",
+    "anchor": [
+      -560,
+      72,
+      -60
+    ],
+    "arrival": {
+      "pos": [
+        -80,
+        0,
+        0
+      ],
+      "yaw": -90
+    },
+    "next_scene": "mc001_s016",
+    "locations": {
+      "road_west": {
+        "pos": [
+          -80,
+          0,
+          0
+        ],
+        "radius": 2
+      },
+      "elara_start": {
+        "pos": [
+          -81,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "bram_start": {
+        "pos": [
+          -81,
+          0,
+          -2
+        ],
+        "radius": 1
+      },
+      "liora_start": {
+        "pos": [
+          -82,
+          0,
+          0
+        ],
+        "radius": 1
+      },
+      "aveline_start": {
+        "pos": [
+          -76,
+          0,
+          0
+        ],
+        "radius": 1
+      },
+      "garrick_start": {
+        "pos": [
+          -76,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "sahir_start": {
+        "pos": [
+          -76,
+          0,
+          -2
+        ],
+        "radius": 1
+      },
+      "causeway_mid": {
+        "pos": [
+          -63,
+          0,
+          0
+        ],
+        "radius": 3
+      },
+      "guard_gate_n": {
+        "pos": [
+          -58,
+          0,
+          -4
+        ],
+        "radius": 1
+      },
+      "guard_gate_s": {
+        "pos": [
+          -58,
+          0,
+          4
+        ],
+        "radius": 1
+      },
+      "gate": {
+        "pos": [
+          -50,
+          0,
+          0
+        ],
+        "radius": 3
+      },
+      "aveline_gate": {
+        "pos": [
+          -46,
+          0,
+          0
+        ],
+        "radius": 1
+      },
+      "garrick_gate": {
+        "pos": [
+          -46,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "sahir_gate": {
+        "pos": [
+          -46,
+          0,
+          -2
+        ],
+        "radius": 1
+      },
+      "forge_st_w": {
+        "pos": [
+          -44,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "forge_st_e": {
+        "pos": [
+          -8,
+          0,
+          -2
+        ],
+        "radius": 1
+      },
+      "square_n": {
+        "pos": [
+          -28,
+          0,
+          -6
+        ],
+        "radius": 1
+      },
+      "square_s": {
+        "pos": [
+          -28,
+          0,
+          6
+        ],
+        "radius": 1
+      },
+      "north_st": {
+        "pos": [
+          -28,
+          0,
+          -20
+        ],
+        "radius": 1
+      },
+      "north_lane": {
+        "pos": [
+          -42,
+          0,
+          -28
+        ],
+        "radius": 1
+      },
+      "south_st": {
+        "pos": [
+          -28,
+          0,
+          20
+        ],
+        "radius": 1
+      },
+      "south_lane": {
+        "pos": [
+          -12,
+          0,
+          27
+        ],
+        "radius": 1
+      },
+      "east_lane": {
+        "pos": [
+          10,
+          0,
+          -20
+        ],
+        "radius": 1
+      },
+      "forge_1": {
+        "pos": [
+          -50,
+          0,
+          11
+        ],
+        "radius": 1
+      },
+      "forge_2": {
+        "pos": [
+          -21,
+          0,
+          -11
+        ],
+        "radius": 1
+      },
+      "great_forge": {
+        "pos": [
+          30,
+          0,
+          26
+        ],
+        "radius": 1
+      },
+      "market": {
+        "pos": [
+          -40,
+          0,
+          11
+        ],
+        "radius": 1
+      },
+      "citizen_gate": {
+        "pos": [
+          -49,
+          0,
+          5
+        ],
+        "radius": 1
+      },
+      "hall_door": {
+        "pos": [
+          11,
+          0,
+          0
+        ],
+        "radius": 2
+      },
+      "hall_inside": {
+        "pos": [
+          19,
+          0,
+          0
+        ],
+        "radius": 3
+      },
+      "kaelen_throne": {
+        "pos": [
+          42,
+          1,
+          0
+        ],
+        "radius": 1
+      },
+      "kaelen_table": {
+        "pos": [
+          36,
+          0,
+          0
+        ],
+        "radius": 1
+      },
+      "aveline_hall": {
+        "pos": [
+          20,
+          0,
+          0
+        ],
+        "radius": 1
+      },
+      "garrick_hall": {
+        "pos": [
+          25,
+          0,
+          -2
+        ],
+        "radius": 1
+      },
+      "sahir_hall": {
+        "pos": [
+          29,
+          0,
+          -2
+        ],
+        "radius": 1
+      },
+      "liora_hall": {
+        "pos": [
+          33,
+          0,
+          -2
+        ],
+        "radius": 1
+      },
+      "elara_hall": {
+        "pos": [
+          24,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "bram_hall": {
+        "pos": [
+          28,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "guard_hall_n": {
+        "pos": [
+          37,
+          0,
+          -7
+        ],
+        "radius": 1
+      },
+      "guard_hall_s": {
+        "pos": [
+          37,
+          0,
+          7
+        ],
+        "radius": 1
+      },
+      "table": {
+        "pos": [
+          28,
+          0,
+          2
+        ],
+        "radius": 3
+      },
+      "vault_mouth": {
+        "pos": [
+          30,
+          0,
+          -9
+        ],
+        "radius": 2
+      },
+      "kaelen_vault": {
+        "pos": [
+          30,
+          0,
+          -14
+        ],
+        "radius": 1
+      },
+      "elara_north": {
+        "pos": [
+          27,
+          0,
+          -9
+        ],
+        "radius": 1
+      },
+      "bram_north": {
+        "pos": [
+          33,
+          0,
+          -9
+        ],
+        "radius": 1
+      },
+      "liora_north": {
+        "pos": [
+          26,
+          0,
+          -7
+        ],
+        "radius": 1
+      },
+      "channels": {
+        "pos": [
+          30,
+          0,
+          -20
+        ],
+        "radius": 4
+      },
+      "ante": {
+        "pos": [
+          30,
+          0,
+          -34
+        ],
+        "radius": 3
+      },
+      "kaelen_ante": {
+        "pos": [
+          33,
+          0,
+          -34
+        ],
+        "radius": 1
+      },
+      "vault": {
+        "pos": [
+          30,
+          0,
+          -44
+        ],
+        "radius": 3
+      },
+      "kaelen_pedestal": {
+        "pos": [
+          32,
+          0,
+          -46
+        ],
+        "radius": 1
+      },
+      "key_glow": {
+        "pos": [
+          30,
+          1,
+          -47
+        ],
+        "radius": 1
+      }
+    },
+    "npcs": [
+      {
+        "character": "elara",
+        "location": "elara_start",
+        "yaw": -90
+      },
+      {
+        "character": "bram",
+        "location": "bram_start",
+        "yaw": -90,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "liora",
+        "location": "liora_start",
+        "yaw": -90,
+        "held": "minecraft:bow"
+      },
+      {
+        "character": "queen_aveline",
+        "location": "aveline_start",
+        "yaw": -90
+      },
+      {
+        "character": "thane_garrick",
+        "location": "garrick_start",
+        "yaw": -90
+      },
+      {
+        "character": "sahir",
+        "location": "sahir_start",
+        "yaw": -90
+      },
+      {
+        "character": "lord_kaelen",
+        "location": "kaelen_throne",
+        "yaw": 90
+      },
+      {
+        "character": "veyrath_guard_1",
+        "location": "guard_hall_n",
+        "yaw": 90,
+        "held": "minecraft:golden_sword"
+      },
+      {
+        "character": "veyrath_guard_2",
+        "location": "guard_hall_s",
+        "yaw": 90,
+        "held": "minecraft:golden_sword"
+      },
+      {
+        "character": "veyrath_guard_3",
+        "location": "guard_gate_n",
+        "yaw": 90,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "veyrath_guard_4",
+        "location": "guard_gate_s",
+        "yaw": 90,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "emberhold_citizen_1",
+        "location": "forge_1",
+        "yaw": 0,
+        "activity": "work",
+        "held": "minecraft:iron_ingot"
+      },
+      {
+        "character": "emberhold_citizen_2",
+        "location": "forge_2",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:iron_pickaxe"
+      },
+      {
+        "character": "emberhold_citizen_3",
+        "location": "forge_st_w",
+        "activity": "routine",
+        "route": [
+          "forge_st_w",
+          "square_n",
+          "forge_st_e"
+        ]
+      },
+      {
+        "character": "emberhold_citizen_4",
+        "location": "north_st",
+        "activity": "routine",
+        "route": [
+          "north_st",
+          "north_lane",
+          "square_n"
+        ]
+      },
+      {
+        "character": "emberhold_citizen_5",
+        "location": "market",
+        "yaw": 0,
+        "activity": "work",
+        "held": "minecraft:bread"
+      },
+      {
+        "character": "emberhold_citizen_6",
+        "location": "south_st",
+        "activity": "routine",
+        "route": [
+          "south_st",
+          "south_lane",
+          "square_s"
+        ]
+      },
+      {
+        "character": "emberhold_citizen_7",
+        "location": "great_forge",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:iron_axe"
+      },
+      {
+        "character": "emberhold_citizen_8",
+        "location": "citizen_gate",
+        "yaw": 90,
+        "activity": "routine",
+        "route": [
+          "citizen_gate",
+          "east_lane",
+          "square_s"
+        ]
+      }
+    ],
+    "clues": {
+      "s15_ev_grove": {
+        "name": "Rubbing of the Sylvaris grove stone",
+        "pos": [
+          25,
+          1,
+          0
+        ],
+        "block": "minecraft:chiseled_tuff"
+      },
+      "s15_ev_fragments": {
+        "name": "The matching fragments",
+        "pos": [
+          28,
+          1,
+          0
+        ],
+        "block": "minecraft:chiseled_stone_bricks"
+      },
+      "s15_ev_map": {
+        "name": "Map of the six landmarks",
+        "pos": [
+          31,
+          1,
+          0
+        ],
+        "block": "minecraft:cartography_table"
+      },
+      "s15_present_grove": {
+        "name": "Present: rubbing of the Sylvaris grove stone",
+        "pos": [
+          25,
+          1,
+          0
+        ],
+        "block": "minecraft:chiseled_tuff"
+      },
+      "s15_present_fragments": {
+        "name": "Present: the matching fragments",
+        "pos": [
+          28,
+          1,
+          0
+        ],
+        "block": "minecraft:chiseled_stone_bricks"
+      },
+      "s15_present_map": {
+        "name": "Present: map of the six landmarks",
+        "pos": [
+          31,
+          1,
+          0
+        ],
+        "block": "minecraft:cartography_table"
+      },
+      "s15_brazier_keep": {
+        "name": "Brazier carved KEEP",
+        "pos": [
+          26,
+          0,
+          -38
+        ],
+        "block": "minecraft:chiseled_polished_blackstone"
+      },
+      "s15_brazier_apart": {
+        "name": "Brazier carved APART",
+        "pos": [
+          34,
+          0,
+          -37
+        ],
+        "block": "minecraft:chiseled_polished_blackstone"
+      },
+      "s15_brazier_never": {
+        "name": "Brazier carved NEVER",
+        "pos": [
+          26,
+          0,
+          -35
+        ],
+        "block": "minecraft:chiseled_polished_blackstone"
+      },
+      "s15_ember_key": {
+        "name": "The Ember Key of Veyrath",
+        "pos": [
+          30,
+          1,
+          -47
+        ],
+        "block": "minecraft:chiseled_nether_bricks"
+      }
+    },
+    "stages": [
+      {
+        "id": "arrive",
+        "checkpoint": "road_west",
+        "on_enter": [
+          {
+            "type": "teleport_player",
+            "location": "road_west",
+            "yaw": -90
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "queen_aveline",
+            "location": "aveline_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "queen_aveline",
+            "location": "aveline_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "thane_garrick",
+            "location": "garrick_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "thane_garrick",
+            "location": "garrick_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_start"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "npc_follow",
+            "character": "liora"
+          },
+          {
+            "type": "set_value",
+            "key": "mc001.kaelen.trust",
+            "value": 0
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s015_arrival"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s015_arrival"
+        }
+      },
+      {
+        "id": "causeway",
+        "objective": "Cross the causeway over the lava moat",
+        "target": "causeway_mid",
+        "checkpoint": "road_west",
+        "on_enter": [
+          {
+            "type": "npc_move",
+            "character": "queen_aveline",
+            "location": "aveline_gate"
+          },
+          {
+            "type": "npc_move",
+            "character": "thane_garrick",
+            "location": "garrick_gate"
+          },
+          {
+            "type": "npc_move",
+            "character": "sahir",
+            "location": "sahir_gate"
+          },
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "The causeway is walled on both sides. Keep to it; the moat below is lava."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "causeway_mid"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.lava.pop",
+            "volume": 0.6,
+            "pitch": 0.8
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s15_warm"
+          }
+        ]
+      },
+      {
+        "id": "warm_talk",
+        "checkpoint": "causeway_mid",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s15_warm"
+        }
+      },
+      {
+        "id": "to_hall",
+        "objective": "Go to Lord Kaelen in the Ember Hall",
+        "target": "hall_inside",
+        "checkpoint": "gate",
+        "on_enter": [
+          {
+            "type": "npc_move",
+            "character": "queen_aveline",
+            "location": "aveline_hall"
+          },
+          {
+            "type": "npc_move",
+            "character": "thane_garrick",
+            "location": "garrick_hall"
+          },
+          {
+            "type": "npc_move",
+            "character": "sahir",
+            "location": "sahir_hall"
+          },
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "The Ember Hall stands at the east end of Forge Street, under the blue and gold banners. The city is yours to look round on the way."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "hall_inside"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "queen_aveline",
+            "location": "aveline_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "queen_aveline",
+            "location": "aveline_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "thane_garrick",
+            "location": "garrick_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "thane_garrick",
+            "location": "garrick_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "lord_kaelen",
+            "location": "kaelen_throne"
+          },
+          {
+            "type": "npc_stay",
+            "character": "lord_kaelen",
+            "location": "kaelen_throne"
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s015_hall"
+          }
+        ]
+      },
+      {
+        "id": "hall_view",
+        "checkpoint": "hall_inside",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s015_hall"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s15_council"
+          }
+        ]
+      },
+      {
+        "id": "council_talk",
+        "checkpoint": "hall_inside",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s15_council"
+        }
+      },
+      {
+        "id": "examine",
+        "objective": "Examine the evidence laid on the council table",
+        "target": "table",
+        "checkpoint": "hall_inside",
+        "on_enter": [
+          {
+            "type": "npc_move",
+            "character": "lord_kaelen",
+            "location": "kaelen_table"
+          },
+          {
+            "type": "npc_look",
+            "character": "lord_kaelen",
+            "location": "table"
+          },
+          {
+            "type": "hint",
+            "ticks": 180,
+            "text": "Three pieces of evidence lie on the long table. Press {use} on each one."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s15_ev_grove,s15_ev_fragments,s15_ev_map"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:item.book.page_turn",
+            "volume": 0.8,
+            "pitch": 1.0
+          }
+        ]
+      },
+      {
+        "id": "present",
+        "objective": "Present the evidence to the council in the order of its history",
+        "target": "table",
+        "checkpoint": "hall_inside",
+        "on_enter": [
+          {
+            "type": "npc_look",
+            "character": "lord_kaelen",
+            "location": "table"
+          },
+          {
+            "type": "hint",
+            "ticks": 260,
+            "text": "Lay the history out in order: first the Sylvaris grove stone, the oldest record; then the fragments that match it; last the map that ties all six landmarks together. Press {use} on each in turn."
+          }
+        ],
+        "complete": {
+          "type": "sequence",
+          "value": "s15_present_grove,s15_present_fragments,s15_present_map"
+        },
+        "on_wrong": [
+          {
+            "type": "add_value",
+            "key": "mc001.kaelen.trust",
+            "amount": -1
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:entity.villager.no",
+            "volume": 0.7,
+            "pitch": 0.8
+          },
+          {
+            "type": "npc_look",
+            "character": "lord_kaelen",
+            "location": "hall_inside"
+          },
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Kaelen's eyes narrow: the story does not hold together in that order. Start again with the grove stone record, then the fragments, then the map."
+          }
+        ],
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.amethyst_block.chime",
+            "volume": 0.8,
+            "pitch": 0.7
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s15_oath"
+          }
+        ]
+      },
+      {
+        "id": "oath_talk",
+        "checkpoint": "hall_inside",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s15_oath"
+        }
+      },
+      {
+        "id": "dam",
+        "objective": "Dam the three lava channels across the vault approach",
+        "target": "channels",
+        "checkpoint": "vault_mouth",
+        "on_enter": [
+          {
+            "type": "npc_move",
+            "character": "lord_kaelen",
+            "location": "kaelen_vault"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_north"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_north"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_north"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_north"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_north"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_north"
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:polished_blackstone_bricks",
+            "count": 24,
+            "name": "Dam stone",
+            "lore": "Heavy Veyrath stone, cut to fit the vault channels.|Lava will not move it."
+          },
+          {
+            "type": "hint",
+            "ticks": 260,
+            "text": "Three lava channels cross the passage north of the hall. Place dam stone in each channel where the green sparkles are. Work from the edge: don't step into the lava."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "solid|29,-1,-17;30,-1,-17;31,-1,-17;29,-1,-18;30,-1,-18;31,-1,-18;29,-1,-22;30,-1,-22;31,-1,-22;29,-1,-23;30,-1,-23;31,-1,-23;29,-1,-27;30,-1,-27;31,-1,-27;29,-1,-28;30,-1,-28;31,-1,-28"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.lava.extinguish",
+            "volume": 0.9,
+            "pitch": 0.9
+          },
+          {
+            "type": "npc_move",
+            "character": "lord_kaelen",
+            "location": "kaelen_ante"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "npc_follow",
+            "character": "liora"
+          }
+        ]
+      },
+      {
+        "id": "braziers",
+        "objective": "Light the oath braziers in the order of the oath",
+        "target": "ante",
+        "checkpoint": "channels",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 240,
+            "text": "Each brazier is carved with a word of Kaelen's oath: keep the Ember Key apart from the door, and never carry it in anger. Press {use} on them in the oath's order."
+          }
+        ],
+        "complete": {
+          "type": "sequence",
+          "value": "s15_brazier_keep,s15_brazier_apart,s15_brazier_never"
+        },
+        "on_wrong": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.fire.extinguish",
+            "volume": 0.9,
+            "pitch": 0.9
+          },
+          {
+            "type": "particles",
+            "particle": "minecraft:smoke",
+            "location": "ante",
+            "count": 20,
+            "spread": 1.5
+          },
+          {
+            "type": "hint",
+            "ticks": 180,
+            "text": "The brazier gutters out and the others go dark. The oath runs: Keep... Apart... Never."
+          }
+        ],
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s015_braziers_lit"
+          },
+          {
+            "type": "world_change",
+            "id": "mc001_s015_vault_open"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.fire.ambient",
+            "volume": 1.0,
+            "pitch": 0.7
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s015_vault"
+          }
+        ]
+      },
+      {
+        "id": "vault_view",
+        "checkpoint": "ante",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s015_vault"
+        },
+        "on_complete": [
+          {
+            "type": "npc_move",
+            "character": "lord_kaelen",
+            "location": "kaelen_pedestal"
+          }
+        ]
+      },
+      {
+        "id": "key",
+        "objective": "Take the Ember Key from its pedestal",
+        "target": "vault",
+        "checkpoint": "ante",
+        "on_enter": [
+          {
+            "type": "world_change",
+            "id": "mc001_s015_braziers_lit"
+          },
+          {
+            "type": "world_change",
+            "id": "mc001_s015_vault_open"
+          },
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "The vault stands open. Press {use} on the Ember Key."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s15_ember_key"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.respawn_anchor.charge",
+            "volume": 0.7,
+            "pitch": 0.8
+          },
+          {
+            "type": "particles",
+            "particle": "minecraft:flame",
+            "location": "key_glow",
+            "count": 16,
+            "spread": 0.4
+          },
+          {
+            "type": "npc_look",
+            "character": "lord_kaelen",
+            "location": "vault"
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s15_closing"
+          }
+        ]
+      },
+      {
+        "id": "closing_talk",
+        "checkpoint": "ante",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s15_closing"
+        },
+        "on_complete": [
+          {
+            "type": "give_item",
+            "item": "minecraft:chiseled_nether_bricks",
+            "count": 1,
+            "name": "Veyrath fragment",
+            "lore": "The Ember Key of Veyrath. Keep it apart from the door."
+          },
+          {
+            "type": "title",
+            "title": "Mission Complete",
+            "subtitle": "A Divided Council"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7,
+            "pitch": 1.0
+          },
+          {
+            "type": "journal",
+            "id": "s15_journal"
+          },
+          {
+            "type": "message",
+            "text": "Veyrath has joined the expedition, cautiously. Lord Kaelen will not let the Ember Key out of his sight. Captain Maren waits in Tidewatch."
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.veyrath.joined"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s015.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "s15_amb_channels",
+        "character": "emberhold_citizen_3",
+        "dialogue": "s15_amb_channels",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "stages": [
+          "causeway",
+          "warm_talk",
+          "to_hall"
+        ],
+        "priority": 1,
+        "ambient": true
+      },
+      {
+        "id": "s15_amb_sheathed",
+        "character": "veyrath_guard_3",
+        "dialogue": "s15_amb_sheathed",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "stages": [
+          "causeway",
+          "warm_talk",
+          "to_hall"
+        ],
+        "priority": 1,
+        "ambient": true
+      },
+      {
+        "id": "s15_amb_grandmother",
+        "character": "emberhold_citizen_8",
+        "dialogue": "s15_amb_grandmother",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "stages": [
+          "causeway",
+          "warm_talk",
+          "to_hall"
+        ],
+        "priority": 1,
+        "ambient": true
+      },
+      {
+        "id": "s15_amb_bellows",
+        "character": "emberhold_citizen_1",
+        "dialogue": "s15_amb_bellows",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "stages": [
+          "causeway",
+          "warm_talk",
+          "to_hall"
+        ],
+        "priority": 1,
+        "ambient": true
+      },
+      {
+        "id": "s15_amb_colours",
+        "character": "emberhold_citizen_5",
+        "dialogue": "s15_amb_colours",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "stages": [
+          "causeway",
+          "warm_talk",
+          "to_hall"
+        ],
+        "priority": 1,
+        "ambient": true
+      }
+    ],
+    "area_triggers": [],
+    "chatter": []
+  },
+  "dialogues": {
+    "s15_warm": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "bram",
+          "text": "Is it always this warm?",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "elara",
+          "text": "Don't touch the walls."
+        }
+      }
+    },
+    "s15_amb_channels": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "emberhold_citizen_3",
+          "text": "Mind the channels, outlander. The stone's hotter than it looks."
+        }
+      }
+    },
+    "s15_amb_sheathed": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "veyrath_guard_3",
+          "text": "The Lord receives you in the Ember Hall. Weapons stay sheathed."
+        }
+      }
+    },
+    "s15_amb_grandmother": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "emberhold_citizen_8",
+          "text": "Eldervale's queen, here? My grandmother won't believe it."
+        }
+      }
+    },
+    "s15_amb_bellows": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "emberhold_citizen_1",
+          "text": "The bellows never rest in Emberhold. Neither do we."
+        }
+      }
+    },
+    "s15_amb_colours": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "emberhold_citizen_5",
+          "text": "Blue and gold for the Lord's house. Black for the stone that bore us."
+        }
+      }
+    },
+    "s15_council": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "lord_kaelen",
+          "text": "So this is the discovery everyone has been whispering about.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "elara",
+              "location": "kaelen_throne"
+            },
+            {
+              "type": "npc_look",
+              "character": "bram",
+              "location": "kaelen_throne"
+            }
+          ],
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "queen_aveline",
+          "text": "You were invited to examine the evidence.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "lord_kaelen",
+          "text": "I was invited after the others had already begun their investigation.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "queen_aveline",
+              "location": "kaelen_throne"
+            }
+          ],
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "thane_garrick",
+          "text": "We barely understand what we found.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "thane_garrick",
+              "location": "kaelen_throne"
+            }
+          ],
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "lord_kaelen",
+          "text": "And yet you've already carried pieces of it into another kingdom.",
+          "actions": [
+            {
+              "type": "npc_move",
+              "character": "lord_kaelen",
+              "location": "kaelen_table"
+            }
+          ],
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "lord_kaelen",
+          "text": "I will not allow an ancient Veyrath legacy to be claimed by whoever reached it first.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "sahir",
+              "location": "kaelen_table"
+            }
+          ],
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "primordial_steve",
+          "text": "Nobody's claiming anything.",
+          "next": "l07"
+        },
+        "l07": {
+          "speaker": "lord_kaelen",
+          "text": "Not yet.",
+          "next": "l08"
+        },
+        "l08": {
+          "speaker": "liora",
+          "text": "The evidence was discovered across several territories. This concerns us all.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "liora",
+              "location": "kaelen_table"
+            }
+          ],
+          "next": "l09"
+        },
+        "l09": {
+          "speaker": "lord_kaelen",
+          "text": "That is easy to say when your people already hold part of it.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "lord_kaelen",
+              "location": "liora_hall"
+            }
+          ],
+          "next": "l10"
+        },
+        "l10": {
+          "speaker": "queen_aveline",
+          "text": "Enough. We will establish a joint expedition and keep an open record of every discovery.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "lord_kaelen",
+              "location": "aveline_hall"
+            }
+          ],
+          "next": "l11"
+        },
+        "l11": {
+          "speaker": "lord_kaelen",
+          "text": "Then Veyrath expects equal representation.",
+          "next": "l12"
+        },
+        "l12": {
+          "speaker": "primordial_steve",
+          "text": "That's fair.",
+          "next": "l13"
+        },
+        "l13": {
+          "speaker": "lord_kaelen",
+          "text": "And who gave you authority to lead this?",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "lord_kaelen",
+              "location": "hall_inside"
+            }
+          ],
+          "next": "l14"
+        },
+        "l14": {
+          "speaker": "primordial_steve",
+          "text": "Nobody. I was looking into something dangerous near my home.",
+          "next": "l15"
+        },
+        "l15": {
+          "speaker": "primordial_steve",
+          "text": "If you know more about it, help us.",
+          "next": "l16"
+        },
+        "l16": {
+          "speaker": "lord_kaelen",
+          "text": "Then tell me why Veyrath should open its vault to strangers.",
+          "choices": [
+            {
+              "text": "The records show all six kingdoms kept a piece. (Evidence)",
+              "next": "ev",
+              "actions": [
+                {
+                  "type": "set_flag",
+                  "flag": "mc001.kaelen.approach_evidence"
+                },
+                {
+                  "type": "add_value",
+                  "key": "mc001.kaelen.trust",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "text": "Veyrath kept its piece longest and best. (Respect)",
+              "next": "re",
+              "actions": [
+                {
+                  "type": "set_flag",
+                  "flag": "mc001.kaelen.approach_respect"
+                },
+                {
+                  "type": "add_value",
+                  "key": "mc001.kaelen.trust",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "text": "Something else may wake it first. (Warning)",
+              "next": "wa",
+              "actions": [
+                {
+                  "type": "set_flag",
+                  "flag": "mc001.kaelen.approach_warning"
+                }
+              ]
+            }
+          ]
+        },
+        "ev": {
+          "speaker": "primordial_steve",
+          "text": "Because the records show all six kingdoms were given a piece to keep. Yours too.",
+          "next": "ev_k"
+        },
+        "ev_k": {
+          "speaker": "lord_kaelen",
+          "text": "Records. Scholars' ink. Show me, then."
+        },
+        "re": {
+          "speaker": "primordial_steve",
+          "text": "Because Veyrath kept its piece longer and better than anyone. We need what you know, not just the stone.",
+          "next": "re_k"
+        },
+        "re_k": {
+          "speaker": "lord_kaelen",
+          "text": "Flattery from Firstbrook. Still, it happens to be true."
+        },
+        "wa": {
+          "speaker": "primordial_steve",
+          "text": "Because if we don't understand it, something else may wake it first.",
+          "next": "wa_k"
+        },
+        "wa_k": {
+          "speaker": "lord_kaelen",
+          "text": "You think I haven't lain awake over that? Prove you understand it better than I do."
+        }
+      }
+    },
+    "s15_oath": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "lord_kaelen",
+          "text": "Six kingdoms, one pattern. Very well. You've earned the truth.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "thane_garrick",
+              "location": "kaelen_table"
+            },
+            {
+              "type": "npc_look",
+              "character": "liora",
+              "location": "kaelen_table"
+            }
+          ],
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "lord_kaelen",
+          "text": "My house swore an oath before Emberhold had walls. Keep the Ember Key apart from the door, and never carry it in anger.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "lord_kaelen",
+              "location": "vault_mouth"
+            }
+          ],
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "primordial_steve",
+          "text": "Door? What door?",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "lord_kaelen",
+          "text": "The oath never said. Only that the key and the door must not meet by chance.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "lord_kaelen",
+              "location": "table"
+            }
+          ],
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "elara",
+          "text": "You've guarded it all this time without knowing why?",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "elara",
+              "location": "kaelen_table"
+            }
+          ],
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "lord_kaelen",
+          "text": "Veyrath keeps its word. That is the why.",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "lord_kaelen",
+          "text": "Every kingdom calls Veyrath the dangerous one. Fire, forges, temper. Yet we kept the most dangerous thing of all, and kept it safe.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "queen_aveline",
+              "location": "kaelen_table"
+            },
+            {
+              "type": "npc_look",
+              "character": "lord_kaelen",
+              "location": "vault_mouth"
+            }
+          ]
+        }
+      }
+    },
+    "s15_closing": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "lord_kaelen",
+          "text": "Very well. Veyrath will send its experts.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "queen_aveline",
+          "text": "Then we have an agreement.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "lord_kaelen",
+          "text": "An agreement to investigate. Not to surrender our interests.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "primordial_steve",
+          "text": "That's a start.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "lord_kaelen",
+          "text": "And the key does not leave my sight. Where it goes, Veyrath goes.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "lord_kaelen",
+              "location": "key_glow"
+            }
+          ],
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "queen_aveline",
+          "text": "Captain Maren sends word from Tidewatch. Her divers have found something at the old coastal watch.",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "primordial_steve",
+          "text": "The last piece."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s015_arrival": {
+      "duration": 280,
+      "fade_in": 20,
+      "fade_out": 12,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            -96.0,
+            16.0,
+            -26.0
+          ],
+          "yaw": -65.1,
+          "pitch": 7.4,
+          "fov": 66
+        },
+        {
+          "t": 140,
+          "pos": [
+            -82.0,
+            11.0,
+            -10.0
+          ],
+          "yaw": -79.1,
+          "pitch": 2.2,
+          "fov": 60
+        },
+        {
+          "t": 280,
+          "pos": [
+            -72.0,
+            4.0,
+            5.0
+          ],
+          "yaw": -107.4,
+          "pitch": 3.4,
+          "fov": 55
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 30,
+          "duration": 120,
+          "text": "Emberhold — Seat of Veyrath",
+          "style": "title"
+        },
+        {
+          "t": 160,
+          "duration": 100,
+          "text": "Evening. The delegation crosses the causeway over the lava moat.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:block.lava.ambient",
+          "volume": 0.6
+        },
+        {
+          "t": 70,
+          "sound": "minecraft:block.anvil.use",
+          "volume": 0.3,
+          "pitch": 0.8
+        },
+        {
+          "t": 150,
+          "sound": "minecraft:block.anvil.use",
+          "volume": 0.3,
+          "pitch": 0.9
+        },
+        {
+          "t": 200,
+          "sound": "minecraft:block.fire.ambient",
+          "volume": 0.5
+        }
+      ]
+    },
+    "mc001_s015_hall": {
+      "duration": 210,
+      "fade_in": 12,
+      "fade_out": 10,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            16.0,
+            5.0,
+            8.0
+          ],
+          "yaw": -107.1,
+          "pitch": 6.3,
+          "fov": 64
+        },
+        {
+          "t": 210,
+          "pos": [
+            31.0,
+            2.8,
+            4.5
+          ],
+          "yaw": -112.2,
+          "pitch": 2.9,
+          "fov": 50
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 25,
+          "duration": 120,
+          "text": "The Ember Hall. Lord Kaelen waits on the throne of Veyrath.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:block.fire.ambient",
+          "volume": 0.5
+        },
+        {
+          "t": 90,
+          "sound": "minecraft:block.lava.pop",
+          "volume": 0.4
+        }
+      ],
+      "cues": [
+        {
+          "t": 60,
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "lord_kaelen",
+              "location": "hall_inside"
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s015_vault": {
+      "duration": 190,
+      "fade_in": 8,
+      "fade_out": 10,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            30.0,
+            2.6,
+            -33.5
+          ],
+          "yaw": -180.0,
+          "pitch": 9.6,
+          "fov": 60
+        },
+        {
+          "t": 190,
+          "pos": [
+            30.0,
+            2.2,
+            -39.0
+          ],
+          "yaw": -180.0,
+          "pitch": 8.5,
+          "fov": 50
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 15,
+          "duration": 130,
+          "text": "The oath fires burn blue, and the vault of Veyrath opens.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 10,
+          "sound": "minecraft:block.fire.ambient",
+          "volume": 0.8,
+          "pitch": 0.7
+        },
+        {
+          "t": 50,
+          "sound": "minecraft:block.piston.contract",
+          "volume": 0.8,
+          "pitch": 0.5
+        },
+        {
+          "t": 120,
+          "sound": "minecraft:block.respawn_anchor.ambient",
+          "volume": 0.6
+        }
+      ],
+      "cues": [
+        {
+          "t": 110,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:flame",
+              "location": "key_glow",
+              "count": 14,
+              "spread": 0.4
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "journal": {
+    "s15_journal": {
+      "title": "A Divided Council",
+      "text": "Emberhold, seat of Veyrath: basalt towers, lava falls and forges that never rest. Lord Kaelen received us in the Ember Hall, and he did not hide his anger that the others began without him. Queen Aveline promised a joint expedition with an open record of every discovery, and Veyrath equal representation. We laid out the evidence: the Sylvaris grove stone, the matching fragments and the map of the six landmarks. Kaelen's house has kept an oath since before Emberhold had walls: keep the Ember Key apart from the door, and never carry it in anger. We dammed the lava channels, lit the oath braziers and opened the vault. Veyrath joins us, cautiously, and the key goes nowhere without Kaelen. Captain Maren's divers have found something at Tidewatch."
+    }
+  }
+}
