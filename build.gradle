@@ -1,0 +1,61 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.141' apply false
+}
+
+// `-Prod.coreOnly=true` skips the Minecraft toolchain so the story engine can be
+// built and tested on machines that cannot reach the NeoForge/Mojang servers.
+def coreOnly = providers.gradleProperty('rod.coreOnly').map { it.toBoolean() }.getOrElse(false)
+
+version = mod_version
+group = 'net.realitiesofdreams'
+base { archivesName = mod_id }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+// The engine in story-core has no Minecraft dependency; the mod ships it directly.
+sourceSets.main.java.srcDir 'story-core/src/main/java'
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+if (!coreOnly) {
+    apply plugin: 'net.neoforged.moddev'
+
+    neoForge {
+        version = project.neo_version
+
+        runs {
+            client {
+                client()
+                // `gradlew runClient -Prod.autotest=true` runs the automated playtest (see ClientAutotest)
+                // in its own game folder, so it never touches the story save you play in run/client.
+                gameDirectory = project.file(providers.gradleProperty('rod.autotest').isPresent() ? 'run/autotest' : 'run/client')
+                if (providers.gradleProperty('rod.autotest').isPresent()) {
+                    systemProperty 'rod.autotest', 'true'
+                    programArguments.addAll('--width', '1280', '--height', '720')
+                }
+                // `-Prod.panorama=true` also photographs the main menu panorama during the playtest.
+                if (providers.gradleProperty('rod.panorama').isPresent()) systemProperty 'rod.panorama', 'true'
+            }
+            server {
+                server()
+                gameDirectory = project.file('run/server')
+                programArgument '--nogui'
+            }
+            gameTestServer {
+                type = 'gameTestServer'
+                gameDirectory = project.file('run/gametest')
+                systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            }
+            configureEach {
+                logLevel = org.slf4j.event.Level.INFO
+            }
+        }
+
+        mods {
+            "${mod_id}" {
+                sourceSet sourceSets.main
+            }
+        }
+    }
+}

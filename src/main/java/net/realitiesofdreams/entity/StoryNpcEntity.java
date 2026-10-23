@@ -1,0 +1,651 @@
+package net.realitiesofdreams.entity;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtUtils;
+import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.OpenDoorGoal;
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import net.realitiesofdreams.Story;
+import net.realitiesofdreams.server.StoryManager;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.UUID;
+
+/**
+ * A story character (player-model NPC). It walks up to players when it has something important
+ * to say, follows a player as a companion, faces whoever it is talking to and otherwise
+ * potters around its home spot.
+ */
+public class StoryNpcEntity extends PathfinderMob {
+    private static final EntityDataAccessor<String> CHARACTER = SynchedEntityData.defineId(StoryNpcEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<Boolean> TALKING = SynchedEntityData.defineId(StoryNpcEntity.class, EntityDataSerializers.BOOLEAN);
+
+    @Nullable private BlockPos home;
+    @Nullable private UUID followTarget;
+    @Nullable private UUID approachTarget;
+    private boolean approachThenStay;
+    @Nullable private UUID talkTarget;
+    @Nullable private String sceneId;
+    private String activity = "idle";
+    private final List<BlockPos> route = new ArrayList<>();
+    @Nullable private Vec3 lookPos;
+    private int lookTicks;
+    private int retreatTicks;
+
+    public StoryNpcEntity(EntityType<? extends StoryNpcEntity> type, Level level) {
+        super(type, level);
+        setPersistenceRequired();
+        // Villagers live in houses: they open doors, walk through and close them behind them.
+        if (getNavigation() instanceof GroundPathNavigation nav) {
+            nav.setCanOpenDoors(true);
+            nav.setCanPassDoors(true);
+        }
+    }
+
+    public static AttributeSupplier.Builder createAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.3)
+                .add(Attributes.ATTACK_DAMAGE, 1.0)
+                .add(Attributes.FOLLOW_RANGE, 48.0);
+    }
+
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(CHARACTER, "");
+        builder.define(TALKING, false);
+    }
+
+    @Override
+    protected void registerGoals() {
+        goalSelector.addGoal(0, new FloatGoal(this));
+        goalSelector.addGoal(0, new RetreatGoal());
+        goalSelector.addGoal(2, new FightGoal());
+        goalSelector.addGoal(2, new DefendGoal());
+        targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false,
+                e -> isHostile() && !((Player) e).isCreative()) {
+            @Override
+            public boolean canUse() {
+                return isHostile() && super.canUse();
+            }
+
+            @Override
+            public boolean canContinueToUse() {
+                return isHostile() && super.canContinueToUse();
+            }
+        });
+        goalSelector.addGoal(1, new TalkGoal());
+        goalSelector.addGoal(1, new LookAtPointGoal());
+        goalSelector.addGoal(1, new OpenDoorGoal(this, true));
+        goalSelector.addGoal(2, new ApproachGoal());
+        goalSelector.addGoal(3, new FollowGoal());
+        goalSelector.addGoal(4, new PatrolGoal());
+        goalSelector.addGoal(4, new HomeGoal());
+        goalSelector.addGoal(5, new WorkGoal());
+        goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+    }
+
+    // --- identity -------------------------------------------------------------------
+
+    public String characterId() {
+        return entityData.get(CHARACTER);
+    }
+
+    public void setCharacter(String id) {
+        entityData.set(CHARACTER, id);
+        setCustomName(Component.literal(Story.content().characters().displayName(id)));
+        setCustomNameVisible(false);
+    }
+
+    public boolean isTalking() {
+        return entityData.get(TALKING);
+    }
+
+    @Nullable
+    public String sceneId() {
+        return sceneId;
+    }
+
+    public void setSceneId(@Nullable String sceneId) {
+        this.sceneId = sceneId;
+    }
+
+    // --- story control --------------------------------------------------------------
+
+    public void setHome(BlockPos pos) {
+        this.home = pos.immutable();
+    }
+
+    @Nullable
+    public BlockPos home() {
+        return home;
+    }
+
+    public void setFollowTarget(@Nullable UUID player) {
+        this.followTarget = player;
+    }
+
+    @Nullable
+    public UUID followTarget() {
+        return followTarget;
+    }
+
+    public void setApproachTarget(@Nullable UUID player) {
+        this.approachTarget = player;
+        this.approachThenStay = false;
+    }
+
+    /** Walks up to the player once, then stays there (a character coming over at the end of a scene). */
+    public void approachAndStay(UUID player) {
+        this.approachTarget = player;
+        this.approachThenStay = true;
+    }
+
+    @Nullable
+    public UUID approachTarget() {
+        return approachTarget;
+    }
+
+    /**
+     * "idle", "work" (busy with the held item at home), "patrol" (walks the route, pausing briefly) or
+     * "routine" (goes about the day between the route's stops, staying a while at each).
+     */
+    public void setActivity(String activity, List<BlockPos> route) {
+        this.activity = activity == null ? "idle" : activity;
+        this.route.clear();
+        this.route.addAll(route);
+    }
+
+    public String activity() {
+        return activity;
+    }
+
+    /** A story enemy (a raider): fights the player until beaten, then gives up and retreats. */
+    public boolean isHostile() {
+        return "hostile".equals(activity);
+    }
+
+    /** Beaten in a fight: no longer hostile, running away. */
+    public boolean hasYielded() {
+        return "yielded".equals(activity);
+    }
+
+    /** Health at which an enemy gives up the fight. */
+    private float yieldHealth() {
+        return getMaxHealth() * 0.4F;
+    }
+
+    private boolean routeActivity() {
+        return "patrol".equals(activity) || "routine".equals(activity);
+    }
+
+    /** Lies down in the bed at pos (an actor asleep at the start of a scene). */
+    public void sleepIn(BlockPos pos) {
+        getNavigation().stop();
+        startSleeping(pos);
+    }
+
+    /** Turns to look at a point for a while, e.g. towards the hills a character is worried about. */
+    public void lookTowards(Vec3 pos, int ticks) {
+        this.lookPos = pos;
+        this.lookTicks = ticks;
+    }
+
+    @Override
+    protected boolean isImmobile() {
+        return super.isImmobile() || isSleeping();
+    }
+
+    public void setTalkTarget(@Nullable UUID player) {
+        this.talkTarget = player;
+        entityData.set(TALKING, player != null);
+        if (player != null && followTarget == null) getNavigation().stop(); // a companion keeps walking while talking
+    }
+
+    @Nullable
+    private Player player(@Nullable UUID id) {
+        if (id == null || !(level() instanceof ServerLevel)) return null;
+        Player p = level().getPlayerByUUID(id);
+        return p != null && p.isAlive() && !p.isSpectator() ? p : null;
+    }
+
+    // --- behaviour ------------------------------------------------------------------
+
+    @Override
+    protected InteractionResult mobInteract(Player player, InteractionHand hand) {
+        if (hand == InteractionHand.MAIN_HAND && player instanceof ServerPlayer sp) {
+            StoryManager.get().onNpcInteract(sp, this);
+        }
+        return InteractionResult.sidedSuccess(level().isClientSide);
+    }
+
+    @Override
+    public boolean isInvulnerableTo(DamageSource source) {
+        if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) return false;
+        // Story enemies can be hit by the player and by companions fighting alongside; nothing else hurts anyone.
+        return !(isHostile() && (source.getEntity() instanceof Player || source.getEntity() instanceof StoryNpcEntity));
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        if (isHostile() && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) amount = Math.min(amount, getHealth() - 1);
+        boolean hurt = super.hurt(source, amount);
+        if (hurt && isHostile() && getHealth() <= yieldHealth()) yieldFight();
+        return hurt;
+    }
+
+    /** Gives up: drops the weapon and runs off (the story notices and records the fight as won). */
+    public void yieldFight() {
+        activity = "yielded";
+        setTarget(null);
+        ItemStack weapon = getMainHandItem();
+        if (!weapon.isEmpty() && level() instanceof ServerLevel sl) {
+            sl.sendParticles(ParticleTypes.CRIT, getX(), getY() + 1, getZ(), 12, 0.3, 0.4, 0.3, 0.1);
+            setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+        }
+        retreatTicks = 60;
+    }
+
+    @Override
+    public boolean removeWhenFarAway(double distance) {
+        return false;
+    }
+
+    @Override
+    public boolean canBeLeashed() {
+        return false;
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putString("Character", characterId());
+        if (home != null) tag.putIntArray("Home", new int[] {home.getX(), home.getY(), home.getZ()});
+        if (followTarget != null) tag.putUUID("Follow", followTarget);
+        if (sceneId != null) tag.putString("Scene", sceneId);
+        tag.putString("Activity", activity);
+        ListTag r = new ListTag();
+        for (BlockPos pos : route) r.add(NbtUtils.writeBlockPos(pos));
+        tag.put("Route", r);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        if (tag.contains("Character")) setCharacter(tag.getString("Character"));
+        int[] h = tag.getIntArray("Home");
+        if (h.length == 3) home = new BlockPos(h[0], h[1], h[2]);
+        followTarget = tag.hasUUID("Follow") ? tag.getUUID("Follow") : null;
+        sceneId = tag.contains("Scene") ? tag.getString("Scene") : null;
+        activity = tag.contains("Activity") ? tag.getString("Activity") : "idle";
+        route.clear();
+        for (Tag t : tag.getList("Route", Tag.TAG_INT_ARRAY)) {
+            if (t instanceof net.minecraft.nbt.IntArrayTag a && a.getAsIntArray().length == 3) {
+                int[] v = a.getAsIntArray();
+                route.add(new BlockPos(v[0], v[1], v[2]));
+            }
+        }
+    }
+
+    /** Turns towards a point the story asked the character to look at. */
+    private class LookAtPointGoal extends Goal {
+        LookAtPointGoal() {
+            setFlags(EnumSet.of(Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            return lookPos != null && lookTicks > 0 && talkTarget == null;
+        }
+
+        @Override
+        public void tick() {
+            if (lookPos != null) getLookControl().setLookAt(lookPos.x, lookPos.y, lookPos.z, 20.0F, 20.0F);
+            if (--lookTicks <= 0) lookPos = null;
+        }
+    }
+
+    /**
+     * Walks between the points of a route, pausing at each: guards on their rounds ("patrol"), or
+     * villagers going between home, work and the market ("routine", with long stays).
+     */
+    private class PatrolGoal extends Goal {
+        private int index;
+        private int pause;
+
+        PatrolGoal() {
+            setFlags(EnumSet.of(Flag.MOVE));
+        }
+
+        @Override
+        public boolean canUse() {
+            return routeActivity() && route.size() >= 2 && followTarget == null && approachTarget == null && talkTarget == null;
+        }
+
+        @Override
+        public void tick() {
+            BlockPos target = route.get(index % route.size());
+            Vec3 t = Vec3.atBottomCenterOf(target);
+            if (position().distanceTo(t) < 1.6) {
+                getNavigation().stop();
+                if (pause <= 0) pause = "routine".equals(activity) ? 240 + getRandom().nextInt(360) : 40 + getRandom().nextInt(60);
+                if (--pause <= 0) index = (index + 1) % route.size();
+            } else if (getNavigation().isDone()) {
+                getNavigation().moveTo(t.x, t.y, t.z, "routine".equals(activity) ? 0.5 : 0.55);
+            }
+        }
+
+        @Override
+        public void stop() {
+            getNavigation().stop();
+        }
+    }
+
+    /** Busy at their spot: swings the tool in hand at the work in front of them. */
+    private class WorkGoal extends Goal {
+        private int next;
+
+        WorkGoal() {
+            setFlags(EnumSet.of(Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            return "work".equals(activity) && followTarget == null && talkTarget == null && home != null
+                    && position().distanceTo(Vec3.atBottomCenterOf(home)) < 2.5;
+        }
+
+        @Override
+        public void tick() {
+            Vec3 ahead = position().add(Vec3.directionFromRotation(0, getYRot()).scale(1.2));
+            getLookControl().setLookAt(ahead.x, getY() + 0.2, ahead.z, 10.0F, 40.0F);
+            if (--next <= 0) {
+                swing(InteractionHand.MAIN_HAND);
+                next = 18 + getRandom().nextInt(40);
+            }
+        }
+    }
+
+    /** Stands still and faces the player while speaking (a companion walking alongside keeps walking). */
+    private class TalkGoal extends Goal {
+        TalkGoal() {
+            setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            return player(talkTarget) != null && followTarget == null;
+        }
+
+        @Override
+        public void start() {
+            getNavigation().stop();
+        }
+
+        @Override
+        public void tick() {
+            Player p = player(talkTarget);
+            if (p != null) getLookControl().setLookAt(p, 30.0F, 30.0F);
+        }
+    }
+
+    /** Walks up to a player to start an important conversation. */
+    private class ApproachGoal extends Goal {
+        private int repath;
+
+        ApproachGoal() {
+            setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            Player p = player(approachTarget);
+            if (p != null && approachThenStay && distanceTo(p) <= 3.0F) {
+                approachTarget = null;
+                approachThenStay = false;
+                home = blockPosition();
+                return false;
+            }
+            return p != null && distanceTo(p) > 2.5F;
+        }
+
+        @Override
+        public void tick() {
+            Player p = player(approachTarget);
+            if (p == null) return;
+            getLookControl().setLookAt(p, 30.0F, 30.0F);
+            if (approachThenStay && distanceTo(p) <= 3.0F) {
+                approachTarget = null;
+                approachThenStay = false;
+                home = blockPosition();
+                getNavigation().stop();
+                return;
+            }
+            if (--repath <= 0) {
+                repath = 8;
+                getNavigation().moveTo(p, 0.75);
+            }
+        }
+
+        @Override
+        public void stop() {
+            getNavigation().stop();
+        }
+    }
+
+    /** Companion behaviour: keeps up with the player, catching up if left far behind. */
+    private class FollowGoal extends Goal {
+        private int repath;
+
+        FollowGoal() {
+            setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            Player p = player(followTarget);
+            return p != null && p.level() == level() && distanceTo(p) > 3.5F;
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            Player p = player(followTarget);
+            return p != null && p.level() == level() && distanceTo(p) > 2.2F;
+        }
+
+        @Override
+        public void tick() {
+            Player p = player(followTarget);
+            if (p == null) return;
+            getLookControl().setLookAt(p, 10.0F, getMaxHeadXRot());
+            if (distanceTo(p) > 24) {
+                Vec3 behind = p.position().subtract(p.getLookAngle().multiply(2.5, 0, 2.5));
+                teleportTo(behind.x, p.getY(), behind.z);
+                getNavigation().stop();
+                return;
+            }
+            if (--repath <= 0) {
+                repath = 10;
+                getNavigation().moveTo(p, distanceTo(p) > 9 ? 1.25 : 0.9);
+            }
+        }
+
+        @Override
+        public void stop() {
+            getNavigation().stop();
+        }
+    }
+
+    /** Returns home when not busy, and occasionally strolls a few steps around it. */
+    private class HomeGoal extends Goal {
+        @Nullable private Vec3 target;
+
+        HomeGoal() {
+            setFlags(EnumSet.of(Flag.MOVE));
+        }
+
+        @Override
+        public boolean canUse() {
+            if (home == null || followTarget != null || (routeActivity() && route.size() >= 2)) return false;
+            Vec3 h = Vec3.atBottomCenterOf(home);
+            if (position().distanceTo(h) > 2.5) {
+                target = h;
+                return true;
+            }
+            if ("idle".equals(activity) && getRandom().nextInt(500) == 0) {
+                target = h.add(getRandom().nextInt(5) - 2, 0, getRandom().nextInt(5) - 2);
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public void start() {
+            if (target != null) getNavigation().moveTo(target.x, target.y, target.z, 0.6);
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return !getNavigation().isDone() && followTarget == null;
+        }
+    }
+
+    /** A story enemy closes in on the player and strikes with what it holds. */
+    private class FightGoal extends MeleeAttackGoal {
+        FightGoal() {
+            super(StoryNpcEntity.this, 1.1, false);
+        }
+
+        @Override
+        public boolean canUse() {
+            return isHostile() && super.canUse();
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return isHostile() && super.canContinueToUse();
+        }
+
+        /** A blow every second and a half: a fight the player can win with ordinary tools. */
+        @Override
+        protected int getAttackInterval() {
+            return adjustedTickDelay(30);
+        }
+    }
+
+    /** A story enemy's blow costs the player one heart (scaled by difficulty), whatever it holds. */
+    @Override
+    public boolean doHurtTarget(net.minecraft.world.entity.Entity target) {
+        if (!isHostile()) return false;
+        swing(InteractionHand.MAIN_HAND);
+        return target.hurt(damageSources().mobAttack(this), 2.0F);
+    }
+
+    /** A beaten enemy runs from the fight and is gone a few seconds later. */
+    private class RetreatGoal extends Goal {
+        RetreatGoal() {
+            setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            return hasYielded();
+        }
+
+        @Override
+        public void tick() {
+            if (retreatTicks % 20 == 0) {
+                Player p = level().getNearestPlayer(StoryNpcEntity.this, 32);
+                Vec3 away = p == null ? position().add(10, 0, 0) : position().add(position().subtract(p.position()).multiply(1, 0, 1).normalize().scale(12));
+                getNavigation().moveTo(away.x, away.y, away.z, 1.3);
+            }
+            if (--retreatTicks <= 0 && level() instanceof ServerLevel sl) {
+                sl.sendParticles(ParticleTypes.POOF, getX(), getY() + 0.8, getZ(), 16, 0.3, 0.5, 0.3, 0.02);
+                discard();
+            }
+        }
+    }
+
+    /**
+     * A companion with a weapon in hand helps in a fight: steps in against an enemy near the player
+     * it follows. The blows are light; the player does most of the work.
+     */
+    private class DefendGoal extends Goal {
+        @Nullable private StoryNpcEntity foe;
+        private int cooldown;
+
+        DefendGoal() {
+            setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            if (isHostile() || hasYielded() || followTarget == null || getMainHandItem().isEmpty() || talkTarget != null) return false;
+            Player p = player(followTarget);
+            if (p == null) return false;
+            foe = level().getEntitiesOfClass(StoryNpcEntity.class, p.getBoundingBox().inflate(10), StoryNpcEntity::isHostile)
+                    .stream().min((a, b) -> Double.compare(a.distanceTo(StoryNpcEntity.this), b.distanceTo(StoryNpcEntity.this))).orElse(null);
+            return foe != null;
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            Player p = player(followTarget);
+            return foe != null && foe.isAlive() && foe.isHostile() && p != null && foe.distanceTo(p) < 14;
+        }
+
+        @Override
+        public void tick() {
+            if (foe == null) return;
+            getLookControl().setLookAt(foe, 30.0F, 30.0F);
+            if (distanceTo(foe) > 2.2F) {
+                if (getNavigation().isDone() || tickCount % 10 == 0) getNavigation().moveTo(foe, 1.0);
+            } else if (--cooldown <= 0) {
+                getNavigation().stop();
+                swing(InteractionHand.MAIN_HAND);
+                foe.hurt(damageSources().mobAttack(StoryNpcEntity.this), 1.0F);
+                cooldown = 30;
+            }
+        }
+
+        @Override
+        public void stop() {
+            foe = null;
+            getNavigation().stop();
+        }
+    }
+}

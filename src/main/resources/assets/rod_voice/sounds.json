@@ -1,0 +1,1164 @@
+{
+  "v_fc0a5d663b2a": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_fc0a5d663b2a"
+      }
+    ]
+  },
+  "v_f3a5f8b3a11b": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_f3a5f8b3a11b"
+      }
+    ]
+  },
+  "v_82ab83d9f3cc": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_82ab83d9f3cc"
+      }
+    ]
+  },
+  "v_2693ed66d3b4": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_2693ed66d3b4"
+      }
+    ]
+  },
+  "v_bc0b09f1f795": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_bc0b09f1f795"
+      }
+    ]
+  },
+  "v_e07fcf0c4106": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_e07fcf0c4106"
+      }
+    ]
+  },
+  "v_6692f44d9b62": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_6692f44d9b62"
+      }
+    ]
+  },
+  "v_afa12cfce341": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_afa12cfce341"
+      }
+    ]
+  },
+  "v_2e4a99aee249": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_2e4a99aee249"
+      }
+    ]
+  },
+  "v_693a64d5be1a": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_693a64d5be1a"
+      }
+    ]
+  },
+  "v_5f5abf5ae502": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_5f5abf5ae502"
+      }
+    ]
+  },
+  "v_3ed8fb73d581": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_3ed8fb73d581"
+      }
+    ]
+  },
+  "v_59c1e2fb193c": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_59c1e2fb193c"
+      }
+    ]
+  },
+  "v_9bf6e42b8de7": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_9bf6e42b8de7"
+      }
+    ]
+  },
+  "v_7876e8e1cf3c": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_7876e8e1cf3c"
+      }
+    ]
+  },
+  "v_2263f5ef058e": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_2263f5ef058e"
+      }
+    ]
+  },
+  "v_2b9fa8e4e551": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_2b9fa8e4e551"
+      }
+    ]
+  },
+  "v_1d92e4e0b119": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_1d92e4e0b119"
+      }
+    ]
+  },
+  "v_fdb2870d550f": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_fdb2870d550f"
+      }
+    ]
+  },
+  "v_d417a77ea566": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_d417a77ea566"
+      }
+    ]
+  },
+  "v_4a71c53d295a": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_4a71c53d295a"
+      }
+    ]
+  },
+  "v_3c74480d5ec8": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_3c74480d5ec8"
+      }
+    ]
+  },
+  "v_90dbbc54812a": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_90dbbc54812a"
+      }
+    ]
+  },
+  "v_b6f27fa18fb3": {
+    "sounds": [
+      {
+        "name": "rod_voice:bram/v_b6f27fa18fb3"
+      }
+    ]
+  },
+  "v_5e9702a58eaf": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_5e9702a58eaf"
+      }
+    ]
+  },
+  "v_802d4d27bb58": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_802d4d27bb58"
+      }
+    ]
+  },
+  "v_c9195865a6f7": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_c9195865a6f7"
+      }
+    ]
+  },
+  "v_22e612076827": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_22e612076827"
+      }
+    ]
+  },
+  "v_41d5b4e0247e": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_41d5b4e0247e"
+      }
+    ]
+  },
+  "v_41da756d4212": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_41da756d4212"
+      }
+    ]
+  },
+  "v_78ba35e16655": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_78ba35e16655"
+      }
+    ]
+  },
+  "v_94ff93bb7da8": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_94ff93bb7da8"
+      }
+    ]
+  },
+  "v_43c01f9a55c6": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_43c01f9a55c6"
+      }
+    ]
+  },
+  "v_d8d229140ffc": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_d8d229140ffc"
+      }
+    ]
+  },
+  "v_21d60574703c": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_21d60574703c"
+      }
+    ]
+  },
+  "v_b06878d9f022": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_b06878d9f022"
+      }
+    ]
+  },
+  "v_14ce6933c04c": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_14ce6933c04c"
+      }
+    ]
+  },
+  "v_e275ee3520b1": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_e275ee3520b1"
+      }
+    ]
+  },
+  "v_9824e028ab41": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_9824e028ab41"
+      }
+    ]
+  },
+  "v_28bd48815627": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_28bd48815627"
+      }
+    ]
+  },
+  "v_01fee40899c8": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_01fee40899c8"
+      }
+    ]
+  },
+  "v_b065ffdd43ed": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_b065ffdd43ed"
+      }
+    ]
+  },
+  "v_c25f56cb328d": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_c25f56cb328d"
+      }
+    ]
+  },
+  "v_4ea220e9b28d": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_4ea220e9b28d"
+      }
+    ]
+  },
+  "v_d116beca16be": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_d116beca16be"
+      }
+    ]
+  },
+  "v_36bcf5409f72": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_36bcf5409f72"
+      }
+    ]
+  },
+  "v_49240f6484c1": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_49240f6484c1"
+      }
+    ]
+  },
+  "v_6a8f8a6738d3": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_6a8f8a6738d3"
+      }
+    ]
+  },
+  "v_f27d2ebfab4c": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_f27d2ebfab4c"
+      }
+    ]
+  },
+  "v_bdb293578231": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_bdb293578231"
+      }
+    ]
+  },
+  "v_6ad28a56b7d7": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_6ad28a56b7d7"
+      }
+    ]
+  },
+  "v_80292b2340bd": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_80292b2340bd"
+      }
+    ]
+  },
+  "v_8deb0348f0c5": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_8deb0348f0c5"
+      }
+    ]
+  },
+  "v_a8c05446f121": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_a8c05446f121"
+      }
+    ]
+  },
+  "v_ec48570c0c2c": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_ec48570c0c2c"
+      }
+    ]
+  },
+  "v_9f43096a21ef": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_9f43096a21ef"
+      }
+    ]
+  },
+  "v_f41d0b0e5c49": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_f41d0b0e5c49"
+      }
+    ]
+  },
+  "v_663ce0f9b839": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_663ce0f9b839"
+      }
+    ]
+  },
+  "v_4a938f8ef96d": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_4a938f8ef96d"
+      }
+    ]
+  },
+  "v_4790e5de4fc3": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_4790e5de4fc3"
+      }
+    ]
+  },
+  "v_205abfb36eb3": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_205abfb36eb3"
+      }
+    ]
+  },
+  "v_3e372d672aed": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_3e372d672aed"
+      }
+    ]
+  },
+  "v_da9d5d67f118": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_da9d5d67f118"
+      }
+    ]
+  },
+  "v_bbfdfc948655": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_bbfdfc948655"
+      }
+    ]
+  },
+  "v_07a5ca18ba60": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_07a5ca18ba60"
+      }
+    ]
+  },
+  "v_d641ecba99b0": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_d641ecba99b0"
+      }
+    ]
+  },
+  "v_dc5b57d61394": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_dc5b57d61394"
+      }
+    ]
+  },
+  "v_332e93524e9f": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_332e93524e9f"
+      }
+    ]
+  },
+  "v_4b3d1642161f": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_4b3d1642161f"
+      }
+    ]
+  },
+  "v_84e2f48b3452": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_84e2f48b3452"
+      }
+    ]
+  },
+  "v_1508f4c6e53f": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_1508f4c6e53f"
+      }
+    ]
+  },
+  "v_ebb322ac8b43": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_ebb322ac8b43"
+      }
+    ]
+  },
+  "v_47e01bb41d97": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_47e01bb41d97"
+      }
+    ]
+  },
+  "v_44218d1a2d3b": {
+    "sounds": [
+      {
+        "name": "rod_voice:elara/v_44218d1a2d3b"
+      }
+    ]
+  },
+  "v_98bead65e6ba": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_98bead65e6ba"
+      }
+    ]
+  },
+  "v_4d3f16b67035": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_4d3f16b67035"
+      }
+    ]
+  },
+  "v_0fde975ecd9f": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_0fde975ecd9f"
+      }
+    ]
+  },
+  "v_09e5907c585c": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_09e5907c585c"
+      }
+    ]
+  },
+  "v_c15abc053940": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_c15abc053940"
+      }
+    ]
+  },
+  "v_da17d6d0ce3b": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_da17d6d0ce3b"
+      }
+    ]
+  },
+  "v_65a8cd38dd5b": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_65a8cd38dd5b"
+      }
+    ]
+  },
+  "v_ad1ea1003679": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_ad1ea1003679"
+      }
+    ]
+  },
+  "v_5cfbf88377de": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_5cfbf88377de"
+      }
+    ]
+  },
+  "v_0a20325b6403": {
+    "sounds": [
+      {
+        "name": "rod_voice:elder_rowan/v_0a20325b6403"
+      }
+    ]
+  },
+  "v_9c17574158b6": {
+    "sounds": [
+      {
+        "name": "rod_voice:expedition_worker_1/v_9c17574158b6"
+      }
+    ]
+  },
+  "v_ee035f42c275": {
+    "sounds": [
+      {
+        "name": "rod_voice:firstbrook_farmer_1/v_ee035f42c275"
+      }
+    ]
+  },
+  "v_5ac724c11b93": {
+    "sounds": [
+      {
+        "name": "rod_voice:firstbrook_villager_2/v_5ac724c11b93"
+      }
+    ]
+  },
+  "v_eceed1fd39de": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_eceed1fd39de"
+      }
+    ]
+  },
+  "v_b05a69b66304": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_b05a69b66304"
+      }
+    ]
+  },
+  "v_fa3b6149e56f": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_fa3b6149e56f"
+      }
+    ]
+  },
+  "v_a51a067cf02c": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_a51a067cf02c"
+      }
+    ]
+  },
+  "v_dc85ffc35c2b": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_dc85ffc35c2b"
+      }
+    ]
+  },
+  "v_f059c8956f8e": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_f059c8956f8e"
+      }
+    ]
+  },
+  "v_0159c1f8d3b2": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_0159c1f8d3b2"
+      }
+    ]
+  },
+  "v_7c3325dd447b": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_7c3325dd447b"
+      }
+    ]
+  },
+  "v_f86da225263f": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_f86da225263f"
+      }
+    ]
+  },
+  "v_ad56bbf9bfb7": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_ad56bbf9bfb7"
+      }
+    ]
+  },
+  "v_640bdb28c20c": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_640bdb28c20c"
+      }
+    ]
+  },
+  "v_edcbcdba3121": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_edcbcdba3121"
+      }
+    ]
+  },
+  "v_b7cd1fb06359": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_b7cd1fb06359"
+      }
+    ]
+  },
+  "v_704924be5942": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_704924be5942"
+      }
+    ]
+  },
+  "v_0e43dbfe52f0": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_0e43dbfe52f0"
+      }
+    ]
+  },
+  "v_2c717c42e9b5": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_2c717c42e9b5"
+      }
+    ]
+  },
+  "v_dfca4b6aabac": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_dfca4b6aabac"
+      }
+    ]
+  },
+  "v_c6cd4729ec3a": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_c6cd4729ec3a"
+      }
+    ]
+  },
+  "v_599bf7d86150": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_599bf7d86150"
+      }
+    ]
+  },
+  "v_d0cf37442379": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_d0cf37442379"
+      }
+    ]
+  },
+  "v_71289f51446d": {
+    "sounds": [
+      {
+        "name": "rod_voice:orin/v_71289f51446d"
+      }
+    ]
+  },
+  "v_8c8553511a43": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_8c8553511a43"
+      }
+    ]
+  },
+  "v_0719396865c5": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_0719396865c5"
+      }
+    ]
+  },
+  "v_a6fc22ed324d": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_a6fc22ed324d"
+      }
+    ]
+  },
+  "v_e269bd5e5627": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_e269bd5e5627"
+      }
+    ]
+  },
+  "v_54f13f7d4cea": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_54f13f7d4cea"
+      }
+    ]
+  },
+  "v_f74388879940": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_f74388879940"
+      }
+    ]
+  },
+  "v_9cbd9853724e": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_9cbd9853724e"
+      }
+    ]
+  },
+  "v_d334f39b3848": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_d334f39b3848"
+      }
+    ]
+  },
+  "v_6638a2a836e3": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_6638a2a836e3"
+      }
+    ]
+  },
+  "v_f04e14b125e6": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_f04e14b125e6"
+      }
+    ]
+  },
+  "v_e4fcc7e908bf": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_e4fcc7e908bf"
+      }
+    ]
+  },
+  "v_89817c55e8f0": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_89817c55e8f0"
+      }
+    ]
+  },
+  "v_b7d59a68dce3": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_b7d59a68dce3"
+      }
+    ]
+  },
+  "v_8babe1403d45": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_8babe1403d45"
+      }
+    ]
+  },
+  "v_d3e80de41e0f": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_d3e80de41e0f"
+      }
+    ]
+  },
+  "v_cc136038b5bc": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_cc136038b5bc"
+      }
+    ]
+  },
+  "v_535a8a387724": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_535a8a387724"
+      }
+    ]
+  },
+  "v_71f6cec37f68": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_71f6cec37f68"
+      }
+    ]
+  },
+  "v_d83f6a6e269b": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_d83f6a6e269b"
+      }
+    ]
+  },
+  "v_865a63c8b87a": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_865a63c8b87a"
+      }
+    ]
+  },
+  "v_fbbe6b72be21": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_fbbe6b72be21"
+      }
+    ]
+  },
+  "v_9678e8197911": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_9678e8197911"
+      }
+    ]
+  },
+  "v_f4832db35c51": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_f4832db35c51"
+      }
+    ]
+  },
+  "v_2896f69b51b1": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_2896f69b51b1"
+      }
+    ]
+  },
+  "v_393d7e945418": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_393d7e945418"
+      }
+    ]
+  },
+  "v_2824da53a39a": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_2824da53a39a"
+      }
+    ]
+  },
+  "v_f4b918f5f28f": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_f4b918f5f28f"
+      }
+    ]
+  },
+  "v_7f7c725285af": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_7f7c725285af"
+      }
+    ]
+  },
+  "v_1ec9402cbbe6": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_1ec9402cbbe6"
+      }
+    ]
+  },
+  "v_64f4a175ff7b": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_64f4a175ff7b"
+      }
+    ]
+  },
+  "v_7d32f37413f6": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_7d32f37413f6"
+      }
+    ]
+  },
+  "v_97aea094cc90": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_97aea094cc90"
+      }
+    ]
+  },
+  "v_b86255ec6125": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_b86255ec6125"
+      }
+    ]
+  },
+  "v_eef8611849ff": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_eef8611849ff"
+      }
+    ]
+  },
+  "v_a70b89393553": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_a70b89393553"
+      }
+    ]
+  },
+  "v_a760328c5433": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_a760328c5433"
+      }
+    ]
+  },
+  "v_eef58bda0cac": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_eef58bda0cac"
+      }
+    ]
+  },
+  "v_350289e73479": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_350289e73479"
+      }
+    ]
+  },
+  "v_4924ba050bb6": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_4924ba050bb6"
+      }
+    ]
+  },
+  "v_c6f226a1d7ec": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_c6f226a1d7ec"
+      }
+    ]
+  },
+  "v_4fe82da2e777": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_4fe82da2e777"
+      }
+    ]
+  },
+  "v_4ca715020d00": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_4ca715020d00"
+      }
+    ]
+  },
+  "v_70aa1522b48d": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_70aa1522b48d"
+      }
+    ]
+  },
+  "v_2d70c6b7d606": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_2d70c6b7d606"
+      }
+    ]
+  },
+  "v_3ef0b207ece1": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_3ef0b207ece1"
+      }
+    ]
+  },
+  "v_57f41b6b98c1": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_57f41b6b98c1"
+      }
+    ]
+  },
+  "v_285a34956716": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_285a34956716"
+      }
+    ]
+  },
+  "v_de74d828258d": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_de74d828258d"
+      }
+    ]
+  },
+  "v_664b53768813": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_664b53768813"
+      }
+    ]
+  },
+  "v_53a79268a6ac": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_53a79268a6ac"
+      }
+    ]
+  },
+  "v_1151528979b6": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_1151528979b6"
+      }
+    ]
+  },
+  "v_1435838f604c": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_1435838f604c"
+      }
+    ]
+  },
+  "v_b966238cf869": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_b966238cf869"
+      }
+    ]
+  },
+  "v_bf2bb777aca2": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_bf2bb777aca2"
+      }
+    ]
+  },
+  "v_8defef14006c": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_8defef14006c"
+      }
+    ]
+  },
+  "v_06076b65d787": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_06076b65d787"
+      }
+    ]
+  },
+  "v_18d45ba95dec": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_18d45ba95dec"
+      }
+    ]
+  },
+  "v_b5a6f50c7f95": {
+    "sounds": [
+      {
+        "name": "rod_voice:primordial_steve/v_b5a6f50c7f95"
+      }
+    ]
+  }
+}

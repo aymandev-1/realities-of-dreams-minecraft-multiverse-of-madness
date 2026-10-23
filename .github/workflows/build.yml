@@ -1,0 +1,124 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Story engine unit tests
+        run: ./gradlew :story-core:test --stacktrace
+
+      - name: Compile the NeoForge mod
+        run: ./gradlew build --stacktrace
+
+      - name: In-game tests on a dedicated server
+        run: ./gradlew runGameTestServer --stacktrace
+
+      - name: Upload mod jar
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: realitiesofdreams-mod-jar
+          path: build/libs/*.jar
+          if-no-files-found: ignore
+
+      - name: Upload test reports and server logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            story-core/build/reports/tests/
+            run/gametest/logs/
+          if-no-files-found: ignore
+
+  # Starts the real Minecraft client (software rendering on a virtual screen), photographs every
+  # Saga 1 character and plays Scene 001 to the end. See ClientAutotest.java.
+  client-playtest:
+    needs: build
+    # Screenshots are worth having even when a game test fails.
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Install a virtual screen and software OpenGL
+        run: sudo apt-get update -q && sudo apt-get install -y -q xvfb libgl1-mesa-dri libglx-mesa0 mesa-utils
+
+      - name: Client settings for an unattended run
+        run: |
+          mkdir -p run/autotest
+          cat > run/autotest/options.txt <<'OPTIONS'
+          onboardAccessibility:false
+          pauseOnLostFocus:false
+          tutorialStep:none
+          joinedFirstServer:true
+          skipMultiplayerWarning:true
+          narrator:0
+          renderDistance:8
+          simulationDistance:6
+          maxFps:30
+          guiScale:2
+          soundCategory_master:0.0
+          OPTIONS
+          sed -i 's/^ *//' run/autotest/options.txt
+
+      - name: Automated playtest in the Minecraft client
+        env:
+          LIBGL_ALWAYS_SOFTWARE: '1'
+        run: |
+          timeout 35m xvfb-run -a -s "-screen 0 1600x900x24" ./gradlew runClient -Prod.autotest=true --stacktrace || true
+          cat run/autotest/autotest.log || true
+          grep -q "RESULT: PASS" run/autotest/autotest.log
+
+      - name: Upload screenshots and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-playtest
+          path: |
+            run/autotest/screenshots/
+            run/autotest/autotest.log
+            run/autotest/logs/
+          if-no-files-found: ignore
+
+      - name: Publish screenshots to the claude/playtest-screenshots branch
+        if: always() && github.event_name == 'push'
+        # Convenience copy only. Pushes of the same commit to two branches race for this ref, and the
+        # loser must not fail a playtest that passed; the screenshots are in the artifact either way.
+        continue-on-error: true
+        run: |
+          mkdir -p /tmp/shots
+          cp run/autotest/screenshots/*.png /tmp/shots/ 2>/dev/null || true
+          cp run/autotest/autotest.log /tmp/shots/ 2>/dev/null || true
+          grep -E "ERROR|Exception|\[autotest\]" run/autotest/logs/latest.log | head -300 > /tmp/shots/client-log-excerpt.txt 2>/dev/null || true
+          cd /tmp/shots
+          git init -q
+          git checkout -q -b claude/playtest-screenshots
+          git add -A
+          git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" commit -qm "Client playtest screenshots for ${GITHUB_SHA}"
+          git push -qf "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" claude/playtest-screenshots

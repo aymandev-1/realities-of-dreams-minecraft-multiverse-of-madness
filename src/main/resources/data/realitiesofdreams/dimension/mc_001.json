@@ -1,0 +1,24 @@
+{
+  "type": "realitiesofdreams:mc_001",
+  "generator": {
+    "type": "realitiesofdreams:mc001",
+    "settings": "minecraft:overworld",
+    "biome_source": {
+      "type": "realitiesofdreams:mc001",
+      "wilds": {
+        "type": "minecraft:multi_noise",
+        "preset": "minecraft:overworld"
+      },
+      "village": "minecraft:plains",
+      "hills": "minecraft:meadow",
+      "mountains": "minecraft:taiga",
+      "woodland": "minecraft:forest",
+      "valley": "minecraft:sunflower_plains",
+      "regions": {
+        "sunspire": "minecraft:desert",
+        "emberhold": "minecraft:badlands",
+        "tidewatch": "minecraft:beach"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "music.menu": {
+    "sounds": [
+      {"name": "realitiesofdreams:music/menu_first_light", "stream": true}
+    ]
+  },
+  "ui.menu_select": {
+    "subtitle": "subtitles.realitiesofdreams.ui.menu_select",
+    "sounds": ["realitiesofdreams:ui/menu_select"]
+  },
+  "ui.menu_transition": {
+    "sounds": ["realitiesofdreams:ui/menu_transition"]
+  },
+  "ui.story_begin": {
+    "sounds": ["realitiesofdreams:ui/story_begin"]
+  },
+  "ui.quest_update": {
+    "subtitle": "subtitles.realitiesofdreams.ui.quest_update",
+    "sounds": ["realitiesofdreams:ui/quest_update"]
+  }
+}

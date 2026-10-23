@@ -1,0 +1,886 @@
+{
+  "scene": {
+    "id": "mc001_s010",
+    "title": "Liora's Warning",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 10,
+    "canon_status": "Saga 1 screenplay, Version 1 (docs/story/SAGA_1_SCREENPLAY.md): spoken dialogue verbatim. Hints, captions, item names and the outcome message are new gameplay text. The rangers' route, the walkway and the watchtower record follow the scene's listed objectives.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "sylvaris_outpost",
+    "anchor": [
+      150,
+      66,
+      40
+    ],
+    "arrival": {
+      "pos": [
+        -40,
+        0,
+        0
+      ],
+      "yaw": -90
+    },
+    "next_scene": "mc001_s011",
+    "locations": {
+      "path_west": {
+        "pos": [
+          -40,
+          0,
+          0
+        ],
+        "radius": 2
+      },
+      "elara_start": {
+        "pos": [
+          -41,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "bram_start": {
+        "pos": [
+          -41,
+          0,
+          -2
+        ],
+        "radius": 1
+      },
+      "outpost": {
+        "pos": [
+          -17,
+          0,
+          3
+        ],
+        "radius": 4
+      },
+      "liora_platform": {
+        "pos": [
+          -6,
+          5,
+          4
+        ],
+        "radius": 1
+      },
+      "ranger_platform": {
+        "pos": [
+          0,
+          5,
+          -3
+        ],
+        "radius": 1
+      },
+      "ranger_lookout": {
+        "pos": [
+          -6,
+          12,
+          -1
+        ],
+        "radius": 1
+      },
+      "ranger_lead": {
+        "pos": [
+          16,
+          4,
+          7
+        ],
+        "radius": 1
+      },
+      "walkway_start": {
+        "pos": [
+          17,
+          4,
+          9
+        ],
+        "radius": 3
+      },
+      "gap": {
+        "pos": [
+          25,
+          4,
+          8
+        ],
+        "radius": 2
+      },
+      "far_platform": {
+        "pos": [
+          36,
+          4,
+          8
+        ],
+        "radius": 3
+      },
+      "grove": {
+        "pos": [
+          37,
+          0,
+          -10
+        ],
+        "radius": 4
+      },
+      "ranger_grove": {
+        "pos": [
+          33,
+          0,
+          -18
+        ],
+        "radius": 1
+      },
+      "stone_side": {
+        "pos": [
+          36,
+          0,
+          -11
+        ],
+        "radius": 2
+      },
+      "liora_stone": {
+        "pos": [
+          38,
+          0,
+          -13
+        ],
+        "radius": 1
+      },
+      "tower_foot": {
+        "pos": [
+          44,
+          0,
+          -32
+        ],
+        "radius": 2
+      },
+      "liora_tower": {
+        "pos": [
+          44,
+          0,
+          -28
+        ],
+        "radius": 1
+      },
+      "tower_top": {
+        "pos": [
+          40,
+          12,
+          -31
+        ],
+        "radius": 2
+      },
+      "ranger_tower": {
+        "pos": [
+          41,
+          12,
+          -30
+        ],
+        "radius": 1
+      },
+      "stone_glow": {
+        "pos": [
+          36,
+          1,
+          -14
+        ],
+        "radius": 1
+      }
+    },
+    "npcs": [
+      {
+        "character": "elara",
+        "location": "elara_start",
+        "yaw": -90
+      },
+      {
+        "character": "bram",
+        "location": "bram_start",
+        "yaw": -90,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "liora",
+        "location": "liora_platform",
+        "yaw": 90,
+        "held": "minecraft:bow"
+      },
+      {
+        "character": "sylvaris_ranger_1",
+        "location": "ranger_platform",
+        "yaw": 90,
+        "held": "minecraft:bow"
+      },
+      {
+        "character": "sylvaris_ranger_2",
+        "location": "ranger_lookout",
+        "yaw": 90
+      },
+      {
+        "character": "sylvaris_ranger_3",
+        "location": "ranger_grove",
+        "yaw": 0,
+        "held": "minecraft:spruce_sapling",
+        "activity": "work"
+      },
+      {
+        "character": "sylvaris_ranger_4",
+        "location": "ranger_tower",
+        "yaw": -90
+      }
+    ],
+    "clues": {
+      "s10_stone": {
+        "name": "Exposed ancient stone",
+        "pos": [
+          36,
+          0,
+          -14
+        ],
+        "block": "minecraft:chiseled_tuff"
+      },
+      "s10_record": {
+        "name": "Old border record",
+        "pos": [
+          40,
+          12,
+          -31
+        ],
+        "block": "minecraft:lectern"
+      }
+    },
+    "stages": [
+      {
+        "id": "to_outpost",
+        "objective": "Follow the forest path to the Sylvaris outpost",
+        "target": "outpost",
+        "checkpoint": "path_west",
+        "on_enter": [
+          {
+            "type": "teleport_player",
+            "location": "path_west",
+            "yaw": -90
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_start"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "The post at the empty campsite pointed the way to Sylvaris. Follow the path into the forest."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "outpost"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s010_outpost"
+          }
+        ]
+      },
+      {
+        "id": "outpost_view",
+        "checkpoint": "outpost",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s010_outpost"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s10_greeting"
+          }
+        ]
+      },
+      {
+        "id": "greeting_talk",
+        "checkpoint": "outpost",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s10_greeting"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s10_humming"
+          }
+        ]
+      },
+      {
+        "id": "humming_talk",
+        "checkpoint": "outpost",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s10_humming"
+        },
+        "on_complete": [
+          {
+            "type": "npc_move",
+            "character": "sylvaris_ranger_1",
+            "location": "ranger_lead"
+          },
+          {
+            "type": "npc_follow",
+            "character": "liora"
+          }
+        ]
+      },
+      {
+        "id": "follow",
+        "objective": "Follow the rangers toward the eastern grove",
+        "target": "walkway_start",
+        "checkpoint": "outpost",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Keep to the path and the platforms. Sylvaris guards these trees; nothing here needs cutting."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "walkway_start"
+        }
+      },
+      {
+        "id": "walkway",
+        "objective": "Stabilise the fallen walkway",
+        "target": "gap",
+        "checkpoint": "walkway_start",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:spruce_planks",
+            "count": 10
+          },
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "The middle of the walkway has fallen into the ravine. Lay planks where the green sparkles are."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "solid|24,3,8;25,3,8;26,3,8;27,3,8;24,3,9;25,3,9;26,3,9;27,3,9"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.wood.place",
+            "volume": 1.0,
+            "pitch": 0.8
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "npc_follow",
+            "character": "liora"
+          }
+        ]
+      },
+      {
+        "id": "cross",
+        "objective": "Cross to the eastern grove",
+        "target": "grove",
+        "checkpoint": "walkway_start",
+        "complete": {
+          "type": "reach",
+          "value": "grove"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_stone"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_stone"
+          }
+        ]
+      },
+      {
+        "id": "stone",
+        "objective": "Examine the exposed ancient stone",
+        "target": "stone_side",
+        "checkpoint": "grove",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "Roots have heaved the ground up round an old stone. Press {use} on it."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s10_stone"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.amethyst_block.resonate",
+            "volume": 0.8,
+            "pitch": 0.6
+          },
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_tower"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_tower"
+          }
+        ]
+      },
+      {
+        "id": "record",
+        "objective": "Help Liora fetch the old border record from the watchtower",
+        "target": "tower_top",
+        "checkpoint": "grove",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "The watchtower stands south of the grove. Climb the ladder inside and press {use} on the lectern at the top."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s10_record"
+        },
+        "on_complete": [
+          {
+            "type": "give_item",
+            "item": "minecraft:paper",
+            "count": 1,
+            "name": "Sylvaris border record",
+            "lore": "Survey of the eastern grove, many generations old.|It marks the stone with six small carvings."
+          }
+        ]
+      },
+      {
+        "id": "back_to_stone",
+        "objective": "Bring the record back to the ancient stone",
+        "target": "stone_side",
+        "checkpoint": "tower_foot",
+        "on_enter": [
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_stone"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_stone"
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "stone_side"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s010_compare"
+          }
+        ]
+      },
+      {
+        "id": "compare",
+        "checkpoint": "grove",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s010_compare"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s10_six_marks"
+          }
+        ]
+      },
+      {
+        "id": "six_marks_talk",
+        "checkpoint": "grove",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s10_six_marks"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s10_warning"
+          }
+        ]
+      },
+      {
+        "id": "warning_talk",
+        "checkpoint": "grove",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s10_warning"
+        },
+        "on_complete": [
+          {
+            "type": "give_item",
+            "item": "minecraft:paper",
+            "count": 1,
+            "name": "Liora's warning",
+            "lore": "Sealed with the leaf of Sylvaris.|For the elders of Firstbrook and the royal court."
+          },
+          {
+            "type": "title",
+            "title": "Act II Complete",
+            "subtitle": "The Forest's Message"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7,
+            "pitch": 1.0
+          },
+          {
+            "type": "journal",
+            "id": "forest_message"
+          },
+          {
+            "type": "message",
+            "text": "Liora is coming to the royal court herself. The mystery now reaches beyond Firstbrook."
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.sylvaris.liora_ally"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s010.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [],
+    "area_triggers": [],
+    "chatter": []
+  },
+  "dialogues": {
+    "s10_greeting": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "liora",
+          "text": "Travellers from Firstbrook?",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "elara",
+          "text": "Liora?",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "liora",
+          "text": "Elara. I hoped the next time we met would be under better circumstances.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "primordial_steve",
+          "text": "You've been expecting us?",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "liora",
+          "text": "We've been expecting someone to follow the tremors."
+        }
+      }
+    },
+    "s10_humming": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "liora",
+          "text": "The oldest trees have stood here for generations. Their roots reach farther than our records.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "And?",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "liora",
+          "text": "Yesterday, the ground beneath them started humming.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "bram",
+          "text": "Humming?",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "liora",
+          "text": "A sound without a source. Some of our watchtowers heard it at the same time.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "elara",
+          "text": "Did you find anything?",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "liora",
+          "text": "An ancient stone buried beneath the eastern grove. It has the same markings as the drawing you brought.",
+          "actions": [
+            {
+              "type": "hold_item",
+              "item": "minecraft:written_book"
+            }
+          ],
+          "next": "l07"
+        },
+        "l07": {
+          "speaker": "liora",
+          "text": "Where did you get that?",
+          "next": "l08"
+        },
+        "l08": {
+          "speaker": "primordial_steve",
+          "text": "An abandoned camp.",
+          "next": "l09"
+        },
+        "l09": {
+          "speaker": "liora",
+          "text": "Then those explorers may have reached farther than we realised."
+        }
+      }
+    },
+    "s10_six_marks": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "liora",
+          "text": "Six marks. Six civilisations.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "That's what we thought.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "liora",
+          "text": "Then this is no longer a matter for Firstbrook alone.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "elara",
+          "text": "What are you suggesting?",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "liora",
+          "text": "You need the rulers and representatives together before someone makes a terrible mistake."
+        }
+      }
+    },
+    "s10_warning": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "liora",
+          "text": "Take this to your elders. Ask them to contact the royal court.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "Will Sylvaris help?",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "liora",
+          "text": "I'll come myself.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "primordial_steve",
+          "text": "Then we'll see you there."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s010_outpost": {
+      "duration": 230,
+      "fade_in": 15,
+      "fade_out": 10,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            -24.0,
+            1.6,
+            8.0
+          ],
+          "yaw": -111.8,
+          "pitch": -29.9,
+          "fov": 62
+        },
+        {
+          "t": 120,
+          "pos": [
+            -18.0,
+            3.0,
+            9.0
+          ],
+          "yaw": -122.7,
+          "pitch": -19.8,
+          "fov": 58
+        },
+        {
+          "t": 230,
+          "pos": [
+            -12.0,
+            6.2,
+            8.5
+          ],
+          "yaw": -123.7,
+          "pitch": -3.2,
+          "fov": 50
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 30,
+          "duration": 100,
+          "text": "Sylvaris Border Outpost",
+          "style": "title"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:block.azalea_leaves.step",
+          "volume": 0.4
+        },
+        {
+          "t": 60,
+          "sound": "minecraft:entity.parrot.ambient",
+          "volume": 0.3,
+          "pitch": 1.2
+        }
+      ],
+      "cues": [
+        {
+          "t": 90,
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "liora",
+              "location": "outpost"
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s010_compare": {
+      "duration": 150,
+      "fade_in": 8,
+      "fade_out": 8,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            33.0,
+            2.6,
+            -10.5
+          ],
+          "yaw": -130.6,
+          "pitch": 24.5,
+          "fov": 55
+        },
+        {
+          "t": 150,
+          "pos": [
+            34.0,
+            2.0,
+            -11.5
+          ],
+          "yaw": -128.7,
+          "pitch": 25.1,
+          "fov": 42
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 20,
+          "duration": 110,
+          "text": "Liora holds the drawing beside the stone. The six marks match.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 30,
+          "sound": "minecraft:block.amethyst_block.chime",
+          "volume": 0.8,
+          "pitch": 0.7
+        }
+      ],
+      "cues": [
+        {
+          "t": 40,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "stone_glow",
+              "count": 14,
+              "spread": 0.4
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "journal": {
+    "forest_message": {
+      "title": "The Forest's Message",
+      "text": "Liora of Sylvaris was waiting for us. Her rangers have heard the ground humming beneath the oldest trees, and they found an ancient stone in the eastern grove with the same markings as the expedition's drawing. We mended a fallen walkway to reach it and fetched an old border record from the watchtower. Six marks: six civilisations. Liora says the rulers must be brought together, and she is coming to the royal court herself."
+    }
+  }
+}

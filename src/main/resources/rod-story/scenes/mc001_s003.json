@@ -1,0 +1,1202 @@
+{
+  "scene": {
+    "id": "mc001_s003",
+    "title": "Elara's Northern Trail",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 3,
+    "canon_status": "Saga 1 screenplay, Version 1 (docs/story/SAGA_1_SCREENPLAY.md): spoken dialogue verbatim. Bram's word at the barrier, clue remarks and Elara's closing line are new gameplay text.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "firstbrook",
+    "anchor": [
+      0,
+      64,
+      0
+    ],
+    "arrival": {
+      "pos": [
+        0,
+        0,
+        -18
+      ],
+      "yaw": 180
+    },
+    "next_scene": "mc001_s004",
+    "locations": {
+      "bedroom": {
+        "pos": [
+          14,
+          0,
+          17
+        ],
+        "radius": 2
+      },
+      "bed": {
+        "pos": [
+          19,
+          0,
+          15
+        ],
+        "radius": 1
+      },
+      "actor_stand": {
+        "pos": [
+          18,
+          0,
+          15
+        ],
+        "radius": 1
+      },
+      "house_storage": {
+        "pos": [
+          13,
+          0,
+          18
+        ],
+        "radius": 2.5
+      },
+      "outside_door": {
+        "pos": [
+          16,
+          0,
+          12
+        ],
+        "radius": 2.5
+      },
+      "elara_start": {
+        "pos": [
+          26,
+          0,
+          12
+        ],
+        "radius": 2
+      },
+      "elara_window": {
+        "pos": [
+          18,
+          0,
+          12
+        ],
+        "radius": 1.5
+      },
+      "farm_road": {
+        "pos": [
+          12,
+          0,
+          11
+        ],
+        "radius": 4
+      },
+      "square": {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "radius": 5
+      },
+      "square_lantern": {
+        "pos": [
+          3,
+          2.5,
+          -4
+        ],
+        "radius": 1
+      },
+      "ridge": {
+        "pos": [
+          10,
+          30,
+          -112
+        ],
+        "radius": 4
+      },
+      "ridge_trees": {
+        "pos": [
+          14,
+          12,
+          -66
+        ],
+        "radius": 6
+      },
+      "rowan_door": {
+        "pos": [
+          -7,
+          0,
+          -3
+        ],
+        "radius": 2
+      },
+      "rowan_home": {
+        "pos": [
+          -11,
+          0,
+          -3
+        ],
+        "radius": 2
+      },
+      "orin_workshop": {
+        "pos": [
+          11,
+          0,
+          -8
+        ],
+        "radius": 2
+      },
+      "bram_bridge": {
+        "pos": [
+          36,
+          0,
+          13
+        ],
+        "radius": 2
+      },
+      "farm_west_edge": {
+        "pos": [
+          12,
+          0,
+          10
+        ],
+        "radius": 2
+      },
+      "farm_east_edge": {
+        "pos": [
+          24,
+          0,
+          10
+        ],
+        "radius": 2
+      },
+      "farm_inner": {
+        "pos": [
+          7,
+          0,
+          6
+        ],
+        "radius": 2
+      },
+      "lane_west": {
+        "pos": [
+          6,
+          0,
+          11
+        ],
+        "radius": 2
+      },
+      "lane_east": {
+        "pos": [
+          27,
+          0,
+          11
+        ],
+        "radius": 2
+      },
+      "north_road": {
+        "pos": [
+          0,
+          0,
+          -9
+        ],
+        "radius": 2
+      },
+      "gate": {
+        "pos": [
+          0,
+          0,
+          -20
+        ],
+        "radius": 2
+      },
+      "gate_post": {
+        "pos": [
+          -4,
+          0,
+          -21
+        ],
+        "radius": 2
+      },
+      "market_1": {
+        "pos": [
+          -13,
+          0,
+          10
+        ],
+        "radius": 1.5
+      },
+      "market_2": {
+        "pos": [
+          -9,
+          0,
+          10
+        ],
+        "radius": 1.5
+      },
+      "well_side": {
+        "pos": [
+          2,
+          0,
+          -3
+        ],
+        "radius": 1.5
+      },
+      "square_west": {
+        "pos": [
+          -4,
+          0,
+          3
+        ],
+        "radius": 1.5
+      },
+      "market_path": {
+        "pos": [
+          -11,
+          0,
+          12
+        ],
+        "radius": 1.5
+      },
+      "cottage_door": {
+        "pos": [
+          -12,
+          0,
+          13
+        ],
+        "radius": 1.5
+      },
+      "workshop_yard": {
+        "pos": [
+          16,
+          0,
+          -4
+        ],
+        "radius": 1.5
+      },
+      "bakery_inside": {
+        "pos": [
+          -11,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "millers_door": {
+        "pos": [
+          -1,
+          0,
+          13
+        ],
+        "radius": 1.5
+      },
+      "millers_inside": {
+        "pos": [
+          -1,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "storehouse_front": {
+        "pos": [
+          -22,
+          0,
+          -15
+        ],
+        "radius": 1.5
+      },
+      "farmhouse_door": {
+        "pos": [
+          2,
+          0,
+          24
+        ],
+        "radius": 1.5
+      },
+      "pens_gate": {
+        "pos": [
+          -24,
+          0,
+          22
+        ],
+        "radius": 1.5
+      },
+      "council_fire": {
+        "pos": [
+          -23,
+          0,
+          0
+        ],
+        "radius": 1.5
+      },
+      "training_yard": {
+        "pos": [
+          -34,
+          0,
+          -12
+        ],
+        "radius": 1.5
+      },
+      "weaver_door": {
+        "pos": [
+          -20,
+          0,
+          -11
+        ],
+        "radius": 1.5
+      },
+      "dock": {
+        "pos": [
+          35,
+          0,
+          29
+        ],
+        "radius": 1.5
+      },
+      "construction": {
+        "pos": [
+          40,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "market_3": {
+        "pos": [
+          -5,
+          0,
+          10
+        ],
+        "radius": 1.5
+      },
+      "market_cart": {
+        "pos": [
+          0,
+          0,
+          9
+        ],
+        "radius": 1.5
+      },
+      "guard_station_door": {
+        "pos": [
+          3,
+          0,
+          -18
+        ],
+        "radius": 1.5
+      },
+      "orin_house_door": {
+        "pos": [
+          18,
+          0,
+          -9
+        ],
+        "radius": 1.5
+      },
+      "rowan_square": {
+        "pos": [
+          -2,
+          0,
+          -2
+        ],
+        "radius": 2
+      },
+      "cracked_wall": {
+        "pos": [
+          5,
+          0,
+          -7
+        ],
+        "radius": 2.5
+      },
+      "surveyor_table": {
+        "pos": [
+          3,
+          0,
+          3
+        ],
+        "radius": 2.5
+      },
+      "tower_report": {
+        "pos": [
+          -7,
+          0,
+          -16
+        ],
+        "radius": 2.5
+      },
+      "compass_spot": {
+        "pos": [
+          3,
+          0,
+          1
+        ],
+        "radius": 1.5
+      },
+      "bram_patrol": {
+        "pos": [
+          0,
+          0,
+          -19
+        ],
+        "radius": 2
+      },
+      "trail_gate": {
+        "pos": [
+          0,
+          0,
+          -25
+        ],
+        "radius": 3
+      },
+      "bram_gate": {
+        "pos": [
+          2,
+          0,
+          -25
+        ],
+        "radius": 1.5
+      },
+      "footprints": {
+        "pos": [
+          2,
+          6,
+          -60
+        ],
+        "radius": 3
+      },
+      "elara_crouch": {
+        "pos": [
+          3,
+          6,
+          -58
+        ],
+        "radius": 1
+      },
+      "mid_trail": {
+        "pos": [
+          3,
+          9,
+          -68
+        ],
+        "radius": 6
+      },
+      "lantern_spot": {
+        "pos": [
+          2,
+          11,
+          -74
+        ],
+        "radius": 2
+      },
+      "rock_ledge": {
+        "pos": [
+          9,
+          18,
+          -76
+        ],
+        "radius": 2.5
+      },
+      "marker_spot": {
+        "pos": [
+          5,
+          19,
+          -87
+        ],
+        "radius": 2.5
+      },
+      "markings": {
+        "pos": [
+          8,
+          20,
+          -92
+        ],
+        "radius": 3
+      },
+      "markings_stone": {
+        "pos": [
+          9,
+          21,
+          -92
+        ],
+        "radius": 1.5
+      }
+    },
+    "npcs": [
+      {
+        "character": "elara",
+        "location": "elara_start",
+        "yaw": 90
+      },
+      {
+        "character": "orin",
+        "location": "orin_workshop",
+        "yaw": 0,
+        "activity": "work",
+        "held": "minecraft:iron_pickaxe"
+      },
+      {
+        "character": "bram",
+        "location": "bram_gate",
+        "yaw": 0,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "elder_rowan",
+        "location": "rowan_door",
+        "yaw": 90
+      },
+      {
+        "character": "firstbrook_farmer_1",
+        "location": "farm_west_edge",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:iron_hoe"
+      },
+      {
+        "character": "firstbrook_farmer_2",
+        "location": "farm_inner",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:wheat"
+      },
+      {
+        "character": "firstbrook_farmer_3",
+        "location": "farm_east_edge",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:stone_hoe"
+      },
+      {
+        "character": "firstbrook_guard_1",
+        "location": "lane_west",
+        "activity": "patrol",
+        "route": [
+          "lane_west",
+          "lane_east"
+        ],
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "firstbrook_guard_2",
+        "location": "gate_post",
+        "yaw": 180,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "firstbrook_guard_3",
+        "location": "gate_post",
+        "yaw": 180,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "firstbrook_villager_1",
+        "location": "market_1",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:bread"
+      },
+      {
+        "character": "firstbrook_villager_2",
+        "location": "market_2",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:apple"
+      },
+      {
+        "character": "firstbrook_villager_3",
+        "location": "well_side",
+        "yaw": 200,
+        "activity": "routine",
+        "route": [
+          "well_side",
+          "market_2",
+          "bakery_inside",
+          "square_west"
+        ]
+      },
+      {
+        "character": "firstbrook_villager_4",
+        "location": "square_west",
+        "activity": "patrol",
+        "route": [
+          "square_west",
+          "market_path"
+        ]
+      },
+      {
+        "character": "firstbrook_villager_5",
+        "location": "cottage_door",
+        "yaw": 0,
+        "activity": "routine",
+        "route": [
+          "cottage_door",
+          "millers_inside",
+          "market_path",
+          "council_fire"
+        ]
+      },
+      {
+        "character": "firstbrook_villager_6",
+        "location": "workshop_yard",
+        "yaw": 270,
+        "activity": "routine",
+        "held": "minecraft:iron_ingot",
+        "route": [
+          "workshop_yard",
+          "orin_house_door",
+          "storehouse_front",
+          "workshop_yard"
+        ]
+      },
+      {
+        "character": "merchant_1",
+        "location": "market_3",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:emerald"
+      },
+      {
+        "character": "merchant_2",
+        "location": "market_cart",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:pumpkin_pie"
+      },
+      {
+        "character": "merchant_3",
+        "location": "storehouse_front",
+        "activity": "routine",
+        "route": [
+          "storehouse_front",
+          "market_cart",
+          "farmhouse_door",
+          "pens_gate"
+        ]
+      },
+      {
+        "character": "merchant_4",
+        "location": "dock",
+        "yaw": 270,
+        "activity": "work",
+        "held": "minecraft:fishing_rod"
+      }
+    ],
+    "clues": {
+      "dropped_lantern": {
+        "name": "Dropped lantern",
+        "pos": [
+          2,
+          11,
+          -74
+        ],
+        "block": "minecraft:lantern",
+        "dialogue": "clue_lantern"
+      },
+      "scout_pack": {
+        "name": "Scout's pack",
+        "pos": [
+          10,
+          18,
+          -77
+        ],
+        "block": "minecraft:barrel",
+        "dialogue": "clue_pack"
+      },
+      "survey_marker": {
+        "name": "Broken survey marker",
+        "pos": [
+          6,
+          19,
+          -88
+        ],
+        "block": "minecraft:stone_brick_wall",
+        "dialogue": "clue_marker"
+      }
+    },
+    "stages": [
+      {
+        "id": "to_trail",
+        "objective": "Go to the northern trail with Elara",
+        "target": "trail_gate",
+        "checkpoint": "gate",
+        "on_enter": [
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "world_change",
+            "id": "mc001_s003_trail"
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "trail_gate"
+        },
+        "on_complete": [
+          {
+            "type": "say",
+            "character": "bram",
+            "text": "The trail's closed past the old posts, but the Elder says you two may pass. Mind the loose rock."
+          }
+        ]
+      },
+      {
+        "id": "follow_trail",
+        "objective": "Follow the trail north",
+        "target": "footprints",
+        "checkpoint": "trail_gate",
+        "complete": {
+          "type": "reach",
+          "value": "footprints"
+        }
+      },
+      {
+        "id": "tracks",
+        "checkpoint": "footprints",
+        "on_enter": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s003_tracks"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s003_tracks"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "tracks"
+          }
+        ]
+      },
+      {
+        "id": "tracks_talk",
+        "checkpoint": "footprints",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "tracks"
+        },
+        "on_complete": [
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          }
+        ]
+      },
+      {
+        "id": "investigate",
+        "objective": "Find the missing scout's last position",
+        "target": "rock_ledge",
+        "checkpoint": "footprints",
+        "on_enter": [
+          {
+            "type": "hint",
+            "text": "Climb the rocks with {jump}. Press {use} on anything worth a closer look.",
+            "ticks": 160
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "dropped_lantern,scout_pack"
+        }
+      },
+      {
+        "id": "markers",
+        "objective": "Find the missing trail markers",
+        "target": "marker_spot",
+        "checkpoint": "rock_ledge",
+        "complete": {
+          "type": "clues",
+          "value": "survey_marker"
+        }
+      },
+      {
+        "id": "markings",
+        "objective": "Examine the strange markings",
+        "target": "markings",
+        "checkpoint": "marker_spot",
+        "complete": {
+          "type": "reach",
+          "value": "markings"
+        }
+      },
+      {
+        "id": "pulse",
+        "checkpoint": "markings",
+        "on_enter": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s003_pulse"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s003_pulse"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "reacted"
+          }
+        ]
+      },
+      {
+        "id": "record",
+        "checkpoint": "markings",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "reacted"
+        },
+        "on_complete": [
+          {
+            "type": "say",
+            "character": "elara",
+            "text": "I'll mark this place on the map. Before we go any further, we need proper surveying gear from Orin."
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:map",
+            "name": "Northern Trail Map",
+            "lore": [
+              "Elara's markings: the vanished tracks,",
+              "the scout's camp and the strange stone."
+            ]
+          },
+          {
+            "type": "title",
+            "title": "Mission Complete",
+            "subtitle": "Tracks in the Stone"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7
+          },
+          {
+            "type": "journal",
+            "id": "northern_trail"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s003.northern_trail_map"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s004.orin_workshop"
+          },
+          {
+            "type": "add_value",
+            "key": "rel.elara",
+            "amount": "1"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s003.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [],
+    "area_triggers": [
+      {
+        "id": "valley_talk",
+        "location": "mid_trail",
+        "stages": [
+          "investigate"
+        ],
+        "actions": [
+          {
+            "type": "start_dialogue",
+            "id": "valley"
+          }
+        ]
+      }
+    ],
+    "chatter": []
+  },
+  "dialogues": {
+    "tracks": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "elara",
+          "text": "Look at this.",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "primordial_steve",
+          "text": "A traveller?",
+          "next": "c"
+        },
+        "c": {
+          "speaker": "elara",
+          "text": "Maybe. But the tracks stop here.",
+          "next": "d"
+        },
+        "d": {
+          "speaker": "primordial_steve",
+          "text": "They could've climbed the ridge.",
+          "next": "e"
+        },
+        "e": {
+          "speaker": "elara",
+          "text": "Then where are the marks on the rock?",
+          "next": "f"
+        },
+        "f": {
+          "speaker": "primordial_steve",
+          "text": "You think somebody vanished?",
+          "next": "g"
+        },
+        "g": {
+          "speaker": "elara",
+          "text": "I think something happened here that neither of us understands."
+        }
+      }
+    },
+    "valley": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "elara",
+          "text": "I know this valley. I've crossed it since I was a child.",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "primordial_steve",
+          "text": "You make it sound like the valley betrayed you.",
+          "next": "c"
+        },
+        "c": {
+          "speaker": "elara",
+          "text": "Maybe that's exactly how it feels."
+        }
+      }
+    },
+    "clue_lantern": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "primordial_steve",
+          "text": "A scout's lantern. Still half full of oil.",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "elara",
+          "text": "Nobody leaves a lantern behind out here. Look at those rocks. Someone climbed them."
+        }
+      }
+    },
+    "clue_pack": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "primordial_steve",
+          "text": "A bedroll, a cold fire and a pack. The scout was here.",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "elara",
+          "text": "Then this is the last place anyone saw them... if anyone did."
+        }
+      }
+    },
+    "clue_marker": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "primordial_steve",
+          "text": "One of the old survey markers. Snapped clean through.",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "elara",
+          "text": "These have stood for a hundred years. And there's another stone further up. Look at it."
+        }
+      }
+    },
+    "reacted": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "primordial_steve",
+          "text": "Did you see that?",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "elara",
+          "text": "Yes.",
+          "next": "c"
+        },
+        "c": {
+          "speaker": "primordial_steve",
+          "text": "They reacted to me.",
+          "next": "d"
+        },
+        "d": {
+          "speaker": "elara",
+          "text": "Or to the equipment you're carrying. We don't know yet."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s003_tracks": {
+      "duration": 120,
+      "fade_in": 12,
+      "fade_out": 10,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            6.8,
+            9.4,
+            -54.2
+          ],
+          "yaw": 141,
+          "pitch": 24,
+          "fov": 55
+        },
+        {
+          "t": 120,
+          "pos": [
+            6.0,
+            9.0,
+            -55.0
+          ],
+          "yaw": 142,
+          "pitch": 25,
+          "fov": 46
+        }
+      ],
+      "subtitles": [],
+      "sounds": [
+        {
+          "t": 6,
+          "sound": "minecraft:block.gravel.step",
+          "volume": 0.6
+        },
+        {
+          "t": 30,
+          "sound": "minecraft:block.mud.step",
+          "volume": 0.6
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "actions": [
+            {
+              "type": "npc_spawn",
+              "character": "elara",
+              "location": "elara_crouch"
+            },
+            {
+              "type": "npc_stay",
+              "character": "elara",
+              "location": "elara_crouch"
+            },
+            {
+              "type": "npc_look",
+              "character": "elara",
+              "location": "footprints"
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s003_pulse": {
+      "duration": 110,
+      "fade_in": 8,
+      "fade_out": 10,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            5.2,
+            23.4,
+            -97.4
+          ],
+          "yaw": -41,
+          "pitch": 15,
+          "fov": 60
+        },
+        {
+          "t": 110,
+          "pos": [
+            5.8,
+            23.0,
+            -96.6
+          ],
+          "yaw": -42,
+          "pitch": 14,
+          "fov": 50
+        }
+      ],
+      "subtitles": [],
+      "sounds": [
+        {
+          "t": 30,
+          "sound": "minecraft:block.amethyst_block.resonate",
+          "volume": 1.0,
+          "pitch": 0.6
+        },
+        {
+          "t": 32,
+          "sound": "minecraft:block.beacon.power_select",
+          "volume": 0.5,
+          "pitch": 1.4
+        },
+        {
+          "t": 64,
+          "sound": "minecraft:block.beacon.deactivate",
+          "volume": 0.4,
+          "pitch": 1.2
+        }
+      ],
+      "shakes": [
+        {
+          "t": 30,
+          "duration": 12,
+          "intensity": 0.03
+        }
+      ],
+      "cues": [
+        {
+          "t": 30,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s003_pulse_on"
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "markings_stone",
+              "count": 30,
+              "spread": 1
+            }
+          ]
+        },
+        {
+          "t": 64,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s003_pulse_off"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "journal": {
+    "northern_trail": {
+      "title": "Tracks in the Stone",
+      "text": "Elara found footprints on the northern trail that simply stop. No marks on the rock, no sign of anyone turning back. Higher up we found a scout's lantern, and on the rocks above it their bedroll, a cold fire and their pack. One of the old survey markers has been snapped through. Beyond it, a stone carved with shapes I have never seen pulsed with light as I came near. Elara has marked it all on the map. Next: Orin, and proper surveying gear."
+    }
+  }
+}

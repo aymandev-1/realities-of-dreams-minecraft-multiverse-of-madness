@@ -1,0 +1,1280 @@
+{
+  "scene": {
+    "id": "mc001_s001",
+    "title": "A Morning in Firstbrook",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 1,
+    "canon_status": "Saga 1 screenplay, Version 1 (docs/story/SAGA_1_SCREENPLAY.md): dialogue verbatim",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "firstbrook",
+    "anchor": [
+      0,
+      64,
+      0
+    ],
+    "arrival": {
+      "pos": [
+        14,
+        0,
+        17
+      ],
+      "yaw": 180
+    },
+    "next_scene": "mc001_s002",
+    "locations": {
+      "bedroom": {
+        "pos": [
+          14,
+          0,
+          17
+        ],
+        "radius": 2
+      },
+      "bed": {
+        "pos": [
+          19,
+          0,
+          15
+        ],
+        "radius": 1
+      },
+      "actor_stand": {
+        "pos": [
+          18,
+          0,
+          15
+        ],
+        "radius": 1
+      },
+      "house_storage": {
+        "pos": [
+          13,
+          0,
+          18
+        ],
+        "radius": 2.5
+      },
+      "outside_door": {
+        "pos": [
+          16,
+          0,
+          12
+        ],
+        "radius": 2.5
+      },
+      "elara_start": {
+        "pos": [
+          26,
+          0,
+          12
+        ],
+        "radius": 2
+      },
+      "elara_window": {
+        "pos": [
+          18,
+          0,
+          12
+        ],
+        "radius": 1.5
+      },
+      "farm_road": {
+        "pos": [
+          12,
+          0,
+          11
+        ],
+        "radius": 4
+      },
+      "square": {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "radius": 5
+      },
+      "square_lantern": {
+        "pos": [
+          3,
+          2.5,
+          -4
+        ],
+        "radius": 1
+      },
+      "ridge": {
+        "pos": [
+          10,
+          30,
+          -112
+        ],
+        "radius": 4
+      },
+      "ridge_trees": {
+        "pos": [
+          14,
+          12,
+          -66
+        ],
+        "radius": 6
+      },
+      "rowan_door": {
+        "pos": [
+          -7,
+          0,
+          -3
+        ],
+        "radius": 2
+      },
+      "rowan_home": {
+        "pos": [
+          -11,
+          0,
+          -3
+        ],
+        "radius": 2
+      },
+      "orin_workshop": {
+        "pos": [
+          11,
+          0,
+          -8
+        ],
+        "radius": 2
+      },
+      "bram_bridge": {
+        "pos": [
+          36,
+          0,
+          13
+        ],
+        "radius": 2
+      },
+      "farm_west_edge": {
+        "pos": [
+          12,
+          0,
+          10
+        ],
+        "radius": 2
+      },
+      "farm_east_edge": {
+        "pos": [
+          24,
+          0,
+          10
+        ],
+        "radius": 2
+      },
+      "farm_inner": {
+        "pos": [
+          7,
+          0,
+          6
+        ],
+        "radius": 2
+      },
+      "lane_west": {
+        "pos": [
+          6,
+          0,
+          11
+        ],
+        "radius": 2
+      },
+      "lane_east": {
+        "pos": [
+          27,
+          0,
+          11
+        ],
+        "radius": 2
+      },
+      "north_road": {
+        "pos": [
+          0,
+          0,
+          -9
+        ],
+        "radius": 2
+      },
+      "gate": {
+        "pos": [
+          0,
+          0,
+          -20
+        ],
+        "radius": 2
+      },
+      "gate_post": {
+        "pos": [
+          -4,
+          0,
+          -21
+        ],
+        "radius": 2
+      },
+      "market_1": {
+        "pos": [
+          -13,
+          0,
+          10
+        ],
+        "radius": 1.5
+      },
+      "market_2": {
+        "pos": [
+          -9,
+          0,
+          10
+        ],
+        "radius": 1.5
+      },
+      "well_side": {
+        "pos": [
+          2,
+          0,
+          -3
+        ],
+        "radius": 1.5
+      },
+      "square_west": {
+        "pos": [
+          -4,
+          0,
+          3
+        ],
+        "radius": 1.5
+      },
+      "market_path": {
+        "pos": [
+          -11,
+          0,
+          12
+        ],
+        "radius": 1.5
+      },
+      "cottage_door": {
+        "pos": [
+          -12,
+          0,
+          13
+        ],
+        "radius": 1.5
+      },
+      "workshop_yard": {
+        "pos": [
+          16,
+          0,
+          -4
+        ],
+        "radius": 1.5
+      },
+      "bakery_inside": {
+        "pos": [
+          -11,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "millers_door": {
+        "pos": [
+          -1,
+          0,
+          13
+        ],
+        "radius": 1.5
+      },
+      "millers_inside": {
+        "pos": [
+          -1,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "storehouse_front": {
+        "pos": [
+          -22,
+          0,
+          -15
+        ],
+        "radius": 1.5
+      },
+      "farmhouse_door": {
+        "pos": [
+          2,
+          0,
+          24
+        ],
+        "radius": 1.5
+      },
+      "pens_gate": {
+        "pos": [
+          -24,
+          0,
+          22
+        ],
+        "radius": 1.5
+      },
+      "council_fire": {
+        "pos": [
+          -23,
+          0,
+          0
+        ],
+        "radius": 1.5
+      },
+      "training_yard": {
+        "pos": [
+          -34,
+          0,
+          -12
+        ],
+        "radius": 1.5
+      },
+      "weaver_door": {
+        "pos": [
+          -20,
+          0,
+          -11
+        ],
+        "radius": 1.5
+      },
+      "dock": {
+        "pos": [
+          35,
+          0,
+          29
+        ],
+        "radius": 1.5
+      },
+      "construction": {
+        "pos": [
+          40,
+          0,
+          18
+        ],
+        "radius": 1.5
+      },
+      "market_3": {
+        "pos": [
+          -5,
+          0,
+          10
+        ],
+        "radius": 1.5
+      },
+      "market_cart": {
+        "pos": [
+          0,
+          0,
+          9
+        ],
+        "radius": 1.5
+      },
+      "guard_station_door": {
+        "pos": [
+          3,
+          0,
+          -18
+        ],
+        "radius": 1.5
+      },
+      "orin_house_door": {
+        "pos": [
+          18,
+          0,
+          -9
+        ],
+        "radius": 1.5
+      }
+    },
+    "npcs": [
+      {
+        "character": "primordial_steve",
+        "location": "actor_stand",
+        "until_stage": "leave_house",
+        "yaw": 180
+      },
+      {
+        "character": "elara",
+        "location": "elara_start",
+        "yaw": 90
+      },
+      {
+        "character": "orin",
+        "location": "orin_workshop",
+        "yaw": 0,
+        "activity": "work",
+        "held": "minecraft:iron_pickaxe"
+      },
+      {
+        "character": "bram",
+        "location": "bram_bridge",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:oak_planks"
+      },
+      {
+        "character": "elder_rowan",
+        "location": "rowan_door",
+        "from_stage": "rowan",
+        "yaw": 90
+      },
+      {
+        "character": "firstbrook_farmer_1",
+        "location": "farm_west_edge",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:iron_hoe"
+      },
+      {
+        "character": "firstbrook_farmer_2",
+        "location": "farm_inner",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:wheat"
+      },
+      {
+        "character": "firstbrook_farmer_3",
+        "location": "farm_east_edge",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:stone_hoe"
+      },
+      {
+        "character": "firstbrook_guard_1",
+        "location": "lane_west",
+        "activity": "patrol",
+        "route": [
+          "lane_west",
+          "lane_east"
+        ],
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "firstbrook_guard_2",
+        "location": "north_road",
+        "activity": "patrol",
+        "route": [
+          "north_road",
+          "gate"
+        ],
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "firstbrook_guard_3",
+        "location": "gate_post",
+        "yaw": 180,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "firstbrook_villager_1",
+        "location": "market_1",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:bread"
+      },
+      {
+        "character": "firstbrook_villager_2",
+        "location": "market_2",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:apple"
+      },
+      {
+        "character": "firstbrook_villager_3",
+        "location": "well_side",
+        "yaw": 200,
+        "activity": "routine",
+        "route": [
+          "well_side",
+          "market_2",
+          "bakery_inside",
+          "square_west"
+        ]
+      },
+      {
+        "character": "firstbrook_villager_4",
+        "location": "square_west",
+        "activity": "patrol",
+        "route": [
+          "square_west",
+          "market_path"
+        ]
+      },
+      {
+        "character": "firstbrook_villager_5",
+        "location": "cottage_door",
+        "yaw": 0,
+        "activity": "routine",
+        "route": [
+          "cottage_door",
+          "millers_inside",
+          "market_path",
+          "council_fire"
+        ]
+      },
+      {
+        "character": "firstbrook_villager_6",
+        "location": "workshop_yard",
+        "yaw": 270,
+        "activity": "routine",
+        "held": "minecraft:iron_ingot",
+        "route": [
+          "workshop_yard",
+          "orin_house_door",
+          "storehouse_front",
+          "workshop_yard"
+        ]
+      },
+      {
+        "character": "merchant_1",
+        "location": "market_3",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:emerald"
+      },
+      {
+        "character": "merchant_2",
+        "location": "market_cart",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:pumpkin_pie"
+      },
+      {
+        "character": "merchant_3",
+        "location": "storehouse_front",
+        "activity": "routine",
+        "route": [
+          "storehouse_front",
+          "market_cart",
+          "farmhouse_door",
+          "pens_gate"
+        ]
+      },
+      {
+        "character": "merchant_4",
+        "location": "dock",
+        "yaw": 270,
+        "activity": "work",
+        "held": "minecraft:fishing_rod"
+      }
+    ],
+    "stages": [
+      {
+        "id": "opening",
+        "checkpoint": "bedroom",
+        "on_enter": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s001_opening"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s001_opening"
+        },
+        "on_complete": [
+          {
+            "type": "npc_despawn",
+            "character": "primordial_steve"
+          },
+          {
+            "type": "teleport_player",
+            "location": "actor_stand",
+            "yaw": 180
+          }
+        ]
+      },
+      {
+        "id": "leave_house",
+        "objective": "Leave Steve's house",
+        "target": "outside_door",
+        "checkpoint": "actor_stand",
+        "on_enter": [
+          {
+            "type": "hint",
+            "text": "{forward} {left} {back} {right} to move, {jump} to jump.",
+            "ticks": 160
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "outside_door"
+        },
+        "on_complete": [
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          }
+        ]
+      },
+      {
+        "id": "explore",
+        "objective": "Explore Firstbrook",
+        "target": "farm_road",
+        "checkpoint": "outside_door",
+        "on_enter": [
+          {
+            "type": "start_dialogue",
+            "id": "walk_bridge"
+          }
+        ],
+        "complete": {
+          "type": "dialogue_end",
+          "value": "farmer_morning"
+        }
+      },
+      {
+        "id": "to_square",
+        "objective": "Reach the village square",
+        "target": "square",
+        "checkpoint": "farm_road",
+        "complete": {
+          "type": "reach",
+          "value": "square"
+        }
+      },
+      {
+        "id": "foreshadow",
+        "checkpoint": "square",
+        "on_enter": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s001_ridge"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s001_ridge"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "feel_that"
+          }
+        ]
+      },
+      {
+        "id": "feel_that",
+        "checkpoint": "square",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "feel_that"
+        }
+      },
+      {
+        "id": "rowan",
+        "checkpoint": "square",
+        "on_enter": [
+          {
+            "type": "say",
+            "character": "elder_rowan",
+            "text": "Steve! There you are."
+          },
+          {
+            "type": "npc_approach",
+            "character": "elder_rowan"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s001.rowan_arrived"
+          }
+        ],
+        "complete": {
+          "type": "flag",
+          "value": "mc001.s001.rowan_arrived"
+        },
+        "on_complete": [
+          {
+            "type": "title",
+            "title": "Mission Complete",
+            "subtitle": "A New Morning"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7
+          },
+          {
+            "type": "journal",
+            "id": "firstbrook_morning"
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:stone_pickaxe"
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:stone_axe"
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:stone_shovel"
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:torch",
+            "count": 16
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:bread",
+            "count": 8
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.firstbrook.explore_unlocked"
+          },
+          {
+            "type": "set_value",
+            "key": "rel.elara",
+            "value": 0
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s001.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "farmer_morning",
+        "character": "firstbrook_farmer_1",
+        "dialogue": "farmer_morning",
+        "radius": 9,
+        "talk_radius": 9,
+        "approach": false,
+        "stages": [
+          "explore"
+        ],
+        "requires": [
+          "mc001.s001.walk1"
+        ],
+        "priority": 10
+      }
+    ],
+    "area_triggers": [
+      {
+        "id": "storage_hint",
+        "location": "house_storage",
+        "stages": [
+          "leave_house"
+        ],
+        "actions": [
+          {
+            "type": "hint",
+            "text": "Breakfast and gear are in the chest. Press {inventory} to open your inventory.",
+            "ticks": 160
+          }
+        ]
+      }
+    ],
+    "chatter": []
+  },
+  "dialogues": {
+    "walk_bridge": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "elara",
+          "text": "You repaired the eastern bridge yesterday?",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "primordial_steve",
+          "text": "Most of it. Bram helped with the supports.",
+          "next": "c"
+        },
+        "c": {
+          "speaker": "elara",
+          "text": "You mean Bram watched while you did everything?",
+          "next": "d"
+        },
+        "d": {
+          "speaker": "primordial_steve",
+          "text": "He carried the wood.",
+          "next": "e"
+        },
+        "e": {
+          "speaker": "elara",
+          "text": "That's something, I suppose.",
+          "actions": [
+            {
+              "type": "set_flag",
+              "flag": "mc001.s001.walk1"
+            }
+          ]
+        }
+      }
+    },
+    "farmer_morning": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "firstbrook_farmer_1",
+          "text": "Morning, Steve!",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "primordial_steve",
+          "text": "Morning!",
+          "next": "c"
+        },
+        "c": {
+          "speaker": "elara",
+          "text": "I wish every morning was this quiet.",
+          "next": "d"
+        },
+        "d": {
+          "speaker": "primordial_steve",
+          "text": "Don't say that. Something always happens when somebody says that."
+        }
+      }
+    },
+    "feel_that": {
+      "critical": true,
+      "lines": {
+        "a": {
+          "speaker": "primordial_steve",
+          "text": "Did you feel that?",
+          "next": "b"
+        },
+        "b": {
+          "speaker": "elara",
+          "text": "Feel what?",
+          "next": "c",
+          "actions": [
+            {
+              "type": "shake",
+              "intensity": 0.04,
+              "ticks": 20
+            },
+            {
+              "type": "sound",
+              "sound": "minecraft:entity.lightning_bolt.thunder",
+              "volume": 0.12,
+              "pitch": 0.5
+            }
+          ]
+        },
+        "c": {
+          "speaker": "primordial_steve",
+          "text": "Probably nothing.",
+          "next": "d",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "elara",
+              "location": "ridge"
+            }
+          ]
+        },
+        "d": {
+          "speaker": "elara",
+          "text": "I hope so."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s001_opening": {
+      "duration": 980,
+      "hold_black": 60,
+      "fade_in": 40,
+      "fade_out": 0,
+      "hide_player": true,
+      "dips": [
+        {
+          "t": 380,
+          "duration": 40
+        }
+      ],
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            70,
+            46,
+            96
+          ],
+          "yaw": 155.8,
+          "pitch": 11.9
+        },
+        {
+          "t": 140,
+          "pos": [
+            48,
+            34,
+            62
+          ],
+          "yaw": 151.8,
+          "pitch": 17.9
+        },
+        {
+          "t": 260,
+          "pos": [
+            26,
+            18,
+            30
+          ],
+          "yaw": 147.1,
+          "pitch": 24.0
+        },
+        {
+          "t": 340,
+          "pos": [
+            20,
+            9,
+            6
+          ],
+          "yaw": 63.4,
+          "pitch": 50.0
+        },
+        {
+          "t": 399,
+          "pos": [
+            16.5,
+            3.2,
+            6.5
+          ],
+          "yaw": -0.0,
+          "pitch": 12.8
+        },
+        {
+          "t": 401,
+          "pos": [
+            14.6,
+            2.4,
+            20.3
+          ],
+          "yaw": -136.9,
+          "pitch": 15.6
+        },
+        {
+          "t": 500,
+          "pos": [
+            15.0,
+            2.2,
+            19.8
+          ],
+          "yaw": -136.4,
+          "pitch": 15.4
+        },
+        {
+          "t": 560,
+          "pos": [
+            15.2,
+            2.0,
+            18.6
+          ],
+          "yaw": -149.5,
+          "pitch": 5.3
+        },
+        {
+          "t": 880,
+          "pos": [
+            15.8,
+            1.9,
+            18.0
+          ],
+          "yaw": -151.6,
+          "pitch": 5.0
+        },
+        {
+          "t": 980,
+          "pos": [
+            18.5,
+            1.62,
+            15.5
+          ],
+          "yaw": 180,
+          "pitch": 0
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 70,
+          "duration": 80,
+          "text": "REALITIES OF DREAMS",
+          "style": "title"
+        },
+        {
+          "t": 160,
+          "duration": 80,
+          "text": "MC-001 · Awakening Valley",
+          "style": "caption"
+        },
+        {
+          "t": 250,
+          "duration": 90,
+          "text": "Saga 1 · Scene 001: A Morning in Firstbrook",
+          "style": "caption"
+        },
+        {
+          "t": 490,
+          "duration": 55,
+          "speaker": "primordial_steve",
+          "text": "Another morning."
+        },
+        {
+          "t": 580,
+          "duration": 65,
+          "speaker": "elara",
+          "text": "Steve! You awake in there?"
+        },
+        {
+          "t": 650,
+          "duration": 40,
+          "speaker": "primordial_steve",
+          "text": "I am now."
+        },
+        {
+          "t": 695,
+          "duration": 80,
+          "speaker": "elara",
+          "text": "Orin said you'd sleep until noon if nobody checked."
+        },
+        {
+          "t": 780,
+          "duration": 55,
+          "speaker": "primordial_steve",
+          "text": "Orin says that every morning."
+        },
+        {
+          "t": 840,
+          "duration": 55,
+          "speaker": "elara",
+          "text": "And he's usually right."
+        },
+        {
+          "t": 900,
+          "duration": 60,
+          "text": "(Steve laughs quietly.)",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:block.water.ambient",
+          "volume": 0.9
+        },
+        {
+          "t": 18,
+          "sound": "minecraft:entity.parrot.ambient",
+          "volume": 0.4,
+          "pitch": 1.4
+        },
+        {
+          "t": 30,
+          "sound": "minecraft:block.grass.step",
+          "volume": 0.5
+        },
+        {
+          "t": 38,
+          "sound": "minecraft:block.grass.step",
+          "volume": 0.5
+        },
+        {
+          "t": 46,
+          "sound": "minecraft:block.grass.step",
+          "volume": 0.5
+        },
+        {
+          "t": 55,
+          "sound": "minecraft:block.anvil.use",
+          "volume": 0.25,
+          "pitch": 0.9
+        },
+        {
+          "t": 120,
+          "sound": "minecraft:entity.parrot.ambient",
+          "volume": 0.3,
+          "pitch": 1.6
+        },
+        {
+          "t": 210,
+          "sound": "minecraft:block.anvil.use",
+          "volume": 0.3,
+          "pitch": 0.9
+        },
+        {
+          "t": 330,
+          "sound": "minecraft:block.anvil.use",
+          "volume": 0.35,
+          "pitch": 0.9
+        },
+        {
+          "t": 505,
+          "sound": "minecraft:block.wool.step",
+          "volume": 0.5
+        }
+      ],
+      "cues": [
+        {
+          "t": 0,
+          "actions": [
+            {
+              "type": "npc_sleep",
+              "character": "primordial_steve",
+              "location": "bed"
+            }
+          ]
+        },
+        {
+          "t": 380,
+          "actions": [
+            {
+              "type": "npc_move",
+              "character": "elara",
+              "location": "elara_window"
+            }
+          ]
+        },
+        {
+          "t": 470,
+          "actions": [
+            {
+              "type": "npc_wake",
+              "character": "primordial_steve"
+            }
+          ]
+        },
+        {
+          "t": 510,
+          "actions": [
+            {
+              "type": "npc_move",
+              "character": "primordial_steve",
+              "location": "actor_stand"
+            }
+          ]
+        },
+        {
+          "t": 540,
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "primordial_steve",
+              "location": "elara_window"
+            }
+          ]
+        },
+        {
+          "t": 600,
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "elara",
+              "location": "actor_stand"
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s001_ridge": {
+      "duration": 130,
+      "fade_in": 10,
+      "fade_out": 10,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            2,
+            10.5,
+            8
+          ],
+          "yaw": -176.2,
+          "pitch": -8.5,
+          "fov": 60
+        },
+        {
+          "t": 70,
+          "pos": [
+            3,
+            11.5,
+            4
+          ],
+          "yaw": -176.5,
+          "pitch": -9.3,
+          "fov": 40
+        },
+        {
+          "t": 130,
+          "pos": [
+            3.5,
+            6.5,
+            2
+          ],
+          "yaw": -175.2,
+          "pitch": 30.2,
+          "fov": 60
+        }
+      ],
+      "subtitles": [],
+      "sounds": [
+        {
+          "t": 20,
+          "sound": "minecraft:entity.lightning_bolt.thunder",
+          "volume": 0.25,
+          "pitch": 0.5
+        },
+        {
+          "t": 40,
+          "sound": "minecraft:block.chain.step",
+          "volume": 0.8
+        },
+        {
+          "t": 55,
+          "sound": "minecraft:entity.parrot.fly",
+          "volume": 0.7
+        }
+      ],
+      "shakes": [
+        {
+          "t": 20,
+          "duration": 40,
+          "intensity": 0.12
+        }
+      ],
+      "cues": [
+        {
+          "t": 40,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:smoke",
+              "location": "square_lantern",
+              "count": 4,
+              "spread": 0.2
+            }
+          ]
+        },
+        {
+          "t": 55,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:poof",
+              "location": "ridge_trees",
+              "count": 30,
+              "spread": 4
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "journal": {
+    "firstbrook_morning": {
+      "title": "A New Morning",
+      "text": "Elara woke me again. Orin will say I slept until noon; I didn't. The eastern bridge is mended and Bram carried the wood. In the square I felt the ground shiver, just for a moment, and Elara looked toward the northern hills. Probably nothing. Elder Rowan was looking for me."
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "_comment": "Saga and scene list for the main menu's Chapter / Saga Selection. A scene is playable once its bundle exists in scenes/ (listed in index.json) and the player has reached it.",
+  "sagas": [
+    {
+      "number": 1,
+      "title": "The First Steve",
+      "universe": "MC-001",
+      "scenes": [
+        {"number": 1, "id": "mc001_s001", "title": "A Morning in Firstbrook"},
+        {"number": 2, "id": "mc001_s002", "title": "The Warning from the North"},
+        {"number": 3, "id": "mc001_s003", "title": "Elara's Northern Trail"},
+        {"number": 4, "id": "mc001_s004", "title": "The Craftsman's Warning"},
+        {"number": 5, "id": "mc001_s005", "title": "Bram's Volunteers"},
+        {"number": 6, "id": "mc001_s006", "title": "The Fractured Monument"},
+        {"number": 7, "id": "mc001_s007", "title": "The Compass That Points Nowhere"},
+        {"number": 8, "id": "mc001_s008", "title": "Across Awakening Valley"},
+        {"number": 9, "id": "mc001_s009", "title": "The Empty Campsite"},
+        {"number": 10, "id": "mc001_s010", "title": "Liora's Warning"},
+        {"number": 11, "id": "mc001_s011", "title": "The Raiders of the Eastern Road"},
+        {"number": 12, "id": "mc001_s012", "title": "The Queen's Summons"},
+        {"number": 13, "id": "mc001_s013", "title": "The Stone of Irondeep"},
+        {"number": 14, "id": "mc001_s014", "title": "The Records of Sunspire"},
+        {"number": 15, "id": "mc001_s015", "title": "The Lord of Emberhold"},
+        {"number": 16, "id": "mc001_s016", "title": "The Fragment from Tidewatch"},
+        {"number": 17, "id": "mc001_s017", "title": "The Truth in the Fragments"},
+        {"number": 18, "id": "mc001_s018", "title": "Beneath the Ancient Stone"},
+        {"number": 19, "id": "mc001_s019", "title": "The Door That Should Not Open"},
+        {"number": 20, "id": "mc001_s020", "title": "The First Steve's Decision"}
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Saga 2",
+      "universe": "",
+      "scenes": []
+    }
+  ]
+}

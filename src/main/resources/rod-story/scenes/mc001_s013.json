@@ -1,0 +1,1492 @@
+{
+  "scene": {
+    "id": "mc001_s013",
+    "title": "The Stone of Irondeep",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 13,
+    "canon_status": "Saga 1 revised screenplay, Version 2 (docs/story/SAGA_1_SCENES_012_019_REVISED.md): spoken dialogue verbatim. Hints, captions, item names and the outcome message are new gameplay text. The Old Deeps puzzle follows the screenplay's four engineering steps.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "irondeep",
+    "anchor": [
+      -160,
+      24,
+      -170
+    ],
+    "arrival": {
+      "pos": [
+        0,
+        0,
+        58
+      ],
+      "yaw": 180
+    },
+    "next_scene": "mc001_s014",
+    "locations": {
+      "lift_car": {
+        "pos": [
+          0,
+          0,
+          58
+        ],
+        "radius": 2
+      },
+      "elara_start": {
+        "pos": [
+          -2,
+          0,
+          57
+        ],
+        "radius": 1
+      },
+      "bram_start": {
+        "pos": [
+          2,
+          0,
+          57
+        ],
+        "radius": 1
+      },
+      "lift_gate": {
+        "pos": [
+          0,
+          0,
+          49
+        ],
+        "radius": 4
+      },
+      "orin_gate": {
+        "pos": [
+          1,
+          0,
+          50
+        ],
+        "radius": 1
+      },
+      "guard_gate": {
+        "pos": [
+          -4,
+          0,
+          47
+        ],
+        "radius": 1
+      },
+      "lift_machine": {
+        "pos": [
+          6,
+          0,
+          51
+        ],
+        "radius": 1
+      },
+      "plaza": {
+        "pos": [
+          0,
+          0,
+          31
+        ],
+        "radius": 4
+      },
+      "market_stall": {
+        "pos": [
+          12,
+          0,
+          19
+        ],
+        "radius": 1
+      },
+      "market_steps": {
+        "pos": [
+          9,
+          0,
+          26
+        ],
+        "radius": 1
+      },
+      "foundry": {
+        "pos": [
+          -20,
+          0,
+          14
+        ],
+        "radius": 1
+      },
+      "residence": {
+        "pos": [
+          -45,
+          0,
+          20
+        ],
+        "radius": 1
+      },
+      "ledge": {
+        "pos": [
+          -45,
+          6,
+          30
+        ],
+        "radius": 1
+      },
+      "depot": {
+        "pos": [
+          48,
+          0,
+          30
+        ],
+        "radius": 1
+      },
+      "mine_cart": {
+        "pos": [
+          42,
+          0,
+          -44
+        ],
+        "radius": 1
+      },
+      "mine_face_east": {
+        "pos": [
+          50,
+          0,
+          -50
+        ],
+        "radius": 1
+      },
+      "mine_face_west": {
+        "pos": [
+          36,
+          0,
+          -52
+        ],
+        "radius": 1
+      },
+      "smithy": {
+        "pos": [
+          -42,
+          0,
+          -30
+        ],
+        "radius": 1
+      },
+      "drafting": {
+        "pos": [
+          -30,
+          0,
+          -30
+        ],
+        "radius": 1
+      },
+      "great_bridge": {
+        "pos": [
+          0,
+          0,
+          -9
+        ],
+        "radius": 3
+      },
+      "forge_hall": {
+        "pos": [
+          0,
+          0,
+          -36
+        ],
+        "radius": 4
+      },
+      "forge_door": {
+        "pos": [
+          5,
+          0,
+          -28
+        ],
+        "radius": 1
+      },
+      "garrick_forge": {
+        "pos": [
+          0,
+          0,
+          -48
+        ],
+        "radius": 1
+      },
+      "engineer_hall_west": {
+        "pos": [
+          -10,
+          0,
+          -43
+        ],
+        "radius": 1
+      },
+      "engineer_hall_east": {
+        "pos": [
+          10,
+          0,
+          -38
+        ],
+        "radius": 1
+      },
+      "workbench_front": {
+        "pos": [
+          -6,
+          0,
+          -46
+        ],
+        "radius": 2
+      },
+      "table_front": {
+        "pos": [
+          6,
+          0,
+          -46
+        ],
+        "radius": 2
+      },
+      "socket_middle": {
+        "pos": [
+          6,
+          1,
+          -48
+        ],
+        "radius": 1
+      },
+      "deeps_entrance": {
+        "pos": [
+          -52,
+          0,
+          -43
+        ],
+        "radius": 3
+      },
+      "deeps_landing": {
+        "pos": [
+          -52,
+          -19,
+          -17
+        ],
+        "radius": 3
+      },
+      "engineer_landing": {
+        "pos": [
+          -49,
+          -19,
+          -15
+        ],
+        "radius": 1
+      },
+      "breach_side": {
+        "pos": [
+          -35,
+          -19,
+          -19
+        ],
+        "radius": 2
+      },
+      "hall_floor": {
+        "pos": [
+          -35,
+          -22,
+          -6
+        ],
+        "radius": 3
+      },
+      "weights": {
+        "pos": [
+          -38,
+          -22,
+          1
+        ],
+        "radius": 3
+      },
+      "door_front": {
+        "pos": [
+          -26,
+          -22,
+          -3
+        ],
+        "radius": 2
+      },
+      "works_inside": {
+        "pos": [
+          -17,
+          -22,
+          -3
+        ],
+        "radius": 3
+      },
+      "works_door_glow": {
+        "pos": [
+          -22,
+          -20,
+          -3
+        ],
+        "radius": 1
+      }
+    },
+    "npcs": [
+      {
+        "character": "elara",
+        "location": "elara_start",
+        "yaw": 180
+      },
+      {
+        "character": "bram",
+        "location": "bram_start",
+        "yaw": 180,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "orin",
+        "location": "orin_gate",
+        "yaw": 0
+      },
+      {
+        "character": "thane_garrick",
+        "location": "garrick_forge",
+        "yaw": 0,
+        "held": "minecraft:iron_pickaxe"
+      },
+      {
+        "character": "stonecrown_guard_1",
+        "location": "guard_gate",
+        "yaw": 0,
+        "held": "minecraft:iron_axe"
+      },
+      {
+        "character": "stonecrown_guard_2",
+        "location": "forge_door",
+        "yaw": 0,
+        "held": "minecraft:iron_axe"
+      },
+      {
+        "character": "stonecrown_engineer_1",
+        "location": "lift_machine",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:iron_ingot"
+      },
+      {
+        "character": "stonecrown_engineer_2",
+        "location": "engineer_hall_west",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:compass"
+      },
+      {
+        "character": "stonecrown_engineer_3",
+        "location": "engineer_hall_east",
+        "yaw": -90,
+        "activity": "work",
+        "held": "minecraft:copper_ingot"
+      },
+      {
+        "character": "stonecrown_engineer_4",
+        "location": "drafting",
+        "yaw": 0,
+        "activity": "work",
+        "held": "minecraft:paper",
+        "until_stage": "to_deeps"
+      },
+      {
+        "character": "stonecrown_engineer_4",
+        "location": "engineer_landing",
+        "yaw": 90,
+        "held": "minecraft:lantern",
+        "from_stage": "to_deeps"
+      },
+      {
+        "character": "irondeep_miner_1",
+        "location": "mine_face_east",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:iron_pickaxe"
+      },
+      {
+        "character": "irondeep_miner_2",
+        "location": "mine_face_west",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:stone_pickaxe"
+      },
+      {
+        "character": "irondeep_miner_3",
+        "location": "mine_cart",
+        "yaw": 0,
+        "activity": "routine",
+        "route": [
+          "mine_cart",
+          "depot"
+        ],
+        "held": "minecraft:raw_iron"
+      },
+      {
+        "character": "irondeep_miner_4",
+        "location": "residence",
+        "yaw": -90,
+        "activity": "routine",
+        "route": [
+          "residence",
+          "market_steps",
+          "plaza"
+        ]
+      },
+      {
+        "character": "irondeep_miner_5",
+        "location": "ledge",
+        "yaw": -90
+      },
+      {
+        "character": "irondeep_miner_6",
+        "location": "market_stall",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:iron_pickaxe"
+      },
+      {
+        "character": "irondeep_miner_7",
+        "location": "foundry",
+        "yaw": 0,
+        "activity": "work",
+        "held": "minecraft:iron_ingot"
+      },
+      {
+        "character": "irondeep_miner_8",
+        "location": "smithy",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:iron_axe"
+      }
+    ],
+    "clues": {
+      "s13_fragment": {
+        "name": "Ancient mechanical fragment",
+        "pos": [
+          -6,
+          1,
+          -48
+        ],
+        "block": "minecraft:chiseled_deepslate"
+      },
+      "s13_weight_middle": {
+        "name": "Middle counterweight",
+        "pos": [
+          -43,
+          -21,
+          4
+        ],
+        "block": "minecraft:lodestone"
+      },
+      "s13_weight_small": {
+        "name": "Smallest counterweight",
+        "pos": [
+          -38,
+          -21,
+          4
+        ],
+        "block": "minecraft:lodestone"
+      },
+      "s13_weight_large": {
+        "name": "Largest counterweight",
+        "pos": [
+          -32,
+          -21,
+          4
+        ],
+        "block": "minecraft:lodestone"
+      },
+      "s13_plate": {
+        "name": "Builder machine plate",
+        "pos": [
+          -16,
+          -21,
+          -3
+        ],
+        "block": "minecraft:chiseled_deepslate"
+      },
+      "s13_gear_housing": {
+        "name": "Builder gear housing",
+        "pos": [
+          -19,
+          -21,
+          2
+        ],
+        "block": "minecraft:heavy_core"
+      }
+    },
+    "stages": [
+      {
+        "id": "arrive",
+        "checkpoint": "lift_car",
+        "on_enter": [
+          {
+            "type": "teleport_player",
+            "location": "lift_car",
+            "yaw": 180
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_start"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s013_arrival"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s013_arrival"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s13_gate"
+          }
+        ]
+      },
+      {
+        "id": "gate_talk",
+        "checkpoint": "lift_gate",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s13_gate"
+        },
+        "on_complete": [
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "npc_follow",
+            "character": "orin"
+          }
+        ]
+      },
+      {
+        "id": "to_forge",
+        "objective": "Meet Thane Garrick in the Forge Hall",
+        "target": "forge_hall",
+        "checkpoint": "lift_gate",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "The main avenue runs north from the lift, past the market terraces and over the Great Bridge. The Forge Hall stands at the far end."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "forge_hall"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s13_garrick"
+          }
+        ]
+      },
+      {
+        "id": "garrick_talk",
+        "checkpoint": "forge_hall",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s13_garrick"
+        }
+      },
+      {
+        "id": "fragment",
+        "objective": "Investigate the ancient mechanical fragment",
+        "target": "workbench_front",
+        "checkpoint": "forge_hall",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 180,
+            "text": "The fragment lies on Garrick's workbench, west of the great forge. Press {use} on it."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s13_fragment"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s13_machine"
+          }
+        ]
+      },
+      {
+        "id": "machine_talk",
+        "checkpoint": "forge_hall",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s13_machine"
+        }
+      },
+      {
+        "id": "reconstruct",
+        "objective": "Reconstruct the carvings on the reconstruction table",
+        "target": "table_front",
+        "checkpoint": "forge_hall",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:chiseled_stone_bricks",
+            "count": 1,
+            "name": "Eldervale fragment",
+            "lore": "The carved stone from the royal vault of Eldervale."
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:oxidized_chiseled_copper",
+            "count": 1,
+            "name": "Sylvaris fragment",
+            "lore": "Liora's rubbing of the Sylvaris grove stone."
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:chiseled_deepslate",
+            "count": 1,
+            "name": "Stonecrown fragment",
+            "lore": "The piece Garrick's miners found beneath Irondeep."
+          },
+          {
+            "type": "hint",
+            "ticks": 240,
+            "text": "Set each fragment into the socket whose inlay matches its carving. A piece that doesn't match won't hold; break it out and try another socket."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "minecraft:chiseled_deepslate|4,1,-48 + minecraft:chiseled_stone_bricks|6,1,-48 + minecraft:oxidized_chiseled_copper|8,1,-48"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.amethyst_block.resonate",
+            "volume": 0.9,
+            "pitch": 0.7
+          },
+          {
+            "type": "particles",
+            "particle": "minecraft:end_rod",
+            "location": "socket_middle",
+            "count": 16,
+            "spread": 1.2
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s13_sealed"
+          }
+        ]
+      },
+      {
+        "id": "sealed_talk",
+        "checkpoint": "forge_hall",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s13_sealed"
+        },
+        "on_complete": [
+          {
+            "type": "npc_follow",
+            "character": "thane_garrick"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "npc_follow",
+            "character": "orin"
+          }
+        ]
+      },
+      {
+        "id": "to_deeps",
+        "objective": "Follow the mine rail down to the Old Deeps",
+        "target": "deeps_landing",
+        "checkpoint": "forge_hall",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "The way down is in the north-west of the hold, past the workshops: follow the rail into the old incline."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "deeps_landing"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:ambient.cave",
+            "volume": 0.6,
+            "pitch": 0.8
+          }
+        ]
+      },
+      {
+        "id": "patch",
+        "objective": "Patch the broken drainage channel wall",
+        "target": "breach_side",
+        "checkpoint": "deeps_landing",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:polished_deepslate",
+            "count": 6,
+            "name": "Dressed deepslate",
+            "lore": "Stonecrown masonry for the channel wall."
+          },
+          {
+            "type": "hint",
+            "ticks": 240,
+            "text": "The channel along the ledge has broken through into the works hall. Stand on the ledge and fill the gap in its wall where the green sparkles are."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "solid|-36,-20,-17;-35,-20,-17;-34,-20,-17"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.stone.place",
+            "volume": 1.0,
+            "pitch": 0.8
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s013_drain"
+          }
+        ]
+      },
+      {
+        "id": "drain_view",
+        "checkpoint": "deeps_landing",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s013_drain"
+        },
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s013_drain"
+          }
+        ]
+      },
+      {
+        "id": "counterweights",
+        "objective": "Reset the Builder counterweights in the order the wall carving shows",
+        "target": "weights",
+        "checkpoint": "hall_floor",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 240,
+            "text": "Three counterweights stand along the south wall, and a carving beside them shows their order. Press {use} on each weight's core in turn."
+          }
+        ],
+        "complete": {
+          "type": "sequence",
+          "value": "s13_weight_large,s13_weight_middle,s13_weight_small"
+        },
+        "on_wrong": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.anvil.land",
+            "volume": 0.5,
+            "pitch": 0.6
+          },
+          {
+            "type": "shake",
+            "intensity": 0.02,
+            "ticks": 8
+          },
+          {
+            "type": "hint",
+            "ticks": 180,
+            "text": "The weights drop back into their cradles. The carving reads largest, then middle, then smallest."
+          }
+        ],
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s013_works_open"
+          }
+        ]
+      },
+      {
+        "id": "door_open",
+        "checkpoint": "hall_floor",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s013_works_open"
+        },
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s013_works_open"
+          }
+        ]
+      },
+      {
+        "id": "evidence",
+        "objective": "Recover the evidence inside the sealed works",
+        "target": "works_inside",
+        "checkpoint": "door_front",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Look over the machine: its carved plate and the gear housing beside it. Press {use} on each."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s13_plate,s13_gear_housing"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s13_older"
+          }
+        ]
+      },
+      {
+        "id": "closing_talk",
+        "checkpoint": "door_front",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s13_older"
+        },
+        "on_complete": [
+          {
+            "type": "give_item",
+            "item": "minecraft:chiseled_deepslate",
+            "count": 1,
+            "name": "Stonecrown fragment",
+            "lore": "The Builder machine plate from beneath Irondeep."
+          },
+          {
+            "type": "title",
+            "title": "Mission Complete",
+            "subtitle": "The Engraved Stone"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7,
+            "pitch": 1.0
+          },
+          {
+            "type": "journal",
+            "id": "engraved_stone"
+          },
+          {
+            "type": "message",
+            "text": "Thane Garrick has pledged Stonecrown's engineers and miners. The machine plate is Stonecrown's piece of the puzzle, and Sahir of Sunspire may know what its symbol means."
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.stonecrown.joined"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s013.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "s13_city_lift",
+        "character": "stonecrown_engineer_1",
+        "dialogue": "s13_city_lift",
+        "radius": 6,
+        "talk_radius": 4,
+        "approach": false,
+        "stages": [
+          "to_forge",
+          "to_deeps"
+        ],
+        "ambient": true
+      },
+      {
+        "id": "s13_city_rails",
+        "character": "irondeep_miner_3",
+        "dialogue": "s13_city_rails",
+        "radius": 7,
+        "talk_radius": 4,
+        "approach": false,
+        "stages": [
+          "to_forge",
+          "to_deeps"
+        ],
+        "ambient": true
+      },
+      {
+        "id": "s13_city_shafts",
+        "character": "irondeep_miner_6",
+        "dialogue": "s13_city_shafts",
+        "radius": 6,
+        "talk_radius": 4,
+        "approach": false,
+        "stages": [
+          "to_forge",
+          "to_deeps"
+        ],
+        "ambient": true
+      },
+      {
+        "id": "s13_city_bridges",
+        "character": "irondeep_miner_4",
+        "dialogue": "s13_city_bridges",
+        "radius": 6,
+        "talk_radius": 4,
+        "approach": false,
+        "stages": [
+          "to_forge",
+          "to_deeps"
+        ],
+        "ambient": true
+      },
+      {
+        "id": "s13_city_forge",
+        "character": "irondeep_miner_7",
+        "dialogue": "s13_city_forge",
+        "radius": 6,
+        "talk_radius": 4,
+        "approach": false,
+        "stages": [
+          "to_forge",
+          "to_deeps"
+        ],
+        "ambient": true
+      }
+    ],
+    "area_triggers": [],
+    "chatter": []
+  },
+  "dialogues": {
+    "s13_gate": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "stonecrown_guard_1",
+          "text": "A writ from Eldervale? The Thane's expecting you. Forge Hall, past the market terraces.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "orin",
+          "text": "Took you long enough. I came by the mountain road with Firstbrook's records.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "primordial_steve",
+          "text": "Orin! You came all this way?",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "orin",
+          "text": "Somebody has to stop you touching the wrong thing."
+        }
+      }
+    },
+    "s13_garrick": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "thane_garrick",
+          "text": "I was told you found something worth dragging me away from my forge.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "Queen Aveline sent us. She says your miners found something.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "thane_garrick",
+          "text": "My miners discovered this beneath the oldest foundations of Irondeep.",
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "thane_garrick",
+              "location": "workbench_front"
+            }
+          ],
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "orin",
+          "text": "That carving...",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "primordial_steve",
+          "text": "It's the same symbol.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "thane_garrick",
+          "text": "Exactly. Which is why I want to know how you found another.",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "thane_garrick",
+          "text": "Our deepest halls are older than the current kingdom. There are tunnels nobody remembers building.",
+          "next": "l07"
+        },
+        "l07": {
+          "speaker": "primordial_steve",
+          "text": "Could they connect to the northern monument?",
+          "next": "l08"
+        },
+        "l08": {
+          "speaker": "thane_garrick",
+          "text": "Not through any passage my miners know.",
+          "next": "l09"
+        },
+        "l09": {
+          "speaker": "orin",
+          "text": "The markings are consistent, though. Same spacing. Same geometry.",
+          "next": "l10"
+        },
+        "l10": {
+          "speaker": "thane_garrick",
+          "text": "Then somebody put considerable effort into making them identical."
+        }
+      }
+    },
+    "s13_machine": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "orin",
+          "text": "This isn't decoration. Look at the teeth on that edge. It's part of a machine.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "thane_garrick",
+          "text": "Stonecrown makes the finest gears in the six kingdoms. We never made this."
+        }
+      }
+    },
+    "s13_sealed": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "thane_garrick",
+          "text": "That pattern resembles something I once saw in our oldest mine.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "What was it?",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "thane_garrick",
+          "text": "A chamber sealed long before my grandfather's time.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "elara",
+          "text": "Can you open it?",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "thane_garrick",
+          "text": "Perhaps. But I'd rather discover why it was sealed first.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "thane_garrick",
+          "text": "The Old Deeps flooded generations ago when the drains failed. If you want that chamber, we drain it first.",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "primordial_steve",
+          "text": "Then we drain it."
+        }
+      }
+    },
+    "s13_older": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "orin",
+          "text": "These machines weren't built by Stonecrown.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "thane_garrick",
+          "text": "No. My ancestors found them and swore to guard them. We built Irondeep around something older.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "primordial_steve",
+          "text": "The same builders who left the monument.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "thane_garrick",
+          "text": "Then Stonecrown stands with you. My engineers, my miners, whatever you need.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "thane_garrick",
+          "text": "Solkar's scholars have asked about that symbol for years. Sahir of Sunspire would trade his library for a look at this plate."
+        }
+      }
+    },
+    "s13_city_rails": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "irondeep_miner_3",
+          "text": "Mind the rails! Ore carts don't stop for visitors."
+        }
+      }
+    },
+    "s13_city_shafts": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "irondeep_miner_6",
+          "text": "The deep shafts have been groaning since the tremors."
+        }
+      }
+    },
+    "s13_city_lift": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "stonecrown_engineer_1",
+          "text": "Lift's running on the old counterweights again. Don't lean on the rail."
+        }
+      }
+    },
+    "s13_city_bridges": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "irondeep_miner_4",
+          "text": "Every bridge in the hold is checked at each shift change. Walk easy."
+        }
+      }
+    },
+    "s13_city_forge": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "irondeep_miner_7",
+          "text": "Keep clear of the forge mouths. The heat carries further than you think."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s013_arrival": {
+      "duration": 280,
+      "fade_in": 20,
+      "fade_out": 12,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            0.5,
+            14.0,
+            58.5
+          ],
+          "yaw": -180.0,
+          "pitch": 21.1,
+          "fov": 64
+        },
+        {
+          "t": 120,
+          "pos": [
+            16.0,
+            22.0,
+            34.0
+          ],
+          "yaw": 163.5,
+          "pitch": 17.7,
+          "fov": 66
+        },
+        {
+          "t": 200,
+          "pos": [
+            -12.0,
+            16.0,
+            6.0
+          ],
+          "yaw": -165.4,
+          "pitch": 11.9,
+          "fov": 60
+        },
+        {
+          "t": 280,
+          "pos": [
+            4.5,
+            5.0,
+            53.5
+          ],
+          "yaw": 141.3,
+          "pitch": 28.7,
+          "fov": 55
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 40,
+          "duration": 110,
+          "text": "Irondeep — Hold of Stonecrown",
+          "style": "title"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:block.chain.place",
+          "volume": 0.6,
+          "pitch": 0.6
+        },
+        {
+          "t": 10,
+          "sound": "minecraft:block.piston.contract",
+          "volume": 0.5,
+          "pitch": 0.5
+        },
+        {
+          "t": 70,
+          "sound": "minecraft:block.anvil.use",
+          "volume": 0.3,
+          "pitch": 0.8
+        },
+        {
+          "t": 130,
+          "sound": "minecraft:block.lava.ambient",
+          "volume": 0.5
+        },
+        {
+          "t": 190,
+          "sound": "minecraft:entity.minecart.riding",
+          "volume": 0.25
+        }
+      ],
+      "cues": [
+        {
+          "t": 230,
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "orin",
+              "location": "lift_car"
+            },
+            {
+              "type": "npc_look",
+              "character": "stonecrown_guard_1",
+              "location": "lift_car"
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s013_drain": {
+      "duration": 150,
+      "fade_in": 8,
+      "fade_out": 8,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            -41.0,
+            -16.0,
+            -13.0
+          ],
+          "yaw": -32.5,
+          "pitch": 21.0,
+          "fov": 62
+        },
+        {
+          "t": 150,
+          "pos": [
+            -40.0,
+            -15.0,
+            -11.0
+          ],
+          "yaw": -42.3,
+          "pitch": 25.2,
+          "fov": 58
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 15,
+          "duration": 120,
+          "text": "The channel holds. The flood runs away down the drain shaft.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 10,
+          "sound": "minecraft:block.water.ambient",
+          "volume": 1.0,
+          "pitch": 0.7
+        },
+        {
+          "t": 30,
+          "sound": "minecraft:item.bucket.empty",
+          "volume": 0.8,
+          "pitch": 0.6
+        },
+        {
+          "t": 60,
+          "sound": "minecraft:block.water.ambient",
+          "volume": 0.6,
+          "pitch": 0.5
+        }
+      ],
+      "cues": [
+        {
+          "t": 30,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s013_drain"
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s013_works_open": {
+      "duration": 220,
+      "fade_in": 8,
+      "fade_out": 10,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            -35.0,
+            -19.0,
+            -3.5
+          ],
+          "yaw": -85.6,
+          "pitch": 2.2,
+          "fov": 60
+        },
+        {
+          "t": 220,
+          "pos": [
+            -29.0,
+            -20.0,
+            -3.0
+          ],
+          "yaw": -87.4,
+          "pitch": -0.0,
+          "fov": 54
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 20,
+          "duration": 150,
+          "text": "The three weights lock into place. Behind the wall, old gears begin to turn.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 15,
+          "sound": "minecraft:block.chain.place",
+          "volume": 0.8,
+          "pitch": 0.5
+        },
+        {
+          "t": 50,
+          "sound": "minecraft:block.piston.extend",
+          "volume": 1.0,
+          "pitch": 0.5
+        },
+        {
+          "t": 60,
+          "sound": "minecraft:block.grindstone.use",
+          "volume": 0.8,
+          "pitch": 0.5
+        },
+        {
+          "t": 110,
+          "sound": "minecraft:block.beacon.ambient",
+          "volume": 0.6,
+          "pitch": 0.7
+        }
+      ],
+      "cues": [
+        {
+          "t": 60,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s013_works_open"
+            },
+            {
+              "type": "shake",
+              "intensity": 0.04,
+              "ticks": 30
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:cloud",
+              "location": "works_door_glow",
+              "count": 30,
+              "spread": 2.0
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "journal": {
+    "engraved_stone": {
+      "title": "The Engraved Stone",
+      "text": "The great lift set us down in Irondeep, Stonecrown's hold beneath the mountains. Orin was waiting at the gate with Firstbrook's records. Thane Garrick showed us what his miners found under the oldest foundations: a fragment with the same symbol, and teeth like part of a machine. Set beside the Eldervale stone and Liora's rubbing, the carvings matched, and Garrick remembered a chamber sealed long before his grandfather's time. We followed the old incline into the flooded Old Deeps, mended the drainage channel, and reset the counterweights in the order the carving showed: largest, middle, smallest. Behind the sealed door stood machines Stonecrown never built. Garrick's ancestors swore to guard them. Stonecrown stands with us now, and the machine plate is Stonecrown's piece of the puzzle."
+    }
+  }
+}

@@ -1,0 +1,1863 @@
+{
+  "scene": {
+    "id": "mc001_s014",
+    "title": "The Records of Sunspire",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 14,
+    "canon_status": "Saga 1 revised screenplay, Scenes 012-019 Version 2 (docs/story/SAGA_1_SCENES_012_019_REVISED.md): spoken dialogue verbatim. Hints, captions, item names, sign texts and the outcome message are new gameplay text. The catalogue, glyph, map and crate objectives follow the screenplay's listed objectives.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "sunspire",
+    "anchor": [
+      520,
+      68,
+      420
+    ],
+    "arrival": {
+      "pos": [
+        -72,
+        0,
+        0
+      ],
+      "yaw": -90
+    },
+    "next_scene": "mc001_s015",
+    "locations": {
+      "gate_road": {
+        "pos": [
+          -72,
+          0,
+          0
+        ],
+        "radius": 2
+      },
+      "elara_start": {
+        "pos": [
+          -73,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "orin_start": {
+        "pos": [
+          -73,
+          0,
+          -2
+        ],
+        "radius": 1
+      },
+      "west_gate": {
+        "pos": [
+          -56,
+          0,
+          0
+        ],
+        "radius": 4
+      },
+      "plaza_west": {
+        "pos": [
+          -17,
+          0,
+          0
+        ],
+        "radius": 3
+      },
+      "records_door": {
+        "pos": [
+          0,
+          0,
+          -19
+        ],
+        "radius": 3
+      },
+      "sahir_hall": {
+        "pos": [
+          0,
+          0,
+          -26
+        ],
+        "radius": 1
+      },
+      "sahir_meet": {
+        "pos": [
+          0,
+          0,
+          -24
+        ],
+        "radius": 2.5
+      },
+      "records_hall": {
+        "pos": [
+          0,
+          0,
+          -24
+        ],
+        "radius": 2
+      },
+      "stacks": {
+        "pos": [
+          -14,
+          0,
+          -43
+        ],
+        "radius": 4
+      },
+      "sahir_stacks": {
+        "pos": [
+          -14,
+          0,
+          -38
+        ],
+        "radius": 1
+      },
+      "glyph_wall": {
+        "pos": [
+          19,
+          0,
+          -46
+        ],
+        "radius": 3
+      },
+      "sahir_glyphs": {
+        "pos": [
+          17,
+          0,
+          -50
+        ],
+        "radius": 1
+      },
+      "warning_desk": {
+        "pos": [
+          17,
+          0,
+          -33
+        ],
+        "radius": 2
+      },
+      "sahir_warning": {
+        "pos": [
+          16,
+          0,
+          -31
+        ],
+        "radius": 1
+      },
+      "manuscript_desk": {
+        "pos": [
+          15,
+          0,
+          -40
+        ],
+        "radius": 2
+      },
+      "sahir_manuscript": {
+        "pos": [
+          15,
+          0,
+          -43
+        ],
+        "radius": 1
+      },
+      "map_view": {
+        "pos": [
+          0,
+          0,
+          -26
+        ],
+        "radius": 3
+      },
+      "sahir_map": {
+        "pos": [
+          3,
+          0,
+          -27
+        ],
+        "radius": 1
+      },
+      "study": {
+        "pos": [
+          0,
+          0,
+          -52
+        ],
+        "radius": 3
+      },
+      "sahir_study": {
+        "pos": [
+          -3,
+          0,
+          -53
+        ],
+        "radius": 1
+      },
+      "valley_mark": {
+        "pos": [
+          0,
+          0.3,
+          -41
+        ],
+        "radius": 1
+      },
+      "scholar_stacks_a": {
+        "pos": [
+          -14,
+          0,
+          -49
+        ],
+        "radius": 1
+      },
+      "scholar_stacks_b": {
+        "pos": [
+          -14,
+          0,
+          -30
+        ],
+        "radius": 1
+      },
+      "scholar_map": {
+        "pos": [
+          -8,
+          0,
+          -48
+        ],
+        "radius": 1
+      },
+      "scholar_desk": {
+        "pos": [
+          -16,
+          0,
+          -25
+        ],
+        "radius": 1
+      },
+      "oasis_seller": {
+        "pos": [
+          5,
+          0,
+          42
+        ],
+        "radius": 1
+      },
+      "stall_north": {
+        "pos": [
+          27,
+          0,
+          -5
+        ],
+        "radius": 1
+      },
+      "stall_south": {
+        "pos": [
+          41,
+          0,
+          5
+        ],
+        "radius": 1
+      },
+      "plaza_east": {
+        "pos": [
+          12,
+          0,
+          -6
+        ],
+        "radius": 1
+      },
+      "market_mid": {
+        "pos": [
+          32,
+          0,
+          0
+        ],
+        "radius": 1
+      },
+      "oasis_west": {
+        "pos": [
+          -12,
+          0,
+          30
+        ],
+        "radius": 1
+      },
+      "avenue_west": {
+        "pos": [
+          -40,
+          0,
+          1
+        ],
+        "radius": 1
+      },
+      "plaza_sw": {
+        "pos": [
+          -12,
+          0,
+          5
+        ],
+        "radius": 1
+      },
+      "portico_side": {
+        "pos": [
+          7,
+          0,
+          -17
+        ],
+        "radius": 1
+      },
+      "gate_guard": {
+        "pos": [
+          -52,
+          0,
+          4
+        ],
+        "radius": 1
+      },
+      "oasis_garden": {
+        "pos": [
+          -6,
+          0,
+          47
+        ],
+        "radius": 1
+      },
+      "market": {
+        "pos": [
+          32,
+          0,
+          0
+        ],
+        "radius": 6
+      },
+      "emblem_eldervale": {
+        "pos": [
+          -3,
+          0.3,
+          -36
+        ],
+        "radius": 1
+      },
+      "line_eldervale_0": {
+        "pos": [
+          -2.25,
+          0.3,
+          -37.25
+        ],
+        "radius": 1
+      },
+      "line_eldervale_1": {
+        "pos": [
+          -1.5,
+          0.3,
+          -38.5
+        ],
+        "radius": 1
+      },
+      "line_eldervale_2": {
+        "pos": [
+          -0.75,
+          0.3,
+          -39.75
+        ],
+        "radius": 1
+      },
+      "emblem_sylvaris": {
+        "pos": [
+          4,
+          0.3,
+          -38
+        ],
+        "radius": 1
+      },
+      "line_sylvaris_0": {
+        "pos": [
+          3.0,
+          0.3,
+          -38.75
+        ],
+        "radius": 1
+      },
+      "line_sylvaris_1": {
+        "pos": [
+          2.0,
+          0.3,
+          -39.5
+        ],
+        "radius": 1
+      },
+      "line_sylvaris_2": {
+        "pos": [
+          1.0,
+          0.3,
+          -40.25
+        ],
+        "radius": 1
+      },
+      "emblem_stonecrown": {
+        "pos": [
+          -4,
+          0.3,
+          -43
+        ],
+        "radius": 1
+      },
+      "line_stonecrown_0": {
+        "pos": [
+          -3.0,
+          0.3,
+          -42.5
+        ],
+        "radius": 1
+      },
+      "line_stonecrown_1": {
+        "pos": [
+          -2.0,
+          0.3,
+          -42.0
+        ],
+        "radius": 1
+      },
+      "line_stonecrown_2": {
+        "pos": [
+          -1.0,
+          0.3,
+          -41.5
+        ],
+        "radius": 1
+      },
+      "emblem_solkar": {
+        "pos": [
+          10,
+          0.3,
+          -31
+        ],
+        "radius": 1
+      },
+      "line_solkar_0": {
+        "pos": [
+          7.5,
+          0.3,
+          -33.5
+        ],
+        "radius": 1
+      },
+      "line_solkar_1": {
+        "pos": [
+          5.0,
+          0.3,
+          -36.0
+        ],
+        "radius": 1
+      },
+      "line_solkar_2": {
+        "pos": [
+          2.5,
+          0.3,
+          -38.5
+        ],
+        "radius": 1
+      },
+      "emblem_veyrath": {
+        "pos": [
+          -11,
+          0.3,
+          -40
+        ],
+        "radius": 1
+      },
+      "line_veyrath_0": {
+        "pos": [
+          -8.25,
+          0.3,
+          -40.25
+        ],
+        "radius": 1
+      },
+      "line_veyrath_1": {
+        "pos": [
+          -5.5,
+          0.3,
+          -40.5
+        ],
+        "radius": 1
+      },
+      "line_veyrath_2": {
+        "pos": [
+          -2.75,
+          0.3,
+          -40.75
+        ],
+        "radius": 1
+      },
+      "emblem_thalassia": {
+        "pos": [
+          1,
+          0.3,
+          -30
+        ],
+        "radius": 1
+      },
+      "line_thalassia_0": {
+        "pos": [
+          0.75,
+          0.3,
+          -32.75
+        ],
+        "radius": 1
+      },
+      "line_thalassia_1": {
+        "pos": [
+          0.5,
+          0.3,
+          -35.5
+        ],
+        "radius": 1
+      },
+      "line_thalassia_2": {
+        "pos": [
+          0.25,
+          0.3,
+          -38.25
+        ],
+        "radius": 1
+      }
+    },
+    "npcs": [
+      {
+        "character": "elara",
+        "location": "elara_start",
+        "yaw": -90
+      },
+      {
+        "character": "orin",
+        "location": "orin_start",
+        "yaw": -90
+      },
+      {
+        "character": "sahir",
+        "location": "sahir_hall",
+        "yaw": 0,
+        "held": "minecraft:book"
+      },
+      {
+        "character": "solkar_scholar_1",
+        "location": "scholar_stacks_a",
+        "yaw": 0,
+        "activity": "routine",
+        "route": [
+          "scholar_stacks_a",
+          "scholar_stacks_b"
+        ],
+        "held": "minecraft:book"
+      },
+      {
+        "character": "solkar_scholar_2",
+        "location": "scholar_map",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:writable_book"
+      },
+      {
+        "character": "solkar_scholar_3",
+        "location": "scholar_desk",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:feather"
+      },
+      {
+        "character": "sunspire_citizen_1",
+        "location": "oasis_seller",
+        "yaw": 180,
+        "held": "minecraft:glass_bottle"
+      },
+      {
+        "character": "sunspire_citizen_2",
+        "location": "stall_north",
+        "yaw": 0,
+        "activity": "work",
+        "held": "minecraft:melon_slice"
+      },
+      {
+        "character": "sunspire_citizen_3",
+        "location": "stall_south",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:bread"
+      },
+      {
+        "character": "sunspire_citizen_4",
+        "location": "plaza_east",
+        "yaw": 90,
+        "activity": "routine",
+        "route": [
+          "plaza_east",
+          "market_mid",
+          "oasis_west"
+        ]
+      },
+      {
+        "character": "sunspire_citizen_5",
+        "location": "avenue_west",
+        "yaw": 90,
+        "activity": "patrol",
+        "route": [
+          "avenue_west",
+          "plaza_sw"
+        ]
+      },
+      {
+        "character": "sunspire_citizen_6",
+        "location": "portico_side",
+        "yaw": 0
+      },
+      {
+        "character": "sunspire_citizen_7",
+        "location": "gate_guard",
+        "yaw": -90,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "sunspire_citizen_8",
+        "location": "oasis_garden",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:wooden_hoe"
+      }
+    ],
+    "clues": {
+      "s14_cat_1": {
+        "name": "Catalogue entry: Ashar-Kel, the sun needle of Solkar",
+        "pos": [
+          -17,
+          0,
+          -51
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s14_cat_2": {
+        "name": "Catalogue entry: Vey-Orun, the ember gate of Veyrath",
+        "pos": [
+          -17,
+          0,
+          -43
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s14_cat_3": {
+        "name": "Catalogue entry: Thal-Mere, the tide stair of Thalassia",
+        "pos": [
+          -17,
+          0,
+          -35
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s14_warning": {
+        "name": "Water-stained warning page",
+        "pos": [
+          18,
+          0,
+          -33
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s14_manuscript": {
+        "name": "Survey markings and Sahir's manuscript",
+        "pos": [
+          14,
+          0,
+          -40
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s14_crate": {
+        "name": "Sealed crate from the Eldervale road",
+        "pos": [
+          3,
+          0,
+          -54
+        ],
+        "block": "minecraft:barrel"
+      },
+      "s14_glyph_open": {
+        "name": "Builder glyph: open",
+        "pos": [
+          21,
+          1,
+          -48
+        ],
+        "block": "minecraft:chiseled_tuff"
+      },
+      "s14_glyph_circle": {
+        "name": "Builder glyph: circle",
+        "pos": [
+          21,
+          1,
+          -42
+        ],
+        "block": "minecraft:chiseled_tuff_bricks"
+      },
+      "s14_glyph_only": {
+        "name": "Builder glyph: only",
+        "pos": [
+          21,
+          1,
+          -45
+        ],
+        "block": "minecraft:chiseled_deepslate"
+      },
+      "s14_glyph_hour": {
+        "name": "Builder glyph: hour",
+        "pos": [
+          21,
+          1,
+          -51
+        ],
+        "block": "minecraft:chiseled_polished_blackstone"
+      }
+    },
+    "stages": [
+      {
+        "id": "arrive",
+        "checkpoint": "gate_road",
+        "on_enter": [
+          {
+            "type": "teleport_player",
+            "location": "gate_road",
+            "yaw": -90
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "orin",
+            "location": "orin_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "orin",
+            "location": "orin_start"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "orin"
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s014_arrival"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s014_arrival"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s14_arrival"
+          }
+        ]
+      },
+      {
+        "id": "arrival_talk",
+        "checkpoint": "gate_road",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s14_arrival"
+        }
+      },
+      {
+        "id": "to_records",
+        "objective": "Meet Sahir at the House of Records",
+        "target": "sahir_meet",
+        "checkpoint": "west_gate",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "The House of Records faces the great tower across the plaza. Follow the avenue east from the gate, then turn north at the tower."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "sahir_meet"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s14_sahir"
+          }
+        ]
+      },
+      {
+        "id": "sahir_talk",
+        "checkpoint": "records_hall",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s14_sahir"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_stacks"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_stacks"
+          }
+        ]
+      },
+      {
+        "id": "catalogue",
+        "objective": "Find three catalogue entries in the stacks",
+        "target": "stacks",
+        "checkpoint": "records_hall",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "The archive stacks fill the west side of the hall. Three catalogue lecterns stand in the aisles; press {use} on each. The sign above each one gives the landmark's old name."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s14_cat_1,s14_cat_2,s14_cat_3"
+        },
+        "on_complete": [
+          {
+            "type": "give_item",
+            "item": "minecraft:paper",
+            "count": 1,
+            "name": "Catalogue notes",
+            "lore": "Ashar-Kel: the sun needle of Solkar.|Vey-Orun: the ember gate of Veyrath.|Thal-Mere: the tide stair of Thalassia."
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s14_records"
+          }
+        ]
+      },
+      {
+        "id": "records_talk",
+        "checkpoint": "records_hall",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s14_records"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_glyphs"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_glyphs"
+          }
+        ]
+      },
+      {
+        "id": "glyphs",
+        "objective": "Decode the Builder inscription",
+        "target": "glyph_wall",
+        "checkpoint": "records_hall",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 240,
+            "text": "Four Builder glyphs are set in the east wall. The key tablet on the north wall pairs each glyph with a word. Press the glyphs in the order that spells the key's sentence."
+          }
+        ],
+        "on_wrong": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.stone_button.click_off",
+            "volume": 1.0,
+            "pitch": 0.6
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.grindstone.use",
+            "volume": 0.5,
+            "pitch": 0.7
+          },
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "The glyphs sink back into the wall. Read the key tablet again: Open the circle only in its hour."
+          }
+        ],
+        "complete": {
+          "type": "sequence",
+          "value": "s14_glyph_open,s14_glyph_circle,s14_glyph_only,s14_glyph_hour"
+        },
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s014_glyphs"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.amethyst_block.resonate",
+            "volume": 0.9,
+            "pitch": 0.7
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s14_decoded"
+          }
+        ]
+      },
+      {
+        "id": "decoded_talk",
+        "checkpoint": "glyph_wall",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s14_decoded"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_warning"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_warning"
+          }
+        ]
+      },
+      {
+        "id": "warning",
+        "objective": "Read the water-stained warning page",
+        "target": "warning_desk",
+        "checkpoint": "glyph_wall",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 180,
+            "text": "A page spoiled by an old leak lies on a lectern by the cistern at the east side of the hall. Press {use} on it."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s14_warning"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s14_warning_talk"
+          }
+        ]
+      },
+      {
+        "id": "warning_talk",
+        "checkpoint": "warning_desk",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s14_warning_talk"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_manuscript"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_manuscript"
+          }
+        ]
+      },
+      {
+        "id": "manuscript",
+        "objective": "Compare the survey markings with the manuscript",
+        "target": "manuscript_desk",
+        "checkpoint": "warning_desk",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 180,
+            "text": "Sahir has laid his manuscript beside the old survey at the east edge of the great map. Press {use} on the lectern."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s14_manuscript"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s14_central"
+          }
+        ]
+      },
+      {
+        "id": "central_talk",
+        "checkpoint": "manuscript_desk",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s14_central"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_map"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_map"
+          }
+        ]
+      },
+      {
+        "id": "map",
+        "objective": "Mark the three catalogued landmarks on the great map",
+        "target": "map_view",
+        "checkpoint": "map_view",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:torch",
+            "count": 3,
+            "name": "Archive torch",
+            "lore": "For marking the great map."
+          },
+          {
+            "type": "hint",
+            "ticks": 260,
+            "text": "Three landmarks are already lit. Light the three from the catalogue: the sun of Solkar in the south-east, the ember gate of Veyrath in the far west and the tide stair of Thalassia on the southern coast. Place a torch on each emblem."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "light|10,0,-31;-11,0,-40;1,0,-30"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.fire.ambient",
+            "volume": 1.0,
+            "pitch": 1.0
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s014_alignment"
+          }
+        ]
+      },
+      {
+        "id": "alignment",
+        "checkpoint": "map_view",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s014_alignment"
+        },
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s014_map_lines"
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s14_leads_back"
+          }
+        ]
+      },
+      {
+        "id": "leads_back_talk",
+        "checkpoint": "map_view",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s14_leads_back"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_study"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_study"
+          }
+        ]
+      },
+      {
+        "id": "crate",
+        "objective": "Open the crate from the Eldervale road in Sahir's study",
+        "target": "study",
+        "checkpoint": "map_view",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Sahir's study is behind the great map, at the north end of the hall. The sealed crate the caravan saved is inside. Press {use} on it."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s14_crate"
+        },
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s014_crate_open"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.barrel.open",
+            "volume": 1.0,
+            "pitch": 0.9
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s14_crate_talk"
+          }
+        ]
+      },
+      {
+        "id": "crate_talk",
+        "checkpoint": "study",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s14_crate_talk"
+        },
+        "on_complete": [
+          {
+            "type": "give_item",
+            "item": "minecraft:chiseled_sandstone",
+            "count": 1,
+            "name": "Solkar fragment",
+            "lore": "Solkar's piece, from the sealed crate saved on the Eldervale road."
+          },
+          {
+            "type": "npc_follow",
+            "character": "sahir"
+          },
+          {
+            "type": "title",
+            "title": "Mission Complete",
+            "subtitle": "The Sunspire Records"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7,
+            "pitch": 1.0
+          },
+          {
+            "type": "journal",
+            "id": "s14_sunspire_records"
+          },
+          {
+            "type": "message",
+            "text": "Sahir of Solkar joins you, and Solkar's piece goes with him. The next road leads to Emberhold."
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.solkar.joined"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s014.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "s14_water_seller",
+        "character": "sunspire_citizen_1",
+        "dialogue": "s14_city_water",
+        "radius": 7,
+        "talk_radius": 7,
+        "approach": false,
+        "ambient": true,
+        "priority": 0
+      },
+      {
+        "id": "s14_quiet_stacks",
+        "character": "solkar_scholar_1",
+        "dialogue": "s14_city_quiet",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "ambient": true,
+        "priority": 0
+      },
+      {
+        "id": "s14_busy_records",
+        "character": "sunspire_citizen_6",
+        "dialogue": "s14_city_busy",
+        "radius": 7,
+        "talk_radius": 7,
+        "approach": false,
+        "ambient": true,
+        "priority": 0
+      },
+      {
+        "id": "s14_dates",
+        "character": "sunspire_citizen_2",
+        "dialogue": "s14_city_dates",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "ambient": true,
+        "priority": 0
+      },
+      {
+        "id": "s14_gate_welcome",
+        "character": "sunspire_citizen_7",
+        "dialogue": "s14_city_gate",
+        "radius": 7,
+        "talk_radius": 7,
+        "approach": false,
+        "ambient": true,
+        "priority": 0
+      },
+      {
+        "id": "s14_terraces",
+        "character": "sunspire_citizen_5",
+        "dialogue": "s14_city_terraces",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "ambient": true,
+        "priority": 0
+      }
+    ],
+    "area_triggers": [
+      {
+        "id": "s14_market_hint",
+        "location": "market",
+        "stages": [
+          "to_records"
+        ],
+        "actions": [
+          {
+            "type": "hint",
+            "ticks": 140,
+            "text": "The covered market. The House of Records is back the other way: north of the great tower."
+          }
+        ]
+      }
+    ],
+    "chatter": []
+  },
+  "dialogues": {
+    "s14_arrival": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "elara",
+          "text": "It's so bright.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "orin",
+          "text": "That tower's been here longer than the city around it, if the stories are right.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "primordial_steve",
+          "text": "Let's find Sahir."
+        }
+      }
+    },
+    "s14_city_water": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "sunspire_citizen_1",
+          "text": "Water from the oasis, a copper a cup!"
+        }
+      }
+    },
+    "s14_city_quiet": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "solkar_scholar_1",
+          "text": "Quiet in the stacks, please. The pages are older than your grandparents."
+        }
+      }
+    },
+    "s14_city_busy": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "sunspire_citizen_6",
+          "text": "The House of Records hasn't been this busy since the eclipse year."
+        }
+      }
+    },
+    "s14_city_dates": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "sunspire_citizen_2",
+          "text": "Dates and figs, sweet as the morning! Try one, traveller."
+        }
+      }
+    },
+    "s14_city_gate": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "sunspire_citizen_7",
+          "text": "Welcome to Sunspire. Drink before you're thirsty out here."
+        }
+      }
+    },
+    "s14_city_terraces": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "sunspire_citizen_5",
+          "text": "Mind the terraces at noon. You could bake bread on those roofs."
+        }
+      }
+    },
+    "s14_sahir": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "sahir",
+          "text": "I recognised the symbol as soon as the Queen's messenger described it.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "You've seen it before?",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "sahir",
+          "text": "Not with my own eyes. But I know where it's recorded.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "sahir",
+          "text": "A survey conducted many generations ago mentioned a circle beneath six landmarks.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "orin",
+          "text": "Six landmarks?",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "sahir",
+          "text": "Each corresponding to one of the great civilisations."
+        }
+      }
+    },
+    "s14_records": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "primordial_steve",
+          "text": "Why did nobody know about this before?",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "Because the records were incomplete. Some pages were lost, others misunderstood.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "elara",
+          "text": "Could somebody have hidden them?",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "sahir",
+          "text": "Possibly. But missing information isn't proof of a conspiracy.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "orin",
+          "text": "I'm starting to like him.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "sahir",
+          "text": "Thank you. I think."
+        }
+      }
+    },
+    "s14_decoded": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "sahir",
+          "text": "'Open the circle only in its hour. What is opened out of its hour will remember the hour it should have kept.'",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "orin",
+          "text": "Remember? Stone doesn't remember anything.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "sahir",
+          "text": "The people who wrote this seem to have thought otherwise."
+        }
+      }
+    },
+    "s14_warning_talk": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "sahir",
+          "text": "This one is worse. 'The deep note holds the world in time. Strike it wrongly, and time will keep two answers.'",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "elara",
+          "text": "Two answers to what?",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "sahir",
+          "text": "I wish I knew. The rest of the page is gone.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "primordial_steve",
+          "text": "The deep note... like the humming Liora's rangers heard?",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "sahir",
+          "text": "Perhaps."
+        }
+      }
+    },
+    "s14_central": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "sahir",
+          "text": "There. That symbol represents a central structure.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "The northern monument?",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "sahir",
+          "text": "Perhaps. But it appears that the monument is only one part of something much larger."
+        }
+      }
+    },
+    "s14_leads_back": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "primordial_steve",
+          "text": "Everything leads back there.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "Then whatever was hidden beneath the valley was important enough for six civilisations to record."
+        }
+      }
+    },
+    "s14_crate_talk": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "sahir",
+          "text": "The crate your caravan saved was bound for this house. Solkar's piece.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "The raiders were after it.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "sahir",
+          "text": "My family's oldest book says it was given to us to keep, not to understand. Given by the First Hands, whoever they were.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "sahir",
+          "text": "Lord Kaelen of Emberhold has refused every letter about this. If Veyrath holds a piece, he won't give it up easily.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "primordial_steve",
+          "text": "Then we'll ask him in person."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s014_arrival": {
+      "duration": 320,
+      "fade_in": 20,
+      "fade_out": 12,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            -85.0,
+            24.0,
+            30.0
+          ],
+          "yaw": -109.4,
+          "pitch": -10.1,
+          "fov": 62
+        },
+        {
+          "t": 110,
+          "pos": [
+            -60.0,
+            32.0,
+            45.0
+          ],
+          "yaw": -126.9,
+          "pitch": 1.5,
+          "fov": 58
+        },
+        {
+          "t": 210,
+          "pos": [
+            -22.0,
+            20.0,
+            50.0
+          ],
+          "yaw": -129.3,
+          "pitch": 32.3,
+          "fov": 56
+        },
+        {
+          "t": 320,
+          "pos": [
+            -66.0,
+            5.0,
+            6.0
+          ],
+          "yaw": -95.2,
+          "pitch": -14.4,
+          "fov": 60
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 40,
+          "duration": 110,
+          "text": "Sunspire — City of Solkar",
+          "style": "title"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:block.sand.step",
+          "volume": 0.4
+        },
+        {
+          "t": 120,
+          "sound": "minecraft:entity.camel.ambient",
+          "volume": 0.3
+        },
+        {
+          "t": 210,
+          "sound": "minecraft:block.water.ambient",
+          "volume": 0.4
+        }
+      ]
+    },
+    "mc001_s014_alignment": {
+      "duration": 220,
+      "fade_in": 8,
+      "fade_out": 10,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            0.0,
+            8.5,
+            -24.0
+          ],
+          "yaw": -180.0,
+          "pitch": 38.4,
+          "fov": 70
+        },
+        {
+          "t": 220,
+          "pos": [
+            0.5,
+            8.5,
+            -30.0
+          ],
+          "yaw": 176.8,
+          "pitch": 46.5,
+          "fov": 75
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 30,
+          "duration": 150,
+          "text": "Six lines cross the map and meet near Awakening Valley.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 40,
+          "sound": "minecraft:block.amethyst_block.chime",
+          "volume": 0.8,
+          "pitch": 0.8
+        },
+        {
+          "t": 100,
+          "sound": "minecraft:block.amethyst_block.chime",
+          "volume": 0.8,
+          "pitch": 1.0
+        },
+        {
+          "t": 140,
+          "sound": "minecraft:block.beacon.activate",
+          "volume": 0.6,
+          "pitch": 0.8
+        }
+      ],
+      "cues": [
+        {
+          "t": 40,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:flame",
+              "location": "emblem_eldervale",
+              "count": 6,
+              "spread": 0.15
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:flame",
+              "location": "emblem_sylvaris",
+              "count": 6,
+              "spread": 0.15
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:flame",
+              "location": "emblem_stonecrown",
+              "count": 6,
+              "spread": 0.15
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:flame",
+              "location": "emblem_solkar",
+              "count": 6,
+              "spread": 0.15
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:flame",
+              "location": "emblem_veyrath",
+              "count": 6,
+              "spread": 0.15
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:flame",
+              "location": "emblem_thalassia",
+              "count": 6,
+              "spread": 0.15
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_eldervale_0",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_sylvaris_0",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_stonecrown_0",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_solkar_0",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_veyrath_0",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_thalassia_0",
+              "count": 8,
+              "spread": 0.2
+            }
+          ]
+        },
+        {
+          "t": 70,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_eldervale_1",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_sylvaris_1",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_stonecrown_1",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_solkar_1",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_veyrath_1",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_thalassia_1",
+              "count": 8,
+              "spread": 0.2
+            }
+          ]
+        },
+        {
+          "t": 100,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_eldervale_2",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_sylvaris_2",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_stonecrown_2",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_solkar_2",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_veyrath_2",
+              "count": 8,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "line_thalassia_2",
+              "count": 8,
+              "spread": 0.2
+            }
+          ]
+        },
+        {
+          "t": 140,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "valley_mark",
+              "count": 40,
+              "spread": 0.6
+            },
+            {
+              "type": "world_change",
+              "id": "mc001_s014_map_lines"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "journal": {
+    "s14_sunspire_records": {
+      "title": "The Sunspire Records",
+      "text": "Sunspire, the capital of Solkar, stands round a tower older than the city itself. Sahir met us at the House of Records. An old survey mentions a circle beneath six landmarks, one for each civilisation, and the stacks gave us the old names of three of them. We decoded a Builder inscription: 'Open the circle only in its hour.' A water-stained page spoke of a deep note that holds the world in time. The survey's central mark may be the northern monument, but only as one part of something larger. On the great map six lines met near Awakening Valley. The sealed crate our caravan saved was bound for Sahir's house: Solkar's piece. Sahir is coming with us. Lord Kaelen of Emberhold has refused every letter, so we will ask him in person."
+    }
+  }
+}
