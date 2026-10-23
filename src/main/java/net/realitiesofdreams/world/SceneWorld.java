@@ -62,6 +62,7 @@ public final class SceneWorld {
             case "valebridge" -> net.realitiesofdreams.world.site.Valebridge::build;
             case "sunspire" -> net.realitiesofdreams.world.site.Sunspire::build;
             case "emberhold" -> net.realitiesofdreams.world.site.Emberhold::build;
+            case "tidewatch" -> net.realitiesofdreams.world.site.Tidewatch::build;
             case "gateway_chamber" -> (l, a) -> {
                 // The excavation is dug beneath the monument's courtyard, so the monument must stand first.
                 if (!data.isDone("built:site:northern_monument")) {
@@ -179,7 +180,9 @@ public final class SceneWorld {
             case "mc001_s014_crate_open" -> net.realitiesofdreams.world.site.Sunspire.crateOpen(level, a);
             case "mc001_s015_braziers_lit" -> net.realitiesofdreams.world.site.Emberhold.braziersLit(level, a);
             case "mc001_s015_vault_open" -> net.realitiesofdreams.world.site.Emberhold.vaultOpen(level, a);
-            case "mc001_s016_table" -> net.realitiesofdreams.world.site.Valebridge.tableFragments(level, a, 5);
+            case "mc001_s016_crane_fixed" -> net.realitiesofdreams.world.site.Tidewatch.craneFixed(level, a);
+            case "mc001_s016_anchor_taken" -> net.realitiesofdreams.world.site.Tidewatch.anchorTaken(level, a);
+            case "mc001_s016_fragments" -> net.realitiesofdreams.world.site.Tidewatch.fragmentsLaid(level, a);
             case "mc001_s017_skylight" -> net.realitiesofdreams.world.site.Valebridge.skylight(level, a);
             case "mc001_s017_supplies" -> expeditionSupplies(level, a);
             case "mc001_s007_survey" -> {
