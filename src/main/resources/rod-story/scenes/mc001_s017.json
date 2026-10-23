@@ -1,0 +1,1155 @@
+{
+  "scene": {
+    "id": "mc001_s017",
+    "title": "The Truth in the Fragments",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 17,
+    "canon_status": "Saga 1 revised screenplay, Version 2 (docs/story/SAGA_1_SCENES_012_019_REVISED.md): spoken dialogue verbatim. Hints, captions, item names and the outcome message are gameplay text.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "valebridge",
+    "anchor": [
+      -115,
+      67,
+      105
+    ],
+    "arrival": {
+      "pos": [
+        -27,
+        0,
+        -1
+      ],
+      "yaw": 90
+    },
+    "next_scene": "mc001_s018",
+    "locations": {
+      "hall_in": {
+        "pos": [
+          -27,
+          0,
+          -1
+        ],
+        "radius": 2
+      },
+      "elara_in": {
+        "pos": [
+          -27,
+          0,
+          1
+        ],
+        "radius": 1
+      },
+      "bram_in": {
+        "pos": [
+          -27,
+          0,
+          -3
+        ],
+        "radius": 1
+      },
+      "chamber": {
+        "pos": [
+          -37,
+          0,
+          -9
+        ],
+        "radius": 3
+      },
+      "table_side": {
+        "pos": [
+          -41,
+          0,
+          -15
+        ],
+        "radius": 3
+      },
+      "queen": {
+        "pos": [
+          -41,
+          0,
+          -15
+        ],
+        "radius": 1
+      },
+      "garrick": {
+        "pos": [
+          -45,
+          0,
+          -13
+        ],
+        "radius": 1
+      },
+      "sahir": {
+        "pos": [
+          -45,
+          0,
+          -9
+        ],
+        "radius": 1
+      },
+      "kaelen": {
+        "pos": [
+          -37,
+          0,
+          -13
+        ],
+        "radius": 1
+      },
+      "maren": {
+        "pos": [
+          -37,
+          0,
+          -10
+        ],
+        "radius": 1
+      },
+      "liora": {
+        "pos": [
+          -44,
+          0,
+          -15
+        ],
+        "radius": 1
+      },
+      "orin": {
+        "pos": [
+          -38,
+          0,
+          -15
+        ],
+        "radius": 1
+      },
+      "elara": {
+        "pos": [
+          -43,
+          0,
+          -7
+        ],
+        "radius": 1
+      },
+      "bram": {
+        "pos": [
+          -39,
+          0,
+          -7
+        ],
+        "radius": 1
+      },
+      "kaelen_guard": {
+        "pos": [
+          -33,
+          0,
+          -12
+        ],
+        "radius": 1
+      },
+      "royal_guard": {
+        "pos": [
+          -36,
+          0,
+          -7
+        ],
+        "radius": 1
+      },
+      "table_light": {
+        "pos": [
+          -41,
+          1.2,
+          -11
+        ],
+        "radius": 1
+      },
+      "map": {
+        "pos": [
+          -40,
+          0,
+          5
+        ],
+        "radius": 4
+      },
+      "quartermaster": {
+        "pos": [
+          -25,
+          0,
+          -12
+        ],
+        "radius": 2
+      },
+      "qm_spot": {
+        "pos": [
+          -25,
+          0,
+          -14
+        ],
+        "radius": 1
+      },
+      "orin_map": {
+        "pos": [
+          -36,
+          0,
+          3
+        ],
+        "radius": 1
+      },
+      "sahir_map": {
+        "pos": [
+          -44,
+          0,
+          3
+        ],
+        "radius": 1
+      },
+      "queen_map": {
+        "pos": [
+          -40,
+          0,
+          0
+        ],
+        "radius": 1
+      }
+    },
+    "npcs": [
+      {
+        "character": "elara",
+        "location": "elara_in",
+        "yaw": 90
+      },
+      {
+        "character": "bram",
+        "location": "bram_in",
+        "yaw": 90
+      },
+      {
+        "character": "queen_aveline",
+        "location": "queen",
+        "yaw": 0
+      },
+      {
+        "character": "thane_garrick",
+        "location": "garrick",
+        "yaw": -90
+      },
+      {
+        "character": "sahir",
+        "location": "sahir",
+        "yaw": -90
+      },
+      {
+        "character": "lord_kaelen",
+        "location": "kaelen",
+        "yaw": 90
+      },
+      {
+        "character": "captain_maren",
+        "location": "maren",
+        "yaw": 90
+      },
+      {
+        "character": "liora",
+        "location": "liora",
+        "yaw": 0
+      },
+      {
+        "character": "orin",
+        "location": "orin",
+        "yaw": 0
+      },
+      {
+        "character": "veyrath_guard_1",
+        "location": "kaelen_guard",
+        "yaw": 90,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "eldervale_royal_guard_1",
+        "location": "royal_guard",
+        "yaw": 180,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "eldervale_official_1",
+        "location": "qm_spot",
+        "yaw": 90,
+        "activity": "work"
+      }
+    ],
+    "clues": {
+      "s17_rec_eldervale": {
+        "name": "Eldervale's record: 'the first stone, not to be moved'",
+        "pos": [
+          -48,
+          0,
+          -14
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s17_rec_stonecrown": {
+        "name": "Stonecrown's record: 'the foundation'",
+        "pos": [
+          -46,
+          0,
+          -14
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s17_rec_sylvaris": {
+        "name": "Sylvaris's record: 'the warning'",
+        "pos": [
+          -36,
+          0,
+          -14
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s17_rec_solkar": {
+        "name": "Solkar's record: 'the boundary'",
+        "pos": [
+          -34,
+          0,
+          -14
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s17_rec_veyrath": {
+        "name": "Veyrath's record: 'the sealed inheritance'",
+        "pos": [
+          -30,
+          0,
+          -14
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s17_rec_thalassia": {
+        "name": "Thalassia's record: 'the navigation marker'",
+        "pos": [
+          -28,
+          0,
+          -14
+        ],
+        "block": "minecraft:lectern"
+      },
+      "s17_writing": {
+        "name": "Writing in the grooves of the diagram",
+        "pos": [
+          -41,
+          0,
+          -11
+        ],
+        "block": "minecraft:polished_blackstone"
+      },
+      "s17_map_valley": {
+        "name": "Map: where the six lines meet",
+        "pos": [
+          -40,
+          0,
+          4
+        ],
+        "block": "minecraft:red_candle"
+      },
+      "s17_map_stone": {
+        "name": "Map: the old stone in the north",
+        "pos": [
+          -40,
+          0,
+          2
+        ],
+        "block": "minecraft:red_candle"
+      },
+      "s17_map_east": {
+        "name": "Map: the old stone's eastern foot",
+        "pos": [
+          -38,
+          0,
+          2
+        ],
+        "block": "minecraft:red_candle"
+      },
+      "s17_map_west": {
+        "name": "Map: the old stone's western foot",
+        "pos": [
+          -42,
+          0,
+          2
+        ],
+        "block": "minecraft:red_candle"
+      }
+    },
+    "stages": [
+      {
+        "id": "gather",
+        "objective": "Join the council in the archive's research chamber",
+        "target": "table_side",
+        "checkpoint": "hall_in",
+        "on_enter": [
+          {
+            "type": "teleport_player",
+            "location": "hall_in",
+            "yaw": 90
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_in"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_in"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_in"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_in"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "Maren's ship brought everyone back to Valebridge. The six delegations are waiting round the reconstruction table, through the doorway in the shelves."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "table_side"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram"
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s017_council"
+          }
+        ]
+      },
+      {
+        "id": "council_view",
+        "checkpoint": "table_side",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s017_council"
+        }
+      },
+      {
+        "id": "assemble",
+        "objective": "Set all six fragments into the reconstruction table",
+        "target": "table_side",
+        "checkpoint": "table_side",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:chiseled_stone_bricks",
+            "count": 1,
+            "name": "Eldervale fragment",
+            "lore": "The carved stone from the royal Old Vault."
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:oxidized_chiseled_copper",
+            "count": 1,
+            "name": "Sylvaris fragment",
+            "lore": "Liora's rubbing of the grove stone, pressed into copper."
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:chiseled_deepslate",
+            "count": 1,
+            "name": "Stonecrown fragment",
+            "lore": "The Builder machine plate from beneath Irondeep."
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:chiseled_sandstone",
+            "count": 1,
+            "name": "Solkar fragment",
+            "lore": "Solkar's piece, from the sealed crate saved on the Eldervale road."
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:chiseled_nether_bricks",
+            "count": 1,
+            "name": "Veyrath fragment",
+            "lore": "The Ember Key of Veyrath. Keep it apart from the door."
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:dark_prismarine",
+            "count": 1,
+            "name": "Thalassia fragment",
+            "lore": "The Tide Anchor of Tidewatch. Made to hold something steady."
+          },
+          {
+            "type": "hint",
+            "ticks": 240,
+            "text": "Each socket's inlay shows which civilisation's fragment belongs on it. Place all six fragments on their matching inlays."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "minecraft:chiseled_stone_bricks|-41,1,-13 + minecraft:oxidized_chiseled_copper|-39,1,-12 + minecraft:chiseled_deepslate|-39,1,-10 + minecraft:chiseled_sandstone|-41,1,-9 + minecraft:chiseled_nether_bricks|-43,1,-10 + minecraft:dark_prismarine|-43,1,-12"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.end_portal_frame.fill",
+            "volume": 0.8,
+            "pitch": 0.7
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s17_centre"
+          }
+        ]
+      },
+      {
+        "id": "centre_talk",
+        "checkpoint": "table_side",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s17_centre"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s17_interpretations"
+          }
+        ]
+      },
+      {
+        "id": "interpretations_talk",
+        "checkpoint": "table_side",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s17_interpretations"
+        }
+      },
+      {
+        "id": "records",
+        "objective": "Review the six civilisations' records",
+        "target": "table_side",
+        "checkpoint": "table_side",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Each delegation has laid its oldest record on a lectern along the north wall. Read all six."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s17_rec_eldervale,s17_rec_stonecrown,s17_rec_sylvaris,s17_rec_solkar,s17_rec_veyrath,s17_rec_thalassia"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s017_light"
+          }
+        ]
+      },
+      {
+        "id": "light",
+        "checkpoint": "table_side",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s017_light"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s17_light"
+          }
+        ]
+      },
+      {
+        "id": "light_talk",
+        "checkpoint": "table_side",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s17_light"
+        }
+      },
+      {
+        "id": "writing",
+        "objective": "Read the writing the light has revealed",
+        "target": "table_side",
+        "checkpoint": "table_side",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Under the skylight, fine lines show in the grooves at the centre of the diagram. Press {use} on the centre."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s17_writing"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s17_builders"
+          }
+        ]
+      },
+      {
+        "id": "builders_talk",
+        "checkpoint": "table_side",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s17_builders"
+        },
+        "on_complete": [
+          {
+            "type": "npc_move",
+            "character": "orin",
+            "location": "orin_map"
+          },
+          {
+            "type": "npc_move",
+            "character": "sahir",
+            "location": "sahir_map"
+          },
+          {
+            "type": "npc_move",
+            "character": "queen_aveline",
+            "location": "queen_map"
+          }
+        ]
+      },
+      {
+        "id": "route",
+        "objective": "Decode the route on the great floor map",
+        "target": "map",
+        "checkpoint": "table_side",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 260,
+            "text": "The spiral reads: begin where the six lines meet, climb to the old stone, go down at its eastern foot. Mark those three points on the floor map in that order."
+          }
+        ],
+        "complete": {
+          "type": "sequence",
+          "value": "s17_map_valley,s17_map_stone,s17_map_east"
+        },
+        "on_wrong": [
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "That doesn't follow the spiral. The route clears; begin again where the six lines meet."
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.candle.extinguish",
+            "volume": 0.8,
+            "pitch": 1.0
+          }
+        ],
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s017_plan"
+          }
+        ]
+      },
+      {
+        "id": "plan",
+        "checkpoint": "map",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s017_plan"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s17_plan"
+          }
+        ]
+      },
+      {
+        "id": "plan_talk",
+        "checkpoint": "map",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s17_plan"
+        },
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s017_supplies"
+          }
+        ]
+      },
+      {
+        "id": "supplies",
+        "objective": "Collect torches and timber from the quartermaster's chest",
+        "target": "quartermaster",
+        "checkpoint": "map",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "The quartermaster's supply chest is by the east wall of the research chamber. Take 16 torches and 16 spruce planks."
+          }
+        ],
+        "complete": {
+          "type": "items",
+          "value": "minecraft:torch*16,minecraft:spruce_planks*16"
+        },
+        "on_complete": [
+          {
+            "type": "title",
+            "title": "Act III Complete",
+            "subtitle": "Six Histories, One Mystery"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7,
+            "pitch": 1.0
+          },
+          {
+            "type": "journal",
+            "id": "s17_journal"
+          },
+          {
+            "type": "message",
+            "text": "The joint expedition is assembled. At dawn it sets out for the monument."
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.expedition.assembled"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s017.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [],
+    "area_triggers": [],
+    "chatter": []
+  },
+  "dialogues": {
+    "s17_centre": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "orin",
+          "text": "That's everything.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "Not quite.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "elara",
+          "text": "The centre is missing.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "thane_garrick",
+          "text": "A seventh stone?",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "primordial_steve",
+          "text": "Or something that was never meant to be removed."
+        }
+      }
+    },
+    "s17_interpretations": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "thane_garrick",
+          "text": "Stonecrown records describe it as a foundation.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "Solkar's scholars called it a boundary.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "captain_maren",
+          "text": "Our maps identify it as a navigation marker.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "liora",
+          "text": "Sylvaris preserved it as a warning.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "lord_kaelen",
+          "text": "Veyrath's oldest accounts refer to a sealed inheritance.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "primordial_steve",
+          "text": "You're all describing different parts of the same thing."
+        }
+      }
+    },
+    "s17_light": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "orin",
+          "text": "They're not contradicting one another.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "The foundation supports the structure.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "captain_maren",
+          "text": "The marker shows where it is.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "liora",
+          "text": "The warning explains why it should remain undisturbed.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "primordial_steve",
+          "text": "And the boundary?",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "sahir",
+          "text": "That part we still don't understand."
+        }
+      }
+    },
+    "s17_builders": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "sahir",
+          "text": "There's writing in the grooves, finer than any chisel we own.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "sahir",
+          "text": "'We who built before the crowns leave this to six keepers. Keep it apart. Keep it whole. Do not open the door.'",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "thane_garrick",
+          "text": "Before the crowns. Before any of us.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "primordial_steve",
+          "text": "The Ancient Builders. They made the gateway. Our kingdoms only inherited the pieces.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "lord_kaelen",
+          "text": "And swore oaths they never understood.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "lord_kaelen",
+          "text": "I owe this council an admission.",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "queen_aveline",
+          "text": "We're listening.",
+          "next": "l07"
+        },
+        "l07": {
+          "speaker": "lord_kaelen",
+          "text": "I was prepared to treat this discovery as another dispute between kingdoms.",
+          "next": "l08"
+        },
+        "l08": {
+          "speaker": "primordial_steve",
+          "text": "And now?",
+          "next": "l09"
+        },
+        "l09": {
+          "speaker": "lord_kaelen",
+          "text": "Now I believe there's something far more important beneath the valley.",
+          "next": "l10"
+        },
+        "l10": {
+          "speaker": "liora",
+          "text": "Then perhaps we can investigate it together.",
+          "next": "l11"
+        },
+        "l11": {
+          "speaker": "lord_kaelen",
+          "text": "We can try."
+        }
+      }
+    },
+    "s17_plan": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "primordial_steve",
+          "text": "Here. The central intersection.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "thane_garrick",
+          "text": "My engineers can help secure the excavation.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "captain_maren",
+          "text": "I'll organise transport.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "sahir",
+          "text": "I'll bring the translated records.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "liora",
+          "text": "Sylvaris will send scouts.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "queen_aveline",
+          "text": "And Eldervale will provide supplies.",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "bram",
+          "text": "Sounds like we're going somewhere.",
+          "next": "l07"
+        },
+        "l07": {
+          "speaker": "elara",
+          "text": "Somewhere nobody's been for a very long time."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s017_council": {
+      "duration": 180,
+      "fade_in": 12,
+      "fade_out": 10,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            -33.0,
+            4.5,
+            -5.0
+          ],
+          "yaw": 126.9,
+          "pitch": 19.3,
+          "fov": 62
+        },
+        {
+          "t": 180,
+          "pos": [
+            -47.0,
+            4.0,
+            -6.0
+          ],
+          "yaw": -129.8,
+          "pitch": 21.0,
+          "fov": 55
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 20,
+          "duration": 120,
+          "text": "Six kingdoms, one table",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:block.wooden_door.close",
+          "volume": 0.5,
+          "pitch": 0.8
+        }
+      ]
+    },
+    "mc001_s017_light": {
+      "duration": 170,
+      "fade_in": 8,
+      "fade_out": 8,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            -41.0,
+            6.2,
+            -16.0
+          ],
+          "yaw": -0.0,
+          "pitch": 46.1,
+          "fov": 55
+        },
+        {
+          "t": 170,
+          "pos": [
+            -41.0,
+            4.2,
+            -14.0
+          ],
+          "yaw": -0.0,
+          "pitch": 46.8,
+          "fov": 42
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 15,
+          "duration": 120,
+          "text": "Orin opens the skylight and sets a lamp above the diagram.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 20,
+          "sound": "minecraft:block.trapdoor.open",
+          "volume": 0.7
+        },
+        {
+          "t": 60,
+          "sound": "minecraft:block.amethyst_block.chime",
+          "volume": 0.8,
+          "pitch": 0.8
+        }
+      ],
+      "cues": [
+        {
+          "t": 25,
+          "actions": [
+            {
+              "type": "world_change",
+              "id": "mc001_s017_skylight"
+            }
+          ]
+        },
+        {
+          "t": 70,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "table_light",
+              "count": 18,
+              "spread": 1.2
+            }
+          ]
+        }
+      ]
+    },
+    "mc001_s017_plan": {
+      "duration": 200,
+      "fade_in": 10,
+      "fade_out": 10,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            -40.0,
+            7.0,
+            10.0
+          ],
+          "yaw": -180.0,
+          "pitch": 49.4,
+          "fov": 60
+        },
+        {
+          "t": 200,
+          "pos": [
+            -40.0,
+            4.0,
+            7.5
+          ],
+          "yaw": -169.7,
+          "pitch": 35.6,
+          "fov": 48
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 20,
+          "duration": 140,
+          "text": "The route ends beneath the monument's eastern foundation.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 30,
+          "sound": "minecraft:item.book.page_turn",
+          "volume": 0.8
+        }
+      ],
+      "cues": [
+        {
+          "t": 50,
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "queen_aveline",
+              "location": "map"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "journal": {
+    "s17_journal": {
+      "title": "Six Histories, One Mystery",
+      "text": "All six kingdoms came to Valebridge, and all six fragments fit the table, except for an empty space in the middle. Each kingdom remembered a different part: a foundation, a boundary, a marker, a warning, a sealed inheritance. Under Orin's light, writing showed in the grooves: the people who built before the crowns left it to six keepers and told them never to open the door. The Ancient Builders made the gateway; we only inherited the pieces. The spiral gives the way in, beneath the monument's eastern foundation. At dawn the joint expedition sets out."
+    }
+  }
+}

@@ -1,0 +1,1253 @@
+{
+  "scene": {
+    "id": "mc001_s012",
+    "title": "The Queen's Summons",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 12,
+    "canon_status": "Saga 1 revised screenplay, Version 2 (docs/story/SAGA_1_SCENES_012_019_REVISED.md): spoken dialogue verbatim. Hints, captions, item names and the outcome message are gameplay text.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "valebridge",
+    "anchor": [
+      -115,
+      67,
+      105
+    ],
+    "arrival": {
+      "pos": [
+        62,
+        0,
+        0
+      ],
+      "yaw": 90
+    },
+    "next_scene": "mc001_s013",
+    "locations": {
+      "gate_out": {
+        "pos": [
+          62,
+          0,
+          0
+        ],
+        "radius": 2
+      },
+      "elara_start": {
+        "pos": [
+          63,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "bram_start": {
+        "pos": [
+          63,
+          0,
+          -2
+        ],
+        "radius": 1
+      },
+      "liora_start": {
+        "pos": [
+          64,
+          0,
+          0
+        ],
+        "radius": 1
+      },
+      "gate": {
+        "pos": [
+          52,
+          0,
+          0
+        ],
+        "radius": 3
+      },
+      "gate_post": {
+        "pos": [
+          50,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "street_e1": {
+        "pos": [
+          42,
+          0,
+          -1
+        ],
+        "radius": 1
+      },
+      "street_e2": {
+        "pos": [
+          22,
+          0,
+          1
+        ],
+        "radius": 1
+      },
+      "plaza_n": {
+        "pos": [
+          0,
+          0,
+          -9
+        ],
+        "radius": 1
+      },
+      "plaza_e": {
+        "pos": [
+          9,
+          0,
+          1
+        ],
+        "radius": 1
+      },
+      "plaza_s": {
+        "pos": [
+          1,
+          0,
+          9
+        ],
+        "radius": 1
+      },
+      "plaza_w": {
+        "pos": [
+          -9,
+          0,
+          -1
+        ],
+        "radius": 1
+      },
+      "archive_st": {
+        "pos": [
+          -16,
+          0,
+          0
+        ],
+        "radius": 1
+      },
+      "harbour_st": {
+        "pos": [
+          0,
+          0,
+          20
+        ],
+        "radius": 1
+      },
+      "stall_1": {
+        "pos": [
+          20,
+          0,
+          4
+        ],
+        "radius": 1
+      },
+      "stall_2": {
+        "pos": [
+          34,
+          0,
+          -4
+        ],
+        "radius": 1
+      },
+      "bench": {
+        "pos": [
+          6,
+          0,
+          6
+        ],
+        "radius": 1
+      },
+      "archive_door": {
+        "pos": [
+          -24,
+          0,
+          0
+        ],
+        "radius": 2
+      },
+      "archive_desk": {
+        "pos": [
+          -27,
+          0,
+          1
+        ],
+        "radius": 2
+      },
+      "archivist_spot": {
+        "pos": [
+          -26,
+          0,
+          4
+        ],
+        "radius": 1
+      },
+      "messenger_spot": {
+        "pos": [
+          -24,
+          0,
+          2
+        ],
+        "radius": 1
+      },
+      "palace_door": {
+        "pos": [
+          0,
+          0,
+          -16
+        ],
+        "radius": 2
+      },
+      "palace_hall": {
+        "pos": [
+          0,
+          0,
+          -25
+        ],
+        "radius": 3
+      },
+      "guard_door": {
+        "pos": [
+          3,
+          0,
+          -20
+        ],
+        "radius": 1
+      },
+      "queen_seat": {
+        "pos": [
+          0,
+          0,
+          -39
+        ],
+        "radius": 1
+      },
+      "adviser_w": {
+        "pos": [
+          -3,
+          0,
+          -39
+        ],
+        "radius": 1
+      },
+      "adviser_e": {
+        "pos": [
+          3,
+          0,
+          -39
+        ],
+        "radius": 1
+      },
+      "guard_w": {
+        "pos": [
+          -6,
+          0,
+          -39
+        ],
+        "radius": 1
+      },
+      "guard_e": {
+        "pos": [
+          6,
+          0,
+          -39
+        ],
+        "radius": 1
+      },
+      "elara_hall": {
+        "pos": [
+          -2,
+          0,
+          -26
+        ],
+        "radius": 1
+      },
+      "bram_hall": {
+        "pos": [
+          2,
+          0,
+          -26
+        ],
+        "radius": 1
+      },
+      "liora_hall": {
+        "pos": [
+          -3,
+          0,
+          -24
+        ],
+        "radius": 1
+      },
+      "records": {
+        "pos": [
+          -40,
+          0,
+          -2
+        ],
+        "radius": 4
+      }
+    },
+    "npcs": [
+      {
+        "character": "elara",
+        "location": "elara_start",
+        "yaw": 90
+      },
+      {
+        "character": "bram",
+        "location": "bram_start",
+        "yaw": 90
+      },
+      {
+        "character": "liora",
+        "location": "liora_start",
+        "yaw": 90,
+        "held": "minecraft:bow"
+      },
+      {
+        "character": "eldervale_official_1",
+        "location": "archivist_spot",
+        "yaw": 180
+      },
+      {
+        "character": "eldervale_royal_guard_1",
+        "location": "gate_post",
+        "yaw": -90,
+        "held": "minecraft:iron_sword",
+        "until_stage": "messenger"
+      },
+      {
+        "character": "eldervale_royal_guard_1",
+        "location": "messenger_spot",
+        "yaw": 90,
+        "from_stage": "messenger",
+        "until_stage": "to_palace"
+      },
+      {
+        "character": "eldervale_royal_guard_1",
+        "location": "guard_door",
+        "yaw": 180,
+        "from_stage": "to_palace",
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "queen_aveline",
+        "location": "queen_seat",
+        "yaw": 0
+      },
+      {
+        "character": "eldervale_official_2",
+        "location": "adviser_w",
+        "yaw": 0
+      },
+      {
+        "character": "eldervale_official_3",
+        "location": "adviser_e",
+        "yaw": 0
+      },
+      {
+        "character": "eldervale_royal_guard_2",
+        "location": "guard_w",
+        "yaw": 0,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "eldervale_royal_guard_3",
+        "location": "guard_e",
+        "yaw": 0,
+        "held": "minecraft:iron_sword"
+      },
+      {
+        "character": "merchant_1",
+        "location": "stall_1",
+        "yaw": 180,
+        "activity": "work"
+      },
+      {
+        "character": "merchant_2",
+        "location": "stall_2",
+        "yaw": 0,
+        "activity": "work"
+      },
+      {
+        "character": "valebridge_citizen_1",
+        "location": "plaza_n",
+        "activity": "routine",
+        "route": [
+          "plaza_n",
+          "plaza_e",
+          "street_e2"
+        ]
+      },
+      {
+        "character": "valebridge_citizen_2",
+        "location": "plaza_w",
+        "activity": "routine",
+        "route": [
+          "plaza_w",
+          "archive_st"
+        ]
+      },
+      {
+        "character": "valebridge_citizen_3",
+        "location": "bench",
+        "yaw": 200
+      },
+      {
+        "character": "valebridge_citizen_4",
+        "location": "street_e1",
+        "activity": "routine",
+        "route": [
+          "street_e1",
+          "street_e2"
+        ]
+      },
+      {
+        "character": "valebridge_citizen_5",
+        "location": "harbour_st",
+        "activity": "routine",
+        "route": [
+          "harbour_st",
+          "plaza_s"
+        ]
+      },
+      {
+        "character": "valebridge_citizen_6",
+        "location": "plaza_e",
+        "yaw": 90,
+        "activity": "work"
+      }
+    ],
+    "clues": {
+      "s12_charter": {
+        "name": "The Charter of the Six Crowns",
+        "pos": [
+          -48,
+          0,
+          -3
+        ],
+        "block": "minecraft:lectern",
+        "dialogue": "s12_charter"
+      },
+      "s12_chronicle": {
+        "name": "The Founding Chronicle of Valebridge",
+        "pos": [
+          -40,
+          0,
+          -3
+        ],
+        "block": "minecraft:lectern",
+        "dialogue": "s12_chronicle"
+      },
+      "s12_inventory": {
+        "name": "Inventory of the Old Vault",
+        "pos": [
+          -32,
+          0,
+          -3
+        ],
+        "block": "minecraft:lectern",
+        "dialogue": "s12_inventory"
+      }
+    },
+    "stages": [
+      {
+        "id": "to_gate",
+        "objective": "Walk into Valebridge through the east gate",
+        "target": "gate",
+        "checkpoint": "gate_out",
+        "on_enter": [
+          {
+            "type": "teleport_player",
+            "location": "gate_out",
+            "yaw": 90
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_start"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "npc_follow",
+            "character": "liora"
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s012_city"
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "gate"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s12_gates"
+          }
+        ]
+      },
+      {
+        "id": "gates_talk",
+        "checkpoint": "gate",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s12_gates"
+        }
+      },
+      {
+        "id": "to_archive",
+        "objective": "Deliver the investigation dossier to the royal archive",
+        "target": "archive_desk",
+        "checkpoint": "gate",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "The royal archive is west of the fountain, along the street from the plaza. The city is yours to look round on the way."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "archive_desk"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s12_archivist"
+          }
+        ]
+      },
+      {
+        "id": "archivist_talk",
+        "checkpoint": "archive_door",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s12_archivist"
+        }
+      },
+      {
+        "id": "messenger",
+        "checkpoint": "archive_door",
+        "on_enter": [
+          {
+            "type": "npc_look",
+            "character": "eldervale_royal_guard_1",
+            "location": "archive_desk"
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s12_messenger"
+          }
+        ],
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s12_messenger"
+        }
+      },
+      {
+        "id": "to_palace",
+        "objective": "Meet Queen Aveline in the royal palace",
+        "target": "palace_hall",
+        "checkpoint": "archive_door",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "The palace stands north of the plaza, at the end of the guarded street."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "palace_hall"
+        },
+        "on_complete": [
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "bram",
+            "location": "bram_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "bram",
+            "location": "bram_hall"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "liora",
+            "location": "liora_hall"
+          },
+          {
+            "type": "npc_stay",
+            "character": "liora",
+            "location": "liora_hall"
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s012_court"
+          }
+        ]
+      },
+      {
+        "id": "court",
+        "checkpoint": "palace_hall",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s012_court"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s12_council"
+          }
+        ]
+      },
+      {
+        "id": "council_talk",
+        "checkpoint": "palace_hall",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s12_council"
+        },
+        "on_complete": [
+          {
+            "type": "give_item",
+            "item": "minecraft:paper",
+            "count": 1,
+            "name": "Royal writ of Eldervale",
+            "lore": "By order of Queen Aveline: the bearer may read the sealed royal records."
+          }
+        ]
+      },
+      {
+        "id": "records",
+        "objective": "Investigate the sealed royal records in the archive",
+        "target": "records",
+        "checkpoint": "archive_door",
+        "on_enter": [
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "bram"
+          },
+          {
+            "type": "npc_follow",
+            "character": "liora"
+          },
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Three sealed records lie open on lecterns in the archive hall. Press {use} on each one."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s12_charter,s12_chronicle,s12_inventory"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s12_inheritance"
+          }
+        ]
+      },
+      {
+        "id": "inheritance_talk",
+        "checkpoint": "records",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s12_inheritance"
+        },
+        "on_complete": [
+          {
+            "type": "give_item",
+            "item": "minecraft:chiseled_stone_bricks",
+            "count": 1,
+            "name": "Eldervale fragment",
+            "lore": "The carved stone from the royal Old Vault.|Not to be moved, until now."
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:oxidized_chiseled_copper",
+            "count": 1,
+            "name": "Sylvaris fragment",
+            "lore": "Liora's rubbing of the grove stone, pressed into copper."
+          },
+          {
+            "type": "title",
+            "title": "Mission Complete",
+            "subtitle": "The Sixfold Council"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7,
+            "pitch": 1.0
+          },
+          {
+            "type": "journal",
+            "id": "s12_journal"
+          },
+          {
+            "type": "message",
+            "text": "Queen Aveline has opened Eldervale's records to you. Thane Garrick waits in Irondeep."
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.eldervale.audience"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s012.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "s12_amb_bread",
+        "character": "merchant_1",
+        "dialogue": "s12_amb_bread",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "stages": [
+          "to_gate",
+          "gates_talk",
+          "to_archive"
+        ],
+        "priority": 1,
+        "ambient": true
+      },
+      {
+        "id": "s12_amb_shook",
+        "character": "valebridge_citizen_1",
+        "dialogue": "s12_amb_shook",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "stages": [
+          "to_gate",
+          "gates_talk",
+          "to_archive"
+        ],
+        "priority": 1,
+        "ambient": true
+      },
+      {
+        "id": "s12_amb_carts",
+        "character": "eldervale_royal_guard_1",
+        "dialogue": "s12_amb_carts",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "stages": [
+          "to_gate",
+          "gates_talk",
+          "to_archive"
+        ],
+        "priority": 1,
+        "ambient": true
+      },
+      {
+        "id": "s12_amb_caravan",
+        "character": "valebridge_citizen_3",
+        "dialogue": "s12_amb_caravan",
+        "radius": 6,
+        "talk_radius": 6,
+        "approach": false,
+        "stages": [
+          "to_gate",
+          "gates_talk",
+          "to_archive"
+        ],
+        "priority": 1,
+        "ambient": true
+      }
+    ],
+    "area_triggers": [],
+    "chatter": []
+  },
+  "dialogues": {
+    "s12_gates": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "bram",
+          "text": "I've never seen so many people in one place.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "elara",
+          "text": "Try not to stare.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "bram",
+          "text": "I'm looking for the best place to eat.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "primordial_steve",
+          "text": "Some things never change."
+        }
+      }
+    },
+    "s12_amb_bread": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "merchant_1",
+          "text": "Bread from the river farms! Still warm!"
+        }
+      }
+    },
+    "s12_amb_shook": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "valebridge_citizen_1",
+          "text": "They say the ground shook as far as the harbour last week."
+        }
+      }
+    },
+    "s12_amb_carts": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "eldervale_royal_guard_1",
+          "text": "Keep the street clear for the envoys' carts."
+        }
+      }
+    },
+    "s12_amb_caravan": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "valebridge_citizen_3",
+          "text": "Firstbrook folk? You're the ones who saved that caravan."
+        }
+      }
+    },
+    "s12_archivist": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "eldervale_official_1",
+          "text": "Firstbrook's dossier? The court has been waiting for it.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "Everything we found is in there. The monument, the camp, the stone in Sylvaris.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "eldervale_official_1",
+          "text": "Then it belongs beside the oldest records we keep. Her Majesty will read it today."
+        }
+      }
+    },
+    "s12_messenger": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "eldervale_royal_guard_1",
+          "text": "Steve of Firstbrook? Her Majesty asks for you and your companions in the council hall.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "Lead the way."
+        }
+      }
+    },
+    "s12_council": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "queen_aveline",
+          "text": "Primordial Steve of Firstbrook.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "Your Majesty.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "queen_aveline",
+          "text": "Rise. I've heard about the caravan you protected.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "primordial_steve",
+          "text": "Anyone would've done the same.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "queen_aveline",
+          "text": "Not everyone does.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "queen_aveline",
+          "text": "Now tell me why six ancient symbols have brought you to my court.",
+          "next": "l06"
+        },
+        "l06": {
+          "speaker": "primordial_steve",
+          "text": "Something beneath the northern ruins is active. The symbols appear in several locations, and the compass reacts to all of them.",
+          "next": "l07"
+        },
+        "l07": {
+          "speaker": "queen_aveline",
+          "text": "And you believe those symbols correspond to our civilisations?",
+          "next": "l08"
+        },
+        "l08": {
+          "speaker": "liora",
+          "text": "We have found matching stonework in Sylvaris.",
+          "next": "l09"
+        },
+        "l09": {
+          "speaker": "elara",
+          "text": "And evidence of an expedition that vanished while studying it.",
+          "next": "l10"
+        },
+        "l10": {
+          "speaker": "queen_aveline",
+          "text": "Then the remaining leaders must be informed.",
+          "choices": [
+            {
+              "text": "Cautious: we need to investigate safely.",
+              "next": "c_cautious",
+              "actions": [
+                {
+                  "type": "set_flag",
+                  "flag": "mc001.s012.choice_cautious"
+                }
+              ]
+            },
+            {
+              "text": "Urgent: people may already be in danger.",
+              "next": "c_urgent",
+              "actions": [
+                {
+                  "type": "set_flag",
+                  "flag": "mc001.s012.choice_urgent"
+                }
+              ]
+            },
+            {
+              "text": "Cooperative: all six must work together.",
+              "next": "c_cooperative",
+              "actions": [
+                {
+                  "type": "set_flag",
+                  "flag": "mc001.s012.choice_cooperative"
+                }
+              ]
+            }
+          ]
+        },
+        "c_cautious": {
+          "speaker": "primordial_steve",
+          "text": "We don't understand this discovery. We need to investigate safely.",
+          "next": "p0"
+        },
+        "c_urgent": {
+          "speaker": "primordial_steve",
+          "text": "People may already be in danger. We cannot afford to wait.",
+          "next": "p0"
+        },
+        "c_cooperative": {
+          "speaker": "primordial_steve",
+          "text": "All six civilisations need to investigate this together.",
+          "next": "p0"
+        },
+        "p0": {
+          "speaker": "queen_aveline",
+          "text": "The past belongs to all of us. Whatever was buried beneath these lands may affect all of us too.",
+          "next": "p1"
+        },
+        "p1": {
+          "speaker": "primordial_steve",
+          "text": "Then we'll find the truth together.",
+          "next": "p2"
+        },
+        "p2": {
+          "speaker": "queen_aveline",
+          "text": "Begin with what Eldervale has kept. The sealed royal records are open to you."
+        }
+      }
+    },
+    "s12_charter": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "primordial_steve",
+          "text": "'Six crowns were given the keeping of what came before.' Given by whom?",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "elara",
+          "text": "It doesn't say. Only that the six kingdoms were made keepers."
+        }
+      }
+    },
+    "s12_chronicle": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "liora",
+          "text": "Valebridge was raised on older stones. The chronicle calls them the foundations of the first builders.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "Builders before Eldervale."
+        }
+      }
+    },
+    "s12_inventory": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "bram",
+          "text": "'One stone, carved, not to be moved. Five sent away to five keepers.' They catalogued the same symbols.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "So the kingdoms didn't make these marks. They were handed them."
+        }
+      }
+    },
+    "s12_inheritance": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "liora",
+          "text": "Every kingdom tells its history as if it began with itself.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "But these records say we inherited something. Knowledge from someone older than all six.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "elara",
+          "text": "Then the other kingdoms will have pieces of it too.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "eldervale_official_1",
+          "text": "Her Majesty's orders. Thane Garrick writes that his miners have found a carved mechanism beneath Irondeep. You are to go to him, with the vault stone.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "liora",
+          "text": "Take this as well. It's a rubbing of the stone in our grove. It's as close as Sylvaris can come to sending the stone itself.",
+          "next": "l05"
+        },
+        "l05": {
+          "speaker": "primordial_steve",
+          "text": "Then Irondeep is next."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s012_city": {
+      "duration": 300,
+      "fade_in": 20,
+      "fade_out": 12,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            80.0,
+            22.0,
+            -10.0
+          ],
+          "yaw": 104.0,
+          "pitch": 11.0,
+          "fov": 62
+        },
+        {
+          "t": 110,
+          "pos": [
+            40.0,
+            26.0,
+            18.0
+          ],
+          "yaw": 133.5,
+          "pitch": 21.7,
+          "fov": 60
+        },
+        {
+          "t": 210,
+          "pos": [
+            6.0,
+            20.0,
+            34.0
+          ],
+          "yaw": 170.0,
+          "pitch": 27.5,
+          "fov": 58
+        },
+        {
+          "t": 300,
+          "pos": [
+            44.0,
+            6.0,
+            6.0
+          ],
+          "yaw": -121.0,
+          "pitch": 18.9,
+          "fov": 55
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 30,
+          "duration": 120,
+          "text": "Valebridge — Capital of Eldervale",
+          "style": "title"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:entity.villager.ambient",
+          "volume": 0.4
+        },
+        {
+          "t": 120,
+          "sound": "minecraft:block.bell.use",
+          "volume": 0.5,
+          "pitch": 0.8
+        },
+        {
+          "t": 200,
+          "sound": "minecraft:ambient.underwater.loop.additions",
+          "volume": 0.2
+        }
+      ]
+    },
+    "mc001_s012_court": {
+      "duration": 170,
+      "fade_in": 12,
+      "fade_out": 10,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            0.0,
+            4.5,
+            -20.0
+          ],
+          "yaw": -180.0,
+          "pitch": 5.9,
+          "fov": 64
+        },
+        {
+          "t": 170,
+          "pos": [
+            0.0,
+            2.6,
+            -31.0
+          ],
+          "yaw": -180.0,
+          "pitch": 5.7,
+          "fov": 52
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 20,
+          "duration": 110,
+          "text": "The council hall of Valebridge",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:block.wooden_door.open",
+          "volume": 0.6,
+          "pitch": 0.8
+        }
+      ],
+      "cues": [
+        {
+          "t": 60,
+          "actions": [
+            {
+              "type": "npc_look",
+              "character": "queen_aveline",
+              "location": "palace_hall"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "journal": {
+    "s12_journal": {
+      "title": "The Sixfold Council",
+      "text": "Valebridge is the biggest city I've ever walked through. We left the dossier at the royal archive and were summoned straight to Queen Aveline, who heard us out and opened Eldervale's sealed records. They say the six kingdoms were made keepers of something older than any of them: the city itself stands on the foundations of earlier builders, and the Old Vault kept one carved stone and sent five more to five other keepers. The Queen gave us the vault stone, Liora gave us her rubbing of the grove stone, and Thane Garrick of Stonecrown has found a carved mechanism beneath Irondeep. That's where we go next."
+    }
+  }
+}

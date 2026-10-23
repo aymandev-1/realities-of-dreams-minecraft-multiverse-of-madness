@@ -3,32 +3,48 @@ package net.realitiesofdreams.world.site;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 /**
- * Scenes 018 and 019: the excavation beneath the Ancient Northern Monument and the gateway chamber
- * it opens. Shares the monument's anchor, MC-001 block (40, 108, -200), with y = 0 the courtyard
- * floor; the monument itself is built first (NorthernMonument).
+ * Scenes 018 and 019: the excavation beneath the Ancient Northern Monument and the Ancient
+ * Builders' gateway chamber it opens. Shares the monument's anchor, MC-001 block (40, 108, -200),
+ * with y = 0 the courtyard floor; the monument itself is built first (NorthernMonument).
  *
  * The expedition camp fills the east of the courtyard. Its dig (x 19..21) starts at z 12 and the
  * stair goes down northward, one block per step: step k has its stair block at (x, -1 - k, 12 - k),
- * k = 0..39, inside a deepslate-lined tunnel with timber supports every eight steps. At the bottom
- * a corridor (x 14..26, z -34..-28, standing y -39) leads to the great round door (plane z -35) with
- * six lock stones in front of it. Behind the door lies the chamber (centre x 20, z -50, radius 14):
- * the upright gateway ring (plane z -52, centre y -31), its keystone at the top (20, -24, -52), the
- * compass pedestal south of it, an observation platform on the west side and three pylons.
- * Positions the scenes check are in their BLOCKS stages and clues, so they must match.
+ * k = 0..39, inside a deepslate-lined tunnel with timber supports every eight steps.
+ *
+ * At the bottom is the Builders' machine hall (x 7..33, z -34..-28, floor y -40): copper channels in
+ * the floor, three empty conduit sockets on pedestals, the still clock, the twin-circle and warning
+ * carvings in the end walls, and six lock stones before the great round door (plane z -35).
+ *
+ * Behind the door: a landing (x 10..30, z -39..-36) on the lip of a chasm that rings the gateway's
+ * dais (centre x 20, z -52, radius 7). A stone bridge (x 19..21, z -44..-40) crosses the chasm; a
+ * line of stepping stones curves round its east side; a walled alcove with the Builders' console runs
+ * north from the dais (x 18..22, z -67..-59). Anyone who falls lands in a deep pool and climbs out by
+ * the ladder at the landing's west end. The gateway is an upright double ring in the plane z -52.
+ *
+ * Positions the scenes check (BLOCKS stages, clues, sequences) are in tools/story/build_s018.py and
+ * build_s019.py and must match these.
  */
 public final class GatewayChamber {
     public static final int STEPS = 40, DIG_Z = 12;
     public static final int FLOOR = -40;
-    public static final int CX = 20, CZ = -50, RADIUS = 14;
+    public static final int CX = 20, CZ = -52, RADIUS = 16;
+    public static final double DAIS = 7.5;
     public static final int RING_Z = -52, RING_Y = -31, RING_R = 7;
+    /** The flooded bottom of the chasm: water from POOL_BOTTOM + 1 to POOL_TOP. */
+    public static final int POOL_TOP = -53, POOL_BOTTOM = -56;
     /** The steps that collapsed and the supports that broke (Scene 018 rebuilds them). */
     public static final int GAP_FROM = 27, GAP_TO = 29;
     public static final int[] BROKEN = {16, 24};
+    /** The stepping stones across the chasm, {x0, z0, x1, z1}, from the landing round to the dais. */
+    public static final int[][] PLATFORMS = {{25, -42, 26, -41}, {28, -45, 29, -44}, {30, -48, 31, -47},
+            {31, -51, 32, -50}, {30, -54, 31, -53}, {28, -57, 29, -56}, {26, -60, 27, -59}};
+    private static final boolean[] HANGING = {false, false, true, false, true, false, true};
 
     private final Builder b;
 
@@ -45,7 +61,7 @@ public final class GatewayChamber {
         GatewayChamber g = new GatewayChamber(level, anchor);
         g.shell();
         g.descent();
-        g.corridor();
+        g.machineHall();
         g.chamber();
         g.gateway();
         g.camp();
@@ -64,9 +80,9 @@ public final class GatewayChamber {
                 for (int y = floor - 4; y <= floor + 5; y++)
                     if (y <= -2) b.set(x, y, z, wall(x, y, z));
         }
-        for (int x = 4; x <= 36; x++)
-            for (int z = -67; z <= -26; z++)
-                for (int y = FLOOR - 3; y <= -19; y++) b.set(x, y, z, wall(x, y, z));
+        for (int x = 2; x <= 38; x++)
+            for (int z = -71; z <= -26; z++)
+                for (int y = POOL_BOTTOM - 3; y <= -19; y++) b.set(x, y, z, wall(x, y, z));
     }
 
     /** The stair down, its supports, wall carvings and the ropes of the first dig. */
@@ -88,7 +104,6 @@ public final class GatewayChamber {
             // Old carvings in the walls: these are evidence and must not be broken.
             if (k % 6 == 3) b.set(22, floor + 2, z, Blocks.CHISELED_DEEPSLATE);
         }
-        // The entrance frame at the top of the dig.
         for (int y = 0; y <= 3; y++) {
             b.set(18, y, DIG_Z + 1, Blocks.SPRUCE_LOG);
             b.set(22, y, DIG_Z + 1, Blocks.SPRUCE_LOG);
@@ -112,27 +127,45 @@ public final class GatewayChamber {
         }
     }
 
-    private void corridor() {
-        for (int x = 14; x <= 26; x++)
+    /** The Builders' machine hall at the foot of the stair, before the great door. */
+    private void machineHall() {
+        for (int x = 7; x <= 33; x++)
             for (int z = -34; z <= -28; z++) {
                 b.set(x, FLOOR, z, (x + z) % 3 == 0 ? Blocks.POLISHED_DEEPSLATE : Blocks.DEEPSLATE_TILES);
                 for (int y = FLOOR + 1; y <= FLOOR + 6; y++) b.set(x, y, z, Blocks.AIR);
             }
-        // The last step lands in the corridor.
         for (int x = 19; x <= 21; x++) b.set(x, FLOOR, -27, Blocks.DEEPSLATE_TILES);
-        // The six lock stones before the door, out of order; their order is carved on the door.
+        // Copper channels in the floor: east-west through the hall, and north to the door.
+        for (int x = 8; x <= 32; x++) b.set(x, FLOOR, -31, Blocks.WAXED_OXIDIZED_COPPER);
+        for (int z = -34; z <= -28; z++) b.set(CX, FLOOR, z, Blocks.WAXED_OXIDIZED_COPPER);
+        // Three conduit sockets, empty: the pedestals stand, the copper hearts are missing.
+        for (int[] s : CONDUITS) {
+            b.set(s[0], FLOOR + 1, s[1], Blocks.CHISELED_TUFF_BRICKS);
+            b.set(s[0], FLOOR + 2, s[1], Blocks.AIR);
+        }
+        // The still clock: a dial of copper whose hand never moved.
+        b.set(10, FLOOR + 1, -29, Blocks.CHISELED_COPPER);
+        b.set(10, FLOOR + 2, -29, Blocks.LIGHTNING_ROD);
+        // The two carvings in the end walls: twin circles (west) and the warning (east).
+        b.set(6, FLOOR + 3, -31, Blocks.CHISELED_TUFF);
+        b.set(6, FLOOR + 4, -31, Blocks.CHISELED_TUFF);
+        b.set(34, FLOOR + 3, -31, Blocks.CHISELED_DEEPSLATE);
+        // Six lock stones before the door, in a row the Builders never meant as their order.
         Block[] locks = {Blocks.CHISELED_SANDSTONE, Blocks.CHISELED_STONE_BRICKS, Blocks.DARK_PRISMARINE,
                 Blocks.OXIDIZED_CHISELED_COPPER, Blocks.CHISELED_NETHER_BRICKS, Blocks.CHISELED_DEEPSLATE};
         for (int i = 0; i < locks.length; i++) {
             b.set(15 + i * 2, FLOOR, -32, Blocks.POLISHED_BLACKSTONE);
             b.set(15 + i * 2, FLOOR + 1, -32, locks[i]);
         }
-        // The round door, sealed.
         door(true);
-        for (int x : new int[] {15, 25}) b.set(x, FLOOR + 3, -29, Blocks.SOUL_LANTERN);
+        for (int x : new int[] {8, 15, 25, 32}) b.set(x, FLOOR + 5, -28, Builder.hangingLantern());
+        for (int x : new int[] {8, 32}) b.set(x, FLOOR + 5, -34, Blocks.SOUL_LANTERN);
     }
 
-    /** The great round door in the plane z = -35: closed, or open (gone into the floor). */
+    /** The three conduit sockets, {x, z}; their hearts sit at y FLOOR + 2. */
+    public static final int[][] CONDUITS = {{8, -30}, {32, -30}, {20, -33}};
+
+    /** The great round door in the plane z = -35: closed, or open (sunk into the floor). */
     private void door(boolean closed) {
         int cy = FLOOR + 6;
         for (int x = CX - 7; x <= CX + 7; x++)
@@ -143,68 +176,113 @@ public final class GatewayChamber {
                 if (d > 5.6) s = Blocks.CHISELED_DEEPSLATE.defaultBlockState();
                 else if (!closed) s = Blocks.AIR.defaultBlockState();
                 else s = ((int) (d * 2) % 3 == 0 ? Blocks.POLISHED_BLACKSTONE_BRICKS : Blocks.POLISHED_DEEPSLATE).defaultBlockState();
-                if (y <= FLOOR) continue;
                 b.set(x, y, -35, s);
             }
         if (closed) b.set(CX, FLOOR + 3, -35, Blocks.CHISELED_POLISHED_BLACKSTONE); // the carving of the six emblems (a clue)
     }
 
-    /** The chamber: a round hall with carved channels, suspended rings, the platform and pylons. */
+    private static boolean inPlatform(int x, int z) {
+        for (int[] p : PLATFORMS) if (x >= p[0] && x <= p[2] && z >= p[1] && z <= p[3]) return true;
+        return false;
+    }
+
+    private static boolean inAlcove(int x, int z) {
+        return x >= 18 && x <= 22 && z >= -67 && z <= -59;
+    }
+
+    private static boolean inBridge(int x, int z) {
+        return x >= 19 && x <= 21 && z >= -44 && z <= -40;
+    }
+
+    /** True for the open chasm (not the landing, dais, bridge, stepping stones or alcove). */
+    public static boolean isChasm(int x, int z) {
+        return isBelowOpen(x, z) && !inBridge(x, z);
+    }
+
+    /** True where the chasm is open beneath the floor: the chasm itself and under the bridge. */
+    private static boolean isBelowOpen(int x, int z) {
+        double d = Math.hypot(x - CX, z - CZ);
+        if (d > RADIUS + 0.5 || z >= -39 || d <= DAIS) return false;
+        return !inPlatform(x, z) && !inAlcove(x, z);
+    }
+
+    /** The chamber: landing, chasm and pool, bridge, stepping stones, dais, alcove and dome. */
     private void chamber() {
-        for (int x = CX - RADIUS; x <= CX + RADIUS; x++)
-            for (int z = CZ - RADIUS; z <= CZ + RADIUS; z++) {
+        for (int x = CX - RADIUS - 1; x <= CX + RADIUS + 1; x++)
+            for (int z = CZ - RADIUS - 1; z <= -36; z++) {
                 double d = Math.hypot(x - CX, z - CZ);
-                if (d > RADIUS + 0.5) continue;
-                b.set(x, FLOOR, z, d < 3 ? Blocks.POLISHED_DEEPSLATE : ((int) d) % 4 == 0 ? Blocks.CHISELED_TUFF_BRICKS : Blocks.TUFF_BRICKS);
-                int height = (int) Math.round(18 * Math.sqrt(Math.max(0, 1 - (d / (RADIUS + 1.5)) * (d / (RADIUS + 1.5)))));
-                for (int y = FLOOR + 1; y <= FLOOR + Math.max(6, height); y++) b.set(x, y, z, Blocks.AIR);
-                // Carved channels in the floor, radiating from the gateway (they light up in Scene 019).
-                if (d > 3 && d < RADIUS - 1 && (Math.abs(x - CX) == 0 || Math.abs(z - RING_Z) == 0)) b.set(x, FLOOR, z, Blocks.POLISHED_BLACKSTONE);
+                boolean landing = x >= 10 && x <= 30 && z >= -39;
+                if (d > RADIUS + 0.5 && !landing) continue;
+                int height = landing && d > RADIUS ? 7 : (int) Math.round(18 * Math.sqrt(Math.max(0, 1 - (d / (RADIUS + 1.5)) * (d / (RADIUS + 1.5)))));
+                for (int y = FLOOR + 1; y <= FLOOR + Math.max(7, height); y++) b.set(x, y, z, Blocks.AIR);
+                if (isBelowOpen(x, z)) {
+                    for (int y = POOL_BOTTOM + 1; y <= FLOOR; y++) b.set(x, y, z, y <= POOL_TOP ? Blocks.WATER : Blocks.AIR);
+                } else if (d <= DAIS) {
+                    b.set(x, FLOOR, z, d < 3 ? Blocks.POLISHED_DEEPSLATE : Math.abs(x - CX) == 0 || z == RING_Z ? Blocks.POLISHED_BLACKSTONE : ((int) d) % 3 == 0 ? Blocks.CHISELED_TUFF_BRICKS : Blocks.TUFF_BRICKS);
+                } else {
+                    b.set(x, FLOOR, z, (x + z) % 4 == 0 ? Blocks.POLISHED_DEEPSLATE : Blocks.DEEPSLATE_TILES);
+                }
             }
         // The way in from the door.
         for (int x = CX - 5; x <= CX + 5; x++)
-            for (int z = -36; z <= -34; z++)
-                for (int y = FLOOR + 1; y <= FLOOR + 10; y++) if (Math.hypot(x - CX, y - (FLOOR + 6)) <= 5.6 && z != -35) b.set(x, y, z, Blocks.AIR);
+            for (int y = FLOOR + 1; y <= FLOOR + 11; y++)
+                if (Math.hypot(x - CX, y - (FLOOR + 6)) <= 5.6) b.set(x, y, -36, Blocks.AIR);
         // Geometric carvings round the wall.
         for (int i = 0; i < 24; i++) {
             double a = i * Math.PI / 12;
             int x = CX + (int) Math.round(Math.cos(a) * (RADIUS + 1)), z = CZ + (int) Math.round(Math.sin(a) * (RADIUS + 1));
-            b.set(x, FLOOR + 3, z, i % 2 == 0 ? Blocks.CHISELED_DEEPSLATE : Blocks.CHISELED_TUFF);
+            if (z < -39) b.set(x, FLOOR + 4, z, i % 2 == 0 ? Blocks.CHISELED_DEEPSLATE : Blocks.CHISELED_TUFF);
         }
-        // Suspended stone rings, hanging on chains from the dome.
-        for (int[] c : new int[][] {{CX - 7, CZ + 5}, {CX + 7, CZ + 5}}) {
-            for (int i = 0; i < 12; i++) {
-                double a = i * Math.PI / 6;
-                b.set(c[0] + (int) Math.round(Math.cos(a) * 2), FLOOR + 9, c[1] + (int) Math.round(Math.sin(a) * 2), Blocks.POLISHED_DEEPSLATE_SLAB);
-            }
-            for (int y = FLOOR + 10; y <= FLOOR + 14; y++) b.set(c[0], y, c[1], Blocks.CHAIN);
-        }
-        // The observation platform on the west side, with the control lectern and the stabiliser.
-        for (int x = 8; x <= 12; x++)
-            for (int z = -54; z <= -46; z++) {
-                b.fill(x, FLOOR + 1, z, x, FLOOR + 3, z, Blocks.POLISHED_DEEPSLATE);
-                if (x == 12 || z == -54 || z == -46) b.set(x, FLOOR + 4, z, Blocks.DEEPSLATE_TILE_WALL);
-            }
-        for (int i = 0; i < 3; i++) {
-            b.set(13 + i, FLOOR + 3 - i, -48, Builder.stairs(Blocks.POLISHED_DEEPSLATE_STAIRS, Direction.WEST, false));
-            b.set(13 + i, FLOOR + 3 - i, -47, Builder.stairs(Blocks.POLISHED_DEEPSLATE_STAIRS, Direction.WEST, false));
-            for (int y = FLOOR + 1; y < FLOOR + 3 - i; y++) {
-                b.set(13 + i, y, -48, Blocks.POLISHED_DEEPSLATE);
-                b.set(13 + i, y, -47, Blocks.POLISHED_DEEPSLATE);
+        bridge();
+        // The stepping stones: some stand on pillars from the pool, some hang on chains from the dome.
+        for (int i = 0; i < PLATFORMS.length; i++) {
+            int[] p = PLATFORMS[i];
+            for (int x = p[0]; x <= p[2]; x++)
+                for (int z = p[1]; z <= p[3]; z++) {
+                    b.set(x, FLOOR, z, Blocks.POLISHED_DEEPSLATE);
+                    if (!HANGING[i]) for (int y = POOL_BOTTOM + 1; y < FLOOR; y++) b.set(x, y, z, Blocks.DEEPSLATE_BRICKS);
+                    else b.set(x, FLOOR - 1, z, Builder.slab(Blocks.POLISHED_DEEPSLATE_SLAB, true));
+                }
+            if (HANGING[i]) for (int y = FLOOR + 5; y <= FLOOR + 12; y++) {
+                b.set(p[0], y, p[1], Blocks.CHAIN);
+                b.set(p[2], y, p[3], Blocks.CHAIN);
             }
         }
-        b.set(12, FLOOR + 4, -48, Blocks.AIR);
-        b.set(12, FLOOR + 4, -47, Blocks.AIR);
-        // Three pylons round the gateway (their copper hearts are Scene 019's controls).
-        for (int[] p : new int[][] {{12, -61}, {28, -61}, {30, -44}}) {
-            b.fill(p[0], FLOOR + 1, p[1], p[0], FLOOR + 4, p[1], Blocks.POLISHED_DEEPSLATE);
-            b.set(p[0], FLOOR + 5, p[1], Blocks.LIGHTNING_ROD);
+        // The alcove: a walled causeway north of the dais to the Builders' console.
+        for (int z = -67; z <= -59; z++) {
+            for (int x = 18; x <= 22; x++) {
+                b.set(x, FLOOR, z, Blocks.POLISHED_DEEPSLATE);
+                for (int y = POOL_BOTTOM + 1; y < FLOOR; y++) b.set(x, y, z, Blocks.DEEPSLATE_BRICKS);
+            }
+            if (z <= -60) for (int y = FLOOR + 1; y <= FLOOR + 3; y++) {
+                b.set(17, y, z, Blocks.POLISHED_DEEPSLATE);
+                b.set(23, y, z, Blocks.POLISHED_DEEPSLATE);
+            }
         }
-        // The compass pedestal south of the gateway, like the one in the courtyard above.
-        b.set(CX, FLOOR + 1, -44, Blocks.POLISHED_DEEPSLATE);
-        b.set(CX, FLOOR + 1, -43, Builder.stairs(Blocks.POLISHED_DEEPSLATE_STAIRS, Direction.NORTH, false));
-        // Faint pale light in a few channels: the chamber is not quite dark.
-        for (int[] l : new int[][] {{CX, -40}, {CX - 10, RING_Z}, {CX + 10, RING_Z}}) b.set(l[0], FLOOR, l[1], Blocks.PEARLESCENT_FROGLIGHT);
+        b.set(20, FLOOR + 1, -66, Blocks.POLISHED_DEEPSLATE);
+        b.set(20, FLOOR + 2, -66, Blocks.LODESTONE);
+        b.set(18, FLOOR + 3, -66, Blocks.SOUL_LANTERN);
+        b.set(22, FLOOR + 3, -66, Blocks.SOUL_LANTERN);
+        // The ladder out of the pool, at the west end of the landing.
+        b.ladder(11, POOL_TOP, FLOOR, -40, Direction.NORTH);
+        // On the landing: the compass pedestal, a pylon with a copper heart, and a Builder console.
+        b.set(17, FLOOR + 1, -37, Blocks.CHISELED_POLISHED_BLACKSTONE);
+        b.set(13, FLOOR + 1, -37, Blocks.POLISHED_DEEPSLATE);
+        b.set(13, FLOOR + 2, -37, Blocks.COPPER_BULB);
+        b.set(13, FLOOR + 3, -37, Blocks.LIGHTNING_ROD);
+        b.set(22, FLOOR + 1, -38, Blocks.LODESTONE);
+        // Faint pale light: the chamber is not quite dark.
+        for (int x : new int[] {10, 30}) b.set(x, FLOOR + 1, -36, Blocks.SOUL_LANTERN);
+        b.set(CX, FLOOR, -46, Blocks.PEARLESCENT_FROGLIGHT);
+    }
+
+    /** The stone bridge over the chasm, from the landing to the dais. */
+    private void bridge() {
+        for (int x = 19; x <= 21; x++)
+            for (int z = -44; z <= -40; z++) {
+                b.set(x, FLOOR, z, x == 20 ? Blocks.POLISHED_DEEPSLATE : Blocks.DEEPSLATE_TILES);
+                b.set(x, FLOOR - 1, z, Builder.slab(Blocks.DEEPSLATE_BRICK_SLAB, true));
+            }
     }
 
     /** The gateway: an upright double ring in the plane z = -52, its keystone at the top. */
@@ -247,7 +325,6 @@ public final class GatewayChamber {
             b.set(p[0], 2, p[1], Blocks.LANTERN);
         }
         b.campfire(19, 0, 19, false);
-        // Rope coils and a winch frame by the dig.
         b.set(23, 0, 12, Blocks.COMPOSTER);
         b.set(17, 0, 13, Blocks.SCAFFOLDING);
         b.set(17, 1, 13, Blocks.SCAFFOLDING);
@@ -255,48 +332,99 @@ public final class GatewayChamber {
 
     // --- story changes ------------------------------------------------------------------
 
-    /** Scene 018: the six locks align and the door sinks away. */
-    public static void openDoor(ServerLevel level, BlockPos anchor) {
-        new GatewayChamber(level, anchor).door(false);
-    }
-
-    /** Scene 019: the outer ring turns (its carved stones shift round) and the channels glow. */
-    public static void ringsTurn(ServerLevel level, BlockPos anchor) {
+    /** Applies one of the Scene 018/019 world changes; returns false if the id is not one of them. */
+    public static boolean change(ServerLevel level, BlockPos anchor, String id) {
         GatewayChamber g = new GatewayChamber(level, anchor);
-        for (int x = CX - RING_R; x <= CX + RING_R; x++)
-            for (int y = RING_Y - RING_R; y <= RING_Y + RING_R; y++) {
-                double d = Math.hypot(x - CX, y - RING_Y);
-                if (y <= FLOOR || d <= RING_R - 1.5 || d > RING_R - 0.5) continue;
-                g.b.set(x, y, RING_Z, (Math.floorMod(x + y, 3) == 1 ? Blocks.CHISELED_TUFF : Blocks.POLISHED_TUFF).defaultBlockState());
+        Builder b = g.b;
+        switch (id) {
+            case "mc001_s018_conduits" -> {
+                // The copper hearts are in: the channels wake, light running along them.
+                for (int x = 8; x <= 32; x++) b.set(x, FLOOR, -31, x % 3 == 2 ? Blocks.PEARLESCENT_FROGLIGHT : Blocks.WAXED_COPPER_BLOCK);
+                for (int z = -34; z <= -28; z++) b.set(CX, FLOOR, z, z % 3 == 0 ? Blocks.PEARLESCENT_FROGLIGHT : Blocks.WAXED_COPPER_BLOCK);
             }
-        for (int x = CX - RADIUS; x <= CX + RADIUS; x++)
-            for (int z = CZ - RADIUS; z <= CZ + RADIUS; z++)
-                if (g.b.get(x, FLOOR, z).is(Blocks.POLISHED_BLACKSTONE)) g.b.set(x, FLOOR, z, Blocks.PEARLESCENT_FROGLIGHT);
-    }
-
-    /** Scene 019: a stone support falls across the far side of the chamber, trapping a researcher. */
-    public static void collapse(ServerLevel level, BlockPos anchor) {
-        Builder b = new Builder(level, anchor, 0);
-        for (int[] d : new int[][] {{29, -58}, {30, -58}, {31, -58}, {29, -57}, {32, -57}}) {
-            b.set(d[0], FLOOR + 1, d[1], Blocks.COBBLED_DEEPSLATE);
-            b.set(d[0], FLOOR + 2, d[1], (d[0] + d[1]) % 2 == 0 ? Blocks.COBBLED_DEEPSLATE : Blocks.AIR);
+            case "mc001_s018_door_open" -> g.door(false);
+            case "mc001_s019_rings" -> {
+                // The inner ring turns (its carved stones shift round) and the dais channels glow.
+                for (int x = CX - RING_R; x <= CX + RING_R; x++)
+                    for (int y = RING_Y - RING_R; y <= RING_Y + RING_R; y++) {
+                        double d = Math.hypot(x - CX, y - RING_Y);
+                        if (y <= FLOOR || d <= RING_R - 1.5 || d > RING_R - 0.5) continue;
+                        b.set(x, y, RING_Z, (Math.floorMod(x + y, 3) == 1 ? Blocks.CHISELED_TUFF : Blocks.POLISHED_TUFF).defaultBlockState());
+                    }
+                for (int x = CX - RADIUS; x <= CX + RADIUS; x++)
+                    for (int z = CZ - RADIUS; z <= CZ + RADIUS; z++)
+                        if (b.get(x, FLOOR, z).is(Blocks.POLISHED_BLACKSTONE)) b.set(x, FLOOR, z, Blocks.PEARLESCENT_FROGLIGHT);
+            }
+            case "mc001_s019_portal_on" -> g.surface("on");
+            case "mc001_s019_portal_stars" -> g.surface("stars");
+            case "mc001_s019_portal_off" -> g.surface("off");
+            case "mc001_s019_bridge_falls" -> {
+                // The bridge's middle drops into the chasm, and the alcove's ceiling stones come down
+                // across its mouth, shutting Elara in behind them.
+                for (int x = 19; x <= 21; x++)
+                    for (int z = -43; z <= -40; z++) {
+                        b.set(x, FLOOR, z, Blocks.AIR);
+                        b.set(x, FLOOR - 1, z, Blocks.AIR);
+                    }
+                g.resetPool();
+                for (int x = 19; x <= 21; x++) b.set(x, FLOOR + 1, -61, Blocks.COBBLED_DEEPSLATE);
+                for (int x = 19; x <= 21; x++) b.set(x, FLOOR + 2, -61, x == 20 ? Blocks.COBBLED_DEEPSLATE : Blocks.COBBLED_DEEPSLATE_WALL);
+                fall(level, anchor, 20, FLOOR + 8, -42, Blocks.DEEPSLATE_TILES);
+                fall(level, anchor, 19, FLOOR + 9, -41, Blocks.COBBLED_DEEPSLATE);
+            }
+            case "mc001_s019_debris_1" -> {
+                fall(level, anchor, 27, FLOOR + 12, -45, Blocks.COBBLED_DEEPSLATE);
+                fall(level, anchor, 26, FLOOR + 13, -48, Blocks.GRAVEL);
+            }
+            case "mc001_s019_debris_2" -> {
+                fall(level, anchor, 34, FLOOR + 10, -49, Blocks.COBBLED_DEEPSLATE);
+                fall(level, anchor, 28, FLOOR + 12, -52, Blocks.GRAVEL);
+            }
+            case "mc001_s019_debris_3" -> {
+                fall(level, anchor, 32, FLOOR + 10, -56, Blocks.COBBLED_DEEPSLATE);
+                fall(level, anchor, 25, FLOOR + 12, -61, Blocks.GRAVEL);
+            }
+            // The divergence: for a moment the bridge is whole again, then gone, then whole, then
+            // as the player rebuilt it. Nothing explains it.
+            case "mc001_s019_echo_1", "mc001_s019_echo_3" -> {
+                for (int x = 19; x <= 21; x++) for (int z = -43; z <= -40; z++) b.set(x, FLOOR, z, x == 20 ? Blocks.POLISHED_DEEPSLATE : Blocks.DEEPSLATE_TILES);
+            }
+            case "mc001_s019_echo_2" -> {
+                for (int x = 19; x <= 21; x++) for (int z = -43; z <= -40; z++) b.set(x, FLOOR, z, Blocks.AIR);
+            }
+            case "mc001_s019_echo_4" -> {
+                g.resetPool();
+                for (int x = 19; x <= 21; x++) for (int z = -43; z <= -40; z++) b.set(x, FLOOR, z, x == 20 ? Blocks.SPRUCE_PLANKS : Blocks.AIR);
+            }
+            case "mc001_first_divergence" -> {
+                // Recorded as story state only; the world itself shows nothing.
+            }
+            default -> {
+                return false;
+            }
         }
-        b.set(30, FLOOR + 3, -58, Builder.log(Blocks.STRIPPED_DARK_OAK_LOG, Direction.Axis.X));
+        return true;
     }
 
-    /** Scene 019: the fallen support is shifted and the trapped researcher is free. */
-    public static void cleared(ServerLevel level, BlockPos anchor) {
-        Builder b = new Builder(level, anchor, 0);
-        for (int x = 29; x <= 32; x++)
-            for (int z = -58; z <= -57; z++)
-                for (int y = FLOOR + 1; y <= FLOOR + 3; y++) b.set(x, y, z, Blocks.AIR);
-        b.set(33, FLOOR + 1, -56, Blocks.COBBLED_DEEPSLATE);
-        b.set(33, FLOOR + 1, -55, Blocks.COBBLED_DEEPSLATE_SLAB);
+    /** Clears anything that fell into the pool, so the chasm is the same on every visit. */
+    private void resetPool() {
+        for (int x = CX - RADIUS; x <= CX + RADIUS; x++)
+            for (int z = CZ - RADIUS; z <= -40; z++)
+                if (isBelowOpen(x, z)) for (int y = POOL_BOTTOM + 1; y <= FLOOR - 2; y++) b.set(x, y, z, y <= POOL_TOP ? Blocks.WATER : Blocks.AIR);
+        b.ladder(11, POOL_TOP, FLOOR, -40, Direction.NORTH);
     }
 
-    /** Scene 019: the luminous surface inside the ring, pale (on), filled with strange stars, or gone. */
-    public static void surface(ServerLevel level, BlockPos anchor, String state) {
-        Builder b = new Builder(level, anchor, 0);
+    /** A falling block that hurts whoever it lands on, released from (x, y, z) if that is open air. */
+    private static void fall(ServerLevel level, BlockPos anchor, int x, int y, int z, Block block) {
+        BlockPos pos = anchor.offset(x, y, z);
+        if (!level.getBlockState(pos).isAir()) return;
+        FallingBlockEntity e = FallingBlockEntity.fall(level, pos, block.defaultBlockState());
+        e.setHurtsEntities(1.0f, 4);
+        e.disableDrop();
+    }
+
+    /** The luminous surface inside the ring, pale (on), filled with strange stars, or gone. */
+    private void surface(String state) {
         for (int x = CX - RING_R; x <= CX + RING_R; x++)
             for (int y = RING_Y - RING_R; y <= RING_Y + RING_R; y++) {
                 double d = Math.hypot(x - CX, y - RING_Y);

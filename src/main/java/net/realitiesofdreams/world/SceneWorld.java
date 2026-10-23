@@ -141,6 +141,11 @@ public final class SceneWorld {
             return;
         }
         BlockPos a = ModDimensions.anchor(scene);
+        if ((change.startsWith("mc001_s018_") || change.startsWith("mc001_s019_") || change.equals("mc001_first_divergence"))
+                && net.realitiesofdreams.world.site.GatewayChamber.change(level, a, change)) {
+            data.markDone("change:" + change);
+            return;
+        }
         switch (change) {
             case "mc001_s002_aftermath" -> aftermath(level, scene, a);
             case "mc001_s002_ruin_light_on" -> ruinLight(level, a, true);
@@ -169,13 +174,7 @@ public final class SceneWorld {
             case "mc001_s009_lantern" -> net.realitiesofdreams.world.site.ValleyCrossing.lanternRolls(level, a);
             case "mc001_s016_table" -> net.realitiesofdreams.world.site.Valebridge.tableFragments(level, a, 5);
             case "mc001_s017_skylight" -> net.realitiesofdreams.world.site.Valebridge.skylight(level, a);
-            case "mc001_s018_door_open" -> net.realitiesofdreams.world.site.GatewayChamber.openDoor(level, a);
-            case "mc001_s019_rings" -> net.realitiesofdreams.world.site.GatewayChamber.ringsTurn(level, a);
-            case "mc001_s019_collapse" -> net.realitiesofdreams.world.site.GatewayChamber.collapse(level, a);
-            case "mc001_s019_cleared" -> net.realitiesofdreams.world.site.GatewayChamber.cleared(level, a);
-            case "mc001_s019_portal_on" -> net.realitiesofdreams.world.site.GatewayChamber.surface(level, a, "on");
-            case "mc001_s019_portal_stars" -> net.realitiesofdreams.world.site.GatewayChamber.surface(level, a, "stars");
-            case "mc001_s019_portal_off" -> net.realitiesofdreams.world.site.GatewayChamber.surface(level, a, "off");
+            case "mc001_s017_supplies" -> expeditionSupplies(level, a);
             case "mc001_s007_survey" -> {
                 net.realitiesofdreams.world.site.NorthernMonument.survey(level, a);
                 placeClues(level, scene);
@@ -186,6 +185,19 @@ public final class SceneWorld {
     }
 
     private static final int FLAGS = net.minecraft.world.level.block.Block.UPDATE_CLIENTS;
+
+    /** Scene 017: the quartermaster's chest in Valebridge's research chamber, packed for the expedition. */
+    private static void expeditionSupplies(ServerLevel level, BlockPos a) {
+        BlockPos chest = a.offset(-23, 0, -12);
+        level.setBlock(chest, net.minecraft.world.level.block.Blocks.CHEST.defaultBlockState()
+                .setValue(net.minecraft.world.level.block.ChestBlock.FACING, net.minecraft.core.Direction.WEST), FLAGS);
+        if (level.getBlockEntity(chest) instanceof net.minecraft.world.level.block.entity.ChestBlockEntity c) {
+            c.setItem(0, new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.TORCH, 16));
+            c.setItem(1, new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.SPRUCE_PLANKS, 16));
+            c.setItem(2, new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.BREAD, 6));
+            c.setItem(3, new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.LADDER, 8));
+        }
+    }
 
     /**
      * Scene 002: what the pre-dawn tremor left behind. A garden wall by the square pushed up and
