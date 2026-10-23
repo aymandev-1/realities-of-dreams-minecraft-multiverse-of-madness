@@ -1,0 +1,1792 @@
+{
+  "scene": {
+    "id": "mc001_s016",
+    "title": "The Fragment from Tidewatch",
+    "universe": "MC-001",
+    "saga": 1,
+    "scene": 16,
+    "canon_status": "Saga 1 revised screenplay, Version 2 (docs/story/SAGA_1_SCENES_012_019_REVISED.md): spoken dialogue verbatim. Hints, captions, item names and the outcome message are new gameplay text. The harbour work and the dive follow the scene's listed objectives.",
+    "dimension": "realitiesofdreams:mc_001",
+    "site": "tidewatch",
+    "anchor": [
+      60,
+      65,
+      620
+    ],
+    "arrival": {
+      "pos": [
+        72,
+        8,
+        -44
+      ],
+      "yaw": 0
+    },
+    "next_scene": "unreleased:mc001_s017",
+    "locations": {
+      "headland_road": {
+        "pos": [
+          72,
+          8,
+          -44
+        ],
+        "radius": 2
+      },
+      "elara_start": {
+        "pos": [
+          71,
+          8,
+          -46
+        ],
+        "radius": 1
+      },
+      "orin_start": {
+        "pos": [
+          73,
+          8,
+          -46
+        ],
+        "radius": 1
+      },
+      "sahir_start": {
+        "pos": [
+          70,
+          8,
+          -47
+        ],
+        "radius": 1
+      },
+      "garrick_start": {
+        "pos": [
+          74,
+          8,
+          -47
+        ],
+        "radius": 1
+      },
+      "quay": {
+        "pos": [
+          0,
+          0,
+          6
+        ],
+        "radius": 3
+      },
+      "maren_meet": {
+        "pos": [
+          0,
+          0,
+          11
+        ],
+        "radius": 4
+      },
+      "maren_dock": {
+        "pos": [
+          0,
+          0,
+          14
+        ],
+        "radius": 1
+      },
+      "cargo_area": {
+        "pos": [
+          6,
+          0,
+          9
+        ],
+        "radius": 4
+      },
+      "crane_deck": {
+        "pos": [
+          14,
+          4,
+          9
+        ],
+        "radius": 2
+      },
+      "pier": {
+        "pos": [
+          0,
+          0,
+          38
+        ],
+        "radius": 2
+      },
+      "pier_end": {
+        "pos": [
+          0,
+          0,
+          41
+        ],
+        "radius": 5
+      },
+      "maren_pier": {
+        "pos": [
+          0,
+          0,
+          40
+        ],
+        "radius": 1
+      },
+      "pier_elara": {
+        "pos": [
+          -1,
+          0,
+          41
+        ],
+        "radius": 1
+      },
+      "pier_orin": {
+        "pos": [
+          1,
+          0,
+          41
+        ],
+        "radius": 1
+      },
+      "pier_sahir": {
+        "pos": [
+          -3,
+          0,
+          43
+        ],
+        "radius": 1
+      },
+      "pier_garrick": {
+        "pos": [
+          3,
+          0,
+          43
+        ],
+        "radius": 1
+      },
+      "watch_door": {
+        "pos": [
+          29,
+          -12,
+          54
+        ],
+        "radius": 3
+      },
+      "watch_room": {
+        "pos": [
+          29,
+          -12,
+          58
+        ],
+        "radius": 2
+      },
+      "stones": {
+        "pos": [
+          29,
+          -12,
+          59
+        ],
+        "radius": 2
+      },
+      "housing_side": {
+        "pos": [
+          29,
+          -12,
+          61
+        ],
+        "radius": 1
+      },
+      "chart_door": {
+        "pos": [
+          -22,
+          0,
+          -2
+        ],
+        "radius": 2
+      },
+      "chart_room": {
+        "pos": [
+          -21,
+          0,
+          -8
+        ],
+        "radius": 3
+      },
+      "maren_chart": {
+        "pos": [
+          -18,
+          0,
+          -12
+        ],
+        "radius": 1
+      },
+      "quay_ropes": {
+        "pos": [
+          4,
+          0,
+          8
+        ],
+        "radius": 1
+      },
+      "quay_east": {
+        "pos": [
+          28,
+          0,
+          7
+        ],
+        "radius": 1
+      },
+      "crane_hand": {
+        "pos": [
+          18,
+          0,
+          5
+        ],
+        "radius": 1
+      },
+      "stall_cod": {
+        "pos": [
+          -11,
+          0,
+          5
+        ],
+        "radius": 1
+      },
+      "stall_salmon": {
+        "pos": [
+          -6,
+          0,
+          5
+        ],
+        "radius": 1
+      },
+      "gangplank": {
+        "pos": [
+          -1,
+          0,
+          29
+        ],
+        "radius": 1
+      },
+      "deck_a": {
+        "pos": [
+          -8,
+          1,
+          30
+        ],
+        "radius": 1
+      },
+      "bow_a": {
+        "pos": [
+          -9,
+          1,
+          36
+        ],
+        "radius": 1
+      },
+      "deck_b": {
+        "pos": [
+          -46,
+          0,
+          20
+        ],
+        "radius": 1
+      },
+      "loft": {
+        "pos": [
+          -56,
+          0,
+          -8
+        ],
+        "radius": 1
+      },
+      "loft_front": {
+        "pos": [
+          -56,
+          0,
+          -1
+        ],
+        "radius": 1
+      },
+      "quay_west": {
+        "pos": [
+          -30,
+          0,
+          6
+        ],
+        "radius": 1
+      },
+      "pier2_head": {
+        "pos": [
+          -38,
+          0,
+          13
+        ],
+        "radius": 1
+      },
+      "tavern_table": {
+        "pos": [
+          21,
+          0,
+          -7
+        ],
+        "radius": 1
+      },
+      "tavern_door": {
+        "pos": [
+          24,
+          0,
+          -1
+        ],
+        "radius": 1
+      },
+      "main_street": {
+        "pos": [
+          0,
+          0,
+          -30
+        ],
+        "radius": 1
+      },
+      "harbour_east": {
+        "pos": [
+          36,
+          0,
+          0
+        ],
+        "radius": 1
+      },
+      "harbour_west": {
+        "pos": [
+          -40,
+          0,
+          0
+        ],
+        "radius": 1
+      },
+      "frag_1": {
+        "pos": [
+          -24,
+          1,
+          -12
+        ],
+        "radius": 1
+      },
+      "frag_2": {
+        "pos": [
+          -22,
+          1,
+          -12
+        ],
+        "radius": 1
+      },
+      "frag_3": {
+        "pos": [
+          -20,
+          1,
+          -12
+        ],
+        "radius": 1
+      },
+      "frag_4": {
+        "pos": [
+          -24,
+          1,
+          -10
+        ],
+        "radius": 1
+      },
+      "frag_5": {
+        "pos": [
+          -22,
+          1,
+          -10
+        ],
+        "radius": 1
+      },
+      "frag_6": {
+        "pos": [
+          -20,
+          1,
+          -10
+        ],
+        "radius": 1
+      },
+      "light_1": {
+        "pos": [
+          -22,
+          2,
+          -13
+        ],
+        "radius": 1
+      },
+      "light_2": {
+        "pos": [
+          -22,
+          3,
+          -15
+        ],
+        "radius": 1
+      },
+      "light_3": {
+        "pos": [
+          -22,
+          4,
+          -19
+        ],
+        "radius": 1
+      },
+      "light_4": {
+        "pos": [
+          -22,
+          5,
+          -24
+        ],
+        "radius": 1
+      },
+      "light_5": {
+        "pos": [
+          -21,
+          6,
+          -30
+        ],
+        "radius": 1
+      },
+      "light_6": {
+        "pos": [
+          -21,
+          7,
+          -37
+        ],
+        "radius": 1
+      },
+      "light_7": {
+        "pos": [
+          -21,
+          8,
+          -45
+        ],
+        "radius": 1
+      }
+    },
+    "npcs": [
+      {
+        "character": "elara",
+        "location": "elara_start",
+        "yaw": 0
+      },
+      {
+        "character": "orin",
+        "location": "orin_start",
+        "yaw": 0
+      },
+      {
+        "character": "sahir",
+        "location": "sahir_start",
+        "yaw": 0
+      },
+      {
+        "character": "thane_garrick",
+        "location": "garrick_start",
+        "yaw": 0,
+        "held": "minecraft:iron_pickaxe"
+      },
+      {
+        "character": "captain_maren",
+        "location": "maren_dock",
+        "yaw": 180,
+        "until_stage": "lay"
+      },
+      {
+        "character": "captain_maren",
+        "location": "maren_chart",
+        "yaw": 90,
+        "from_stage": "lay"
+      },
+      {
+        "character": "tidewatch_dockhand_1",
+        "location": "crane_hand",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:chain"
+      },
+      {
+        "character": "tidewatch_dockhand_2",
+        "location": "quay_ropes",
+        "yaw": 180,
+        "activity": "routine",
+        "route": [
+          "quay_ropes",
+          "quay_east",
+          "cargo_area"
+        ]
+      },
+      {
+        "character": "tidewatch_dockhand_3",
+        "location": "loft",
+        "yaw": 0,
+        "activity": "work",
+        "held": "minecraft:string"
+      },
+      {
+        "character": "tidewatch_dockhand_4",
+        "location": "quay_west",
+        "activity": "routine",
+        "route": [
+          "quay_west",
+          "loft_front",
+          "pier2_head"
+        ]
+      },
+      {
+        "character": "tidewatch_dockhand_5",
+        "location": "stall_cod",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:cod"
+      },
+      {
+        "character": "tidewatch_dockhand_6",
+        "location": "stall_salmon",
+        "yaw": 180,
+        "activity": "work",
+        "held": "minecraft:salmon"
+      },
+      {
+        "character": "tidewatch_dockhand_7",
+        "location": "tavern_table",
+        "activity": "routine",
+        "route": [
+          "tavern_table",
+          "tavern_door",
+          "quay"
+        ]
+      },
+      {
+        "character": "tidewatch_dockhand_8",
+        "location": "main_street",
+        "activity": "routine",
+        "route": [
+          "main_street",
+          "harbour_east",
+          "harbour_west"
+        ]
+      },
+      {
+        "character": "thalassian_sailor_1",
+        "location": "gangplank",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:lead"
+      },
+      {
+        "character": "thalassian_sailor_2",
+        "location": "deck_a",
+        "yaw": 0,
+        "activity": "work",
+        "held": "minecraft:string"
+      },
+      {
+        "character": "thalassian_sailor_3",
+        "location": "deck_b",
+        "yaw": 90,
+        "activity": "work",
+        "held": "minecraft:fishing_rod"
+      },
+      {
+        "character": "thalassian_sailor_4",
+        "location": "bow_a",
+        "yaw": 0,
+        "held": "minecraft:spyglass"
+      }
+    ],
+    "clues": {
+      "s16_barrel_1": {
+        "name": "Damaged cargo barrel",
+        "pos": [
+          7,
+          0,
+          7
+        ],
+        "block": "minecraft:barrel"
+      },
+      "s16_barrel_2": {
+        "name": "Damaged cargo barrel",
+        "pos": [
+          1,
+          0,
+          22
+        ],
+        "block": "minecraft:barrel"
+      },
+      "s16_barrel_3": {
+        "name": "Damaged cargo barrel",
+        "pos": [
+          21,
+          0,
+          8
+        ],
+        "block": "minecraft:barrel"
+      },
+      "s16_housing": {
+        "name": "Tide Anchor housing",
+        "pos": [
+          29,
+          -12,
+          62
+        ],
+        "block": "minecraft:dark_prismarine"
+      }
+    },
+    "stages": [
+      {
+        "id": "arrive",
+        "checkpoint": "headland_road",
+        "on_enter": [
+          {
+            "type": "teleport_player",
+            "location": "headland_road",
+            "yaw": 0
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "elara_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "orin",
+            "location": "orin_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "orin",
+            "location": "orin_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "sahir_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "sahir_start"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "thane_garrick",
+            "location": "garrick_start"
+          },
+          {
+            "type": "npc_stay",
+            "character": "thane_garrick",
+            "location": "garrick_start"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "orin"
+          },
+          {
+            "type": "npc_follow",
+            "character": "sahir"
+          },
+          {
+            "type": "npc_follow",
+            "character": "thane_garrick"
+          },
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s016_arrival"
+          }
+        ],
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s016_arrival"
+        }
+      },
+      {
+        "id": "to_docks",
+        "objective": "Meet Captain Maren on the docks",
+        "target": "maren_meet",
+        "checkpoint": "headland_road",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "Follow the road down off the headland into Tidewatch. Captain Maren is waiting at the head of the main pier."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "maren_meet"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s16_maren"
+          }
+        ]
+      },
+      {
+        "id": "maren_talk",
+        "checkpoint": "quay",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s16_maren"
+        }
+      },
+      {
+        "id": "cargo",
+        "objective": "Secure the three damaged cargo barrels",
+        "target": "cargo_area",
+        "checkpoint": "quay",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 220,
+            "text": "The tremors knocked cargo loose along the quay and the pier. Find the three split barrels and press {use} on each to lash it down."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s16_barrel_1,s16_barrel_2,s16_barrel_3"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.wood.place",
+            "volume": 0.8,
+            "pitch": 0.9
+          }
+        ]
+      },
+      {
+        "id": "crane",
+        "objective": "Repair the loading crane",
+        "target": "crane_deck",
+        "checkpoint": "quay",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:spruce_log",
+            "count": 4,
+            "name": "Crane beam timber"
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:chain",
+            "count": 3,
+            "name": "Crane chain"
+          },
+          {
+            "type": "hint",
+            "ticks": 260,
+            "text": "Climb the ladder on the crane's north side to its deck. Set two logs into the gap in the jib, then hang two chain links under its end, where the green sparkles are."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "minecraft:spruce_log|14,7,9;14,7,10 + minecraft:chain|14,6,14;14,5,14"
+        },
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s016_crane_fixed"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.chain.place",
+            "volume": 1.0,
+            "pitch": 0.8
+          },
+          {
+            "type": "message",
+            "text": "The crane swings again. The dockhands cheer and start loading."
+          },
+          {
+            "type": "start_dialogue",
+            "id": "s16_caravan"
+          }
+        ]
+      },
+      {
+        "id": "caravan_talk",
+        "checkpoint": "quay",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s16_caravan"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s16_dive"
+          }
+        ]
+      },
+      {
+        "id": "dive_talk",
+        "checkpoint": "quay",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s16_dive"
+        }
+      },
+      {
+        "id": "swim",
+        "objective": "Follow the buoys out to the sunken watch",
+        "target": "watch_door",
+        "checkpoint": "pier",
+        "on_enter": [
+          {
+            "type": "npc_spawn",
+            "character": "captain_maren",
+            "location": "maren_pier"
+          },
+          {
+            "type": "npc_stay",
+            "character": "captain_maren",
+            "location": "maren_pier"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "elara",
+            "location": "pier_elara"
+          },
+          {
+            "type": "npc_stay",
+            "character": "elara",
+            "location": "pier_elara"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "orin",
+            "location": "pier_orin"
+          },
+          {
+            "type": "npc_stay",
+            "character": "orin",
+            "location": "pier_orin"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "sahir",
+            "location": "pier_sahir"
+          },
+          {
+            "type": "npc_stay",
+            "character": "sahir",
+            "location": "pier_sahir"
+          },
+          {
+            "type": "npc_spawn",
+            "character": "thane_garrick",
+            "location": "pier_garrick"
+          },
+          {
+            "type": "npc_stay",
+            "character": "thane_garrick",
+            "location": "pier_garrick"
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:turtle_helmet",
+            "count": 1,
+            "name": "Tidewatch diving helmet",
+            "lore": "Lent by the Tidewatch divers.|A few more breaths under water."
+          },
+          {
+            "type": "hint",
+            "ticks": 300,
+            "text": "Wear the diving helmet ({inventory}). Climb down the ladder at the pier's end and swim out along the buoys. The door of the old watch is on the seabed below the last buoy; the bubble columns beside it give you air."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "watch_room"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.wooden_door.close",
+            "volume": 0.8,
+            "pitch": 0.8
+          }
+        ]
+      },
+      {
+        "id": "clear",
+        "objective": "Clear the fallen stones",
+        "target": "stones",
+        "checkpoint": "pier",
+        "on_enter": [
+          {
+            "type": "give_item",
+            "item": "minecraft:iron_pickaxe",
+            "count": 1,
+            "name": "Diver's pick",
+            "lore": "Tidewatch diving gear."
+          },
+          {
+            "type": "hint",
+            "ticks": 200,
+            "text": "The old door still keeps the sea out of this room. Break the fallen stones in the archway with {attack}."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "air|28,-12,60;29,-12,60;30,-12,60;28,-11,60;29,-11,60;30,-11,60"
+        },
+        "on_complete": [
+          {
+            "type": "sound",
+            "sound": "minecraft:block.stone.break",
+            "volume": 1.0,
+            "pitch": 0.7
+          }
+        ]
+      },
+      {
+        "id": "take",
+        "objective": "Take the Tide Anchor from its housing",
+        "target": "housing_side",
+        "checkpoint": "pier",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 160,
+            "text": "Press {use} on the dark housing in the alcove."
+          }
+        ],
+        "complete": {
+          "type": "clues",
+          "value": "s16_housing"
+        },
+        "on_complete": [
+          {
+            "type": "world_change",
+            "id": "mc001_s016_anchor_taken"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:block.conduit.deactivate",
+            "volume": 0.8,
+            "pitch": 0.9
+          },
+          {
+            "type": "shake",
+            "intensity": 0.03,
+            "ticks": 12
+          },
+          {
+            "type": "message",
+            "text": "You lift the Tide Anchor out of its housing. It is heavier than it looks."
+          }
+        ]
+      },
+      {
+        "id": "swim_back",
+        "objective": "Swim back to the pier",
+        "target": "pier_end",
+        "checkpoint": "pier",
+        "on_enter": [
+          {
+            "type": "hint",
+            "ticks": 180,
+            "text": "Out through the door and back along the buoys. The ladder at the pier's end takes you up."
+          }
+        ],
+        "complete": {
+          "type": "reach",
+          "value": "pier_end"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s16_anchor"
+          }
+        ]
+      },
+      {
+        "id": "anchor_talk",
+        "checkpoint": "pier",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s16_anchor"
+        }
+      },
+      {
+        "id": "lay",
+        "objective": "Lay the Tide Anchor beside the other fragments",
+        "target": "chart_room",
+        "checkpoint": "chart_door",
+        "on_enter": [
+          {
+            "type": "npc_spawn",
+            "character": "captain_maren",
+            "location": "maren_chart"
+          },
+          {
+            "type": "npc_stay",
+            "character": "captain_maren",
+            "location": "maren_chart"
+          },
+          {
+            "type": "npc_follow",
+            "character": "elara"
+          },
+          {
+            "type": "npc_follow",
+            "character": "orin"
+          },
+          {
+            "type": "npc_follow",
+            "character": "sahir"
+          },
+          {
+            "type": "npc_follow",
+            "character": "thane_garrick"
+          },
+          {
+            "type": "world_change",
+            "id": "mc001_s016_fragments"
+          },
+          {
+            "type": "give_item",
+            "item": "minecraft:dark_prismarine",
+            "count": 1,
+            "name": "Tide Anchor",
+            "lore": "Raised from the old coastal watch.|Lay it on Maren's chart table beside the other fragments."
+          },
+          {
+            "type": "hint",
+            "ticks": 240,
+            "text": "Maren's chart room is on Harbour Street, west of the main pier. The other five fragments are laid out on her chart table: place the Tide Anchor in the last space."
+          }
+        ],
+        "complete": {
+          "type": "blocks",
+          "value": "minecraft:dark_prismarine|-20,1,-10"
+        },
+        "on_complete": [
+          {
+            "type": "start_cinematic",
+            "id": "mc001_s016_glow"
+          }
+        ]
+      },
+      {
+        "id": "glow",
+        "checkpoint": "chart_door",
+        "complete": {
+          "type": "cinematic_end",
+          "value": "mc001_s016_glow"
+        },
+        "on_complete": [
+          {
+            "type": "start_dialogue",
+            "id": "s16_new"
+          }
+        ]
+      },
+      {
+        "id": "new_talk",
+        "checkpoint": "chart_door",
+        "complete": {
+          "type": "dialogue_end",
+          "value": "s16_new"
+        },
+        "on_complete": [
+          {
+            "type": "give_item",
+            "item": "minecraft:dark_prismarine",
+            "count": 1,
+            "name": "Thalassia fragment",
+            "lore": "The Tide Anchor of Tidewatch. Made to hold something steady."
+          },
+          {
+            "type": "title",
+            "title": "Mission Complete",
+            "subtitle": "The Sixth Fragment"
+          },
+          {
+            "type": "sound",
+            "sound": "minecraft:ui.toast.challenge_complete",
+            "volume": 0.7,
+            "pitch": 1.0
+          },
+          {
+            "type": "journal",
+            "id": "s16_sixth_fragment"
+          },
+          {
+            "type": "message",
+            "text": "Thalassia joins. All six fragments are accounted for, and Captain Maren will carry everyone to Valebridge."
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.thalassia.joined"
+          },
+          {
+            "type": "set_flag",
+            "flag": "mc001.s016.complete"
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "s16_amb_ropes",
+        "character": "tidewatch_dockhand_2",
+        "dialogue": "s16_ropes",
+        "radius": 7,
+        "talk_radius": 5,
+        "approach": false,
+        "stages": [
+          "to_docks",
+          "cargo",
+          "crane"
+        ],
+        "ambient": true
+      },
+      {
+        "id": "s16_amb_tide",
+        "character": "thalassian_sailor_1",
+        "dialogue": "s16_tide",
+        "radius": 7,
+        "talk_radius": 5,
+        "approach": false,
+        "stages": [
+          "to_docks",
+          "cargo",
+          "crane"
+        ],
+        "ambient": true
+      },
+      {
+        "id": "s16_amb_catch",
+        "character": "tidewatch_dockhand_5",
+        "dialogue": "s16_catch",
+        "radius": 7,
+        "talk_radius": 5,
+        "approach": false,
+        "stages": [
+          "to_docks",
+          "cargo",
+          "crane"
+        ],
+        "ambient": true
+      },
+      {
+        "id": "s16_amb_nets",
+        "character": "tidewatch_dockhand_3",
+        "dialogue": "s16_nets",
+        "radius": 6,
+        "talk_radius": 4,
+        "approach": false,
+        "stages": [
+          "to_docks",
+          "cargo",
+          "crane"
+        ],
+        "ambient": true
+      },
+      {
+        "id": "s16_amb_waiting",
+        "character": "thalassian_sailor_3",
+        "dialogue": "s16_waiting",
+        "radius": 6,
+        "talk_radius": 4,
+        "approach": false,
+        "stages": [
+          "to_docks",
+          "cargo",
+          "crane"
+        ],
+        "ambient": true
+      },
+      {
+        "id": "s16_amb_watch",
+        "character": "tidewatch_dockhand_7",
+        "dialogue": "s16_old_watch",
+        "radius": 6,
+        "talk_radius": 4,
+        "approach": false,
+        "stages": [
+          "to_docks",
+          "cargo",
+          "crane"
+        ],
+        "ambient": true
+      }
+    ],
+    "area_triggers": [
+      {
+        "id": "s16_ladder_hint",
+        "location": "pier_end",
+        "stages": [
+          "swim"
+        ],
+        "actions": [
+          {
+            "type": "hint",
+            "ticks": 120,
+            "text": "The ladder goes down into the sea at the very end of the pier."
+          }
+        ]
+      },
+      {
+        "id": "s16_door_hint",
+        "location": "watch_door",
+        "stages": [
+          "swim"
+        ],
+        "actions": [
+          {
+            "type": "hint",
+            "ticks": 140,
+            "text": "Open the old door with {use} and swim through. The room behind it is dry."
+          }
+        ]
+      }
+    ],
+    "chatter": []
+  },
+  "dialogues": {
+    "s16_maren": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "captain_maren",
+          "text": "I'd have met you on the road, but the sea wasn't cooperative.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "orin",
+          "text": "Have you got the fragment?",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "captain_maren",
+          "text": "Found it. Then the tremors brought half the old watch down on top of it.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "captain_maren",
+          "text": "We found it beneath an old coastal watch structure.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "sahir",
+          "text": "Then the same builders may have worked across all six territories."
+        }
+      }
+    },
+    "s16_caravan": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "captain_maren",
+          "text": "I heard you helped a caravan outside Eldervale.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "primordial_steve",
+          "text": "We were in the right place.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "captain_maren",
+          "text": "The right place is usually where someone chooses to stand.",
+          "next": "l03"
+        },
+        "l03": {
+          "speaker": "primordial_steve",
+          "text": "You sound like Rowan.",
+          "next": "l04"
+        },
+        "l04": {
+          "speaker": "captain_maren",
+          "text": "Then Rowan sounds sensible."
+        }
+      }
+    },
+    "s16_dive": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "captain_maren",
+          "text": "Follow the buoys out and keep to the bubble lines. Tidewatch divers have breathed off them for three hundred years."
+        }
+      }
+    },
+    "s16_anchor": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "captain_maren",
+          "text": "The Tide Anchor. My grandfather swore it kept this coast from shaking.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "orin",
+          "text": "Maybe it did. Look how it's made. It's meant to hold something steady."
+        }
+      }
+    },
+    "s16_new": {
+      "critical": true,
+      "lines": {
+        "l00": {
+          "speaker": "captain_maren",
+          "text": "Well. That's new.",
+          "next": "l01"
+        },
+        "l01": {
+          "speaker": "orin",
+          "text": "I think we've just found our next destination.",
+          "next": "l02"
+        },
+        "l02": {
+          "speaker": "captain_maren",
+          "text": "I'll carry everyone to Valebridge myself. Every kingdom should be in one room for this."
+        }
+      }
+    },
+    "s16_ropes": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "tidewatch_dockhand_2",
+          "text": "Watch your feet! Ropes everywhere this morning."
+        }
+      }
+    },
+    "s16_tide": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "thalassian_sailor_1",
+          "text": "Tide's turning. If the Captain wants the divers out, it'll be soon."
+        }
+      }
+    },
+    "s16_catch": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "tidewatch_dockhand_5",
+          "text": "Fresh catch! Cod, salmon, and one very angry crab."
+        }
+      }
+    },
+    "s16_nets": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "tidewatch_dockhand_3",
+          "text": "Mending nets all morning. The tremors shook half of them off the hooks."
+        }
+      }
+    },
+    "s16_waiting": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "thalassian_sailor_3",
+          "text": "We sail when the Captain says. Not a moment before."
+        }
+      }
+    },
+    "s16_old_watch": {
+      "critical": false,
+      "lines": {
+        "l00": {
+          "speaker": "tidewatch_dockhand_7",
+          "text": "Heard the old watch go in the night. Sounded like the sea itself coughing."
+        }
+      }
+    }
+  },
+  "cinematics": {
+    "mc001_s016_arrival": {
+      "duration": 320,
+      "fade_in": 20,
+      "fade_out": 12,
+      "hide_player": true,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            72.0,
+            14.0,
+            -30.0
+          ],
+          "yaw": -0.0,
+          "pitch": -12.1,
+          "fov": 62
+        },
+        {
+          "t": 120,
+          "pos": [
+            56.0,
+            20.0,
+            -10.0
+          ],
+          "yaw": 60.3,
+          "pitch": 16.4,
+          "fov": 60
+        },
+        {
+          "t": 230,
+          "pos": [
+            24.0,
+            16.0,
+            20.0
+          ],
+          "yaw": -7.1,
+          "pitch": 22.9,
+          "fov": 56
+        },
+        {
+          "t": 320,
+          "pos": [
+            14.0,
+            12.0,
+            30.0
+          ],
+          "yaw": -26.6,
+          "pitch": 22.7,
+          "fov": 50
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 30,
+          "duration": 110,
+          "text": "Tidewatch — Harbour of Thalassia",
+          "style": "title"
+        },
+        {
+          "t": 200,
+          "duration": 100,
+          "text": "Offshore, the old coastal watch stands half sunk in the sea.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 0,
+          "sound": "minecraft:entity.fishing_bobber.splash",
+          "volume": 0.4
+        },
+        {
+          "t": 60,
+          "sound": "minecraft:block.bell.use",
+          "volume": 0.5,
+          "pitch": 0.8
+        },
+        {
+          "t": 200,
+          "sound": "minecraft:entity.dolphin.ambient_water",
+          "volume": 0.4
+        }
+      ]
+    },
+    "mc001_s016_glow": {
+      "duration": 240,
+      "fade_in": 8,
+      "fade_out": 10,
+      "hide_player": false,
+      "keyframes": [
+        {
+          "t": 0,
+          "pos": [
+            -17.5,
+            3.0,
+            -7.0
+          ],
+          "yaw": 131.6,
+          "pitch": 18.4,
+          "fov": 58
+        },
+        {
+          "t": 120,
+          "pos": [
+            -18.5,
+            2.6,
+            -8.0
+          ],
+          "yaw": 130.6,
+          "pitch": 19.1,
+          "fov": 48
+        },
+        {
+          "t": 240,
+          "pos": [
+            -22.0,
+            3.2,
+            -6.5
+          ],
+          "yaw": -180.0,
+          "pitch": -5.9,
+          "fov": 55
+        }
+      ],
+      "subtitles": [
+        {
+          "t": 20,
+          "duration": 80,
+          "text": "The six fragments glow together.",
+          "style": "caption"
+        },
+        {
+          "t": 100,
+          "duration": 70,
+          "text": "The compass needle stops.",
+          "style": "caption"
+        },
+        {
+          "t": 170,
+          "duration": 70,
+          "text": "A line of light points north, toward Awakening Valley.",
+          "style": "caption"
+        }
+      ],
+      "sounds": [
+        {
+          "t": 15,
+          "sound": "minecraft:block.amethyst_block.chime",
+          "volume": 0.9,
+          "pitch": 0.7
+        },
+        {
+          "t": 100,
+          "sound": "minecraft:block.beacon.power_select",
+          "volume": 0.6,
+          "pitch": 1.2
+        },
+        {
+          "t": 165,
+          "sound": "minecraft:block.beacon.activate",
+          "volume": 0.7,
+          "pitch": 0.8
+        }
+      ],
+      "cues": [
+        {
+          "t": 20,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "frag_1",
+              "count": 10,
+              "spread": 0.3
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "frag_2",
+              "count": 10,
+              "spread": 0.3
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "frag_3",
+              "count": 10,
+              "spread": 0.3
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "frag_4",
+              "count": 10,
+              "spread": 0.3
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "frag_5",
+              "count": 10,
+              "spread": 0.3
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "frag_6",
+              "count": 10,
+              "spread": 0.3
+            }
+          ]
+        },
+        {
+          "t": 60,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:glow",
+              "location": "frag_1",
+              "count": 8,
+              "spread": 0.4
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:glow",
+              "location": "frag_2",
+              "count": 8,
+              "spread": 0.4
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:glow",
+              "location": "frag_3",
+              "count": 8,
+              "spread": 0.4
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:glow",
+              "location": "frag_4",
+              "count": 8,
+              "spread": 0.4
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:glow",
+              "location": "frag_5",
+              "count": 8,
+              "spread": 0.4
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:glow",
+              "location": "frag_6",
+              "count": 8,
+              "spread": 0.4
+            }
+          ]
+        },
+        {
+          "t": 165,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_1",
+              "count": 14,
+              "spread": 0.25
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_2",
+              "count": 14,
+              "spread": 0.25
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_3",
+              "count": 14,
+              "spread": 0.25
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_4",
+              "count": 14,
+              "spread": 0.25
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_5",
+              "count": 14,
+              "spread": 0.25
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_6",
+              "count": 14,
+              "spread": 0.25
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_7",
+              "count": 14,
+              "spread": 0.25
+            }
+          ]
+        },
+        {
+          "t": 200,
+          "actions": [
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_1",
+              "count": 10,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_2",
+              "count": 10,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_3",
+              "count": 10,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_4",
+              "count": 10,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_5",
+              "count": 10,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_6",
+              "count": 10,
+              "spread": 0.2
+            },
+            {
+              "type": "particles",
+              "particle": "minecraft:end_rod",
+              "location": "light_7",
+              "count": 10,
+              "spread": 0.2
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "journal": {
+    "s16_sixth_fragment": {
+      "title": "The Sixth Fragment",
+      "text": "Tidewatch, the harbour of Thalassia. Captain Maren's divers had found Thalassia's fragment beneath the old coastal watch, and then the tremors brought half the watch down on top of it. We helped on the docks first: three split cargo barrels lashed down and the loading crane mended. Then I swam out along the buoys, breathing at the bubble lines, cleared the fallen stones in the watch's lower room and lifted out the Tide Anchor. Orin says it was made to hold something steady. On Maren's chart table the six fragments glowed together, the compass needle stopped, and a line of light pointed north toward Awakening Valley. Thalassia joins us, and Maren will carry everyone to Valebridge."
+    }
+  }
+}
